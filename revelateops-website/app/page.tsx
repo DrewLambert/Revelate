@@ -36,12 +36,12 @@ const differentiators = [
     detail: "Incredibly detailed time logs available on demand for any project. You know exactly what you're paying for—down to the hour, the task, and the deliverable. No black boxes, no surprises.",
   },
   {
-    title: 'Battle-Tested Across 153+ Tech Stacks',
-    detail: "From SMB to global enterprises, I've architected revenue operations across 153+ business tech stacks. Your specific integration challenge? I've likely solved it twice already.",
+    title: 'Deep Expertise Across the Revenue Stack',
+    detail: "From Salesforce and NetSuite to Apollo, Workato, and 30+ integration platforms—I've architected revenue operations across the modern enterprise stack. Your specific integration challenge? I've likely solved it twice already.",
   },
   {
     title: 'AI-Augmented Excellence',
-    detail: 'I leverage cutting-edge AI to accelerate diagnostics, automate documentation, and deliver insights faster—without sacrificing the human judgment that makes complex systems work. AI-friendly, AI-talented, and years ahead of traditional consultants.',
+    detail: 'I leverage cutting-edge AI to accelerate diagnostics, automate documentation, and deliver insights faster—without sacrificing the human judgment that makes complex systems work. AI-augmented workflow that combines efficiency with expertise.',
   },
 ];
 
@@ -61,7 +61,7 @@ const process = [
     phase: 'Stabilize Production',
     focus: 'Stabilize production',
     summary:
-      'Ship weekly improvements to routing, forecasting, attribution, and integrations with regression tests and rollback plans.',
+      'Ship regular improvements to routing, forecasting, attribution, and integrations with regression tests and rollback plans.',
     deliverables: [
       'Version-controlled automations with reviewers',
       'Live health dashboards for SLA, pipeline, and ARR',
@@ -83,19 +83,19 @@ const process = [
 
 const metrics = [
   {
-    value: '±3%',
-    label: 'forecast variance',
-    description: 'achieved by week four across the last three engagements.',
+    value: '120 hrs',
+    label: 'monthly time saved',
+    description: 'automated manual reconciliation work for recent Series B client.',
   },
   {
-    value: '-62%',
-    label: 'revops backlog',
-    description: 'average ticket reduction while shipping weekly to production.',
+    value: '6-16 wks',
+    label: 'typical timeline',
+    description: 'from discovery to production improvements, depending on scope.',
   },
   {
-    value: '$200K',
-    label: 'rebuild avoided',
-    description: 'median savings compared to agency “rip-and-replace” quotes.',
+    value: '$200K+',
+    label: 'savings identified',
+    description: 'in annual operational inefficiencies for Series B media-tech client.',
   },
 ];
 
@@ -114,7 +114,7 @@ const faqs = [
   {
     question: 'How quickly do production changes land?',
     answer:
-      'Sandbox fixes ship in week one. Production updates typically land every Friday with regression tests, change logs, and rollback plans committed to your repo.',
+      'Sandbox fixes ship in week one. Production updates land on a regular cadence—typically weekly to bi-weekly—with regression tests, change logs, and rollback plans committed to your repo.',
   },
   {
     question: 'Do you work outside of SaaS revenue teams?',
@@ -367,7 +367,7 @@ export default function Home() {
               Hire a conglomerate that bills you. Or a boutique consultant who joins your team.
             </h2>
             <p className="mt-6 text-lg leading-8 text-[#334155]">
-              Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what's broken in 8 weeks—without touching production.
+              Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what's broken in 6-16 weeks—with incremental production improvements throughout.
             </p>
           </div>
 
@@ -500,7 +500,7 @@ export default function Home() {
                     </svg>
                   </span>
                   <div>
-                    <p className="text-sm font-medium text-navy">8-week sprints, weekly production releases</p>
+                    <p className="text-sm font-medium text-navy">6-16 week engagements, incremental production improvements</p>
                     <p className="mt-1 text-xs text-[#64748b]">Stabilize what's broken without freezing revenue for months</p>
                   </div>
                 </li>
@@ -540,7 +540,7 @@ export default function Home() {
                   <li className="flex items-baseline gap-2 text-sm">
                     <span className="shrink-0 text-cyan">•</span>
                     <span className="text-navy">
-                      My modernization sprints: <span className="font-semibold text-cyan">8 weeks</span>, weekly production fixes, <span className="font-semibold text-cyan">$200K saved</span> on average
+                      My modernization approach: <span className="font-semibold text-cyan">6-16 weeks</span> depending on scope, incremental production improvements, <span className="font-semibold text-cyan">$100K-$300K</span> in identified savings opportunities
                     </span>
                   </li>
                 </ul>
@@ -560,7 +560,7 @@ export default function Home() {
               Sprints that protect revenue while we modernize.
             </h2>
             <p className="mt-4 text-base leading-7 text-[#334155] md:text-lg">
-              We run an immersion audit, then ship weekly improvements with the same rigor your engineers expect.
+              We run an immersion audit, then ship incremental improvements on a regular cadence with the same rigor your engineers expect.
             </p>
           </div>
 

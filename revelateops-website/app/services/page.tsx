@@ -353,7 +353,7 @@ const packages = [
       'Board wants forecast accuracy',
       'Revenue stack doesn\'t talk to itself',
     ],
-    timeline: '8-12 weeks',
+    timeline: '8-16 weeks',
     investment: '$35K-70K',
     roi: '571% in year one',
     gradient: 'from-cyan to-blue',
@@ -384,7 +384,7 @@ const packages = [
       'Inherited a Salesforce disaster',
       'Previous consultant made it worse',
     ],
-    timeline: '6-10 weeks',
+    timeline: '6-12 weeks',
     investment: '$25K-50K',
     roi: 'Save $150K+ rebuild costs',
     gradient: 'from-blue to-cyan',
@@ -455,7 +455,7 @@ const comparisonData = [
     ongoingCost: 'Opportunity cost',
   },
   {
-    solution: 'Revelate (8-week engagement)',
+    solution: 'Revelate (6-16 week engagement)',
     cost: '$35K-70K',
     timeToValue: 'Week 1 insights',
     risk: 'Low',
@@ -756,7 +756,7 @@ export default function ServicesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: motionDisabled ? 0 : 0.3 }}
               >
-                Series B SaaS companies ($10-50M ARR) save $200K+ annually by fixing the revenue
+                Series B SaaS companies ($10-50M ARR) identify $100K-$300K+ in annual savings opportunities by fixing the revenue
                 architecture that's costing them deals—without hiring a full-time team or
                 rebuilding from scratch.
               </motion.p>
@@ -827,8 +827,7 @@ export default function ServicesPage() {
                     </div>
                     <div className="mt-2 text-6xl font-bold tracking-[-0.02em] text-cyan">$200K+</div>
                     <div className="mt-4 text-base leading-relaxed text-white/80">
-                      For Series B SaaS companies fixing revenue architecture without rebuilding
-                      from scratch
+                      In identified annual savings opportunities for recent Series B media-tech client by fixing revenue architecture
                     </div>
                   </div>
                 </div>

@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { useMemo, useState } from 'react';
 
 const journeyMoments = [
   {
@@ -189,26 +188,25 @@ const principles = [
 
 const offDuty = [
   {
-    title: 'Where you will find me',
-    text: 'Exploring southern New Hampshire, cycling before inbox zero, and coaching local builders on revenue instrumentation.'
+    title: 'My Partner in Debugging',
+    text: 'Meet Sirius Black—my Black Lab and the real MVP of deep work sessions. Named after the Harry Potter character, he\'s mastered the art of the "are we done yet?" head tilt right around hour three of architecture diagrams.',
+    image: '/drew-and-sirius.jpeg'
   },
   {
-    title: 'Listening on repeat',
-    text: 'An alternating mix of Tycho, Bonobo, and indie playlists that make long architecture sessions feel like flow state.'
+    title: 'Wedding Dance Floor Regular',
+    text: 'You\'ll find me attempting moves at family weddings—much to their dismay. The enthusiasm is there, the coordination less so. But someone\'s gotta keep the energy up.',
+    image: '/family-wedding.jpeg'
   },
   {
-    title: 'Always learning from',
-    text: 'Operators who share their postmortems openly. The best lessons come from teams candid about what broke.'
+    title: 'Quality Time with Family',
+    text: 'Nothing beats exploring cities with family. This is my uncle and me in Times Square—a reminder that the best moments happen when you step away from the screens and just be present.',
+    image: '/nyc-with-uncle.jpeg'
   }
 ];
 
 export default function AboutPage() {
   const prefersReducedMotion = useReducedMotion();
-  const [motionEnabled, setMotionEnabled] = useState(true);
-  const motionDisabled = useMemo(
-    () => prefersReducedMotion || !motionEnabled,
-    [prefersReducedMotion, motionEnabled]
-  );
+  const motionDisabled = prefersReducedMotion;
 
   const getFadeProps = (delay = 0) => {
     if (motionDisabled) return {};
@@ -289,56 +287,140 @@ export default function AboutPage() {
             <div className="absolute bottom-[18%] right-[14%] h-56 w-56 rounded-full border border-magenta/25 bg-magenta/10 blur-2xl" />
           </motion.div>
         )}
-        <svg className="absolute inset-0 h-full w-full opacity-[0.14]" xmlns="http://www.w3.org/2000/svg">
-          {Array.from({ length: 18 }).map((_, index) => {
-            const x = (index % 6) * 18 + 10;
-            const y = Math.floor(index / 6) * 18 + 14;
-            return <circle key={index} cx={`${x}%`} cy={`${y}%`} r="1.4" fill="#68DEFF" opacity="0.35" />;
-          })}
-          <line x1="18%" y1="24%" x2="42%" y2="12%" stroke="#3CD9FF" strokeWidth="0.6" strokeOpacity="0.32" />
-          <line x1="42%" y1="12%" x2="62%" y2="18%" stroke="#3CD9FF" strokeWidth="0.6" strokeOpacity="0.26" />
-          <line x1="64%" y1="66%" x2="82%" y2="56%" stroke="#3CD9FF" strokeWidth="0.6" strokeOpacity="0.22" />
-          <line x1="22%" y1="74%" x2="36%" y2="86%" stroke="#3CD9FF" strokeWidth="0.6" strokeOpacity="0.28" />
+        {/* Unified Background Layer - Celestial Theme */}
+        <svg className="absolute inset-0 h-full w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" style={{ zIndex: 1 }}>
+          <defs>
+            {/* Gradients for shooting stars */}
+            <linearGradient id="shootingStar1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#68DEFF" stopOpacity="0" />
+              <stop offset="20%" stopColor="#68DEFF" stopOpacity="1" />
+              <stop offset="80%" stopColor="#68DEFF" stopOpacity="1" />
+              <stop offset="100%" stopColor="#68DEFF" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="shootingStar2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#D946EF" stopOpacity="0" />
+              <stop offset="20%" stopColor="#D946EF" stopOpacity="0.9" />
+              <stop offset="80%" stopColor="#D946EF" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#D946EF" stopOpacity="0" />
+            </linearGradient>
+            <radialGradient id="planetGlow">
+              <stop offset="0%" stopColor="#68DEFF" stopOpacity="0.6" />
+              <stop offset="40%" stopColor="#68DEFF" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#68DEFF" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+
+          {/* Constellation dots - scattered across page */}
+          <g opacity="0.4">
+            {Array.from({ length: 30 }).map((_, index) => {
+              const x = (index % 10) * 10 + 5;
+              const y = Math.floor(index / 10) * 25 + 10;
+              return <circle key={index} cx={`${x}%`} cy={`${y}%`} r="2" fill="#68DEFF" opacity="0.7" />;
+            })}
+            {/* Constellation lines */}
+            <line x1="15%" y1="15%" x2="35%" y2="10%" stroke="#3CD9FF" strokeWidth="1" strokeOpacity="0.6" />
+            <line x1="35%" y1="10%" x2="55%" y2="15%" stroke="#3CD9FF" strokeWidth="1" strokeOpacity="0.5" />
+            <line x1="65%" y1="60%" x2="85%" y2="50%" stroke="#3CD9FF" strokeWidth="1" strokeOpacity="0.5" />
+            <line x1="15%" y1="70%" x2="30%" y2="85%" stroke="#3CD9FF" strokeWidth="1" strokeOpacity="0.6" />
+          </g>
+
+          {/* Planet - much more prominent */}
+          <g opacity="0.5">
+            <circle cx="88%" cy="12%" r="80" fill="url(#planetGlow)" />
+            <circle cx="88%" cy="12%" r="35" fill="none" stroke="#68DEFF" strokeWidth="2.5" opacity="0.9" />
+            <ellipse cx="88%" cy="12%" rx="55" ry="12" fill="none" stroke="#68DEFF" strokeWidth="1.5" opacity="0.7" />
+            <ellipse cx="88%" cy="12%" rx="65" ry="15" fill="none" stroke="#68DEFF" strokeWidth="1.2" opacity="0.5" />
+          </g>
+
+          {/* Shooting stars - very visible */}
+          {!motionDisabled && (
+            <>
+              <motion.line
+                x1="10%" y1="5%" x2="30%" y2="25%"
+                stroke="url(#shootingStar1)"
+                strokeWidth="4"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{
+                  pathLength: [0, 1, 0],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 3,
+                  ease: "easeOut"
+                }}
+              />
+              <motion.line
+                x1="55%" y1="20%" x2="80%" y2="45%"
+                stroke="url(#shootingStar2)"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{
+                  pathLength: [0, 1, 0],
+                  opacity: [0, 0.9, 0]
+                }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  repeatDelay: 5,
+                  delay: 2,
+                  ease: "easeOut"
+                }}
+              />
+              <motion.line
+                x1="25%" y1="55%" x2="50%" y2="80%"
+                stroke="url(#shootingStar1)"
+                strokeWidth="3"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{
+                  pathLength: [0, 1, 0],
+                  opacity: [0, 0.95, 0]
+                }}
+                transition={{
+                  duration: 1.6,
+                  repeat: Infinity,
+                  repeatDelay: 7,
+                  delay: 4,
+                  ease: "easeOut"
+                }}
+              />
+            </>
+          )}
         </svg>
       </div>
 
-      <div className="relative z-10 py-20 lg:py-28">
+      <div className="relative z-10 pt-32 pb-24 lg:pt-40 lg:pb-32">
         <div className="mx-auto max-w-6xl px-6 lg:max-w-7xl lg:px-12">
-          <div className="flex flex-col items-end justify-between gap-6 pb-14 md:flex-row md:items-center">
+          <div className="pb-16">
             <span className="text-xs uppercase tracking-[0.4em] text-white/40">Founder story</span>
-            <button
-              type="button"
-              onClick={() => setMotionEnabled((prev) => !prev)}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 transition-colors duration-200 hover:border-cyan/40 hover:text-white"
-            >
-              <span
-                className={`h-2.5 w-2.5 rounded-full ${motionEnabled ? 'bg-cyan shadow-[0_0_12px_2px_rgba(109,229,255,0.6)]' : 'bg-white/40'}`}
-              />
-              {motionEnabled ? 'Pause subtle motion' : 'Enable motion'}
-            </button>
           </div>
 
           <motion.section
-            className="relative mb-24 grid gap-14 lg:mb-32 lg:grid-cols-[1.1fr_0.9fr]"
+            className="relative mb-28 grid gap-16 lg:mb-36 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20"
             initial={motionDisabled ? undefined : { opacity: 0, y: 32 }}
             animate={motionDisabled ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <div>
-              <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan/30 bg-cyan/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan">
-                <span>Drew Lambert</span>
-              </div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-cyan">Drew Lambert</p>
               <h1
-                className="font-heading text-3xl leading-tight text-white sm:text-4xl md:text-5xl"
+                className="font-heading text-3xl leading-[1.15] text-white sm:text-4xl md:text-5xl lg:text-6xl"
               >
                 I build revenue architecture because I have been the operator who needed it most.
               </h1>
-              <p
-                className="font-body mt-6 text-xl text-white/70"
-              >
-                Since 2018 I have lived inside revenue teams at Reveneer, DraftSales, and Bevi—stitching GTM, finance, and product data together so operators could finally explain what happened last quarter. Revelate Operations is the studio I built to give founders the partner I always wanted beside me: someone who knows the work, tells the truth, and leaves the team stronger.
-              </p>
-              <div className="font-body mt-8 grid gap-4 text-base text-white/60 sm:grid-cols-2">
+              <div className="space-y-6">
+                <p className="font-body text-xl leading-relaxed text-white/70 lg:text-2xl">
+                  Since 2018 I have lived inside revenue teams—from managed services providers supporting <span className="text-white">150+ companies</span> to emerging SaaS startups to a <span className="text-white">Boston-based Series C IT startup</span>—stitching GTM, finance, and product data together so operators could finally explain what happened last quarter.
+                </p>
+                <p className="font-body text-xl leading-relaxed text-white/70 lg:text-2xl">
+                  <span className="font-semibold text-white">Revelate Operations</span> is the studio I built to give founders the partner I always wanted beside me: someone who <span className="font-semibold text-white">knows the work</span>, <span className="font-semibold text-white">tells the truth</span>, and <span className="font-semibold text-white">leaves the team stronger</span>.
+                </p>
+              </div>
+              <div className="font-body mt-10 grid gap-4 text-base text-white/60 sm:grid-cols-2">
                 <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                   <span className="inline-flex h-2.5 w-2.5 rounded-full bg-cyan" />
                   Based in Milford, NH working with distributed teams
@@ -351,7 +433,7 @@ export default function AboutPage() {
             </div>
 
             <motion.div
-              className="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-8 backdrop-blur"
+              className="relative"
               {...(motionDisabled
                 ? {}
                 : {
@@ -360,85 +442,75 @@ export default function AboutPage() {
                     transition: { duration: 0.7, delay: 0.2 }
                   })}
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(109,229,255,0.22),_transparent_70%)]" />
-              <div className="relative flex h-full flex-col gap-6">
-                <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
-                  <div className="relative aspect-[4/5] w-full">
-                    <Image
-                      src="/founder-portrait.png"
-                      alt="Portrait of Drew Lambert"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#060816]/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-black/30 px-5 py-4 backdrop-blur-sm">
-                      <p className="text-sm uppercase tracking-[0.3em] text-white/70">Founder</p>
-                      <p className="font-heading text-lg font-semibold text-white">
-                        Drew Lambert
-                      </p>
-                    </div>
-                  </div>
+              <div className="relative overflow-hidden rounded-2xl border-4 border-white/30 bg-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                <div className="relative aspect-[3/4] w-full">
+                  <Image
+                    src="/D Lambert.png"
+                    alt="Portrait of Drew Lambert"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-                <p className="font-body text-base text-white/70">
+              </div>
+              <div className="mt-6 space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Founder</p>
+                <p className="font-heading text-xl font-semibold text-white">
+                  Drew Lambert
+                </p>
+                <p className="font-body text-sm leading-relaxed text-white/60">
                   Most working sessions still start with a notebook full of architecture diagrams and operator checklists.
                 </p>
               </div>
             </motion.div>
           </motion.section>
 
-          <motion.section
-            className="relative mb-24 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 sm:p-10 lg:mb-32 lg:p-16"
-            {...getFadeProps(0)}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan/15 to-cyan/5 opacity-60" />
-            <div className="relative grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-white/50">Why Revelate exists</p>
-                <h2
-                  className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl"
-                >
-                  I am building the consultancy I needed when revenue truth was on the line.
-                </h2>
-              </div>
-              <div className="font-body space-y-6 text-xl text-white/75">
+          <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0)}>
+            {/* Why section - flows naturally from hero */}
+            <div className="mb-16 max-w-4xl">
+              <h2 className="font-heading mb-6 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
+                Why Revelate exists
+              </h2>
+              <div className="space-y-4 text-lg text-white/75">
                 <p>
                   Every high-growth chapter came with the same pattern: end-of-month scramble, systems disagreeing, and a board meeting looming. I started Revelate to give leaders space to breathe by engineering the systems underneath the numbers.
                 </p>
                 <p>
-                  My work blends finance discipline with product curiosity and operator empathy. It is less about selling new platforms and more about aligning definitions, cleaning up architecture, and coaching teams through the change.
+                  My work blends finance discipline with product curiosity and operator empathy. It's less about selling new platforms and more about aligning definitions, cleaning up architecture, and coaching teams through the change.
                 </p>
               </div>
             </div>
-            <div className="relative mt-12 grid gap-6 md:grid-cols-3">
+
+            {/* Core principles - simple list */}
+            <div className="mb-16 grid gap-8 md:grid-cols-3">
               {personalReasons.map((reason, index) => (
-                <div key={reason.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                  <p className="text-xs uppercase tracking-[0.3em] text-cyan/70">0{index + 1}</p>
-                  <h3 className="mt-4 text-xl font-semibold text-white" >
+                <div key={reason.title} className="border-l-2 border-cyan/30 pl-6">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-cyan/70">0{index + 1}</p>
+                  <h3 className="mb-2 text-lg font-semibold text-white">
                     {reason.title}
                   </h3>
-                  <p className="mt-3 text-base text-white/70">{reason.text}</p>
+                  <p className="text-sm text-white/70">{reason.text}</p>
                 </div>
               ))}
             </div>
-            <div className="relative mt-16">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                <h3
-                  className="font-heading text-[28px] font-semibold text-white"
-                >
+
+            {/* How we work */}
+            <div className="border-t border-white/10 pt-16">
+              <div className="mb-8">
+                <h3 className="font-heading mb-3 text-2xl font-semibold text-white">
                   How Revelate shows up for operators
                 </h3>
-                <p className="font-body max-w-2xl text-base text-white/70">
+                <p className="max-w-3xl text-base text-white/70">
                   This is the short list I share with founders when they ask what makes the work different from a traditional consulting engagement.
                 </p>
               </div>
-              <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="grid gap-6 md:grid-cols-2 max-w-5xl">
                 {practiceFocus.map((item) => (
-                  <div key={item.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                    <h4 className="text-xl font-semibold text-white" >
+                  <div key={item.title} className="border-l-2 border-cyan/30 pl-4">
+                    <h4 className="mb-1 text-base font-semibold text-white">
                       {item.title}
                     </h4>
-                    <p className="mt-3 text-base text-white/70">{item.description}</p>
+                    <p className="text-sm text-white/70">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -446,240 +518,241 @@ export default function AboutPage() {
           </motion.section>
 
           <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.08)}>
-            <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-2xl">
-                <h2
-                  className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl"
-                >
-                  Recent engagements at a glance
-                </h2>
-                <p className="font-body mt-4 text-xl text-white/70">
-                  The patterns repeat: conflicting definitions, manual reconciliation, brittle integrations. Here is how a few teams moved past them.
-                </p>
-              </div>
+            <div className="mb-12">
+              <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                The road here
+              </h2>
+              <p className="font-body mt-4 max-w-3xl text-xl text-white/70">
+                Every chapter made the next one possible: dialing prospects, rescuing data, architecting systems, and finally building the consultancy I wished existed when I was in the trenches.
+              </p>
             </div>
-            <div className="grid gap-6 lg:grid-cols-3">
-              {caseSnapshots.map((snapshot) => (
-                <div key={snapshot.name} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                  <div className="flex items-center gap-3">
-                    <span className="rounded-full border border-cyan/30 bg-cyan/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-cyan">
-                      Case file
-                    </span>
-                    <span className="text-xs text-white/50">{snapshot.name}</span>
-                  </div>
-                  <p className="mt-4 text-base text-white/80">{snapshot.summary}</p>
-                  <ul className="mt-5 space-y-2 text-base text-white/65">
-                    {snapshot.impact.map((detail) => (
-                      <li key={detail} className="flex items-start gap-3">
-                        <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cyan" />
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </motion.section>
 
-          <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.1)}>
-            <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-2xl">
-                <h2
-                  className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl"
-                >
-                  The road here
-                </h2>
-                <p className="font-body mt-4 text-xl text-white/70">
-                  Every chapter made the next one possible: dialing prospects, rescuing data, architecting systems, and finally building the consultancy I wished existed when I was in the trenches.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute left-[2.3rem] top-12 bottom-12 hidden w-px bg-gradient-to-b from-cyan/40 via-white/15 to-magenta/40 lg:block" />
-              <div className="space-y-10 lg:pl-24">
-                {journeyMoments.map((moment, index) => {
-                  const isHighlight = Boolean(moment.highlight);
-                  const variant = getTimelineVariant(moment.durationMonths ?? 0);
-                  const paddingClass = isHighlight ? 'p-9 lg:p-12' : variant.paddingClass;
-                  const circleClass = isHighlight
-                    ? 'h-16 w-16 text-base shadow-[0_0_0_14px_rgba(217,70,239,0.22)]'
-                    : variant.circleClass;
-                  const dotOffsetClass = isHighlight ? 'top-[3.6rem]' : variant.dotOffsetClass;
-                  return (
-                    <motion.div
-                      key={`${moment.year}-${index}`}
-                      className={`relative overflow-hidden rounded-xl border border-white/10 bg-white/5 ${isHighlight ? 'border-magenta/40 bg-gradient-to-br from-magenta/15 to-magenta/5 shadow-lg shadow-magenta/10' : ''} ${paddingClass}`}
-                      {...getFadeProps(index * 0.05)}
-                    >
-                      {isHighlight && <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-magenta/15 to-transparent opacity-60" />}
-                      <div
-                        className={`absolute -left-16 top-6 hidden items-center justify-center rounded-full border border-white/15 bg-[#080E1F] font-semibold text-white lg:flex ${circleClass}`}
-                                             >
-                        {moment.year}
+            {/* Compact Timeline */}
+            <div className="relative border-l-2 border-white/10 pl-8 space-y-8">
+              {journeyMoments.map((moment, index) => {
+                const isHighlight = Boolean(moment.highlight);
+                return (
+                  <div key={`${moment.year}-${index}`} className="relative">
+                    {/* Timeline dot */}
+                    <div className={`absolute -left-[2.15rem] top-1 h-4 w-4 rounded-full border-2 ${isHighlight ? 'bg-magenta border-magenta' : 'bg-cyan border-cyan'}`} />
+
+                    <div className={isHighlight ? 'pl-4 border-l-2 border-magenta/30' : ''}>
+                      <div className="flex items-baseline gap-4 mb-2">
+                        <span className="text-sm font-bold text-white">{moment.year}</span>
+                        <h3 className="text-lg font-semibold text-white">{moment.company}</h3>
                       </div>
-                      <div
-                        className={`absolute -left-3 ${dotOffsetClass} hidden h-3 w-3 rounded-full ${isHighlight ? 'bg-magenta shadow-[0_0_0_8px_rgba(217,70,239,0.18)]' : 'bg-cyan shadow-[0_0_0_8px_rgba(61,217,255,0.18)]'} pointer-events-none lg:block`}
-                      />
-                      <div className="relative flex flex-col gap-4">
-                        <span className="text-xs font-medium uppercase tracking-[0.3em] text-white/40">
-                          {moment.year}
-                        </span>
-                        <h3 className="text-xl font-semibold text-white">
-                          {moment.company}
-                        </h3>
-                        <p className="font-body text-sm font-semibold uppercase tracking-[0.25em] text-white/50">
-                          {moment.title}
-                        </p>
-                        <p className="font-body text-base text-white/70">
-                          {moment.description}
-                        </p>
-                        <p className="font-body text-base font-medium text-cyan/70">
-                          {moment.lesson}
-                        </p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                      <p className="text-sm font-medium uppercase tracking-wide text-white/50 mb-2">
+                        {moment.title}
+                      </p>
+                      <p className="text-base text-white/70 mb-2">
+                        {moment.description}
+                      </p>
+                      <p className={`text-sm font-medium italic ${isHighlight ? 'text-magenta/80' : 'text-cyan/70'}`}>
+                        {moment.lesson}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </motion.section>
 
           <section className="mb-24 lg:mb-32">
-            <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-2xl">
-                <h2
-                  className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl"
-                >
-                  What I am working on now
-                </h2>
-                <p className="font-body mt-4 text-xl text-white/70">
-                  A snapshot of the type of work currently on my desk.
-                </p>
-              </div>
+            <div className="mb-8">
+              <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                What I am working on now
+              </h2>
             </div>
-            <div className="grid gap-8 md:grid-cols-3">
-              {currentFocus.map((item) => (
-                <motion.div key={item.label} className="rounded-xl border border-white/10 bg-white/5 p-8" {...getFadeProps(0.05)}>
-                  <h3 className="text-xl font-semibold text-white" >
+
+            {/* Simple list format */}
+            <div className="space-y-6 max-w-4xl">
+              {currentFocus.map((item, index) => (
+                <div key={item.label} className="border-l-2 border-cyan/30 pl-6">
+                  <h3 className="text-lg font-semibold text-white mb-2">
                     {item.label}
                   </h3>
-                  <p className="font-body mt-3 text-base text-white/70">
+                  <p className="font-body text-base text-white/70">
                     {item.detail}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </section>
 
           <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.08)}>
-            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-white/50">Operator toolkit</p>
-                <h2
-                  className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl"
-                >
-                  Systems I live in every week.
-                </h2>
-                <p className="font-body mt-6 text-xl text-white/70">
-                  Seven-plus years in the Salesforce ecosystem, 300+ Trailhead badges, and a career built on stitching finance, GTM, and product data into one understandable story.
-                </p>
-              </div>
-              <div className="grid gap-6 md:grid-cols-2">
-                {capabilityStack.map((stack) => (
-                  <div key={stack.category} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                    <p className="text-xs uppercase tracking-[0.3em] text-cyan/70">{stack.category}</p>
-                    <ul className="mt-3 space-y-2 text-base text-white/70">
-                      {stack.items.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-magenta" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+            <div className="mb-8">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/50">Operator toolkit</p>
+              <h2 className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                Systems I live in every week.
+              </h2>
+              <p className="font-body mt-6 max-w-3xl text-xl text-white/70">
+                Seven-plus years in the Salesforce ecosystem with deep hands-on experience across 50+ implementations, and a career built on stitching finance, GTM, and product data into one understandable story.
+              </p>
+            </div>
+
+            {/* Compact inline categories */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {capabilityStack.map((stack) => (
+                <div key={stack.category}>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-cyan mb-3">{stack.category}</p>
+                  <div className="space-y-2">
+                    {stack.items.map((item) => (
+                      <p key={item} className="text-sm text-white/70">• {item}</p>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </motion.section>
 
           <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.1)}>
-            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-white/50">How engagements run</p>
-                <h2
-                  className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl"
-                >
-                  A consultancy built for focus and transparency.
-                </h2>
-                <p className="font-body mt-6 text-xl text-white/70">
-                  I structure Revelate so founders know the cost, cadence, and expectations upfront. No bait-and-switch retainers, just operator-to-operator clarity.
-                </p>
-              </div>
-              <div className="grid gap-6">
-                {engagementNotes.map((note) => (
-                  <div key={note.label} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                    <h3 className="text-xl font-semibold text-white" >
-                      {note.label}
-                    </h3>
-                    <p className="mt-3 text-base text-white/70">{note.detail}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="mb-8">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/50">How engagements run</p>
+              <h2 className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                A consultancy built for focus and transparency.
+              </h2>
+              <p className="font-body mt-6 max-w-3xl text-xl text-white/70">
+                I structure Revelate so founders know the cost, cadence, and expectations upfront. No bait-and-switch retainers, just operator-to-operator clarity.
+              </p>
+            </div>
+
+            {/* Simple list */}
+            <div className="grid gap-6 md:grid-cols-2 max-w-5xl">
+              {engagementNotes.map((note) => (
+                <div key={note.label} className="border-l-2 border-cyan/30 pl-4">
+                  <h3 className="text-base font-semibold text-white mb-1">
+                    {note.label}
+                  </h3>
+                  <p className="text-sm text-white/70">{note.detail}</p>
+                </div>
+              ))}
             </div>
           </motion.section>
 
           <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.1)}>
-            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-white/50">Operating principles</p>
-                <h2
-                  className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl"
-                >
-                  The guardrails I bring into every engagement.
-                </h2>
-              </div>
-              <div className="grid gap-6 sm:grid-cols-2">
-                {principles.map((principle) => (
-                  <div key={principle.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan/10 text-cyan">
-                      <principle.icon />
-                    </div>
-                    <h3 className="mt-4 text-lg font-semibold text-white" >
+            <div className="mb-8">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/50">Operating principles</p>
+              <h2 className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                The guardrails I bring into every engagement.
+              </h2>
+            </div>
+
+            {/* Compact list with icons */}
+            <div className="grid gap-6 md:grid-cols-2 max-w-5xl">
+              {principles.map((principle) => (
+                <div key={principle.title} className="flex gap-4">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-cyan/10 text-cyan">
+                    <principle.icon />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-white mb-1">
                       {principle.title}
                     </h3>
-                    <p className="font-body mt-3 text-base text-white/70">
+                    <p className="text-sm text-white/70">
                       {principle.description}
                     </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </motion.section>
 
-          <motion.section
-            className="relative mb-24 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-10 lg:mb-32 lg:p-16"
-            {...getFadeProps(0.15)}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan/15 to-transparent opacity-70" />
-            <div className="relative grid gap-10 lg:grid-cols-2">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-white/50">Beyond the dashboards</p>
-                <h2
-                  className="font-heading mt-4 text-3xl font-semibold text-white sm:text-4xl"
-                >
-                  Life outside the spreadsheets.
-                </h2>
-                <p className="font-body mt-6 text-xl text-white/70">
-                  I am at my best when I make time to think, reset, and stay curious. These slices keep me grounded so I can be present for the teams I support.
-                </p>
-              </div>
-              <div className="grid gap-6">
-                {offDuty.map((item) => (
-                  <div key={item.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">{item.title}</p>
-                    <p className="mt-3 text-base text-white/80">{item.text}</p>
+          <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.15)}>
+            <div className="mb-16">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/50">Beyond the dashboards</p>
+              <h2 className="font-heading mt-4 text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                Life outside the spreadsheets.
+              </h2>
+              <p className="font-body mt-6 max-w-3xl text-xl text-white/70">
+                I am at my best when I make time to think, reset, and stay curious. These slices keep me grounded so I can be present for the teams I support.
+              </p>
+            </div>
+
+            {/* Photo Grid - Cleaner, Less Card-Heavy */}
+            <div className="mb-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {offDuty.map((item, index) => (
+                <div key={item.title} className="group">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl border-2 border-white/20 shadow-lg">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
-                ))}
+                  <div className="mt-4 space-y-2">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan">{item.title}</p>
+                    <p className="text-base leading-relaxed text-white/70">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Music Section - Simplified, Less Nested */}
+            <div className="border-t border-white/10 pt-16">
+              <div className="mb-8 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-magenta/15">
+                  <svg className="h-5 w-5 text-magenta" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 18V5l12-2v13" />
+                    <circle cx="6" cy="18" r="3" />
+                    <circle cx="18" cy="16" r="3" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-magenta/70">The Soundtrack</p>
+                  <h3 className="font-heading text-2xl font-semibold text-white">Five decades, infinite moods</h3>
+                </div>
+              </div>
+
+              <div className="grid gap-12 lg:grid-cols-[1fr_auto]">
+                <div className="space-y-6">
+                  <p className="text-lg leading-relaxed text-white/80">
+                    The playlist shifts constantly—from 70s piano rock to brand-new indie releases that dropped last week. Sometimes it's the emotional weight of a well-crafted story song. Other times it's pure theatrical bombast or the kind of infectious pop hook that won't leave your head for three days.
+                  </p>
+                  <p className="text-lg leading-relaxed text-white/80">
+                    It's the background hum to focused work sessions, the energy boost during late-night builds, and the emotional reset between client calls. Eclectic doesn't begin to cover it—but that's the point. The best thinking happens when the soundtrack refuses to sit still.
+                  </p>
+
+                  {/* Current Vibe - Inline */}
+                  <div className="flex flex-wrap items-center gap-6 pt-4">
+                    <span className="text-sm font-semibold uppercase tracking-wider text-white/50">Current Vibe:</span>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-magenta animate-pulse" />
+                      <span className="text-sm text-white/70">Upbeat storytelling</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-cyan/60 animate-pulse" style={{ animationDelay: '0.3s' }} />
+                      <span className="text-sm text-white/70">Musical theater</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-purple/60 animate-pulse" style={{ animationDelay: '0.6s' }} />
+                      <span className="text-sm text-white/70">Classic rock</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Album Art - Clean Grid */}
+                <div className="lg:w-80">
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { album: 'The Click - AJR', image: '/album-the-click.jpg' },
+                      { album: 'Don\'t Shoot Me - Elton John', image: '/album-dont-shoot-me.jpg' },
+                      { album: 'Too Weird to Live - Panic!', image: '/album-too-weird.png' },
+                      { album: 'Ever After - Marianas Trench', image: '/album-ever-after.jpg' },
+                    ].map((item, i) => (
+                      <motion.div
+                        key={i}
+                        className="aspect-square rounded-lg border-2 border-white/20 shadow-md relative overflow-hidden bg-gray-900"
+                        title={item.album}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Image src={item.image} alt={item.album} fill className="object-cover" />
+                      </motion.div>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-center text-xs text-white/40">Recent rotation spanning five decades</p>
+                </div>
               </div>
             </div>
           </motion.section>
