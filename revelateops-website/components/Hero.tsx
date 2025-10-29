@@ -47,8 +47,8 @@ export default function Hero() {
     >
       {/* Deep parallax backdrop */}
       <motion.div style={{ y: backgroundY }} className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute right-[6%] top-[-14%] h-[700px] w-[700px] rounded-full bg-cyan/24 blur-[170px] animate-[pulse-glow_8s_ease-in-out_infinite]" />
-        <div className="absolute left-[-4%] bottom-[-12%] h-[600px] w-[600px] rounded-full bg-magenta/18 blur-[170px] animate-[pulse-glow_11s_ease-in-out_infinite_reverse]" />
+        {/* Signature Cyan Gradient - Top Right */}
+        <div className="absolute right-[6%] top-[-14%] h-[700px] w-[700px] rounded-full bg-cyan/12 blur-[70px] animate-[pulse-glow_8s_ease-in-out_infinite]" />
       </motion.div>
 
       {/* Data field texture */}
@@ -130,7 +130,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl"
           >
-            Hi, I'm Drew. I work as your embedded RevOps partner—not an agency, not a full-time hire. I'm a principal consultant who joins your team, maps what's broken, and ships production improvements on a regular cadence. With deep expertise across enterprise platforms like Salesforce, NetSuite, and modern integration tools, most clients see meaningful improvements within 6-16 weeks.
+            Hi, I'm Drew. I take on 2-3 clients at a time as your embedded RevOps partner—not an agency, not a full-time hire. Deep focus. No handoffs. I join your team, map what's broken, and ship production improvements on a regular cadence. With deep expertise across enterprise platforms like Salesforce, NetSuite, and modern integration tools, most clients see meaningful improvements within 6-16 weeks.
           </motion.p>
 
           {/* CTAs */}

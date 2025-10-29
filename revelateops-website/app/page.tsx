@@ -4,6 +4,8 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import Hero from '@/components/Hero';
+import FAQAccordion from '@/components/FAQAccordion';
+import StickyNav from '@/components/StickyNav';
 import Link from 'next/link';
 import { industryStats, signalsWithStats, rebuildCostStat } from '@/lib/data/stats';
 
@@ -199,6 +201,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <StickyNav />
 
       {/* NEW: Differentiators Section */}
       <section
@@ -225,6 +228,42 @@ export default function Home() {
               No offshore teams. No junior devs. No surprises. Just principal-level expertise embedded with your team.
             </p>
           </motion.div>
+
+          {/* Currently Working With Section */}
+          <div className="mt-12 mx-auto max-w-4xl">
+            <div className="relative overflow-hidden rounded-xl border border-cyan/20 bg-gradient-to-br from-cyan/[0.04] to-transparent p-6 sm:p-8">
+              <div className="text-center">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan mb-4">
+                  Currently Working With
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#dbe3f0] bg-white px-4 py-2 text-sm font-medium text-navy shadow-sm">
+                    <svg className="h-4 w-4 text-cyan" fill="currentColor" viewBox="0 0 8 8">
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                    Series B SaaS
+                  </span>
+                  <span className="text-[#64748b]">|</span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#dbe3f0] bg-white px-4 py-2 text-sm font-medium text-navy shadow-sm">
+                    <svg className="h-4 w-4 text-cyan" fill="currentColor" viewBox="0 0 8 8">
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                    Mid-Market Manufacturing
+                  </span>
+                  <span className="text-[#64748b]">|</span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#dbe3f0] bg-white px-4 py-2 text-sm font-medium text-navy shadow-sm">
+                    <svg className="h-4 w-4 text-cyan" fill="currentColor" viewBox="0 0 8 8">
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                    Early-Stage Fintech
+                  </span>
+                </div>
+                <p className="mt-5 text-xs text-[#64748b] leading-relaxed">
+                  I maintain 2-3 active engagements at a time to ensure deep focus and quality delivery for each client.
+                </p>
+              </div>
+            </div>
+          </div>
 
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {differentiators.map((item, index) => (
@@ -263,8 +302,7 @@ export default function Home() {
         aria-labelledby="outcomes-heading"
       >
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute right-[12%] top-[-30%] h-[420px] w-[420px] rounded-full bg-cyan/24 blur-[170px]" />
-          <div className="absolute left-[-14%] bottom-[-30%] h-[560px] w-[560px] rounded-full bg-magenta/18 blur-[170px]" />
+          {/* Removed gradients - using single cyan gradient from Approach section */}
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
@@ -280,7 +318,21 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
+          {/* Concrete Client Outcome Example */}
+          <div className="mt-10 mx-auto max-w-2xl">
+            <div className="relative overflow-hidden rounded-xl border border-cyan/30 bg-cyan/[0.08] p-6 backdrop-blur-md shadow-[0_12px_32px_rgba(0,217,255,0.15)]">
+              <div className="flex items-start gap-3">
+                <svg className="h-5 w-5 text-cyan flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-sm text-white/90 leading-relaxed">
+                  <strong className="text-white">Recent outcome:</strong> Series B Media-Tech company—stabilized forecast accuracy from 63% to 94%, eliminated $200K in duplicate platform spend, reduced RevOps team reporting time by 120 hours/month.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="relative flex h-full flex-col justify-between rounded-2xl border border-white/15 bg-white/10 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14)_0%,rgba(26,31,58,0)_70%)]" />
               <div className="relative space-y-3">
@@ -347,8 +399,8 @@ export default function Home() {
           className="pointer-events-none absolute inset-0"
           aria-hidden="true"
         >
-          <div className="absolute right-[12%] top-[-30%] h-[420px] w-[420px] rounded-full bg-cyan/24 blur-[170px]" />
-          <div className="absolute left-[-14%] bottom-[-30%] h-[560px] w-[560px] rounded-full bg-[#f1f5f9] blur-[220px]" />
+          {/* Signature Cyan Gradient - Homepage */}
+          <div className="absolute right-[12%] top-[-30%] h-[420px] w-[420px] rounded-full bg-cyan/12 blur-[70px]" />
           <motion.div
             style={{ y: resultsPatternY, opacity: resultsPatternOpacity }}
             className="absolute inset-0"
@@ -364,17 +416,66 @@ export default function Home() {
               Two paths forward
             </span>
             <h2 id="approach-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl">
-              Hire a conglomerate that bills you. Or a boutique consultant who joins your team.
+              Hire a conglomerate that bills you. Or an embedded principal who joins your team.
             </h2>
             <p className="mt-6 text-lg leading-8 text-[#334155]">
               Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what's broken in 6-16 weeks—with incremental production improvements throughout.
             </p>
           </div>
 
+          {/* Visual: 1 Principal vs 8-12 Team */}
+          <div className="mt-12 mx-auto max-w-4xl">
+            <div className="relative overflow-hidden rounded-xl border border-[#dbe3f0] bg-white p-8 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+              <div className="grid gap-8 md:grid-cols-2 items-center">
+                {/* Left: Traditional Agency */}
+                <div className="text-center">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-red-600 mb-4">
+                    Typical Agency
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2 mb-4">
+                    {Array.from({ length: 12 }).map((_, i) => (
+                      <div key={i} className="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                        <svg className="h-4 w-4 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                        </svg>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-sm font-semibold text-navy">8-12 team members</p>
+                  <p className="text-xs text-[#64748b] mt-1">Multiple handoffs, time zones, skill levels</p>
+                </div>
+
+                {/* Divider */}
+                <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="h-24 w-px bg-[#dbe3f0]" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2">
+                    <span className="text-xs font-semibold text-[#64748b]">VS</span>
+                  </div>
+                </div>
+
+                {/* Right: Revelate */}
+                <div className="text-center">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan mb-4">
+                    Revelate
+                  </p>
+                  <div className="flex justify-center mb-4">
+                    <div className="h-16 w-16 rounded-full bg-cyan/10 flex items-center justify-center border-2 border-cyan">
+                      <svg className="h-8 w-8 text-cyan" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="text-sm font-semibold text-navy">1 principal</p>
+                  <p className="text-xs text-[#64748b] mt-1">Who knows your entire system</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Split Comparison */}
           <div className="mt-16 grid gap-8 lg:grid-cols-2">
             {/* Left: Big Consultancy (What to Avoid) */}
-            <div className="relative overflow-hidden rounded-xl border border-[#dbe3f0] bg-[#f8fafc] p-8 shadow-[0_6px_12px_rgba(17,27,58,0.08)]">
+            <div className="relative overflow-hidden rounded-xl border border-[#dbe3f0] bg-[#f8fafc] p-8 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
               <div className="absolute top-4 right-4">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700">
                   <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 8 8">
@@ -468,14 +569,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Boutique Consultant (Your Approach) */}
-            <div className="relative overflow-hidden rounded-xl border-2 border-cyan bg-white p-8 shadow-[0_8px_16px_rgba(0,217,255,0.2)]">
+            {/* Right: Principal-Led Partner (Your Approach) */}
+            <div className="relative overflow-hidden rounded-xl border-2 border-cyan bg-white p-8 shadow-[0_6px_12px_rgba(0,217,255,0.2)] hover:shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-shadow duration-200">
               <div className="absolute top-4 right-4">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-cyan/10 px-3 py-1 text-xs font-semibold text-cyan">
                   <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 8 8">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
-                  Boutique Principal
+                  Principal-Led Partner
                 </span>
               </div>
               <h3 className="text-xl font-semibold text-navy">The Embedded Partner Model</h3>
@@ -600,8 +701,7 @@ export default function Home() {
         aria-labelledby="faq-heading"
       >
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-[6%] top-[15%] h-[420px] w-[420px] rounded-full bg-cyan/15 blur-[150px]" />
-          <div className="absolute bottom-[-30%] right-[12%] h-[500px] w-[500px] rounded-full bg-[#f1f5f9] blur-[180px]" />
+          {/* Removed gradients for cleaner aesthetic */}
         </div>
 
         <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
@@ -621,17 +721,7 @@ export default function Home() {
             </p>
           </div>
 
-          <dl className="mt-14 space-y-6">
-            {faqs.map((item) => (
-              <div
-                key={item.question}
-                className="rounded-xl border border-[#dbe3f0] bg-[#f8fafc] p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]"
-              >
-                <dt className="text-sm font-semibold uppercase tracking-[0.05em] text-cyan">{item.question}</dt>
-                <dd className="mt-3 text-sm leading-7 text-[#334155]">{item.answer}</dd>
-              </div>
-            ))}
-          </dl>
+          <FAQAccordion items={faqs} className="mt-14" />
 
           <div className="mt-8 text-center">
             <Link
@@ -663,8 +753,7 @@ export default function Home() {
         aria-labelledby="cta-heading"
       >
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          <div className="absolute inset-x-[-24%] top-[-55%] h-[520px] rounded-full bg-cyan/26 blur-[220px]" />
-          <div className="absolute bottom-[-58%] left-[18%] h-[360px] w-[360px] rounded-full bg-magenta/18 blur-[200px]" />
+          {/* Removed gradients for cleaner aesthetic */}
           <div className="absolute inset-0 mix-blend-screen opacity-30">
             <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:160px_160px,160px_160px]" />
           </div>
