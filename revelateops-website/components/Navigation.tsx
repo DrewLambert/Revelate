@@ -44,7 +44,7 @@ export default function Navigation() {
       {isHomepage && (
         <Link
           href="/"
-          className={`group fixed left-1/2 top-12 z-40 flex -translate-x-1/2 flex-col items-center gap-4 transition-all duration-500 ease-out ${
+          className={`group fixed left-1/2 top-12 z-40 hidden -translate-x-1/2 flex-col items-center gap-4 transition-all duration-500 ease-out md:flex ${
             showCompact ? 'pointer-events-none -translate-y-12 scale-75 opacity-0' : 'scale-100 opacity-100'
           }`}
           aria-label="Revelate home"

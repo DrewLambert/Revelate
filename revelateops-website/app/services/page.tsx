@@ -700,7 +700,7 @@ export default function ServicesPage() {
       </div>
 
       {/* Hero Section - Asymmetric Layout */}
-      <section className="relative pt-32 pb-20 lg:pt-40 text-white z-10">
+      <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 text-white z-10">
 
         <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
@@ -715,7 +715,7 @@ export default function ServicesPage() {
                 Salesforce Expertise for Series B SaaS
               </motion.span>
               <motion.h1
-                className="mt-5 text-4xl font-semibold leading-[1.2] tracking-[-0.02em] text-white md:text-5xl"
+                className="mt-5 text-3xl font-semibold leading-[1.2] tracking-[-0.02em] text-white sm:text-4xl md:text-5xl"
                 initial={motionDisabled ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: motionDisabled ? 0 : 0.2 }}
@@ -818,7 +818,7 @@ export default function ServicesPage() {
             <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
               Three breaking points
             </span>
-            <h2 className="mt-5 text-4xl font-semibold leading-[1.2] md:text-5xl">
+            <h2 className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl">
               Your Salesforce instance is the bottleneck preventing $50M ARR
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/80">
@@ -826,7 +826,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-3">
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
             {[
               {
                 title: 'Your board wants forecast accuracy. Your CRM gives you guesses.',
@@ -900,7 +900,7 @@ export default function ServicesPage() {
             <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
               Our Expertise
             </span>
-            <h2 className="mt-5 text-4xl font-semibold leading-[1.2] md:text-5xl">
+            <h2 className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl">
               Build Your Custom Package
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/80">
@@ -1132,7 +1132,7 @@ export default function ServicesPage() {
             <span className="text-xs font-semibold uppercase tracking-[0.05em] text-magenta">
               Client transformations
             </span>
-            <h2 className="mt-5 text-4xl font-semibold leading-[1.2] md:text-5xl">
+            <h2 className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl">
               Real results from real organizations
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/80">
@@ -1190,7 +1190,7 @@ export default function ServicesPage() {
             <span className="text-xs font-semibold uppercase tracking-[0.05em] text-blue">
               Two paths forward
             </span>
-            <h2 className="mt-5 text-4xl font-semibold leading-[1.2] md:text-5xl">
+            <h2 className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl">
               The real cost of your Salesforce decision
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/80">
@@ -1246,11 +1246,11 @@ export default function ServicesPage() {
       <section className="relative py-28 text-white z-10">
 
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <div className="overflow-hidden rounded-xl border border-white/30 bg-white/10 px-8 py-12 shadow-[0_8px_12px_rgba(8,13,40,0.6)] backdrop-blur-xl">
+          <div className="overflow-hidden rounded-xl border border-white/30 bg-white/10 px-6 py-10 shadow-[0_8px_12px_rgba(8,13,40,0.6)] backdrop-blur-xl sm:px-8 sm:py-12">
             <span className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">
               Next step
             </span>
-            <h2 className="mt-6 text-4xl font-semibold leading-[1.2]">
+            <h2 className="mt-6 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl">
               See what's hiding in your Salesforce instance
             </h2>
             <p className="mt-6 text-base leading-7 text-white/90 md:text-lg md:leading-8">
@@ -1287,7 +1287,7 @@ export default function ServicesPage() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={closeDetailModal}>
             <div className="absolute inset-0 bg-navy/80 backdrop-blur-sm" />
             <motion.div
-              className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl border border-[#dbe3f0] bg-white p-8 shadow-[0_20px_60px_rgba(17,27,58,0.3)]"
+              className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl border border-[#dbe3f0] bg-white p-6 shadow-[0_20px_60px_rgba(17,27,58,0.3)] sm:p-8"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               onClick={(e) => e.stopPropagation()}
