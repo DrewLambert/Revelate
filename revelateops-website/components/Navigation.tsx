@@ -16,12 +16,26 @@ export default function Navigation() {
   const isHomepage = pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
   const [showCompact, setShowCompact] = useState(!isHomepage);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Only allow scroll-based compact mode on homepage
+      // On mobile, always show compact mode
+      // On desktop homepage, show compact after scrolling 200px
       // On other pages, always stay compact
-      if (isHomepage) {
+      if (isMobile) {
+        setShowCompact(true);
+      } else if (isHomepage) {
         setShowCompact(window.scrollY > 200);
       } else {
         setShowCompact(true);
@@ -31,7 +45,7 @@ export default function Navigation() {
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHomepage]);
+  }, [isHomepage, isMobile]);
 
   useEffect(() => {
     if (!showCompact) {
