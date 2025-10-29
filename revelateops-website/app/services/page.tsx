@@ -4,6 +4,8 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import UserInfoModal from '@/components/UserInfoModal';
+import { generateCustomPackagePDF } from '@/utils/generateCustomPackagePDF';
 
 // Service categories with color themes
 const categories = [
@@ -500,6 +502,7 @@ export default function ServicesPage() {
   const [selectedCapability, setSelectedCapability] = useState<typeof capabilities[0] | null>(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [expandedPackage, setExpandedPackage] = useState<string | null>(null);
+  const [userInfoModalOpen, setUserInfoModalOpen] = useState(false);
 
 
   const toggleService = (serviceId: string) => {
@@ -542,6 +545,30 @@ export default function ServicesPage() {
   const closeDetailModal = () => {
     setDetailModalOpen(false);
     setSelectedCapability(null);
+  };
+
+  const handleUserInfoSubmit = (userInfo: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    companyName: string;
+    title: string;
+    comments: string;
+  }) => {
+    // Get selected services details
+    const selectedServicesData = capabilities.filter(c =>
+      selectedServices.includes(c.id)
+    );
+
+    // Generate PDF
+    generateCustomPackagePDF(userInfo, selectedServicesData);
+
+    // Close modal
+    setUserInfoModalOpen(false);
+
+    // Optional: Show success message or redirect
+    // You could add a toast notification here in the future
   };
 
 
@@ -1396,8 +1423,8 @@ export default function ServicesPage() {
           </div>
 
           {/* CTA */}
-          <Link
-            href="/book"
+          <button
+            onClick={() => setUserInfoModalOpen(true)}
             className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-cyan px-6 py-3 text-base font-semibold text-navy transition-colors duration-200 hover:bg-[#00c4e6]"
           >
             Discuss Your Custom Package
@@ -1405,9 +1432,17 @@ export default function ServicesPage() {
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
             </svg>
-          </Link>
+          </button>
         </motion.div>
       )}
+
+      {/* User Info Modal */}
+      <UserInfoModal
+        isOpen={userInfoModalOpen}
+        onClose={() => setUserInfoModalOpen(false)}
+        onSubmit={handleUserInfoSubmit}
+        selectedServicesCount={selectedServices.length}
+      />
     </main>
   );
 }
