@@ -33,7 +33,7 @@ export default function BookPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">30-Minute Call</h3>
+                    <h3 className="font-semibold text-foreground mb-1">15-Minute Consultation</h3>
                     <p className="text-muted">Quick but thorough discussion of your current challenges and goals</p>
                   </div>
                 </li>

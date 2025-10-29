@@ -1280,7 +1280,7 @@ export default function ServicesPage() {
               See what's hiding in your Salesforce instance
             </h2>
             <p className="mt-6 text-base leading-7 text-white/90 md:text-lg md:leading-8">
-              Free 30-minute assessment for Series B SaaS leaders. We'll identify at least one
+              Free 15-minute consultation for Series B SaaS leaders. We'll identify at least one
               $50K+ opportunity in your first call.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

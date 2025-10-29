@@ -43,7 +43,7 @@ export default function CalendlyEmbed() {
   return (
     <div
       className="calendly-inline-widget"
-      data-url="https://calendly.com/drew-revelateops?hide_gdpr_banner=1&background_color=1a1f3a&text_color=ffffff&primary_color=d946ef"
+      data-url="https://calendly.com/drewlambert/15-minute-intro-call?hide_gdpr_banner=1&background_color=1a1f3a&text_color=ffffff&primary_color=d946ef"
       style={{ minWidth: '320px', height: '700px' }}
     />
   );

@@ -52,7 +52,7 @@ const process = [
     summary:
       'We pull the automation map apart live, align on business goals, and scope a modernization sprint the board will understand.',
     deliverables: [
-      '45-minute working session with executive recap',
+      '15-minute intro call with executive recap',
       'Prioritized modernization backlog ranked by revenue risk',
       'Aligned budget, owners, and success metrics',
     ],
@@ -104,7 +104,7 @@ const faqs = [
   {
     question: 'What happens before we commit?',
     answer:
-      'We start with a 45-minute working session. You bring the symptoms, I map the breaking points live, and you leave with a modernization backlog, budget, and timeline—even if we choose not to move forward together.',
+      'We start with a 15-minute intro call. You bring the symptoms, I map the breaking points live, and you leave with a modernization backlog, budget, and timeline—even if we choose not to move forward together.',
   },
   {
     question: 'Can you partner with our internal admin or MSP?',
@@ -677,8 +677,8 @@ export default function Home() {
               Bring the messy org to a working session. We'll map the fixes together.
             </h2>
             <p className="mt-6 text-base leading-7 text-white/90 md:text-lg md:leading-8">
-              Book a 45-minute call. We’ll expose what’s breaking, outline the modernization sprint, and confirm whether
-              I’m the right fit. Worst case—you leave with a prioritized list to tackle internally.
+              Book a 15-minute consultation. We'll expose what's breaking, outline the modernization sprint, and confirm whether
+              I'm the right fit. Worst case—you leave with a prioritized list to tackle internally.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link

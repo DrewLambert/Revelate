@@ -331,7 +331,7 @@ export function generateCustomPackagePDF(
 
   const nextSteps = [
     'Review your selected services and deliverables',
-    'Book a free 30-minute consultation',
+    'Book a free 15-minute consultation',
     'Receive a detailed project timeline and pricing proposal',
     'Begin your Salesforce transformation',
   ];
