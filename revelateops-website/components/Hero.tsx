@@ -130,7 +130,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl"
           >
-            Hi, I'm Drew. I work as your embedded RevOps partner—not an agency, not a full-time hire. I'm a principal consultant who joins your team, maps what's broken, and ships production improvements on a regular cadence. With deep expertise across 30+ enterprise platforms, most clients see meaningful improvements within 6-16 weeks and identify $100K-$300K in savings opportunities.
+            Hi, I'm Drew. I work as your embedded RevOps partner—not an agency, not a full-time hire. I'm a principal consultant who joins your team, maps what's broken, and ships production improvements on a regular cadence. With deep expertise across enterprise platforms like Salesforce, NetSuite, and modern integration tools, most clients see meaningful improvements within 6-16 weeks.
           </motion.p>
 
           {/* CTAs */}

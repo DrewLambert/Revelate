@@ -286,9 +286,9 @@ export default function Home() {
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
                 <div className="space-y-1.5">
-                  <p className="text-[1.85rem] font-semibold leading-tight text-white md:text-[2.1rem]">±3%</p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/80">forecast variance</p>
-                  <p className="text-xs leading-5 text-white/75">achieved by week four across the last three engagements.</p>
+                  <p className="text-[1.85rem] font-semibold leading-tight text-white md:text-[2.1rem]">6-16 weeks</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/80">to production</p>
+                  <p className="text-xs leading-5 text-white/75">typical timeline for meaningful improvements to revenue architecture.</p>
                   <div className="mt-3 pt-3 border-t border-white/20">
                     <p className="text-xs text-white/60">Industry benchmark:</p>
                     <p className="mt-1 text-xs leading-5 text-white/75">
@@ -303,9 +303,9 @@ export default function Home() {
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
                 <div className="space-y-1.5">
-                  <p className="text-[1.85rem] font-semibold leading-tight text-white md:text-[2.1rem]">-62%</p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/80">revops backlog</p>
-                  <p className="text-xs leading-5 text-white/75">average ticket reduction while shipping weekly to production.</p>
+                  <p className="text-[1.85rem] font-semibold leading-tight text-white md:text-[2.1rem]">Weekly</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/80">production cadence</p>
+                  <p className="text-xs leading-5 text-white/75">regular deployment of improvements while maintaining system stability.</p>
                   <div className="mt-3 pt-3 border-t border-white/20">
                     <p className="text-xs text-white/60">Industry benchmark:</p>
                     <p className="mt-1 text-xs leading-5 text-white/75">
@@ -320,9 +320,9 @@ export default function Home() {
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
                 <div className="space-y-1.5">
-                  <p className="text-[1.85rem] font-semibold leading-tight text-white md:text-[2.1rem]">$200K</p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/80">rebuild avoided</p>
-                  <p className="text-xs leading-5 text-white/75">median savings compared to agency "rip-and-replace" quotes.</p>
+                  <p className="text-[1.85rem] font-semibold leading-tight text-white md:text-[2.1rem]">Incremental</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/80">approach</p>
+                  <p className="text-xs leading-5 text-white/75">targeted fixes instead of expensive 9-month agency rebuilds.</p>
                   <div className="mt-3 pt-3 border-t border-white/20">
                     <p className="text-xs text-white/60">Industry benchmark:</p>
                     <p className="mt-1 text-xs leading-5 text-white/75">
@@ -540,7 +540,7 @@ export default function Home() {
                   <li className="flex items-baseline gap-2 text-sm">
                     <span className="shrink-0 text-cyan">•</span>
                     <span className="text-navy">
-                      My modernization approach: <span className="font-semibold text-cyan">6-16 weeks</span> depending on scope, incremental production improvements, <span className="font-semibold text-cyan">$100K-$300K</span> in identified savings opportunities
+                      My modernization approach: <span className="font-semibold text-cyan">6-16 weeks</span> depending on scope, incremental production improvements with regular deployments
                     </span>
                   </li>
                 </ul>

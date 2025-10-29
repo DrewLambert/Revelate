@@ -15,18 +15,18 @@ const journeyMoments = [
     durationMonths: 6
   },
   {
-    year: '2019–2022',
+    year: '2018–2022',
     company: 'Reveneer',
     title: 'Sales Operations & Systems Architecture',
     description: 'Moved from sales operations associate to revenue operations manager. Designed routing, forecasting, and reporting, then led integrations, AppExchange builds, and Fortune 500 implementations with a lean team.',
     lesson: 'Document the machine while you build it—and keep it scalable as complexity rises.',
-    durationMonths: 43
+    durationMonths: 48
   },
   {
     year: '2022–2024',
-    company: 'DraftSales',
+    company: 'DraftSales (Fractional)',
     title: 'Fractional Salesforce Architect',
-    description: 'Partnered with growth-stage teams that needed enterprise-grade Salesforce without full-time headcount. Designed integrations, coached operators, and shipped clarity fast.',
+    description: 'Side consulting alongside Bevi role. Partnered with growth-stage teams that needed enterprise-grade Salesforce without full-time headcount. Designed integrations, coached operators, and shipped clarity fast.',
     lesson: 'Ship clarity quickly, then scale the playbook.',
     durationMonths: 24
   },
@@ -126,7 +126,7 @@ const capabilityStack = [
 const engagementNotes = [
   {
     label: 'Fixed-hour engagements',
-    detail: 'Project packages typically range from $12K-$70K at $75-$110/hr. Transparent budgets, no surprise scope creep.'
+    detail: 'Series B SaaS rate: $80-110/hr (discounted from standard $180/hr). Project packages typically range from $12K-$70K. Transparent budgets, no surprise scope creep.'
   },
   {
     label: 'Deliberately limited load',

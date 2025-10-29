@@ -468,23 +468,23 @@ const caseStudies = [
   {
     company: 'Series B SaaS Company | $25M ARR | 120 Employees',
     result:
-      'Reduced operational backlog by 46% while maintaining 100% system uptime during brownfield redesign. Sales team productivity increased, enabling 40% ARR growth.',
+      'Reduced operational backlog by 46% while maintaining 100% system uptime during brownfield redesign. Sales team productivity increased throughout the transition.',
     metric: '46%',
     metricLabel: 'backlog reduction',
   },
   {
     company: 'Series B SaaS Company | $18M ARR | 85 Employees',
     result:
-      'Unified Salesforce, NetSuite, and product analytics into single source of truth. Board now receives real-time revenue reporting with 95% forecast accuracy.',
-    metric: '$200K+',
-    metricLabel: 'annual savings',
+      'Unified Salesforce, NetSuite, and product analytics into single source of truth. Board now receives consistent, real-time revenue reporting across all systems.',
+    metric: '3 systems',
+    metricLabel: 'integrated',
   },
   {
     company: 'Series B SaaS Company | $32M ARR | 150 Employees',
     result:
-      'Deployed AgentForce AI for automated lead routing and qualification. Sales team now focuses on high-value activities, increasing close rates by 28%.',
-    metric: '28%',
-    metricLabel: 'close rate increase',
+      'Deployed AgentForce AI for automated lead routing and qualification. Sales team now focuses on high-value activities with AI-powered lead scoring.',
+    metric: '100%',
+    metricLabel: 'lead automation',
   },
 ];
 
@@ -756,7 +756,7 @@ export default function ServicesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: motionDisabled ? 0 : 0.3 }}
               >
-                Series B SaaS companies ($10-50M ARR) identify $100K-$300K+ in annual savings opportunities by fixing the revenue
+                Series B SaaS companies ($10-50M ARR) fix the revenue
                 architecture that's costing them deals—without hiring a full-time team or
                 rebuilding from scratch.
               </motion.p>
@@ -823,11 +823,11 @@ export default function ServicesPage() {
                       </svg>
                     </div>
                     <div className="mt-4 text-xs font-semibold uppercase tracking-[0.05em] text-white/60">
-                      Proven Annual Savings
+                      Typical Agency Alternative
                     </div>
-                    <div className="mt-2 text-6xl font-bold tracking-[-0.02em] text-cyan">$200K+</div>
+                    <div className="mt-2 text-6xl font-bold tracking-[-0.02em] text-cyan">$150K-$200K</div>
                     <div className="mt-4 text-base leading-relaxed text-white/80">
-                      In identified annual savings opportunities for recent Series B media-tech client by fixing revenue architecture
+                      Average cost of agency "rip and replace" rebuild over 9 months—avoid this with incremental improvements
                     </div>
                   </div>
                 </div>
