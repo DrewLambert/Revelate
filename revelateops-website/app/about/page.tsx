@@ -287,110 +287,27 @@ export default function AboutPage() {
             <div className="absolute bottom-[18%] right-[14%] h-56 w-56 rounded-full border border-magenta/25 bg-magenta/10 blur-2xl" />
           </motion.div>
         )}
-        {/* Unified Background Layer - Celestial Theme */}
-        <svg className="absolute inset-0 h-full w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" style={{ zIndex: 1 }}>
-          <defs>
-            {/* Gradients for shooting stars */}
-            <linearGradient id="shootingStar1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#68DEFF" stopOpacity="0" />
-              <stop offset="20%" stopColor="#68DEFF" stopOpacity="1" />
-              <stop offset="80%" stopColor="#68DEFF" stopOpacity="1" />
-              <stop offset="100%" stopColor="#68DEFF" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient id="shootingStar2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#D946EF" stopOpacity="0" />
-              <stop offset="20%" stopColor="#D946EF" stopOpacity="0.9" />
-              <stop offset="80%" stopColor="#D946EF" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#D946EF" stopOpacity="0" />
-            </linearGradient>
-            <radialGradient id="planetGlow">
-              <stop offset="0%" stopColor="#68DEFF" stopOpacity="0.6" />
-              <stop offset="40%" stopColor="#68DEFF" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#68DEFF" stopOpacity="0" />
-            </radialGradient>
-          </defs>
+      </div>
 
-          {/* Constellation dots - scattered across page */}
-          <g opacity="0.4">
-            {Array.from({ length: 30 }).map((_, index) => {
-              const x = (index % 10) * 10 + 5;
-              const y = Math.floor(index / 10) * 25 + 10;
-              return <circle key={index} cx={`${x}%`} cy={`${y}%`} r="2" fill="#68DEFF" opacity="0.7" />;
-            })}
-            {/* Constellation lines */}
-            <line x1="15%" y1="15%" x2="35%" y2="10%" stroke="#3CD9FF" strokeWidth="1" strokeOpacity="0.6" />
-            <line x1="35%" y1="10%" x2="55%" y2="15%" stroke="#3CD9FF" strokeWidth="1" strokeOpacity="0.5" />
-            <line x1="65%" y1="60%" x2="85%" y2="50%" stroke="#3CD9FF" strokeWidth="1" strokeOpacity="0.5" />
-            <line x1="15%" y1="70%" x2="30%" y2="85%" stroke="#3CD9FF" strokeWidth="1" strokeOpacity="0.6" />
-          </g>
-
-          {/* Planet - much more prominent */}
-          <g opacity="0.5">
-            <circle cx="88%" cy="12%" r="80" fill="url(#planetGlow)" />
-            <circle cx="88%" cy="12%" r="35" fill="none" stroke="#68DEFF" strokeWidth="2.5" opacity="0.9" />
-            <ellipse cx="88%" cy="12%" rx="55" ry="12" fill="none" stroke="#68DEFF" strokeWidth="1.5" opacity="0.7" />
-            <ellipse cx="88%" cy="12%" rx="65" ry="15" fill="none" stroke="#68DEFF" strokeWidth="1.2" opacity="0.5" />
-          </g>
-
-          {/* Shooting stars - very visible */}
-          {!motionDisabled && (
-            <>
-              <motion.line
-                x1="10%" y1="5%" x2="30%" y2="25%"
-                stroke="url(#shootingStar1)"
-                strokeWidth="4"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{
-                  pathLength: [0, 1, 0],
-                  opacity: [0, 1, 0]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  ease: "easeOut"
-                }}
-              />
-              <motion.line
-                x1="55%" y1="20%" x2="80%" y2="45%"
-                stroke="url(#shootingStar2)"
-                strokeWidth="3.5"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{
-                  pathLength: [0, 1, 0],
-                  opacity: [0, 0.9, 0]
-                }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  repeatDelay: 5,
-                  delay: 2,
-                  ease: "easeOut"
-                }}
-              />
-              <motion.line
-                x1="25%" y1="55%" x2="50%" y2="80%"
-                stroke="url(#shootingStar1)"
-                strokeWidth="3"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{
-                  pathLength: [0, 1, 0],
-                  opacity: [0, 0.95, 0]
-                }}
-                transition={{
-                  duration: 1.6,
-                  repeat: Infinity,
-                  repeatDelay: 7,
-                  delay: 4,
-                  ease: "easeOut"
-                }}
-              />
-            </>
-          )}
-        </svg>
+      {/* Constellation dots - simple and clean like other pages */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        {[
+          { x: '15%', y: '15%' }, { x: '25%', y: '12%' }, { x: '35%', y: '10%' },
+          { x: '45%', y: '14%' }, { x: '55%', y: '15%' }, { x: '65%', y: '12%' },
+          { x: '75%', y: '18%' }, { x: '85%', y: '15%' }, { x: '95%', y: '16%' },
+          { x: '12%', y: '35%' }, { x: '28%', y: '38%' }, { x: '42%', y: '40%' },
+          { x: '58%', y: '42%' }, { x: '72%', y: '38%' }, { x: '88%', y: '35%' },
+          { x: '10%', y: '60%' }, { x: '22%', y: '58%' }, { x: '38%', y: '65%' },
+          { x: '52%', y: '62%' }, { x: '68%', y: '60%' }, { x: '82%', y: '58%' },
+          { x: '18%', y: '82%' }, { x: '32%', y: '85%' }, { x: '48%', y: '88%' },
+          { x: '64%', y: '85%' }, { x: '78%', y: '82%' }, { x: '92%', y: '80%' }
+        ].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-cyan opacity-30"
+            style={{ left: pos.x, top: pos.y }}
+          />
+        ))}
       </div>
 
       <div className="relative z-10 pt-32 pb-24 lg:pt-40 lg:pb-32">
