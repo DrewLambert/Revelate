@@ -1,7 +1,0 @@
-{
-  "buildCommand": "cd revelateops-website && npm run build",
-  "devCommand": "cd revelateops-website && npm run dev",
-  "installCommand": "cd revelateops-website && npm install",
-  "outputDirectory": "revelateops-website/.next",
-  "framework": "nextjs"
-}
