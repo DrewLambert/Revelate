@@ -3,6 +3,14 @@
 import { useState, useEffect } from 'react';
 import CalendlyWidgetSimple from './CalendlyWidgetSimple';
 
+// Extend Window interface for analytics tracking
+interface WindowWithAnalytics extends Window {
+  gtag?: (...args: unknown[]) => void;
+  fbq?: (...args: unknown[]) => void;
+}
+
+declare const window: WindowWithAnalytics;
+
 export default function BookingPageClient() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -25,8 +33,8 @@ export default function BookingPageClient() {
     setShowConfetti(true);
 
     // Track with analytics
-    if (typeof window !== 'undefined' && (window as { gtag?: (...args: unknown[]) => void }).gtag) {
-      (window as { gtag: (...args: unknown[]) => void }).gtag('event', 'conversion', {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'conversion', {
         send_to: 'AW-CONVERSION_ID/CONVERSION_LABEL', // Replace with actual conversion ID
         event_category: 'booking',
         event_label: 'discovery_call_scheduled',
@@ -34,8 +42,8 @@ export default function BookingPageClient() {
     }
 
     // Track with Facebook Pixel if available
-    if (typeof window !== 'undefined' && (window as { fbq?: (...args: unknown[]) => void }).fbq) {
-      (window as { fbq: (...args: unknown[]) => void }).fbq('track', 'Schedule', {
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Schedule', {
         content_name: 'Discovery Call',
         content_category: 'Booking',
       });

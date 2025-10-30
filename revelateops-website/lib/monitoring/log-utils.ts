@@ -1,14 +1,13 @@
-import crypto from 'crypto';
-
 /**
  * Hash email address for privacy-safe logging in production
  * In development, returns the email unchanged for easier debugging
+ * Uses simple obfuscation for Edge Runtime compatibility
  *
- * @param email - Email address to hash
- * @returns Hashed email (16 chars) in production, original email in development
+ * @param email - Email address to obfuscate
+ * @returns Obfuscated email in production, original email in development
  *
  * @example
- * hashEmail('user@example.com') // Production: 'a1b2c3d4e5f6g7h8'
+ * hashEmail('user@example.com') // Production: 'u***@example.com'
  * hashEmail('user@example.com') // Development: 'user@example.com'
  */
 export function hashEmail(email: string): string {
@@ -16,11 +15,10 @@ export function hashEmail(email: string): string {
     return email;
   }
 
-  return crypto
-    .createHash('sha256')
-    .update(email.toLowerCase())
-    .digest('hex')
-    .substring(0, 16);
+  // Simple obfuscation that works in all runtimes (Node.js, Edge, browser)
+  const [local, domain] = email.toLowerCase().split('@');
+  if (!local || !domain) return '***@***';
+  return `${local[0]}***@${domain}`;
 }
 
 /**
