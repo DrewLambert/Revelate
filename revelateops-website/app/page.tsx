@@ -35,11 +35,11 @@ const differentiators = [
   },
   {
     title: 'Transparent, Accountable Billing',
-    detail: "Incredibly detailed time logs available on demand for any project. You know exactly what you're paying for—down to the hour, the task, and the deliverable. No black boxes, no surprises.",
+    detail: "Incredibly detailed time logs available on demand for any project. You know exactly what you&apos;re paying for—down to the hour, the task, and the deliverable. No black boxes, no surprises.",
   },
   {
     title: 'Deep Expertise Across the Revenue Stack',
-    detail: "From Salesforce and NetSuite to Apollo, Workato, and 30+ integration platforms—I've architected revenue operations across the modern enterprise stack. Your specific integration challenge? I've likely solved it twice already.",
+    detail: "From Salesforce and NetSuite to Apollo, Workato, and 30+ integration platforms—I&apos;ve architected revenue operations across the modern enterprise stack. Your specific integration challenge? I&apos;ve likely solved it twice already.",
   },
   {
     title: 'AI-Augmented Excellence',
@@ -467,7 +467,7 @@ export default function Home() {
               Hire a conglomerate that bills you. Or an embedded principal who joins your team.
             </h2>
             <p className="mt-6 text-lg leading-8 text-[#334155]">
-              Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what's broken in 6-16 weeks—with incremental production improvements throughout.
+              Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what&apos;s broken in 6-16 weeks—with incremental production improvements throughout.
             </p>
           </div>
 
@@ -577,7 +577,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Generic playbooks, no context</p>
-                    <p className="mt-1 text-xs text-[#64748b]">They've never seen your tech stack combination before</p>
+                    <p className="mt-1 text-xs text-[#64748b]">They&apos;ve never seen your tech stack combination before</p>
                   </div>
                 </li>
               </ul>
@@ -650,7 +650,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Transparent billing, detailed time tracking</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Incredibly detailed logs on demand. You know exactly what you're paying for.</p>
+                    <p className="mt-1 text-xs text-[#64748b]">Incredibly detailed logs on demand. You know exactly what you&apos;re paying for.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -661,7 +661,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">6-16 week engagements, incremental production improvements</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Stabilize what's broken without freezing revenue for months</p>
+                    <p className="mt-1 text-xs text-[#64748b]">Stabilize what&apos;s broken without freezing revenue for months</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -672,7 +672,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Deep expertise across your specific tech stack</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Salesforce, NetSuite, Workato, Apollo—I've solved your integration challenge twice already</p>
+                    <p className="mt-1 text-xs text-[#64748b]">Salesforce, NetSuite, Workato, Apollo—I&apos;ve solved your integration challenge twice already</p>
                   </div>
                 </li>
               </ul>
@@ -772,7 +772,7 @@ export default function Home() {
               <a href="mailto:drew@revelateops.com" className="text-blue underline decoration-blue/40 underline-offset-4">
                 drew@revelateops.com
               </a>{' '}
-              and I'll reply within a day.
+              and I&apos;ll reply within a day.
             </p>
           </div>
 
@@ -819,11 +819,11 @@ export default function Home() {
           <div className="overflow-hidden rounded-xl border border-white/30 bg-white/[0.08] px-6 py-10 shadow-[0_8px_12px_rgba(8,13,40,0.6)] sm:px-8 sm:py-12">
             <span className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">Next step</span>
             <h2 id="cta-heading" className="mt-6 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl">
-              Bring the messy org to a working session. We'll map the fixes together.
+              Bring the messy org to a working session. We&apos;ll map the fixes together.
             </h2>
             <p className="mt-6 text-base leading-7 text-white/90 md:text-lg md:leading-8">
-              Book a 15-minute consultation. We'll expose what's breaking, outline the modernization sprint, and confirm whether
-              I'm the right fit. Worst case—you leave with a prioritized list to tackle internally.
+              Book a 15-minute consultation. We&apos;ll expose what&apos;s breaking, outline the modernization sprint, and confirm whether
+              I&apos;m the right fit. Worst case—you leave with a prioritized list to tackle internally.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link

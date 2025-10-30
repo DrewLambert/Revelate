@@ -393,7 +393,7 @@ export default function AboutPage() {
                   Every high-growth chapter came with the same pattern: end-of-month scramble, systems disagreeing, and a board meeting looming. I started Revelate to give leaders space to breathe by engineering the systems underneath the numbers.
                 </p>
                 <p>
-                  My work blends finance discipline with product curiosity and operator empathy. It's less about selling new platforms and more about aligning definitions, cleaning up architecture, and coaching teams through the change.
+                  My work blends finance discipline with product curiosity and operator empathy. It&apos;s less about selling new platforms and more about aligning definitions, cleaning up architecture, and coaching teams through the change.
                 </p>
               </div>
             </div>
@@ -624,10 +624,10 @@ export default function AboutPage() {
               <div className="grid gap-12 lg:grid-cols-[1fr_auto]">
                 <div className="space-y-6">
                   <p className="text-lg leading-relaxed text-white/80">
-                    The playlist shifts constantly—from 70s piano rock to brand-new indie releases that dropped last week. Sometimes it's the emotional weight of a well-crafted story song. Other times it's pure theatrical bombast or the kind of infectious pop hook that won't leave your head for three days.
+                    The playlist shifts constantly—from 70s piano rock to brand-new indie releases that dropped last week. Sometimes it&apos;s the emotional weight of a well-crafted story song. Other times it&apos;s pure theatrical bombast or the kind of infectious pop hook that won&apos;t leave your head for three days.
                   </p>
                   <p className="text-lg leading-relaxed text-white/80">
-                    It's the background hum to focused work sessions, the energy boost during late-night builds, and the emotional reset between client calls. Eclectic doesn't begin to cover it—but that's the point. The best thinking happens when the soundtrack refuses to sit still.
+                    It&apos;s the background hum to focused work sessions, the energy boost during late-night builds, and the emotional reset between client calls. Eclectic doesn&apos;t begin to cover it—but that&apos;s the point. The best thinking happens when the soundtrack refuses to sit still.
                   </p>
 
                   {/* Current Vibe - Inline */}
@@ -687,13 +687,13 @@ export default function AboutPage() {
                 <div className="text-center space-y-8">
                   <div className="space-y-4">
                     <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-cyan">
-                      Let's connect
+                      Let&apos;s connect
                     </span>
                     <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
                       Ready to talk revenue architecture?
                     </h2>
                     <p className="mx-auto max-w-2xl text-lg text-white/80 leading-relaxed">
-                      Whether you're untangling ARR definitions, preparing for diligence, or simply want to compare notes on revenue operations—let's connect. I respond to every message within one business day.
+                      Whether you&apos;re untangling ARR definitions, preparing for diligence, or simply want to compare notes on revenue operations—let&apos;s connect. I respond to every message within one business day.
                     </p>
                   </div>
 

@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getConversationByThreadTs, addMessage } from '@/lib/db/conversations';
+import { logger } from '@/lib/monitoring/logger';
+import { createLogContext, sanitizeMessage } from '@/lib/monitoring/log-utils';
+import * as Sentry from '@sentry/nextjs';
 
 export const runtime = 'nodejs';
 
@@ -9,11 +12,21 @@ export const runtime = 'nodejs';
  * Receives your replies from Slack and stores them in the database
  */
 export async function POST(request: Request) {
+  const startTime = performance.now();
+
   try {
     const body = await request.json();
 
     // Handle Slack URL verification challenge
     if (body.type === 'url_verification') {
+      logger.info(
+        createLogContext({
+          action: 'slack_url_verification',
+          endpoint: '/api/slack/events',
+          duration_ms: performance.now() - startTime,
+        }),
+        'Slack URL verification challenge received'
+      );
       return NextResponse.json({
         challenge: body.challenge
       });
@@ -27,6 +40,16 @@ export async function POST(request: Request) {
       if (event.type === 'message') {
         // Ignore bot messages, message edits/deletes, and messages from other apps
         if (event.subtype || event.bot_id) {
+          logger.debug(
+            createLogContext({
+              action: 'slack_event_ignored',
+              endpoint: '/api/slack/events',
+              event_type: event.type,
+              subtype: event.subtype,
+              has_bot_id: !!event.bot_id,
+            }),
+            'Slack event ignored (bot message or subtype)'
+          );
           return NextResponse.json({ ok: true });
         }
 
@@ -44,19 +67,33 @@ export async function POST(request: Request) {
           if (event.thread_ts) {
             // Find conversation by thread timestamp
             conversation = await getConversationByThreadTs(event.thread_ts);
-            console.log('Found conversation by thread_ts:', {
-              thread_ts: event.thread_ts,
-              conversation_id: conversation?.id
-            });
+            if (conversation) {
+              logger.debug(
+                createLogContext({
+                  action: 'conversation_found_by_thread',
+                  endpoint: '/api/slack/events',
+                  conversation_id: conversation.id,
+                  thread_ts: event.thread_ts,
+                }),
+                'Found conversation by thread_ts'
+              );
+            }
           }
 
           // Fallback: Get the most recent active conversation if no thread match
           if (!conversation) {
             const { getRecentActiveConversation } = await import('@/lib/db/conversations');
             conversation = await getRecentActiveConversation();
-            console.log('Using most recent active conversation:', {
-              conversation_id: conversation?.id
-            });
+            if (conversation) {
+              logger.debug(
+                createLogContext({
+                  action: 'using_recent_conversation',
+                  endpoint: '/api/slack/events',
+                  conversation_id: conversation.id,
+                }),
+                'Using most recent active conversation (no thread match)'
+              );
+            }
           }
 
           if (conversation) {
@@ -68,13 +105,28 @@ export async function POST(request: Request) {
               slack_ts: event.ts
             });
 
-            console.log('Stored Drew\'s reply:', {
-              conversation_id: conversation.id,
-              message: event.text.substring(0, 50),
-              via_thread: !!event.thread_ts
-            });
+            logger.info(
+              createLogContext({
+                action: 'drew_reply_stored',
+                endpoint: '/api/slack/events',
+                conversation_id: conversation.id,
+                message_preview: sanitizeMessage(event.text, 50),
+                via_thread: !!event.thread_ts,
+                slack_ts: event.ts,
+                duration_ms: performance.now() - startTime,
+              }),
+              'Drew\'s reply stored in database'
+            );
           } else {
-            console.log('No conversation found for Drew\'s message');
+            logger.warn(
+              createLogContext({
+                action: 'no_conversation_found',
+                endpoint: '/api/slack/events',
+                thread_ts: event.thread_ts,
+                duration_ms: performance.now() - startTime,
+              }),
+              'No conversation found for Drew\'s message'
+            );
           }
         }
       }
@@ -83,7 +135,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
 
   } catch (error) {
-    console.error('Slack events webhook error:', error);
+    Sentry.captureException(error, {
+      tags: {
+        route: '/api/slack/events',
+        action: 'slack_webhook_processing'
+      },
+      extra: {
+        duration_ms: performance.now() - startTime,
+        slackConfigured: !!process.env.SLACK_USER_ID
+      }
+    });
+
+    logger.error(
+      createLogContext({
+        action: 'slack_webhook_error',
+        endpoint: '/api/slack/events',
+        error,
+        duration_ms: performance.now() - startTime,
+      }),
+      'Slack events webhook processing failed'
+    );
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Webhook processing failed' },
       { status: 500 }

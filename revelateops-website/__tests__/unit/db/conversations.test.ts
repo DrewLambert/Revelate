@@ -51,7 +51,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         updated_at: new Date(),
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as { rows: unknown[] });
 
       const result = await createConversation({
         user_name: 'John Doe',
@@ -78,7 +78,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         updated_at: new Date(),
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as { rows: unknown[] });
 
       const result = await createConversation({
         user_name: 'Jane Smith',
@@ -104,7 +104,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         updated_at: new Date(),
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as { rows: unknown[] });
 
       await createConversation({
         user_name: 'Test User',
@@ -132,7 +132,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         updated_at: new Date(),
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as { rows: unknown[] });
 
       const result = await getConversation(1);
 
@@ -141,7 +141,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should return null for non-existent conversation ID', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getConversation(999);
 
@@ -150,7 +150,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should handle ID 0', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getConversation(0);
 
@@ -158,7 +158,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should handle negative IDs', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getConversation(-1);
 
@@ -180,7 +180,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         updated_at: new Date(),
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as { rows: unknown[] });
 
       const result = await getConversationByThreadTs('1234567890.123456');
 
@@ -189,7 +189,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should return null for non-existent thread_ts', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getConversationByThreadTs('nonexistent.timestamp');
 
@@ -197,7 +197,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should handle empty string thread_ts', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getConversationByThreadTs('');
 
@@ -217,7 +217,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         slack_ts: undefined,
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockMessage] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockMessage] } as { rows: unknown[] });
 
       const result = await addMessage({
         conversation_id: 1,
@@ -240,7 +240,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         slack_ts: '1234567890.123456',
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockMessage] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockMessage] } as { rows: unknown[] });
 
       const result = await addMessage({
         conversation_id: 1,
@@ -265,7 +265,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         slack_ts: undefined,
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockMessage] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockMessage] } as { rows: unknown[] });
 
       const result = await addMessage({
         conversation_id: 1,
@@ -286,7 +286,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         read_by_user: false,
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockMessage] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockMessage] } as { rows: unknown[] });
 
       const result = await addMessage({
         conversation_id: 1,
@@ -327,7 +327,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         },
       ];
 
-      mockSql.mockResolvedValueOnce({ rows: mockMessages } as any);
+      mockSql.mockResolvedValueOnce({ rows: mockMessages } as { rows: unknown[] });
 
       const result = await getMessages(1);
 
@@ -338,7 +338,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should return empty array for conversation with no messages', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getMessages(1);
 
@@ -347,7 +347,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should retrieve messages for non-existent conversation (returns empty)', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getMessages(999);
 
@@ -369,7 +369,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         },
       ];
 
-      mockSql.mockResolvedValueOnce({ rows: mockMessages } as any);
+      mockSql.mockResolvedValueOnce({ rows: mockMessages } as { rows: unknown[] });
 
       const result = await getNewMessages(1, afterDate);
 
@@ -398,7 +398,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         },
       ];
 
-      mockSql.mockResolvedValueOnce({ rows: mockMessages } as any);
+      mockSql.mockResolvedValueOnce({ rows: mockMessages } as { rows: unknown[] });
 
       const result = await getNewMessages(1, afterDate);
 
@@ -407,7 +407,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
 
     it('should return empty array when timestamp is after all messages', async () => {
       const afterDate = new Date('2025-01-01T12:00:00Z');
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getNewMessages(1, afterDate);
 
@@ -416,7 +416,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
 
     it('should handle exact timestamp match (excludes exact match)', async () => {
       const afterDate = new Date('2025-01-01T10:00:00Z');
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getNewMessages(1, afterDate);
 
@@ -426,7 +426,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
 
   describe('markMessagesAsRead', () => {
     it('should mark unread drew messages as read', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await markMessagesAsRead(1);
 
@@ -434,20 +434,20 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should be idempotent (no error when no unread messages)', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await markMessagesAsRead(1);
       expect(mockSql).toHaveBeenCalledTimes(1);
 
       jest.clearAllMocks();
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await markMessagesAsRead(1);
       expect(mockSql).toHaveBeenCalledTimes(1);
     });
 
     it('should handle non-existent conversation', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await markMessagesAsRead(999);
 
@@ -480,7 +480,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         },
       ];
 
-      mockSql.mockResolvedValueOnce({ rows: mockConversations } as any);
+      mockSql.mockResolvedValueOnce({ rows: mockConversations } as { rows: unknown[] });
 
       const result = await getConversationsByEmail('john@example.com');
 
@@ -490,7 +490,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should return empty array for email with no conversations', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getConversationsByEmail('nonexistent@example.com');
 
@@ -498,7 +498,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should handle invalid email format', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getConversationsByEmail('not-an-email');
 
@@ -536,7 +536,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
       ];
 
       // Mock returns DESC order, function reverses to ASC
-      mockSql.mockResolvedValueOnce({ rows: [...mockMessages].reverse() } as any);
+      mockSql.mockResolvedValueOnce({ rows: [...mockMessages].reverse() } as { rows: unknown[] });
 
       const result = await getLastMessages(1, 3);
 
@@ -573,7 +573,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         },
       ];
 
-      mockSql.mockResolvedValueOnce({ rows: [...mockMessages].reverse() } as any);
+      mockSql.mockResolvedValueOnce({ rows: [...mockMessages].reverse() } as { rows: unknown[] });
 
       const result = await getLastMessages(1); // No limit specified
 
@@ -592,7 +592,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         },
       ];
 
-      mockSql.mockResolvedValueOnce({ rows: mockMessages } as any);
+      mockSql.mockResolvedValueOnce({ rows: mockMessages } as { rows: unknown[] });
 
       const result = await getLastMessages(1, 5);
 
@@ -600,7 +600,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should return empty array for conversation with no messages', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getLastMessages(1);
 
@@ -621,7 +621,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         updated_at: new Date('2025-01-02T10:00:00Z'),
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as { rows: unknown[] });
 
       const result = await getRecentActiveConversation();
 
@@ -630,7 +630,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should return null when no active conversations exist', async () => {
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getRecentActiveConversation();
 
@@ -639,7 +639,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
 
     it('should exclude closed conversations', async () => {
       // Function should not return closed conversations
-      mockSql.mockResolvedValueOnce({ rows: [] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [] } as { rows: unknown[] });
 
       const result = await getRecentActiveConversation();
 
@@ -649,7 +649,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
 
   describe('closeConversation', () => {
     it('should close an active conversation', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await closeConversation(1);
 
@@ -657,20 +657,20 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should be idempotent (closing already closed conversation)', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await closeConversation(1);
       expect(mockSql).toHaveBeenCalledTimes(1);
 
       jest.clearAllMocks();
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await closeConversation(1);
       expect(mockSql).toHaveBeenCalledTimes(1);
     });
 
     it('should handle non-existent conversation', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await closeConversation(999);
 
@@ -680,7 +680,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
 
   describe('closeActiveConversationsForEmail', () => {
     it('should close multiple active conversations for same email', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await closeActiveConversationsForEmail('john@example.com');
 
@@ -688,7 +688,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should handle email with no active conversations', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await closeActiveConversationsForEmail('noacctive@example.com');
 
@@ -696,7 +696,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
     });
 
     it('should not affect closed conversations', async () => {
-      mockSql.mockResolvedValueOnce({} as any);
+      mockSql.mockResolvedValueOnce({} as { rows: unknown[] });
 
       await closeActiveConversationsForEmail('john@example.com');
 
@@ -734,7 +734,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         updated_at: new Date(),
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as { rows: unknown[] });
 
       const result = await createConversation({
         user_name: "O'Brien", // Single quote
@@ -759,7 +759,7 @@ describe('Database Operations - lib/db/conversations.ts', () => {
         updated_at: new Date(),
       };
 
-      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as any);
+      mockSql.mockResolvedValueOnce({ rows: [mockConversation] } as { rows: unknown[] });
 
       const result = await createConversation({
         user_name: 'SELECT * FROM users',

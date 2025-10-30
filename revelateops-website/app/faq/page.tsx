@@ -25,7 +25,7 @@ export default function FAQ() {
               >
                 drew@revelateops.com
               </a>{' '}
-              and I'll reply within a day.
+              and I&apos;ll reply within a day.
             </p>
           </div>
 

@@ -43,8 +43,8 @@ development_status:
   1-3-integration-tests-for-api-endpoints: done
   1-4-end-to-end-tests-for-critical-flows: done
   1-5-test-coverage-reporting: done
-  1-6-ci-cd-testing-integration: drafted
-  1-7-error-monitoring-integration: drafted
+  1-6-ci-cd-testing-integration: review
+  1-7-error-monitoring-integration: in-progress
   1-8-structured-logging-implementation: drafted
   epic-1-retrospective: optional
 

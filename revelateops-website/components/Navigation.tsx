@@ -49,6 +49,7 @@ export default function Navigation() {
 
   useEffect(() => {
     if (!showCompact) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsOpen(false);
     }
   }, [showCompact]);

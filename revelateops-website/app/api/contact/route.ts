@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 import { createConversation, addMessage, closeActiveConversationsForEmail } from '@/lib/db/conversations';
+import * as Sentry from '@sentry/nextjs';
+import { logger } from '@/lib/monitoring/logger';
+import { createLogContext, hashEmail } from '@/lib/monitoring/log-utils';
 
 // Note: Changed from 'edge' to 'nodejs' to support Vercel Postgres
 export const runtime = 'nodejs';
@@ -17,33 +20,64 @@ interface ContactFormData {
  * Sends contact form data as a direct message to you via Slack chat.postMessage API
  */
 export async function POST(request: Request) {
+  const startTime = performance.now();
+
   try {
     // Get Slack configuration from environment
     const slackToken = process.env.SLACK_BOT_TOKEN;
     const slackUserId = process.env.SLACK_USER_ID;
 
     if (!slackToken || !slackUserId) {
-      console.error('Missing Slack configuration', {
-        hasToken: !!slackToken,
-        hasUserId: !!slackUserId,
-        tokenPrefix: slackToken?.substring(0, 10)
-      });
+      logger.error(
+        createLogContext({
+          action: 'slack_config_missing',
+          endpoint: '/api/contact',
+          hasToken: !!slackToken,
+          hasUserId: !!slackUserId,
+          duration_ms: performance.now() - startTime,
+        }),
+        'Slack integration not configured'
+      );
       return NextResponse.json(
         { error: 'Slack integration not configured' },
         { status: 500 }
       );
     }
 
-    console.log('Slack config loaded', {
-      tokenPrefix: slackToken.substring(0, 10),
-      userId: slackUserId
-    });
+    logger.debug(
+      createLogContext({
+        action: 'slack_config_loaded',
+        endpoint: '/api/contact',
+        tokenPrefix: slackToken.substring(0, 10),
+        userId: slackUserId,
+      }),
+      'Slack configuration loaded'
+    );
 
     // Parse the form data
     const data: ContactFormData = await request.json();
 
+    logger.info(
+      createLogContext({
+        action: 'contact_form_received',
+        endpoint: '/api/contact',
+        user_email: data.email,
+        has_company: !!data.company,
+      }),
+      'Contact form submission received'
+    );
+
     // Validate required fields
     if (!data.name || !data.email || !data.phone || !data.message) {
+      logger.warn(
+        createLogContext({
+          action: 'validation_failed',
+          endpoint: '/api/contact',
+          user_email: data.email,
+          duration_ms: performance.now() - startTime,
+        }),
+        'Contact form validation failed - missing required fields'
+      );
       return NextResponse.json(
         { error: 'Name, email, phone, and message are required' },
         { status: 400 }
@@ -128,20 +162,33 @@ export async function POST(request: Request) {
 
     const slackData = await slackResponse.json();
 
-    console.log('Slack API response:', {
-      ok: slackData.ok,
-      error: slackData.error,
-      status: slackResponse.status,
-      ts: slackData.ts
-    });
-
     if (!slackData.ok) {
-      console.error('Slack API error:', slackData);
+      logger.error(
+        createLogContext({
+          action: 'slack_api_error',
+          endpoint: '/api/contact',
+          user_email: data.email,
+          slack_error: slackData.error,
+          status: slackResponse.status,
+          duration_ms: performance.now() - startTime,
+        }),
+        'Slack API request failed'
+      );
       return NextResponse.json(
         { error: 'Failed to send message to Slack', details: slackData.error },
         { status: 500 }
       );
     }
+
+    logger.info(
+      createLogContext({
+        action: 'slack_dm_sent',
+        endpoint: '/api/contact',
+        user_email: data.email,
+        slack_ts: slackData.ts,
+      }),
+      'Slack DM sent successfully'
+    );
 
     // Close any previous active conversations for this email
     // This enforces one active conversation per user
@@ -164,6 +211,19 @@ export async function POST(request: Request) {
       slack_ts: slackData.ts
     });
 
+    const duration = performance.now() - startTime;
+
+    logger.info(
+      createLogContext({
+        action: 'contact_form_completed',
+        endpoint: '/api/contact',
+        conversation_id: conversation.id,
+        user_email: data.email,
+        duration_ms: duration,
+      }),
+      'Contact form processed successfully'
+    );
+
     return NextResponse.json({
       success: true,
       message: 'Your message has been sent successfully!',
@@ -171,7 +231,30 @@ export async function POST(request: Request) {
     });
 
   } catch (error) {
-    console.error('Contact form error:', error);
+    const duration = performance.now() - startTime;
+
+    // Capture the exception in Sentry with context
+    Sentry.captureException(error, {
+      tags: {
+        route: '/api/contact',
+        action: 'contact_form_submission'
+      },
+      extra: {
+        duration_ms: duration,
+        slackConfigured: !!(process.env.SLACK_BOT_TOKEN && process.env.SLACK_USER_ID)
+      }
+    });
+
+    logger.error(
+      createLogContext({
+        action: 'contact_form_error',
+        endpoint: '/api/contact',
+        error,
+        duration_ms: duration,
+      }),
+      'Contact form processing failed'
+    );
+
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Failed to process contact form' },
       { status: 500 }

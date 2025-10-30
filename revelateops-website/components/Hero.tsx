@@ -145,7 +145,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl"
           >
-            Hi, I'm Drew. I take on 2-3 clients at a time as your embedded RevOps partner—not an agency, not a full-time hire. Deep focus. No handoffs. I join your team, map what's broken, and ship production improvements on a regular cadence. With deep expertise across enterprise platforms like Salesforce, NetSuite, and modern integration tools, most clients see meaningful improvements within 6-16 weeks.
+            Hi, I&apos;m Drew. I take on 2-3 clients at a time as your embedded RevOps partner—not an agency, not a full-time hire. Deep focus. No handoffs. I join your team, map what&apos;s broken, and ship production improvements on a regular cadence. With deep expertise across enterprise platforms like Salesforce, NetSuite, and modern integration tools, most clients see meaningful improvements within 6-16 weeks.
           </motion.p>
 
           {/* CTAs */}
@@ -159,7 +159,7 @@ export default function Hero() {
               href="/book"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-magenta px-8 py-4 text-base font-semibold text-white shadow-[0_4px_12px_rgba(217,70,239,0.2)] transition hover:bg-[#c235d9] hover:shadow-[0_6px_12px_rgba(217,70,239,0.4)] hover:-translate-y-0.5"
             >
-              See What You're Missing
+              See What You&apos;re Missing
               <svg
                 viewBox="0 0 24 24"
                 className="h-5 w-5"
@@ -203,7 +203,7 @@ export default function Hero() {
               <div className="group relative">
                 <div className="flex animate-marquee hover:pause-animation group-hover:[animation-play-state:paused]">
                   {/* First set of logos */}
-                  {platforms.map((platform, index) => (
+                  {platforms.map((platform) => (
                     <div
                       key={`${platform.name}-1`}
                       className="flex-shrink-0 mx-6"
@@ -223,7 +223,7 @@ export default function Hero() {
                   ))}
 
                   {/* Duplicate set for seamless loop */}
-                  {platforms.map((platform, index) => (
+                  {platforms.map((platform) => (
                     <div
                       key={`${platform.name}-2`}
                       className="flex-shrink-0 mx-6"

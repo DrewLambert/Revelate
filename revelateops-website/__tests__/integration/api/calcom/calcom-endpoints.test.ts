@@ -190,7 +190,7 @@ describe('Cal.com API Endpoints', () => {
       ]);
 
       const dataWithoutTimezone = { ...validBookingData };
-      delete (dataWithoutTimezone as any).timeZone;
+      delete (dataWithoutTimezone as Record<string, unknown>).timeZone;
 
       const request = new NextRequest('http://localhost:3000/api/calcom/booking', {
         method: 'POST',
@@ -207,7 +207,7 @@ describe('Cal.com API Endpoints', () => {
 
     it('should return 400 when eventTypeId is missing', async () => {
       const invalidData = { ...validBookingData };
-      delete (invalidData as any).eventTypeId;
+      delete (invalidData as Record<string, unknown>).eventTypeId;
 
       const request = new NextRequest('http://localhost:3000/api/calcom/booking', {
         method: 'POST',
@@ -220,7 +220,7 @@ describe('Cal.com API Endpoints', () => {
 
     it('should return 400 when start is missing', async () => {
       const invalidData = { ...validBookingData };
-      delete (invalidData as any).start;
+      delete (invalidData as Record<string, unknown>).start;
 
       const request = new NextRequest('http://localhost:3000/api/calcom/booking', {
         method: 'POST',
@@ -233,7 +233,7 @@ describe('Cal.com API Endpoints', () => {
 
     it('should return 400 when responses is missing', async () => {
       const invalidData = { ...validBookingData };
-      delete (invalidData as any).responses;
+      delete (invalidData as Record<string, unknown>).responses;
 
       const request = new NextRequest('http://localhost:3000/api/calcom/booking', {
         method: 'POST',

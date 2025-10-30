@@ -28,7 +28,7 @@ export default function BookPage() {
           </h1>
 
           <p className="text-lg leading-8 text-white/80 sm:text-xl max-w-2xl mx-auto">
-            Share what's breaking. Get actionable next steps—whether we work together or not.
+            Share what&apos;s breaking. Get actionable next steps—whether we work together or not.
           </p>
         </div>
       </section>
@@ -48,7 +48,7 @@ export default function BookPage() {
                   </div>
                   <div>
                     <p className="text-base font-medium text-white mb-1">No sales pitch</p>
-                    <p className="text-sm text-white/70">Honest assessment of whether we're a fit</p>
+                    <p className="text-sm text-white/70">Honest assessment of whether we&apos;re a fit</p>
                   </div>
                 </div>
 
@@ -79,7 +79,7 @@ export default function BookPage() {
 
               <div className="pt-6 border-t border-white/10">
                 <p className="text-sm text-white/60 leading-relaxed">
-                  I work with 2-3 clients at a time. If my calendar is full, I'll point you to other qualified consultants.
+                  I work with 2-3 clients at a time. If my calendar is full, I&apos;ll point you to other qualified consultants.
                 </p>
               </div>
             </div>

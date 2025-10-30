@@ -536,6 +536,7 @@ export default function ServicesPage() {
       try {
         const services = JSON.parse(stored);
         if (Array.isArray(services)) {
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setSelectedServices(services);
         }
       } catch {
@@ -820,7 +821,7 @@ export default function ServicesPage() {
               Your Salesforce instance is the bottleneck preventing $50M ARR
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/80">
-              These are the symptoms that signal it's time for intervention
+              These are the symptoms that signal it&apos;s time for intervention
             </p>
           </div>
 
@@ -1251,10 +1252,10 @@ export default function ServicesPage() {
               Next step
             </span>
             <h2 className="mt-6 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl">
-              See what's hiding in your Salesforce instance
+              See what&apos;s hiding in your Salesforce instance
             </h2>
             <p className="mt-6 text-base leading-7 text-white/90 md:text-lg md:leading-8">
-              Free 15-minute consultation for Series B SaaS leaders. We'll identify concrete opportunities to optimize your revenue operations in your first call.
+              Free 15-minute consultation for Series B SaaS leaders. We&apos;ll identify concrete opportunities to optimize your revenue operations in your first call.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link

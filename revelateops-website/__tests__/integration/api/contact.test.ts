@@ -143,7 +143,7 @@ describe('POST /api/contact', () => {
   describe('Validation errors (400)', () => {
     it('should return 400 when name is missing', async () => {
       const invalidData = { ...validContactData };
-      delete (invalidData as any).name;
+      delete (invalidData as Record<string, unknown>).name;
 
       const request = new NextRequest('http://localhost:3000/api/contact', {
         method: 'POST',
@@ -156,7 +156,7 @@ describe('POST /api/contact', () => {
 
     it('should return 400 when email is missing', async () => {
       const invalidData = { ...validContactData };
-      delete (invalidData as any).email;
+      delete (invalidData as Record<string, unknown>).email;
 
       const request = new NextRequest('http://localhost:3000/api/contact', {
         method: 'POST',
@@ -169,7 +169,7 @@ describe('POST /api/contact', () => {
 
     it('should return 400 when phone is missing', async () => {
       const invalidData = { ...validContactData };
-      delete (invalidData as any).phone;
+      delete (invalidData as Record<string, unknown>).phone;
 
       const request = new NextRequest('http://localhost:3000/api/contact', {
         method: 'POST',
@@ -182,7 +182,7 @@ describe('POST /api/contact', () => {
 
     it('should return 400 when message is missing', async () => {
       const invalidData = { ...validContactData };
-      delete (invalidData as any).message;
+      delete (invalidData as Record<string, unknown>).message;
 
       const request = new NextRequest('http://localhost:3000/api/contact', {
         method: 'POST',

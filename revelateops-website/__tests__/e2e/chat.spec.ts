@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 /**
  * E2E Test: Chat Message Exchange
@@ -11,7 +11,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Chat Message Exchange', () => {
   // Helper function to create a test conversation via API
-  async function createTestConversation(page: any): Promise<string | null> {
+  async function createTestConversation(page: Page): Promise<string | null> {
     try {
       // Create conversation via API
       const response = await page.request.post('/api/contact', {
@@ -206,14 +206,11 @@ test.describe('Chat Message Exchange', () => {
       if (await sendButton.isVisible()) {
         await sendButton.click();
 
-        // Immediately check for loading state
-        const loadingIndicator = page.locator('[class*="loading"], [class*="typing"], [class*="spinner"]');
-
         // Note: Loading state may be very brief
-        // This test verifies the infrastructure is present
+        // This test verifies the chat interface remains functional
         await page.waitForTimeout(100);
 
-        // Just verify chat interface remains functional
+        // Verify chat interface remains functional
         await expect(chatInput).toBeVisible({ timeout: 5000 });
       }
     }

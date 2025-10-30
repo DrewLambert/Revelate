@@ -164,7 +164,7 @@ export function mockDatabaseFunctions() {
 /**
  * Mock global fetch for external API calls
  */
-export function mockFetch(responses: { url: string | RegExp; response: any }[]) {
+export function mockFetch(responses: { url: string | RegExp; response: Record<string, unknown> }[]) {
   global.fetch = jest.fn((url: string | URL | Request) => {
     const urlString = typeof url === 'string' ? url : url instanceof URL ? url.toString() : url.url;
 
@@ -236,7 +236,7 @@ export function createTestRequest(
   url: string,
   options?: {
     method?: string;
-    body?: any;
+    body?: Record<string, unknown>;
     headers?: Record<string, string>;
   }
 ): Request {
@@ -312,7 +312,7 @@ export async function assertErrorResponse(
  */
 export function assertMockCalledWith(
   mockFn: jest.Mock,
-  expectedArgs: any[],
+  expectedArgs: unknown[],
   callIndex = 0
 ) {
   expect(mockFn).toHaveBeenCalled();

@@ -1,6 +1,13 @@
 // Global test setup file
 // This file is executed before each test file runs (configured in jest.config.js)
 
+// Load environment variables from .env.local for tests
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Load .env.local (which contains Sentry credentials)
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+
 // Import jest-dom matchers for better assertions
 // Adds custom matchers like toBeInTheDocument(), toHaveClass(), etc.
 import '@testing-library/jest-dom';
@@ -35,4 +42,4 @@ global.IntersectionObserver = class IntersectionObserver {
     return [];
   }
   unobserve() {}
-} as any;
+} as unknown as typeof IntersectionObserver;
