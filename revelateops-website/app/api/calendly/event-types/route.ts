@@ -12,7 +12,7 @@ export async function GET() {
     const api = getCalendlyAPI();
 
     // First get current user to get their URI
-    const userResponse = await api.getCurrentUser();
+    const userResponse = await api.getCurrentUser() as any;
     const userUri = userResponse.resource.uri;
 
     // Then get their event types

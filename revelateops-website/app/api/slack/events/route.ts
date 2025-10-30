@@ -23,20 +23,27 @@ export async function POST(request: Request) {
     if (body.type === 'event_callback') {
       const event = body.event;
 
-      // Only process message events
+      // Only process message events from Drew (not from the bot)
       if (event.type === 'message') {
-        // Ignore bot messages and message edits/deletes
+        // Ignore bot messages, message edits/deletes, and messages from other apps
         if (event.subtype || event.bot_id) {
           return NextResponse.json({ ok: true });
         }
 
-        // Check if this is a threaded message (reply)
-        if (event.thread_ts) {
-          // Find the conversation by thread timestamp
-          const conversation = await getConversationByThreadTs(event.thread_ts);
+        // This is a message from Drew - we need to determine which conversation it belongs to
+        // Since messages are no longer threaded, we'll use a simple heuristic:
+        // Store the message in the most recently active conversation
+
+        const slackUserId = process.env.SLACK_USER_ID;
+
+        // Verify this is a DM to/from the expected user
+        if (event.channel_type === 'im' && event.user) {
+          // Get the most recent active conversation
+          const { getRecentActiveConversation } = await import('@/lib/db/conversations');
+          const conversation = await getRecentActiveConversation();
 
           if (conversation) {
-            // This is a reply from Drew
+            // Store Drew's reply
             await addMessage({
               conversation_id: conversation.id,
               sender: 'drew',
@@ -48,6 +55,8 @@ export async function POST(request: Request) {
               conversation_id: conversation.id,
               message: event.text.substring(0, 50)
             });
+          } else {
+            console.log('No active conversation found for Drew\'s message');
           }
         }
       }

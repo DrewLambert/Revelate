@@ -145,10 +145,16 @@ export class CalendlyAPI {
     min_start_time?: string;
     status?: 'active' | 'canceled';
   }) {
-    const params = new URLSearchParams({
-      user: userUri,
-      ...options,
-    } as Record<string, string>);
+    const params = new URLSearchParams({ user: userUri });
+
+    if (options) {
+      if (options.count !== undefined) params.append('count', String(options.count));
+      if (options.invitee_email) params.append('invitee_email', options.invitee_email);
+      if (options.max_start_time) params.append('max_start_time', options.max_start_time);
+      if (options.min_start_time) params.append('min_start_time', options.min_start_time);
+      if (options.status) params.append('status', options.status);
+    }
+
     return this.request(`/scheduled_events?${params}`);
   }
 

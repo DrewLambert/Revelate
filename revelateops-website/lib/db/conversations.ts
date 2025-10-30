@@ -148,3 +148,21 @@ export async function getLastMessages(conversation_id: number, limit: number = 3
   // Reverse so they're in chronological order
   return result.rows.reverse();
 }
+
+/**
+ * Get the most recently active conversation
+ * (The one with the most recent message or creation time)
+ */
+export async function getRecentActiveConversation(): Promise<Conversation | null> {
+  const result = await sql<Conversation>`
+    SELECT c.*
+    FROM conversations c
+    LEFT JOIN messages m ON m.conversation_id = c.id
+    WHERE c.status = 'active'
+    GROUP BY c.id
+    ORDER BY COALESCE(MAX(m.sent_at), c.created_at) DESC
+    LIMIT 1
+  `;
+
+  return result.rows[0] || null;
+}
