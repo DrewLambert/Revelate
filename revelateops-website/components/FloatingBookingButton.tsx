@@ -254,8 +254,8 @@ export default function FloatingBookingButton() {
     // Check immediately
     checkForNewMessages();
 
-    // Poll every 30 seconds
-    pollingIntervalRef.current = setInterval(checkForNewMessages, 30000);
+    // Poll every 5 seconds for near-real-time updates
+    pollingIntervalRef.current = setInterval(checkForNewMessages, 5000);
 
     return () => {
       if (pollingIntervalRef.current) {
@@ -323,18 +323,27 @@ export default function FloatingBookingButton() {
           className="h-full w-full object-contain relative z-10 overflow-hidden rounded-full"
         />
 
-        {/* Badge - Shows Chat Notification or Package Indicator */}
-        {unreadMessageCount > 0 ? (
-          /* Chat Notification Badge */
-          <span className="absolute -top-1 -right-1 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-red-500 border-2 border-white shadow-[0_4px_12px_rgba(239,68,68,0.5)] transition-all duration-200 group-hover:scale-110 animate-in zoom-in">
-            <span className="text-xs font-bold text-white">{unreadMessageCount > 9 ? '9+' : unreadMessageCount}</span>
-          </span>
-        ) : hasCustomPackage ? (
-          /* Subtle Package Indicator Badge */
-          <span className="absolute -top-1 -right-1 z-20 flex h-6 w-6 items-center justify-center rounded-full bg-white border-2 border-white shadow-[0_2px_8px_rgba(255,255,255,0.3)] transition-all duration-200 group-hover:scale-110 animate-in zoom-in">
-            <span className="text-xs font-bold text-navy">{selectedServiceIds.length}</span>
-          </span>
-        ) : null}
+        {/* Badge - Shows combined count of messages + custom package */}
+        {(() => {
+          const totalCount = unreadMessageCount + selectedServiceIds.length;
+          if (totalCount === 0) return null;
+
+          // Red badge for unread messages (urgent), white badge for package only
+          const hasMessages = unreadMessageCount > 0;
+
+          return (
+            <span className={`
+              absolute -top-1 -right-1 z-20 flex h-7 w-7 items-center justify-center rounded-full
+              border-2 border-white shadow-[0_4px_12px_rgba(239,68,68,0.5)]
+              transition-all duration-200 group-hover:scale-110 animate-in zoom-in
+              ${hasMessages ? 'bg-red-500' : 'bg-white'}
+            `}>
+              <span className={`text-xs font-bold ${hasMessages ? 'text-white' : 'text-navy'}`}>
+                {totalCount > 9 ? '9+' : totalCount}
+              </span>
+            </span>
+          );
+        })()}
 
 
         {/* Hover Glow Effect */}
