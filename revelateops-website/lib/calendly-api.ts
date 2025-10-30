@@ -9,6 +9,52 @@ interface CalendlyApiConfig {
   token: string;
 }
 
+// API Response Types
+export interface CalendlyUser {
+  uri: string;
+  name: string;
+  slug: string;
+  email: string;
+  scheduling_url: string;
+  timezone: string;
+  avatar_url: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CalendlyUserResponse {
+  resource: CalendlyUser;
+}
+
+export interface CalendlyEventType {
+  uri: string;
+  name: string;
+  active: boolean;
+  slug: string;
+  scheduling_url: string;
+  duration: number;
+  kind: string;
+  pooling_type: string | null;
+  type: string;
+  color: string;
+  created_at: string;
+  updated_at: string;
+  internal_note: string | null;
+  description_plain: string | null;
+  description_html: string | null;
+}
+
+export interface CalendlyEventTypesResponse {
+  collection: CalendlyEventType[];
+  pagination: {
+    count: number;
+    next_page: string | null;
+    previous_page: string | null;
+    next_page_token: string | null;
+    previous_page_token: string | null;
+  };
+}
+
 export class CalendlyAPI {
   private token: string;
 
@@ -41,7 +87,7 @@ export class CalendlyAPI {
    * GET /users/me
    */
   async getCurrentUser() {
-    return this.request('/users/me');
+    return this.request<CalendlyUserResponse>('/users/me');
   }
 
   /**
@@ -49,7 +95,7 @@ export class CalendlyAPI {
    * GET /event_types?user={user_uri}
    */
   async getEventTypes(userUri: string) {
-    return this.request(`/event_types?user=${encodeURIComponent(userUri)}&active=true`);
+    return this.request<CalendlyEventTypesResponse>(`/event_types?user=${encodeURIComponent(userUri)}&active=true`);
   }
 
   /**
