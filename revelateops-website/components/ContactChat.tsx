@@ -3,17 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import ChatWidget from './ChatWidget';
 
-interface PreviousConversation {
-  id: number;
-  user_name: string;
-  created_at: string;
-  recentMessages: Array<{
-    sender: 'user' | 'drew';
-    message_text: string;
-    sent_at: string;
-  }>;
-}
-
 interface SavedConversation {
   conversationId: number;
   userName: string;
@@ -32,8 +21,6 @@ export default function ContactChat() {
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [previousConversation, setPreviousConversation] = useState<PreviousConversation | null>(null);
-  const [showConversationChoice, setShowConversationChoice] = useState(false);
 
   // Load active conversation from localStorage on mount
   useEffect(() => {
@@ -82,26 +69,11 @@ export default function ContactChat() {
     setErrorMessage('');
 
     try {
-      // First, check if there's a previous conversation with this email
-      const checkResponse = await fetch('/api/conversations/find-by-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email: formData.email })
-      });
+      // Security: Do NOT check for previous conversations by email
+      // This would allow anyone to access chat history just by knowing an email
+      // Only localStorage (same device) can restore conversations
 
-      const checkData = await checkResponse.json();
-
-      if (checkData.found && checkData.conversation) {
-        // Found a previous conversation - show choice
-        setPreviousConversation(checkData.conversation);
-        setShowConversationChoice(true);
-        setStatus('idle');
-        return;
-      }
-
-      // No previous conversation - create new one
+      // Create new conversation
       await createNewConversation();
 
     } catch (error) {
@@ -113,7 +85,6 @@ export default function ContactChat() {
   const createNewConversation = async () => {
     setStatus('loading');
     setErrorMessage('');
-    setShowConversationChoice(false);
 
     try {
       const response = await fetch('/api/contact', {
@@ -138,14 +109,6 @@ export default function ContactChat() {
     } catch (error) {
       setStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
-    }
-  };
-
-  const continueExistingConversation = () => {
-    if (previousConversation) {
-      setConversationId(previousConversation.id);
-      setUserName(formData.name);
-      setShowConversationChoice(false);
     }
   };
 
@@ -182,69 +145,7 @@ export default function ContactChat() {
     );
   }
 
-  // Show conversation choice if previous conversation found
-  if (showConversationChoice && previousConversation) {
-    return (
-      <div className="space-y-6">
-        <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <h3 className="font-semibold text-gray-900 mb-2">Welcome back!</h3>
-          <p className="text-sm text-gray-700 mb-3">
-            We found a previous conversation from{' '}
-            {new Date(previousConversation.created_at).toLocaleDateString()}.
-          </p>
-
-          {/* Show recent messages preview */}
-          {previousConversation.recentMessages && previousConversation.recentMessages.length > 0 && (
-            <div className="mb-4">
-              <p className="text-xs font-semibold text-gray-600 mb-2">Recent messages:</p>
-              <div className="space-y-2 bg-white p-3 rounded border border-gray-200 max-h-32 overflow-y-auto">
-                {previousConversation.recentMessages.map((msg, idx) => (
-                  <div key={idx} className="text-xs">
-                    <span className="font-semibold text-gray-700">
-                      {msg.sender === 'user' ? 'You' : 'Drew'}:
-                    </span>{' '}
-                    <span className="text-gray-600">
-                      {msg.message_text.length > 60
-                        ? msg.message_text.substring(0, 60) + '...'
-                        : msg.message_text}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <p className="text-sm text-gray-700 mb-4">
-            Would you like to continue that conversation or start a new one?
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button
-              onClick={continueExistingConversation}
-              className="flex-1 px-4 py-2 bg-navy hover:bg-navy/90 text-white rounded-lg font-semibold transition-all duration-200"
-            >
-              Continue Previous Chat
-            </button>
-            <button
-              onClick={createNewConversation}
-              className="flex-1 px-4 py-2 bg-white hover:bg-gray-50 text-navy border border-gray-300 rounded-lg font-semibold transition-all duration-200"
-            >
-              Start New Conversation
-            </button>
-          </div>
-        </div>
-
-        <button
-          onClick={() => setShowConversationChoice(false)}
-          className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
-        >
-          ← Back to form
-        </button>
-      </div>
-    );
-  }
-
-  // Otherwise show the initial contact form
+  // Show the initial contact form
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Name and Email Row */}
