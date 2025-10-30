@@ -443,3 +443,230 @@ childLogger.info({ action: 'completed' }, 'Process finished');
 - **pino-pretty**: Pretty-printing for development
 - **Vercel Logs**: https://vercel.com/docs/observability/runtime-logs
 
+## Error Monitoring
+
+This application uses **Sentry** for real-time error monitoring, tracking, and alerting across both client and server code.
+
+### Sentry Dashboard Access
+
+**Project:** revelate-ops
+**Organization:** revelate-operations
+**Dashboard:** https://sentry.io/organizations/revelate-operations/projects/revelate-ops/
+
+### Team Access
+
+To invite team members:
+1. Go to: https://sentry.io/settings/revelate-operations/members/
+2. Click "Invite Member"
+3. Enter email address
+4. Select role (Admin, Member, or Billing)
+5. Send invitation
+
+### Configuration
+
+Sentry is configured with three runtime environments:
+
+**Client-Side** (`sentry.client.config.ts`):
+- Global error tracking for browser exceptions
+- Unhandled promise rejection capture
+- React component error boundaries
+- Session replay (10% of sessions, 100% on errors)
+- Privacy settings: mask all text, block all media
+
+**Server-Side** (`sentry.server.config.ts`):
+- API route error tracking
+- Node.js runtime exceptions
+- Server-side rendering errors
+
+**Edge Runtime** (`sentry.edge.config.ts`):
+- Middleware and edge function errors
+- Lightweight configuration for edge environments
+
+### Environment Variables
+
+Configure these in `.env.local` (development) and Vercel dashboard (production):
+
+```bash
+# Public DSN (safe to expose in client bundle)
+NEXT_PUBLIC_SENTRY_DSN=https://[key]@[org].ingest.sentry.io/[project]
+
+# Build-time source map upload credentials
+SENTRY_ORG=revelate-operations
+SENTRY_PROJECT=revelate-ops
+SENTRY_AUTH_TOKEN=your_auth_token_here
+```
+
+See `.env.example` for detailed setup instructions.
+
+### Features
+
+**Error Tracking:**
+- Automatic capture of unhandled exceptions
+- Manual error capture via `Sentry.captureException()`
+- All 11 API routes enhanced with error tracking
+- Meaningful tags (route, action) and context data
+
+**Source Maps:**
+- Automatically uploaded during production builds
+- Readable stack traces with TypeScript file names and line numbers
+- Build-time upload via Sentry webpack plugin
+
+**Session Replay:**
+- 10% of normal sessions recorded
+- 100% of error sessions recorded
+- Privacy-safe (text masked, media blocked)
+
+**Slack Alerts:**
+- Critical errors trigger Slack notifications
+- New issue alerts sent to configured channels
+- Configurable alert rules and thresholds
+
+### API Route Error Handling
+
+All API routes follow this pattern:
+
+```typescript
+import * as Sentry from '@sentry/nextjs';
+
+export async function POST(request: Request) {
+  try {
+    // Route logic...
+  } catch (error) {
+    // Capture in Sentry with context
+    Sentry.captureException(error, {
+      tags: {
+        route: '/api/contact',
+        action: 'contact_form_submission'
+      },
+      extra: {
+        hasEmail: !!data?.email,
+        timestamp: new Date().toISOString()
+      }
+    });
+
+    // Existing error handling
+    logger.error({ error }, 'Contact form error');
+    return NextResponse.json({ error: 'message' }, { status: 500 });
+  }
+}
+```
+
+### Testing Error Capture
+
+Use the test endpoint to verify Sentry integration:
+
+```bash
+# Trigger a test error
+curl http://localhost:3000/api/test-error
+
+# Check Sentry dashboard for the error
+# Should appear within 1 minute at:
+# https://sentry.io/organizations/revelate-operations/projects/revelate-ops/issues/
+```
+
+### Performance Settings
+
+**Sample Rates:**
+- Traces: 100% (adjust to 10-50% in high-traffic production)
+- Session Replay (normal): 10%
+- Session Replay (errors): 100%
+
+**Note:** Adjust sample rates based on traffic volume and Sentry plan quotas.
+
+### Privacy & Security
+
+**Security Best Practices:**
+- `SENTRY_AUTH_TOKEN` is secret (never commit to git)
+- `NEXT_PUBLIC_SENTRY_DSN` is public (safe in client bundle)
+- Auth token has minimal scopes: `project:releases`, `org:read`
+- Configure environment variables separately in Vercel
+
+**Privacy Protection:**
+- Session replay masks all text by default
+- All media (images, video) is blocked
+- Never log sensitive data (passwords, tokens, credit cards)
+- Context data is sanitized (e.g., `hasEmail: true` instead of actual email)
+
+### Alert Configuration
+
+**Recommended Alert Rules:**
+
+1. **Critical Errors**
+   - Trigger: Event level equals "error" or "fatal"
+   - Action: Send Slack notification
+   - Channel: #ops-alerts or DM
+
+2. **New Issues**
+   - Trigger: New issue created
+   - Action: Send Slack notification
+   - Channel: #engineering
+
+3. **Regressions**
+   - Trigger: Issue reappears after being resolved
+   - Action: Send Slack notification
+   - Channel: #ops-alerts
+
+Configure alert rules at: https://sentry.io/organizations/revelate-operations/alerts/rules/
+
+### Viewing Errors
+
+**Dashboard Sections:**
+1. **Issues** - All captured errors grouped by type
+2. **Performance** - Transaction traces and performance metrics
+3. **Replays** - Session replay recordings
+4. **Releases** - Deploy tracking and release health
+5. **Alerts** - Alert rule configuration and history
+
+**Issue Details Include:**
+- Full stack trace with source-mapped TypeScript code
+- Request context (URL, headers, user agent)
+- Tags and extra context data
+- User affected count
+- Event frequency and timeline
+- Similar issues
+
+### Integration with Logging
+
+Sentry complements the structured logging system:
+
+**Logging (Pino):**
+- All requests and operations
+- Searchable JSON logs in Vercel
+- Conversation tracing via `conversation_id`
+- High-volume, low-cost
+
+**Error Monitoring (Sentry):**
+- Exceptions and errors only
+- Visual dashboard and alerting
+- Stack traces and source maps
+- Session replay for debugging
+
+Both systems work together - errors are logged to both Pino (for correlation) and Sentry (for alerting and analysis).
+
+### Troubleshooting
+
+**Errors not appearing in Sentry:**
+1. Check `NEXT_PUBLIC_SENTRY_DSN` is set correctly
+2. Verify DSN is accessible (not blocked by firewall/VPN)
+3. Check browser console for Sentry initialization errors
+4. Ensure error occurred after Sentry.init() was called
+
+**Source maps not working:**
+1. Verify `SENTRY_AUTH_TOKEN` is set in build environment
+2. Check build logs for "source map upload" messages
+3. Confirm auth token has `project:releases` scope
+4. Check Sentry dashboard → Settings → Source Maps
+
+**Session replays not recording:**
+1. Verify user gave consent (if required by privacy policy)
+2. Check sample rates (10% of sessions by default)
+3. Check browser console for replay initialization
+4. Verify browser supports session replay (modern browsers only)
+
+### Resources
+
+- **Sentry Documentation**: https://docs.sentry.io/platforms/javascript/guides/nextjs/
+- **Dashboard**: https://sentry.io/organizations/revelate-operations/projects/revelate-ops/
+- **Slack Integration**: https://docs.sentry.io/product/integrations/notification-incidents/slack/
+- **Source Maps Guide**: https://docs.sentry.io/platforms/javascript/sourcemaps/
+
