@@ -774,7 +774,7 @@ export default function ServicesPage() {
               href="/book"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan px-10 py-4 text-base font-semibold text-navy shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-all duration-200 hover:bg-[#00c4e6] hover:shadow-[0_8px_16px_rgba(0,217,255,0.35)]"
             >
-              Get Your Free Assessment
+              Audit my revenue leaks
               <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
@@ -1332,17 +1332,17 @@ export default function ServicesPage() {
               Next step
             </span>
             <h2 className="mt-6 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl">
-              See what&apos;s hiding in your Salesforce instance
+              Stop losing revenue to broken systems
             </h2>
             <p className="mt-6 text-base leading-7 text-white/90 md:text-lg md:leading-8">
-              Free 15-minute consultation for Series B SaaS leaders. We&apos;ll identify concrete opportunities to optimize your revenue operations in your first call.
+              Free 15-minute diagnostic call for Series B SaaS leaders. We&apos;ll expose revenue leaks, map your GTM breaking points, and prioritize fixes by business impact.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/book"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan px-10 py-4 text-base font-semibold text-navy shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-all duration-200 hover:bg-[#00c4e6] hover:shadow-[0_8px_16px_rgba(0,217,255,0.35)]"
               >
-                Book Your Free Assessment
+                Diagnose my GTM systems
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} className="h-5 w-5">
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />

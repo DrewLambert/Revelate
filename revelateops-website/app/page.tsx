@@ -822,15 +822,14 @@ export default function Home() {
               Bring the messy org to a working session. We&apos;ll map the fixes together.
             </h2>
             <p className="mt-6 text-base leading-7 text-white/90 md:text-lg md:leading-8">
-              Book a 15-minute consultation. We&apos;ll expose what&apos;s breaking, outline the modernization sprint, and confirm whether
-              I&apos;m the right fit. Worst case—you leave with a prioritized list to tackle internally.
+              15-minute diagnostic call. We&apos;ll expose what&apos;s breaking, quantify revenue impact, and outline the modernization sprint. Worst case—you leave with a prioritized backlog to tackle internally.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/book"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-magenta px-10 py-4 text-base font-semibold text-white shadow-[0_8px_12px_rgba(217,70,239,0.4)] transition-all duration-200 hover:bg-[#c235d9] hover:shadow-[0_8px_12px_rgba(217,70,239,0.5)]"
               >
-                Schedule working session
+                Start revenue recovery
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} className="h-5 w-5">
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />

@@ -743,7 +743,7 @@ export default function AboutPage() {
                       href="/book"
                       className="inline-flex items-center justify-center gap-3 rounded-xl bg-cyan px-10 py-5 text-base font-semibold text-navy transition-all duration-200 hover:bg-cyan/90"
                     >
-                      Schedule a consultation
+                      Audit my revenue leaks
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                         <path d="M5 12h14" />
                         <path d="m12 5 7 7-7 7" />

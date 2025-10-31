@@ -438,8 +438,8 @@ export default function FloatingBookingButton() {
                 </svg>
               </div>
               <div>
-                <div className="font-semibold text-sm">Book a Meeting</div>
-                <div className="text-xs text-white/60">Schedule a consultation</div>
+                <div className="font-semibold text-sm">Audit Revenue Leaks</div>
+                <div className="text-xs text-white/60">15-min diagnostic call</div>
               </div>
             </button>
 
