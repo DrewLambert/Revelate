@@ -42,3 +42,12 @@ next-env.d.ts
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+/lib/generated/prisma
+
+# Work-in-progress database repositories with TypeScript errors
+lib/db/
+lib/auth/
+lib/monitoring/
+lib/featureFlags.ts
+lib/hooks/
