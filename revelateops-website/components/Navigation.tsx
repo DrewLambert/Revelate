@@ -91,16 +91,16 @@ export default function Navigation() {
           className={`mx-auto max-w-[1280px] rounded-2xl border px-6 py-3 transition-all duration-500 lg:px-8 ${
             showCompactLogo
               ? 'border-white/30 bg-gradient-to-b from-navy/95 via-navy/90 to-navy/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.1)] ring-1 ring-white/10'
-              : 'xl:border-transparent xl:bg-transparent xl:shadow-none xl:backdrop-blur-0 border-white/30 bg-gradient-to-b from-navy/95 via-navy/90 to-navy/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.1)] ring-1 ring-white/10'
+              : 'border-white/30 bg-gradient-to-b from-navy/95 via-navy/90 to-navy/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.1)] ring-1 ring-white/10 xl:border-transparent xl:bg-transparent xl:shadow-none xl:backdrop-blur-0 xl:ring-0'
           }`}
         >
           <div className="flex items-center justify-between">
-            <Link href="/" className="group flex items-center gap-3.5">
+            <Link href="/" className={`group flex items-center gap-3.5 ${!showCompactLogo && isHomepage ? 'xl:invisible' : ''}`}>
               <span
                 className={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full transition-all ${
                   showCompactLogo
                     ? 'border-[2px] border-white/60 bg-gradient-to-br from-white/5 via-transparent to-transparent shadow-[0_0_32px_rgba(0,217,255,0.4),0_0_16px_rgba(255,255,255,0.15),inset_0_1px_1px_rgba(255,255,255,0.4)] ring-1 ring-white/20 backdrop-blur-sm group-hover:border-white/80 group-hover:shadow-[0_0_48px_rgba(0,217,255,0.6),0_0_24px_rgba(255,255,255,0.25),inset_0_1px_2px_rgba(255,255,255,0.5)]'
-                    : 'xl:border xl:border-transparent xl:bg-transparent xl:shadow-none xl:opacity-0 border-[2px] border-white/60 bg-gradient-to-br from-white/5 via-transparent to-transparent shadow-[0_0_32px_rgba(0,217,255,0.4),0_0_16px_rgba(255,255,255,0.15),inset_0_1px_1px_rgba(255,255,255,0.4)] ring-1 ring-white/20 backdrop-blur-sm group-hover:border-white/80 group-hover:shadow-[0_0_48px_rgba(0,217,255,0.6),0_0_24px_rgba(255,255,255,0.25),inset_0_1px_2px_rgba(255,255,255,0.5)]'
+                    : 'border-[2px] border-white/60 bg-gradient-to-br from-white/5 via-transparent to-transparent shadow-[0_0_32px_rgba(0,217,255,0.4),0_0_16px_rgba(255,255,255,0.15),inset_0_1px_1px_rgba(255,255,255,0.4)] ring-1 ring-white/20 backdrop-blur-sm group-hover:border-white/80 group-hover:shadow-[0_0_48px_rgba(0,217,255,0.6),0_0_24px_rgba(255,255,255,0.25),inset_0_1px_2px_rgba(255,255,255,0.5)]'
                 }`}
               >
                 <Image
@@ -108,7 +108,7 @@ export default function Navigation() {
                   alt="Revelate"
                   width={52}
                   height={52}
-                  className={`h-full w-full object-contain relative z-10 ${!showCompactLogo && isHomepage ? 'xl:opacity-0' : ''}`}
+                  className="h-full w-full object-contain relative z-10"
                   priority
                 />
                 <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -125,17 +125,17 @@ export default function Navigation() {
                 </>
               ) : (
                 <>
-                  <span className="hidden xl:hidden md:inline text-lg font-semibold uppercase tracking-[0.24em] text-white transition group-hover:text-cyan">
+                  <span className="hidden md:inline text-lg font-semibold uppercase tracking-[0.24em] text-white transition group-hover:text-cyan">
                     Revelate Operations
                   </span>
-                  <span className="xl:hidden md:hidden text-lg font-semibold uppercase tracking-[0.24em] text-white transition group-hover:text-cyan">
+                  <span className="md:hidden text-lg font-semibold uppercase tracking-[0.24em] text-white transition group-hover:text-cyan">
                     RevOps
                   </span>
                 </>
               )}
             </Link>
 
-            <div className="hidden items-center gap-2 md:flex">
+            <div className={`hidden items-center gap-2 md:flex ${!showCompactLogo && isHomepage ? 'xl:invisible' : ''}`}>
               {links.map((link) => (
                 <Link
                   key={link.label}
