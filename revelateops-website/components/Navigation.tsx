@@ -167,7 +167,7 @@ export default function Navigation() {
           </div>
 
           {isOpen && (
-            <div id="mobile-menu" className="mt-4 space-y-2 border-t border-cyan/30 bg-gradient-to-b from-navy/40 to-transparent pt-4 md:hidden">
+            <div id="mobile-menu" className="mt-4 space-y-2 border-t border-cyan/30 bg-gradient-to-b from-navy via-navy/95 to-navy/90 pt-4 md:hidden">
               {links.map((link) => (
                 <Link
                   key={link.label}
