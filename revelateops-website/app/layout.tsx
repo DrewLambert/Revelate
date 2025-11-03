@@ -28,8 +28,23 @@ const siteDescription =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: siteTitle,
+  title: {
+    default: siteTitle,
+    template: '%s | Revelate Operations',
+  },
   description: siteDescription,
+  keywords: [
+    'Salesforce modernization',
+    'RevOps consulting',
+    'Series B SaaS',
+    'revenue operations',
+    'Salesforce integration',
+    'GTM operations',
+    'Boston RevOps',
+    'remote RevOps consultant',
+    'CRM modernization',
+    'sales operations'
+  ],
   viewport: {
     width: "device-width",
     initialScale: 1,

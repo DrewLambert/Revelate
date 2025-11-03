@@ -1,8 +1,12 @@
 import BookingPageClient from '@/components/BookingPageClient';
 
 export const metadata = {
-  title: 'Book a Discovery Call | Revelate Operations',
-  description: 'Schedule a discovery call with Drew Lambert to discuss your Salesforce challenges and see if modernizing your existing org is the right move.',
+  title: 'Book a Discovery Call',
+  description: 'Schedule a 45-minute discovery call with Drew Lambert. Discuss your Salesforce challenges, revenue operations pain points, and determine if embedded RevOps modernization is right for your Series B SaaS company. Boston-based, remote-first.',
+  openGraph: {
+    title: 'Book a Discovery Call | Revelate Operations',
+    description: '45-minute strategy session to discuss Salesforce challenges and RevOps modernization for Series B SaaS.',
+  },
 };
 
 export default function BookPage() {
