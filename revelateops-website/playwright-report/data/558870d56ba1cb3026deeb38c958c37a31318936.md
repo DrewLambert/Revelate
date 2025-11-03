@@ -1,0 +1,435 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content":
+    - /url: "#differentiators"
+  - link "Revelate home" [ref=e2] [cursor=pointer]:
+    - /url: /
+    - img "Revelate" [ref=e4]
+    - generic [ref=e5]: Revelate Operations
+  - navigation "Primary navigation" [ref=e6]:
+    - generic [ref=e8]:
+      - link [ref=e9] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e11]:
+        - link "Home" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - link "Services" [ref=e13] [cursor=pointer]:
+          - /url: /services
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: /about
+        - link "Get Started" [ref=e15] [cursor=pointer]:
+          - /url: /book
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - img
+      - article [ref=e19]:
+        - 'heading "Every quarter, same question: Where did the revenue go?" [level=1] [ref=e20]'
+        - paragraph [ref=e22]: Hi, I'm Drew. I take on 2-3 clients at a time as your embedded RevOps partner—not an agency, not a full-time hire. Deep focus. No handoffs. I join your team, map what's broken, and ship production improvements on a regular cadence. With deep expertise across enterprise platforms like Salesforce, NetSuite, and modern integration tools, most clients see meaningful improvements within 6-16 weeks.
+        - generic [ref=e23]:
+          - link "See What You're Missing" [ref=e24] [cursor=pointer]:
+            - /url: /book
+            - text: See What You're Missing
+            - img [ref=e25]
+          - link "How We Work" [ref=e27] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e28]:
+          - paragraph [ref=e29]: Trusted expertise across 30+ enterprise platforms
+          - generic [ref=e32]:
+            - generic "Salesforce" [ref=e33]:
+              - img "Salesforce logo" [ref=e36]
+            - generic "HubSpot" [ref=e37]:
+              - img "HubSpot logo" [ref=e40]
+            - generic "Slack" [ref=e41]:
+              - img "Slack logo" [ref=e44]
+            - generic "GitHub" [ref=e45]:
+              - img "GitHub logo" [ref=e48]
+            - generic "Notion" [ref=e49]:
+              - img "Notion logo" [ref=e52]
+            - generic "Figma" [ref=e53]:
+              - img "Figma logo" [ref=e56]
+            - generic "Atlassian" [ref=e57]:
+              - img "Atlassian logo" [ref=e60]
+            - generic "Datadog" [ref=e61]:
+              - img "Datadog logo" [ref=e64]
+            - generic "Pipedrive" [ref=e65]:
+              - img "Pipedrive logo" [ref=e68]
+            - generic "Snowflake" [ref=e69]:
+              - img "Snowflake logo" [ref=e72]
+            - generic "Salesforce" [ref=e73]:
+              - img "Salesforce logo" [ref=e76]
+            - generic "HubSpot" [ref=e77]:
+              - img "HubSpot logo" [ref=e80]
+            - generic "Slack" [ref=e81]:
+              - img "Slack logo" [ref=e84]
+            - generic "GitHub" [ref=e85]:
+              - img "GitHub logo" [ref=e88]
+            - generic "Notion" [ref=e89]:
+              - img "Notion logo" [ref=e92]
+            - generic "Figma" [ref=e93]:
+              - img "Figma logo" [ref=e96]
+            - generic "Atlassian" [ref=e97]:
+              - img "Atlassian logo" [ref=e100]
+            - generic "Datadog" [ref=e101]:
+              - img "Datadog logo" [ref=e104]
+            - generic "Pipedrive" [ref=e105]:
+              - img "Pipedrive logo" [ref=e108]
+            - generic "Snowflake" [ref=e109]:
+              - img "Snowflake logo" [ref=e112]
+          - generic [ref=e114]:
+            - img [ref=e115]
+            - text: 20+ additional integrations
+    - navigation [ref=e117]:
+      - list [ref=e119]:
+        - listitem [ref=e120]:
+          - button "Navigate to Why Drew section" [ref=e121]: Why Drew
+        - listitem [ref=e123]:
+          - button "Navigate to Approach section" [ref=e124]: Approach
+        - listitem [ref=e125]:
+          - button "Navigate to Process section" [ref=e126]: Process
+        - listitem [ref=e127]:
+          - button "Navigate to FAQ section" [ref=e128]: FAQ
+        - listitem [ref=e129]:
+          - button "Navigate to Book Call section" [ref=e130]: Book Call
+    - main [ref=e131]:
+      - region "Four things that make this different" [ref=e132]:
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - text: Why choose Drew
+              - heading "Four things that make this different" [level=2] [ref=e137]
+              - paragraph [ref=e138]: No offshore teams. No junior devs. No surprises. Just principal-level expertise embedded with your team.
+            - generic [ref=e141]:
+              - generic [ref=e142]:
+                - generic [ref=e143]: 2-3
+                - generic [ref=e144]: Client Maximum
+              - paragraph [ref=e145]: By design, not by accident.
+              - paragraph [ref=e146]: I deliberately cap my roster to maintain deep partnership, context retention, and quality that produces real results—not just billable hours.
+              - generic [ref=e147]:
+                - generic [ref=e148]: Series B SaaS
+                - generic [ref=e150]: Manufacturing
+                - generic [ref=e152]: Fintech
+          - generic [ref=e154]:
+            - generic [ref=e156]:
+              - generic [ref=e157]: "1"
+              - generic [ref=e158]:
+                - heading "100% US-Based, Principal-Led" [level=3] [ref=e159]
+                - paragraph [ref=e160]: No offshore teams, no junior hires, no hand-offs. You work directly with a principal consultant who maps your metadata, builds your automations, and ships production fixes. Fully on-shore, United States consulting.
+            - generic [ref=e162]:
+              - generic [ref=e163]: "2"
+              - generic [ref=e164]:
+                - heading "Transparent, Accountable Billing" [level=3] [ref=e165]
+                - paragraph [ref=e166]: Incredibly detailed time logs available on demand for any project. You know exactly what you&apos;re paying for—down to the hour, the task, and the deliverable. No black boxes, no surprises.
+            - generic [ref=e168]:
+              - generic [ref=e169]: "3"
+              - generic [ref=e170]:
+                - heading "Deep Expertise Across the Revenue Stack" [level=3] [ref=e171]
+                - paragraph [ref=e172]: From Salesforce and NetSuite to Apollo, Workato, and 30+ integration platforms—I&apos;ve architected revenue operations across the modern enterprise stack. Your specific integration challenge? I&apos;ve likely solved it twice already.
+            - generic [ref=e174]:
+              - generic [ref=e175]: "4"
+              - generic [ref=e176]:
+                - heading "AI-Augmented Excellence" [level=3] [ref=e177]
+                - paragraph [ref=e178]: I use advanced AI to accelerate diagnostics, automate documentation, and deliver insights faster—without sacrificing the human judgment that makes complex systems work. AI-augmented workflow that combines efficiency with expertise.
+      - region "Results that speak for themselves" [ref=e179]:
+        - generic [ref=e180]:
+          - generic [ref=e181]:
+            - text: Documented outcomes
+            - heading "Results that speak for themselves" [level=2] [ref=e182]
+            - paragraph [ref=e183]: Compared against industry benchmarks from recent research
+          - generic [ref=e186]:
+            - img [ref=e187]
+            - paragraph [ref=e189]:
+              - strong [ref=e190]: "Recent outcome:"
+              - text: Series B Media-Tech company—stabilized forecast accuracy from 63% to 94%, eliminated $200K in duplicate platform spend, reduced RevOps team reporting time by 120 hours/month.
+          - generic [ref=e191]:
+            - generic [ref=e195]:
+              - paragraph [ref=e196]: 6-16 weeks
+              - paragraph [ref=e197]: to production
+              - paragraph [ref=e198]: typical timeline for meaningful improvements to revenue architecture.
+              - generic [ref=e199]:
+                - paragraph [ref=e200]: "Industry benchmark:"
+                - paragraph [ref=e201]:
+                  - text: Only
+                  - link "20%" [ref=e202] [cursor=pointer]:
+                    - /url: https://www.xactlycorp.com/resources/guides/2024-sales-forecasting-benchmark-report
+                  - text: of orgs forecast within 5% accuracy (Xactly 2024)
+            - generic [ref=e206]:
+              - paragraph [ref=e207]: Weekly
+              - paragraph [ref=e208]: production cadence
+              - paragraph [ref=e209]: regular deployment of improvements while maintaining system stability.
+              - generic [ref=e210]:
+                - paragraph [ref=e211]: "Industry benchmark:"
+                - paragraph [ref=e212]:
+                  - link "20%" [ref=e213] [cursor=pointer]:
+                    - /url: https://www.forrester.com/blogs/manage-tech-debt-urgently-to-prevent-tech-bankruptcy/
+                  - text: of IT budget consumed by tech debt maintenance (Forrester 2024)
+            - generic [ref=e217]:
+              - paragraph [ref=e218]: Incremental
+              - paragraph [ref=e219]: approach
+              - paragraph [ref=e220]: targeted fixes instead of expensive 9-month agency rebuilds.
+              - generic [ref=e221]:
+                - paragraph [ref=e222]: "Industry benchmark:"
+                - paragraph [ref=e223]:
+                  - text: Complex implementations cost
+                  - link "$150K-$200K+" [ref=e224] [cursor=pointer]:
+                    - /url: https://www.peergenics.com/post/salesforce-consulting-services-cost-in-the-usa-2024-2025
+                  - text: over 9 months
+                  - generic [ref=e225]: (Peergenics 2024-2025)
+      - region "Hire a conglomerate that bills you. Or an embedded principal who joins your team." [ref=e226]:
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - text: Two paths forward
+            - heading "Hire a conglomerate that bills you. Or an embedded principal who joins your team." [level=2] [ref=e229]
+            - paragraph [ref=e230]: Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what's broken in 6-16 weeks—with incremental production improvements throughout.
+          - generic [ref=e233]:
+            - generic [ref=e234]:
+              - paragraph [ref=e235]: Typical Agency
+              - generic [ref=e236]:
+                - img [ref=e238]
+                - img [ref=e241]
+                - img [ref=e244]
+                - img [ref=e247]
+                - img [ref=e250]
+                - img [ref=e253]
+                - img [ref=e256]
+                - img [ref=e259]
+                - img [ref=e262]
+                - img [ref=e265]
+                - img [ref=e268]
+                - img [ref=e271]
+              - paragraph [ref=e273]: 8-12 team members
+              - paragraph [ref=e274]: Multiple handoffs, time zones, skill levels
+            - generic [ref=e277]: VS
+            - generic [ref=e278]:
+              - paragraph [ref=e279]: Revelate
+              - img [ref=e282]
+              - paragraph [ref=e284]: 1 principal
+              - paragraph [ref=e285]: Who knows your entire system
+          - generic [ref=e286]:
+            - generic [ref=e287]:
+              - generic [ref=e289]:
+                - img [ref=e290]
+                - text: Traditional Agency
+              - heading "The Conglomerate Model" [level=3] [ref=e292]
+              - paragraph [ref=e293]: What most consultancies offer
+              - list [ref=e294]:
+                - listitem [ref=e295]:
+                  - img [ref=e297]
+                  - generic [ref=e299]:
+                    - paragraph [ref=e300]: Offshore teams, junior developers
+                    - paragraph [ref=e301]: Your system gets passed between time zones and skill levels
+                - listitem [ref=e302]:
+                  - img [ref=e304]
+                  - generic [ref=e306]:
+                    - paragraph [ref=e307]: Opaque billing, hidden costs
+                    - paragraph [ref=e308]: Vague invoices. Surprise overages. No detailed time tracking.
+                - listitem [ref=e309]:
+                  - img [ref=e311]
+                  - generic [ref=e313]:
+                    - paragraph [ref=e314]: Nine-month rebuilds, revenue at risk
+                    - paragraph [ref=e315]: Rip-and-replace strategy freezes your GTM while they rebuild
+                - listitem [ref=e316]:
+                  - img [ref=e318]
+                  - generic [ref=e320]:
+                    - paragraph [ref=e321]: Generic playbooks, no context
+                    - paragraph [ref=e322]: They've never seen your tech stack combination before
+              - generic [ref=e323]:
+                - paragraph [ref=e324]: Industry Reality Check
+                - list [ref=e325]:
+                  - listitem [ref=e326]:
+                    - generic [ref=e327]: •
+                    - generic [ref=e328]:
+                      - link "91%" [ref=e329] [cursor=pointer]:
+                        - /url: https://www.validity.com/resource-center/the-state-of-crm-data-management-in-2024/
+                      - text: of CRM data is incomplete or missing critical fields
+                      - generic [ref=e330]: (Salesforce/Validity 2024)
+                  - listitem [ref=e331]:
+                    - generic [ref=e332]: •
+                    - generic [ref=e333]:
+                      - link "$18M" [ref=e334] [cursor=pointer]:
+                        - /url: https://zylo.com/news/2024-saas-management-index/
+                      - text: average wasted annually on unused SaaS licenses
+                      - generic [ref=e335]: (Zylo 2024)
+                  - listitem [ref=e336]:
+                    - generic [ref=e337]: •
+                    - generic [ref=e338]:
+                      - link "70%" [ref=e339] [cursor=pointer]:
+                        - /url: https://www.salesforce.com/content/dam/web/en_us/www/documents/research/salesforce-state-of-sales-report-6-ed.pdf
+                      - text: of sales rep time spent on non-selling activities
+                      - generic [ref=e340]: (Salesforce 2024)
+                  - listitem [ref=e341]:
+                    - generic [ref=e342]: •
+                    - generic [ref=e343]:
+                      - link "$12.9M" [ref=e344] [cursor=pointer]:
+                        - /url: https://www.gartner.com/smarterwithgartner/how-to-improve-your-data-quality
+                      - text: average annual cost of poor data quality
+                      - generic [ref=e345]: (Gartner 2021)
+            - generic [ref=e346]:
+              - generic [ref=e348]:
+                - img [ref=e349]
+                - text: Principal-Led Partner
+              - heading "The Embedded Partner Model" [level=3] [ref=e351]
+              - paragraph [ref=e352]: What you get working with me
+              - list [ref=e353]:
+                - listitem [ref=e354]:
+                  - img [ref=e356]
+                  - generic [ref=e358]:
+                    - paragraph [ref=e359]: 100% US-based principal who embeds with your team
+                    - paragraph [ref=e360]: I join standups, pair on tickets, and ship fixes alongside your admins
+                - listitem [ref=e361]:
+                  - img [ref=e363]
+                  - generic [ref=e365]:
+                    - paragraph [ref=e366]: Transparent billing, detailed time tracking
+                    - paragraph [ref=e367]: Incredibly detailed logs on demand. You know exactly what you're paying for.
+                - listitem [ref=e368]:
+                  - img [ref=e370]
+                  - generic [ref=e372]:
+                    - paragraph [ref=e373]: 6-16 week engagements, incremental production improvements
+                    - paragraph [ref=e374]: Stabilize what's broken without freezing revenue for months
+                - listitem [ref=e375]:
+                  - img [ref=e377]
+                  - generic [ref=e379]:
+                    - paragraph [ref=e380]: Deep expertise across your specific tech stack
+                    - paragraph [ref=e381]: Salesforce, NetSuite, Workato, Apollo—I've solved your integration challenge twice already
+              - generic [ref=e382]:
+                - paragraph [ref=e383]: The cost difference
+                - list [ref=e384]:
+                  - listitem [ref=e385]:
+                    - generic [ref=e386]: •
+                    - generic [ref=e387]: "Average agency rebuild: $50K-$200K over 9 months"
+                  - listitem [ref=e388]:
+                    - generic [ref=e389]: •
+                    - generic [ref=e390]: "My modernization approach: 6-16 weeks depending on scope, incremental production improvements with regular deployments"
+      - region "Sprints that protect revenue while we modernize." [ref=e391]:
+        - generic [ref=e392]:
+          - generic [ref=e393]:
+            - text: How the sprint runs
+            - heading "Sprints that protect revenue while we modernize." [level=2] [ref=e394]
+            - paragraph [ref=e395]: We run an immersion audit, then ship incremental improvements on a regular cadence with the same rigor your engineers expect.
+          - generic [ref=e396]:
+            - generic [ref=e399]:
+              - generic [ref=e400]: "1"
+              - paragraph [ref=e401]: Discovery & Audit
+              - heading "Working session & audit" [level=3] [ref=e402]
+              - paragraph [ref=e403]: We pull the automation map apart live, align on business goals, and scope a modernization sprint the board will understand.
+              - paragraph [ref=e404]: Delivered
+              - list [ref=e405]:
+                - listitem [ref=e406]:
+                  - generic [ref=e408]: 15-minute intro call with executive recap
+                - listitem [ref=e409]:
+                  - generic [ref=e411]: Prioritized modernization backlog ranked by revenue risk
+                - listitem [ref=e412]:
+                  - generic [ref=e414]: Aligned budget, owners, and success metrics
+            - generic [ref=e417]:
+              - generic [ref=e418]: "2"
+              - paragraph [ref=e419]: Stabilize Production
+              - heading "Stabilize production" [level=3] [ref=e420]
+              - paragraph [ref=e421]: Ship regular improvements to routing, forecasting, attribution, and integrations with regression tests and rollback plans.
+              - paragraph [ref=e422]: Delivered
+              - list [ref=e423]:
+                - listitem [ref=e424]:
+                  - generic [ref=e426]: Version-controlled automations with reviewers
+                - listitem [ref=e427]:
+                  - generic [ref=e429]: Live health dashboards for SLA, pipeline, and ARR
+                - listitem [ref=e430]:
+                  - generic [ref=e432]: Change log committed to your repo with Loom walkthroughs
+            - generic [ref=e435]:
+              - generic [ref=e436]: "3"
+              - paragraph [ref=e437]: Instrument & Hand Off
+              - heading "Instrument & hand off" [level=3] [ref=e438]
+              - paragraph [ref=e439]: Wire observability, documentation, and enablement so the internal team owns the system without vendor hand-holding.
+              - paragraph [ref=e440]: Delivered
+              - list [ref=e441]:
+                - listitem [ref=e442]:
+                  - generic [ref=e444]: Leadership scorecards wired to trusted data
+                - listitem [ref=e445]:
+                  - generic [ref=e447]: Runbooks and enablement sessions for admins and GTM
+                - listitem [ref=e448]:
+                  - generic [ref=e450]: 30-day follow-up window for edge cases
+      - region "Fast answers before we hop on a call." [ref=e451]:
+        - generic [ref=e452]:
+          - generic [ref=e453]:
+            - text: Still deciding?
+            - heading "Fast answers before we hop on a call." [level=2] [ref=e454]
+            - paragraph [ref=e455]:
+              - text: Need something else? Email
+              - link "drew@revelateops.com" [ref=e456] [cursor=pointer]:
+                - /url: mailto:drew@revelateops.com
+              - text: and I'll reply within a day.
+          - generic [ref=e457]:
+            - generic [ref=e459]:
+              - searchbox "Search frequently asked questions" [ref=e460]
+              - img [ref=e461]
+            - generic [ref=e463]:
+              - term [ref=e465]:
+                - button "What happens before we commit?" [ref=e466]:
+                  - generic [ref=e467]: What happens before we commit?
+                  - img [ref=e468]
+              - term [ref=e471]:
+                - button "Can you partner with our internal admin or MSP?" [ref=e472]:
+                  - generic [ref=e473]: Can you partner with our internal admin or MSP?
+                  - img [ref=e474]
+              - term [ref=e477]:
+                - button "How quickly do production changes land?" [ref=e478]:
+                  - generic [ref=e479]: How quickly do production changes land?
+                  - img [ref=e480]
+              - term [ref=e483]:
+                - button "Do you work outside of SaaS revenue teams?" [ref=e484]:
+                  - generic [ref=e485]: Do you work outside of SaaS revenue teams?
+                  - img [ref=e486]
+          - link "See all FAQs" [ref=e489] [cursor=pointer]:
+            - /url: /faq
+            - text: See all FAQs
+            - img [ref=e490]
+      - region "Bring the messy org to a working session. We'll map the fixes together." [ref=e492]:
+        - generic [ref=e494]:
+          - text: Next step
+          - heading "Bring the messy org to a working session. We'll map the fixes together." [level=2] [ref=e495]
+          - paragraph [ref=e496]: Book a 15-minute consultation. We'll expose what's breaking, outline the modernization sprint, and confirm whether I'm the right fit. Worst case—you leave with a prioritized list to tackle internally.
+          - generic [ref=e497]:
+            - link "Schedule working session" [ref=e498] [cursor=pointer]:
+              - /url: /book
+              - text: Schedule working session
+              - img [ref=e499]
+            - link "Review scope & pricing" [ref=e501] [cursor=pointer]:
+              - /url: /services
+          - paragraph [ref=e503]:
+            - text: Prefer async? Email
+            - link "drew@revelateops.com" [ref=e504] [cursor=pointer]:
+              - /url: mailto:drew@revelateops.com
+            - text: with context and we'll start there.
+  - contentinfo [ref=e505]:
+    - generic [ref=e506]:
+      - generic [ref=e507]:
+        - generic [ref=e508]:
+          - generic [ref=e509]:
+            - img "Revelate logo" [ref=e511]
+            - generic [ref=e512]: Revelate Operations
+          - paragraph [ref=e513]: Legacy Salesforce modernization for GTM teams who need trustworthy pipeline data—without pausing the business.
+        - generic [ref=e514]:
+          - heading "Navigate" [level=4] [ref=e515]
+          - list [ref=e516]:
+            - listitem [ref=e517]:
+              - link "Services & pricing" [ref=e518] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e519]:
+              - link "About Drew" [ref=e520] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e521]:
+              - link "Book a working session" [ref=e522] [cursor=pointer]:
+                - /url: /book
+        - generic [ref=e523]:
+          - heading "Stay in touch" [level=4] [ref=e524]
+          - paragraph [ref=e525]:
+            - text: drew@revelateops.com
+            - text: Boston, MA · Remote-first
+          - link "Schedule discovery call" [ref=e526] [cursor=pointer]:
+            - /url: /book
+      - paragraph [ref=e528]: © 2025 Revelate Operations LLC. All rights reserved.
+  - button "Open menu" [ref=e530]:
+    - img "Book a call" [ref=e531]
+  - button "Open Next.js Dev Tools" [ref=e538] [cursor=pointer]:
+    - img [ref=e539]
+  - alert [ref=e542]
+```

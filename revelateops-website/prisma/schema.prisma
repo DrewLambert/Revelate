@@ -1,0 +1,252 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+
+model conversations {
+  id              Int        @id @default(autoincrement())
+  user_name       String     @db.VarChar(255)
+  user_email      String     @db.VarChar(255)
+  user_phone      String     @db.VarChar(50)
+  user_company    String?    @db.VarChar(255)
+  slack_thread_ts String     @unique @db.VarChar(50)
+  status          String?    @default("active") @db.VarChar(20)
+  created_at      DateTime?  @default(now()) @db.Timestamp(6)
+  updated_at      DateTime?  @default(now()) @db.Timestamp(6)
+  messages        messages[]
+
+  @@index([slack_thread_ts], map: "idx_conversations_slack_thread")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model messages {
+  id              Int           @id @default(autoincrement())
+  conversation_id Int
+  sender          String        @db.VarChar(10)
+  message_text    String
+  sent_at         DateTime?     @default(now()) @db.Timestamp(6)
+  read_by_user    Boolean?      @default(false)
+  slack_ts        String?       @db.VarChar(50)
+  conversations   conversations @relation(fields: [conversation_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([conversation_id], map: "idx_messages_conversation")
+  @@index([sent_at], map: "idx_messages_sent_at")
+}
+
+// =====================================================
+// Services & Packages System (New tables for quotes)
+// =====================================================
+
+// Services table - Atomic service offerings
+model Service {
+  id                   String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name                 String   @db.VarChar(255)
+  slug                 String   @unique @db.VarChar(255)
+  shortDescription     String?  @map("short_description") @db.VarChar(500)
+  fullDescription      String?  @map("full_description") @db.Text
+  basePrice            Decimal  @map("base_price") @db.Decimal(10, 2)
+  category             String   @db.VarChar(100)
+  icon                 String?  @db.VarChar(50)
+
+  // Admin controls
+  isActive             Boolean  @default(true) @map("is_active")
+  isFeatured           Boolean  @default(false) @map("is_featured")
+  displayOrder         Int      @default(0) @map("display_order")
+
+  // Metadata
+  createdAt            DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt            DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+  createdBy            String?  @map("created_by") @db.VarChar(255)
+  updatedBy            String?  @map("updated_by") @db.VarChar(255)
+
+  // Relations
+  packageServices      PackageService[]
+
+  @@index([isActive, displayOrder])
+  @@index([category])
+  @@map("services")
+}
+
+// Packages table - Bundles of services
+model Package {
+  id                           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name                         String   @db.VarChar(255)
+  slug                         String   @unique @db.VarChar(255)
+  type                         String   @db.VarChar(50) // 'stage' | 'targeted' | 'custom'
+
+  // Stage-based metadata
+  stage                        String?  @db.VarChar(100) // 'seed-series-a' | 'series-b' | 'growth'
+  targetArrMin                 BigInt?  @map("target_arr_min")
+  targetArrMax                 BigInt?  @map("target_arr_max")
+
+  // Content
+  tagline                      String?  @db.VarChar(255)
+  shortDescription             String?  @map("short_description") @db.VarChar(500)
+  fullDescription              String?  @map("full_description") @db.Text
+
+  // Pricing
+  basePrice                    Decimal  @map("base_price") @db.Decimal(10, 2)
+  discountPercentage           Decimal  @default(0) @map("discount_percentage") @db.Decimal(5, 2)
+
+  // Timeline
+  timelineWeeksMin             Decimal? @map("timeline_weeks_min") @db.Decimal(4, 1)
+  timelineWeeksMax             Decimal? @map("timeline_weeks_max") @db.Decimal(4, 1)
+
+  // Visual
+  icon                         String?  @db.VarChar(50)
+  badge                        String?  @db.VarChar(50) // 'Most Popular', 'Best Value'
+
+  // Framework fields (Inputs → Outputs model)
+  inputsDescription            String?  @map("inputs_description") @db.Text
+  deliveryRhythmDescription    String?  @map("delivery_rhythm_description") @db.Text
+  outputsDescription           String?  @map("outputs_description") @db.Text
+  successCriteriaDescription   String?  @map("success_criteria_description") @db.Text
+  guaranteeDescription         String?  @map("guarantee_description") @db.Text
+
+  // Admin controls
+  isActive                     Boolean  @default(true) @map("is_active")
+  isFeatured                   Boolean  @default(false) @map("is_featured")
+  displayOrder                 Int      @default(0) @map("display_order")
+
+  // Metadata
+  createdAt                    DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt                    DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+  createdBy                    String?  @map("created_by") @db.VarChar(255)
+  updatedBy                    String?  @map("updated_by") @db.VarChar(255)
+
+  // Relations
+  packageServices              PackageService[]
+  scopingFactors               ScopingFactor[]
+  scopingRules                 ScopingRule[]
+  quotes                       Quote[]
+
+  @@index([isActive, type, displayOrder])
+  @@index([stage])
+  @@map("packages")
+}
+
+// Package Services junction table
+model PackageService {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  packageId    String   @map("package_id") @db.Uuid
+  serviceId    String   @map("service_id") @db.Uuid
+  isCore       Boolean  @default(true) @map("is_core")
+  quantity     Decimal  @default(1) @db.Decimal(4, 1)
+  displayOrder Int      @default(0) @map("display_order")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  package      Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  service      Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([packageId, serviceId])
+  @@map("package_services")
+}
+
+// Scoping Factors table - Quiz questions for dynamic pricing
+model ScopingFactor {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  packageId    String   @map("package_id") @db.Uuid
+  factorKey    String   @map("factor_key") @db.VarChar(100) // 'team_size', 'deal_stages'
+  questionText String   @map("question_text") @db.Text
+  helpText     String?  @map("help_text") @db.Text
+  inputType    String   @map("input_type") @db.VarChar(50) // 'select' | 'number' | 'boolean' | 'range'
+  options      Json?    @db.JsonB // Array of {value, label} for select types
+  isRequired   Boolean  @default(true) @map("is_required")
+  displayOrder Int      @default(0) @map("display_order")
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  package      Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  @@map("scoping_factors")
+}
+
+// Scoping Rules table - Pricing/timeline calculation logic
+model ScopingRule {
+  id                     String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  packageId              String   @map("package_id") @db.Uuid
+  ruleName               String   @map("rule_name") @db.VarChar(255)
+  factorKey              String   @map("factor_key") @db.VarChar(100)
+
+  // Condition logic
+  operator               String   @db.VarChar(20) // 'equals', 'greater_than', 'less_than', 'in_range', 'contains'
+  conditionValue         Json     @map("condition_value") @db.JsonB // {value: 50} or {min: 25, max: 50}
+
+  // Adjustments
+  priceAdjustmentType    String?  @map("price_adjustment_type") @db.VarChar(20) // 'multiplier', 'fixed_add', 'fixed_subtract'
+  priceAdjustmentValue   Decimal? @map("price_adjustment_value") @db.Decimal(10, 2)
+  timelineAdjustmentWeeks Decimal? @map("timeline_adjustment_weeks") @db.Decimal(4, 2)
+
+  // User-facing explanation
+  adjustmentLabel        String?  @map("adjustment_label") @db.Text
+
+  // Admin controls
+  isActive               Boolean  @default(true) @map("is_active")
+  priority               Int      @default(0) // Rule evaluation order
+
+  createdAt              DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt              DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  package                Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  @@map("scoping_rules")
+}
+
+// Quotes table - Saved quote history
+model Quote {
+  id                      String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  // User information
+  firstName               String?  @map("first_name") @db.VarChar(255)
+  lastName                String?  @map("last_name") @db.VarChar(255)
+  userEmail               String?  @map("user_email") @db.VarChar(255)
+  phone                   String?  @map("phone") @db.VarChar(50)
+  companyName             String?  @map("company_name") @db.VarChar(255)
+  title                   String?  @map("title") @db.VarChar(255)
+  comments                String?  @map("comments") @db.Text
+
+  // Package and service selection
+  packageId               String?  @map("package_id") @db.Uuid
+  scopingInputs           Json?    @map("scoping_inputs") @db.JsonB // Quiz answers
+  selectedServices        Json?    @map("selected_services") @db.JsonB // Array of service IDs
+
+  // Calculated values
+  calculatedPrice         Decimal? @map("calculated_price") @db.Decimal(10, 2)
+  calculatedTimelineWeeks Decimal? @map("calculated_timeline_weeks") @db.Decimal(4, 2)
+
+  // Output
+  pdfUrl                  String?  @map("pdf_url") @db.VarChar(500)
+  status                  String   @default("draft") @db.VarChar(50) // 'draft' | 'sent' | 'accepted'
+
+  // Metadata
+  createdAt               DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt               DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  package                 Package? @relation(fields: [packageId], references: [id])
+
+  @@map("quotes")
+}
+
+// Admin Audit Log table - Track all admin changes
+model AdminAuditLog {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tableName     String   @map("table_name") @db.VarChar(100)
+  recordId      String   @map("record_id") @db.Uuid
+  action        String   @db.VarChar(50) // 'create', 'update', 'delete', 'activate', 'deactivate'
+  changedFields Json?    @map("changed_fields") @db.JsonB // {price: {old: 45000, new: 50000}}
+  changedBy     String   @map("changed_by") @db.VarChar(255)
+  changedAt     DateTime @default(now()) @map("changed_at") @db.Timestamp(6)
+
+  @@index([tableName, recordId])
+  @@map("admin_audit_log")
+}

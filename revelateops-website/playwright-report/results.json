@@ -1,0 +1,894 @@
+{
+  "config": {
+    "configFile": "/Users/drewlambert/Desktop/Revelate/revelateops-website/playwright.config.ts",
+    "rootDir": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 5
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 5,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:3000",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "booking.spec.ts",
+      "file": "booking.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Booking Flow",
+          "file": "booking.spec.ts",
+          "line": 13,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should load booking page and display Calendly widget",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 41857,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts",
+                            "column": 16,
+                            "line": 19
+                          },
+                          "message": "Error: page.waitForLoadState: Test timeout of 30000ms exceeded.\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[90m// Wait for page to load\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[90m// Verify page title or heading\u001b[39m\n \u001b[90m 22 |\u001b[39m     \u001b[36mconst\u001b[39m pageHeading \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'h1, h2'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts:19:16\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:08.770Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-54798-and-display-Calendly-widget-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-54798-and-display-Calendly-widget-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a3a10f2351dcc49e1cb9-ca48ffdc8d36cf1eda7c",
+              "file": "booking.spec.ts",
+              "line": 14,
+              "column": 7
+            },
+            {
+              "title": "should handle Calendly widget loading errors gracefully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "timedOut",
+                      "duration": 42108,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts",
+                            "column": 16,
+                            "line": 67
+                          },
+                          "message": "Error: page.waitForTimeout: Test timeout of 30000ms exceeded.\n\n\u001b[0m \u001b[90m 65 |\u001b[39m     \u001b[90m// Check for error message or fallback content\u001b[39m\n \u001b[90m 66 |\u001b[39m     \u001b[90m// (implementation specific - may not exist yet)\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 67 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m3000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 68 |\u001b[39m\n \u001b[90m 69 |\u001b[39m     \u001b[90m// Verify page doesn't crash\u001b[39m\n \u001b[90m 70 |\u001b[39m     \u001b[36mconst\u001b[39m bodyContent \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'body'\u001b[39m)\u001b[33m.\u001b[39mtextContent()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts:67:16\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:08.776Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-2e7d8-t-loading-errors-gracefully-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-2e7d8-t-loading-errors-gracefully-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-2e7d8-t-loading-errors-gracefully-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a3a10f2351dcc49e1cb9-14021c4ea20a636bfb4f",
+              "file": "booking.spec.ts",
+              "line": 52,
+              "column": 7
+            },
+            {
+              "title": "should have correct page metadata for SEO",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "timedOut",
+                      "duration": 41411,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts",
+                            "column": 16,
+                            "line": 76
+                          },
+                          "message": "Error: page.waitForLoadState: Test timeout of 30000ms exceeded.\n\n\u001b[0m \u001b[90m 74 |\u001b[39m   test(\u001b[32m'should have correct page metadata for SEO'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 75 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/book'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 76 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 77 |\u001b[39m\n \u001b[90m 78 |\u001b[39m     \u001b[90m// Check page title\u001b[39m\n \u001b[90m 79 |\u001b[39m     \u001b[36mconst\u001b[39m pageTitle \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mtitle()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts:76:16\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:08.744Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-fa673-rrect-page-metadata-for-SEO-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-fa673-rrect-page-metadata-for-SEO-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a3a10f2351dcc49e1cb9-866b0762e113778530cb",
+              "file": "booking.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "should be responsive on mobile viewport",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "timedOut",
+                      "duration": 41840,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts",
+                            "column": 46,
+                            "line": 109
+                          },
+                          "message": "Error: locator.boundingBox: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('iframe[src*=\"calendly\"], iframe[src*=\"cal.com\"]').first()\u001b[22m\n\n\n\u001b[0m \u001b[90m 107 |\u001b[39m\n \u001b[90m 108 |\u001b[39m       \u001b[90m// Verify iframe doesn't overflow viewport\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 109 |\u001b[39m       \u001b[36mconst\u001b[39m iframeBox \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m calendlyIframe\u001b[33m.\u001b[39mboundingBox()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 110 |\u001b[39m       \u001b[36mif\u001b[39m (iframeBox) {\n \u001b[90m 111 |\u001b[39m         expect(iframeBox\u001b[33m.\u001b[39mwidth)\u001b[33m.\u001b[39mtoBeLessThanOrEqual(\u001b[35m375\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 112 |\u001b[39m       }\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts:109:46\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:08.745Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-should-be-responsive-on-mobile-viewport-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-should-be-responsive-on-mobile-viewport-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a3a10f2351dcc49e1cb9-389bc0a73d18194cea73",
+              "file": "booking.spec.ts",
+              "line": 91,
+              "column": 7
+            },
+            {
+              "title": "should navigate to booking page from home",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "timedOut",
+                      "duration": 41349,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts",
+                            "column": 18,
+                            "line": 130
+                          },
+                          "message": "Error: page.waitForURL: Test timeout of 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/book\" until \"load\"\n============================================================\n\n\u001b[0m \u001b[90m 128 |\u001b[39m\n \u001b[90m 129 |\u001b[39m       \u001b[90m// Wait for navigation\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 130 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/book'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 131 |\u001b[39m\n \u001b[90m 132 |\u001b[39m       \u001b[90m// Verify we're on the booking page\u001b[39m\n \u001b[90m 133 |\u001b[39m       expect(page\u001b[33m.\u001b[39murl())\u001b[33m.\u001b[39mtoContain(\u001b[32m'/book'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/booking.spec.ts:130:18\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:08.748Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-eca72-e-to-booking-page-from-home-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/booking-Booking-Flow-shoul-eca72-e-to-booking-page-from-home-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a3a10f2351dcc49e1cb9-bd27cb3aac81d4c80218",
+              "file": "booking.spec.ts",
+              "line": 116,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "chat.spec.ts",
+      "file": "chat.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Chat Message Exchange",
+          "file": "chat.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display chat widget and send messages",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 31784,
+                      "error": {
+                        "message": "Error: locator.count: Unexpected token \"=\" while parsing css selector \"[class*=\"chat\"], text=/chat/i\". Did you mean to CSS.escape it?",
+                        "stack": "Error: locator.count: Unexpected token \"=\" while parsing css selector \"[class*=\"chat\"], text=/chat/i\". Did you mean to CSS.escape it?\n    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/chat.spec.ts:46:27",
+                        "location": {
+                          "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/chat.spec.ts",
+                          "column": 27,
+                          "line": 46
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 44 |\u001b[39m\n \u001b[90m 45 |\u001b[39m     \u001b[90m// Try to open chat if it's not visible\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 46 |\u001b[39m     \u001b[36mif\u001b[39m (\u001b[36mawait\u001b[39m chatTrigger\u001b[33m.\u001b[39mcount() \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m \u001b[33m&&\u001b[39m \u001b[36mawait\u001b[39m chatTrigger\u001b[33m.\u001b[39misVisible()) {\n \u001b[90m    |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 47 |\u001b[39m       \u001b[36mawait\u001b[39m chatTrigger\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m1000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/chat.spec.ts",
+                            "column": 27,
+                            "line": 46
+                          },
+                          "message": "Error: locator.count: Unexpected token \"=\" while parsing css selector \"[class*=\"chat\"], text=/chat/i\". Did you mean to CSS.escape it?\n\n\u001b[0m \u001b[90m 44 |\u001b[39m\n \u001b[90m 45 |\u001b[39m     \u001b[90m// Try to open chat if it's not visible\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 46 |\u001b[39m     \u001b[36mif\u001b[39m (\u001b[36mawait\u001b[39m chatTrigger\u001b[33m.\u001b[39mcount() \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m \u001b[33m&&\u001b[39m \u001b[36mawait\u001b[39m chatTrigger\u001b[33m.\u001b[39misVisible()) {\n \u001b[90m    |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 47 |\u001b[39m       \u001b[36mawait\u001b[39m chatTrigger\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m1000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m     }\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/chat.spec.ts:46:27\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:55.695Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/chat-Chat-Message-Exchange-c14d7-at-widget-and-send-messages-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/chat-Chat-Message-Exchange-c14d7-at-widget-and-send-messages-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/chat-Chat-Message-Exchange-c14d7-at-widget-and-send-messages-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/chat.spec.ts",
+                        "column": 27,
+                        "line": 46
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-5f6a2ddd27ae77b81394",
+              "file": "chat.spec.ts",
+              "line": 35,
+              "column": 7
+            },
+            {
+              "title": "should handle empty message submission",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 31117,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:55.676Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-4a424260458e84c0bdad",
+              "file": "chat.spec.ts",
+              "line": 82,
+              "column": 7
+            },
+            {
+              "title": "should display conversation history",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 3055,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:55.741Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-33593fd40fea435b35cd",
+              "file": "chat.spec.ts",
+              "line": 111,
+              "column": 7
+            },
+            {
+              "title": "should handle long messages",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 29999,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:55.808Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-67b220974becd173b6b3",
+              "file": "chat.spec.ts",
+              "line": 134,
+              "column": 7
+            },
+            {
+              "title": "should be accessible via keyboard navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 31221,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:55.910Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-a80bccc2bd5f69b43a46",
+              "file": "chat.spec.ts",
+              "line": 165,
+              "column": 7
+            },
+            {
+              "title": "should display typing indicator or loading state",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 28999,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:45:59.122Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-3226c2df059be2e4171e",
+              "file": "chat.spec.ts",
+              "line": 193,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "contact.spec.ts",
+      "file": "contact.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Contact Form to Chat Flow",
+          "file": "contact.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should submit contact form and open chat widget with conversation",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 27428,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('section').filter({ has: locator('text=/contact/i') })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('section').filter({ has: locator('text=/contact/i') })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('section').filter({ has: locator('text=/contact/i') })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('section').filter({ has: locator('text=/contact/i') })\u001b[22m\n\n    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts:22:34",
+                        "location": {
+                          "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts",
+                          "column": 34,
+                          "line": 22
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 20 |\u001b[39m     \u001b[90m// Locate and verify contact form is visible\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mconst\u001b[39m contactSection \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'section'\u001b[39m\u001b[33m,\u001b[39m { has\u001b[33m:\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=/contact/i'\u001b[39m) })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m expect(contactSection)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[90m// Fill out the contact form\u001b[39m\n \u001b[90m 25 |\u001b[39m     \u001b[36mconst\u001b[39m nameInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"name\"], input[placeholder*=\"name\" i]'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts",
+                            "column": 34,
+                            "line": 22
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('section').filter({ has: locator('text=/contact/i') })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('section').filter({ has: locator('text=/contact/i') })\u001b[22m\n\n\n\u001b[0m \u001b[90m 20 |\u001b[39m     \u001b[90m// Locate and verify contact form is visible\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mconst\u001b[39m contactSection \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'section'\u001b[39m\u001b[33m,\u001b[39m { has\u001b[33m:\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=/contact/i'\u001b[39m) })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m expect(contactSection)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[90m// Fill out the contact form\u001b[39m\n \u001b[90m 25 |\u001b[39m     \u001b[36mconst\u001b[39m nameInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'input[name=\"name\"], input[placeholder*=\"name\" i]'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts:22:34\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:46:26.236Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-38455-at-widget-with-conversation-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-38455-at-widget-with-conversation-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-38455-at-widget-with-conversation-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts",
+                        "column": 34,
+                        "line": 22
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c37ec27874a4649dbe8b-cdc8a9b9a6e65fab3365",
+              "file": "contact.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "should handle contact form validation",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 29563,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"]').filter({ has: locator('text=/send|submit|contact/i') }).first()\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"]').filter({ has: locator('text=/send|submit|contact/i') }).first()\u001b[22m\n\n    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts:92:24",
+                        "location": {
+                          "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts",
+                          "column": 24,
+                          "line": 92
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 90 |\u001b[39m     })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n \u001b[90m 91 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 92 |\u001b[39m     \u001b[36mawait\u001b[39m submitButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 93 |\u001b[39m\n \u001b[90m 94 |\u001b[39m     \u001b[90m// Wait a moment for validation to trigger\u001b[39m\n \u001b[90m 95 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m500\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts",
+                            "column": 24,
+                            "line": 92
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"]').filter({ has: locator('text=/send|submit|contact/i') }).first()\u001b[22m\n\n\n\u001b[0m \u001b[90m 90 |\u001b[39m     })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n \u001b[90m 91 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 92 |\u001b[39m     \u001b[36mawait\u001b[39m submitButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 93 |\u001b[39m\n \u001b[90m 94 |\u001b[39m     \u001b[90m// Wait a moment for validation to trigger\u001b[39m\n \u001b[90m 95 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m500\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts:92:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:46:27.351Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-3bd9b-dle-contact-form-validation-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-3bd9b-dle-contact-form-validation-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-3bd9b-dle-contact-form-validation-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts",
+                        "column": 24,
+                        "line": 92
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c37ec27874a4649dbe8b-11f4f2ae60486b21a075",
+              "file": "contact.spec.ts",
+              "line": 83,
+              "column": 7
+            },
+            {
+              "title": "should handle invalid email format",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 1,
+                      "status": "timedOut",
+                      "duration": 30208,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts",
+                            "column": 21,
+                            "line": 112
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[name=\"name\"], input[placeholder*=\"name\" i]').first()\u001b[22m\n\n\n\u001b[0m \u001b[90m 110 |\u001b[39m     \u001b[36mconst\u001b[39m messageInput \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'textarea[name=\"message\"], textarea[placeholder*=\"message\" i]'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n \u001b[90m 111 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 112 |\u001b[39m     \u001b[36mawait\u001b[39m nameInput\u001b[33m.\u001b[39mfill(\u001b[32m'Test User'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 113 |\u001b[39m     \u001b[36mawait\u001b[39m emailInput\u001b[33m.\u001b[39mfill(\u001b[32m'invalid-email'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 114 |\u001b[39m     \u001b[36mawait\u001b[39m messageInput\u001b[33m.\u001b[39mfill(\u001b[32m'Test message'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 115 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/drewlambert/Desktop/Revelate/revelateops-website/__tests__/e2e/contact.spec.ts:112:21\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T21:46:27.712Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-d64a2-handle-invalid-email-format-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-d64a2-handle-invalid-email-format-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/drewlambert/Desktop/Revelate/revelateops-website/test-results/contact-Contact-Form-to-Ch-d64a2-handle-invalid-email-format-chromium/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c37ec27874a4649dbe8b-4811569f73ef7923dc68",
+              "file": "contact.spec.ts",
+              "line": 103,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-10-30T21:45:07.119Z",
+    "duration": 110865.37,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 9,
+    "flaky": 0
+  }
+}

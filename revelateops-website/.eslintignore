@@ -1,0 +1,22 @@
+# Coverage reports
+coverage/
+
+# Build outputs
+.next/
+out/
+dist/
+
+# Config files that use CommonJS
+jest.config.js
+jest-polyfills.js
+next.config.ts
+
+# Test utilities
+test-db-connection.js
+
+# Test files that use require() for mocking
+__tests__/unit/monitoring/logger.test.ts
+__tests__/unit/monitoring/log-utils.test.ts
+
+# Dependencies
+node_modules/

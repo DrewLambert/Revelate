@@ -1,0 +1,98 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content":
+    - /url: "#differentiators"
+  - navigation "Primary navigation" [ref=e2]:
+    - generic [ref=e4]:
+      - link "Revelate Revelate Operations" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Revelate" [ref=e7]
+        - generic [ref=e8]: Revelate Operations
+      - generic [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: /services
+        - link "About" [ref=e12] [cursor=pointer]:
+          - /url: /about
+        - link "Get Started" [ref=e13] [cursor=pointer]:
+          - /url: /book
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e21]:
+        - heading "Book a 15-Minute Call" [level=1] [ref=e22]
+        - paragraph [ref=e23]: Share what's breaking. Get actionable next steps—whether we work together or not.
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e29]:
+              - img [ref=e31]
+              - generic [ref=e33]:
+                - paragraph [ref=e34]: No sales pitch
+                - paragraph [ref=e35]: Honest assessment of whether we're a fit
+            - generic [ref=e36]:
+              - img [ref=e38]
+              - generic [ref=e40]:
+                - paragraph [ref=e41]: Walk away with value
+                - paragraph [ref=e42]: Tactical next steps you can use immediately
+            - generic [ref=e43]:
+              - img [ref=e45]
+              - generic [ref=e47]:
+                - paragraph [ref=e48]: Clear pricing upfront
+                - paragraph [ref=e49]: Know exactly what it costs if we move forward
+          - paragraph [ref=e51]: I work with 2-3 clients at a time. If my calendar is full, I'll point you to other qualified consultants.
+        - generic [ref=e52]:
+          - generic [ref=e55]:
+            - paragraph [ref=e59]: Loading calendar...
+            - iframe [ref=e60]:
+              
+          - paragraph [ref=e61]: All times shown in your local timezone
+      - generic [ref=e63]:
+        - img [ref=e65]
+        - heading "Prefer Email?" [level=3] [ref=e67]
+        - paragraph [ref=e68]: Not ready to schedule a call yet? Have questions first? Send me an email and I'll get back to you within 24 hours.
+        - link "drew@revelateops.com" [ref=e69] [cursor=pointer]:
+          - /url: mailto:drew@revelateops.com
+          - img [ref=e70]
+          - text: drew@revelateops.com
+  - contentinfo [ref=e72]:
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - img "Revelate logo" [ref=e78]
+            - generic [ref=e79]: Revelate Operations
+          - paragraph [ref=e80]: Legacy Salesforce modernization for GTM teams who need trustworthy pipeline data—without pausing the business.
+        - generic [ref=e81]:
+          - heading "Navigate" [level=4] [ref=e82]
+          - list [ref=e83]:
+            - listitem [ref=e84]:
+              - link "Services & pricing" [ref=e85] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e86]:
+              - link "About Drew" [ref=e87] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e88]:
+              - link "Book a working session" [ref=e89] [cursor=pointer]:
+                - /url: /book
+        - generic [ref=e90]:
+          - heading "Stay in touch" [level=4] [ref=e91]
+          - paragraph [ref=e92]:
+            - text: drew@revelateops.com
+            - text: Boston, MA · Remote-first
+          - link "Schedule discovery call" [ref=e93] [cursor=pointer]:
+            - /url: /book
+      - paragraph [ref=e95]: © 2025 Revelate Operations LLC. All rights reserved.
+  - button "Open menu" [ref=e97]:
+    - img "Book a call" [ref=e98]
+  - button "Open Next.js Dev Tools" [ref=e105] [cursor=pointer]:
+    - generic [ref=e108]:
+      - text: Compiling
+      - generic [ref=e109]:
+        - generic [ref=e110]: .
+        - generic [ref=e111]: .
+        - generic [ref=e112]: .
+  - alert [ref=e113]
+```

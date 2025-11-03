@@ -1,0 +1,348 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/1-8" v="2.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.8</storyId>
+    <title>Structured Logging Implementation</title>
+    <status>Drafted</status>
+    <generatedAt>2025-10-30</generatedAt>
+    <generator>BMAD Story Context Workflow (Enhanced)</generator>
+    <sourceStoryPath>docs/stories/story-1.8.md</sourceStoryPath>
+    <lastUpdated>2025-10-30</lastUpdated>
+  </metadata>
+
+  <story>
+    <asA>developer</asA>
+    <iWant>structured logging with conversation_id tracing</iWant>
+    <soThat>I can debug issues and trace user interactions</soThat>
+    <tasks>
+      <task id="T1">Install and configure Pino (AC: 1, 4, 5)</task>
+      <task id="T2">Instrument API endpoints (AC: 2)</task>
+      <task id="T3">Instrument database operations (AC: 3)</task>
+      <task id="T4">Document logging practices (AC: 6)</task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="AC1">Pino logging library integrated</criterion>
+    <criterion id="AC2">All API endpoints log request/response with conversation_id</criterion>
+    <criterion id="AC3">Database operations log query details</criterion>
+    <criterion id="AC4">Log levels configured (error, warn, info, debug)</criterion>
+    <criterion id="AC5">Logs formatted as JSON for parsing</criterion>
+    <criterion id="AC6">Log retention policy documented</criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <artifact>
+        <path>docs/architecture.md</path>
+        <title>Architecture Document</title>
+        <section>Logging Library</section>
+        <snippet>Pino 10.1.0 selected for structured logging. 5x faster than Winston with async processing, optimized for Node.js performance. Very low overhead JavaScript logger. Published Oct 18, 2025 - actively maintained.</snippet>
+      </artifact>
+      <artifact>
+        <path>docs/architecture.md</path>
+        <title>Architecture Document</title>
+        <section>Logging Patterns - Structured Logging</section>
+        <snippet>Logger configured with JSON output in production, pretty-printed logs in development. All logs include conversation_id for tracing. Log levels: error (failures requiring attention), warn (recoverable issues), info (significant events), debug (detailed tracing, dev only).</snippet>
+      </artifact>
+      <artifact>
+        <path>docs/architecture.md</path>
+        <title>Architecture Document</title>
+        <section>Logging Strategy</section>
+        <snippet>Required fields: conversation_id (for all conversation-related logs), user_email (hashed in production), action (describes what happened), timestamp (automatic via Pino). Example: logger.info({ conversation_id: 123, action: 'slack_notification_sent', slack_thread_ts: 'ts_value' }, 'Slack DM sent to Drew');</snippet>
+      </artifact>
+      <artifact>
+        <path>docs/architecture.md</path>
+        <title>Architecture Document</title>
+        <section>ADR-004: Pino for Structured Logging</section>
+        <snippet>Decision rationale: 5x faster than Winston (async processing), optimized for Node.js performance, JSON structured logs for parsing/analysis, low overhead in production, excellent TypeScript support. Alternative considered: Winston (slower but more features). Verified 2025-10-30 via npmjs.com.</snippet>
+      </artifact>
+      <artifact>
+        <path>docs/epics.md</path>
+        <title>Product Epics</title>
+        <section>Story 1.8 Definition</section>
+        <snippet>Story 1.8 implements structured logging with conversation_id tracing for debugging and user interaction tracking. Prerequisites: None (can run in parallel with other stories).</snippet>
+      </artifact>
+    </docs>
+
+    <code>
+      <artifact>
+        <path>app/api/contact/route.ts</path>
+        <kind>api-route</kind>
+        <symbol>POST handler</symbol>
+        <lines>19-120</lines>
+        <reason>Contact form endpoint - currently uses console.log/console.error (lines 26, 37). Needs structured logging with conversation_id context (AC2)</reason>
+      </artifact>
+      <artifact>
+        <path>app/api/conversations/[id]/messages/route.ts</path>
+        <kind>api-route</kind>
+        <symbol>GET and POST handlers</symbol>
+        <lines>1-end</lines>
+        <reason>Message exchange endpoints - need logging for request/response with conversation_id (AC2)</reason>
+      </artifact>
+      <artifact>
+        <path>app/api/slack/events/route.ts</path>
+        <kind>api-route</kind>
+        <symbol>POST handler</symbol>
+        <lines>1-end</lines>
+        <reason>Slack webhook endpoint - needs logging for incoming events and responses (AC2)</reason>
+      </artifact>
+      <artifact>
+        <path>app/api/calendly/*/route.ts</path>
+        <kind>api-route</kind>
+        <symbol>All Calendly endpoints (4 files)</symbol>
+        <lines>1-end</lines>
+        <reason>Calendly integration endpoints - need logging for external API calls and errors (AC2)</reason>
+      </artifact>
+      <artifact>
+        <path>app/api/calcom/*/route.ts</path>
+        <kind>api-route</kind>
+        <symbol>All Cal.com endpoints (3 files)</symbol>
+        <lines>1-end</lines>
+        <reason>Cal.com integration endpoints - need logging for external API calls and errors (AC2)</reason>
+      </artifact>
+      <artifact>
+        <path>lib/db/conversations.ts</path>
+        <kind>database</kind>
+        <symbol>All 14 database functions</symbol>
+        <lines>1-end</lines>
+        <reason>Database access layer - needs logging for query execution, duration, and errors. Functions: createConversation, getConversation, updateConversation, etc. (AC3)</reason>
+      </artifact>
+      <artifact>
+        <path>package.json</path>
+        <kind>config</kind>
+        <symbol>Dependencies</symbol>
+        <lines>19-32</lines>
+        <reason>Current dependencies - will add pino and pino-pretty for development (AC1)</reason>
+      </artifact>
+      <artifact>
+        <path>jest.config.js</path>
+        <kind>config</kind>
+        <symbol>Jest configuration</symbol>
+        <lines>1-end</lines>
+        <reason>Existing Jest config - logger tests will follow same patterns and structure</reason>
+      </artifact>
+    </code>
+
+    <dependencies>
+      <ecosystem name="npm">
+        <existing>
+          <package name="next" version="16.0.0" />
+          <package name="react" version="19.2.0" />
+          <package name="typescript" version="^5" />
+          <package name="@vercel/postgres" version="latest" />
+        </existing>
+        <required>
+          <package name="pino" version="10.1.0" />
+          <package name="pino-pretty" version="latest" dev="true" />
+        </required>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint id="C1">Must use Pino 10.1.0 (not Winston - see ADR-004 for rationale)</constraint>
+    <constraint id="C2">Logger must be created in lib/monitoring/logger.ts</constraint>
+    <constraint id="C3">JSON output for production, pretty-printed for development (pino-pretty)</constraint>
+    <constraint id="C4">All logs must include conversation_id when available</constraint>
+    <constraint id="C5">Log levels: error, warn, info, debug (controlled by LOG_LEVEL env var)</constraint>
+    <constraint id="C6">Replace all console.log/console.error with structured logger calls</constraint>
+    <constraint id="C7">Database queries must log query name, duration, and errors (not full SQL for security)</constraint>
+    <constraint id="C8">User emails must be hashed in production logs (privacy protection)</constraint>
+    <constraint id="C9">Logger must be compatible with Next.js 16 App Router and edge runtime where applicable</constraint>
+    <constraint id="C10">No third-party log aggregation services (Pino outputs to stdout for Vercel's built-in logging)</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface>
+      <name>Logger Instance</name>
+      <kind>Pino Logger</kind>
+      <signature>export const logger: pino.Logger</signature>
+      <path>lib/monitoring/logger.ts</path>
+      <notes>Central logger instance exported for use across the application. Configured with environment-specific transport (pino-pretty for dev, JSON for prod)</notes>
+    </interface>
+    <interface>
+      <name>logger.info()</name>
+      <kind>Log method</kind>
+      <signature>logger.info(obj: object, msg: string): void</signature>
+      <path>pino</path>
+      <notes>Log informational events. First arg is context object (conversation_id, action, etc.), second is human-readable message</notes>
+    </interface>
+    <interface>
+      <name>logger.error()</name>
+      <kind>Log method</kind>
+      <signature>logger.error(obj: object, msg: string): void</signature>
+      <path>pino</path>
+      <notes>Log errors requiring immediate attention. Include error object in context for stack traces</notes>
+    </interface>
+    <interface>
+      <name>logger.warn()</name>
+      <kind>Log method</kind>
+      <signature>logger.warn(obj: object, msg: string): void</signature>
+      <path>pino</path>
+      <notes>Log recoverable issues (rate limit approaching, fallback triggered)</notes>
+    </interface>
+    <interface>
+      <name>logger.debug()</name>
+      <kind>Log method</kind>
+      <signature>logger.debug(obj: object, msg: string): void</signature>
+      <path>pino</path>
+      <notes>Detailed tracing for development only (disabled in production unless LOG_LEVEL=debug)</notes>
+    </interface>
+    <interface>
+      <name>POST /api/contact</name>
+      <kind>REST endpoint</kind>
+      <signature>POST /api/contact - Body: { name: string, email: string, message: string, phone: string, company?: string }</signature>
+      <path>app/api/contact/route.ts</path>
+      <notes>Must log: request received (with sanitized user data), Slack API call, database operations, response status, errors</notes>
+    </interface>
+    <interface>
+      <name>Database Functions</name>
+      <kind>Database access</kind>
+      <signature>14 functions in lib/db/conversations.ts</signature>
+      <path>lib/db/conversations.ts</path>
+      <notes>Must log: function name, conversation_id, operation duration, success/failure, error details (not full SQL)</notes>
+    </interface>
+  </interfaces>
+
+  <dependencies>
+    <story>
+      <id>None</id>
+      <title>No prerequisites</title>
+      <status>N/A</status>
+      <relationship>This story can be implemented in parallel with other Epic 1 stories</relationship>
+    </story>
+  </dependencies>
+
+  <tests>
+    <standards>
+      Unit tests using Jest 30.2.0 for logger configuration validation. Integration tests verify logging occurs in API endpoints and database operations. Mock console output capture to verify log messages contain expected fields (conversation_id, action, timestamp). Test all log levels (error, warn, info, debug). Verify JSON output format in production mode. Verify pretty-print format in development mode. Tests located in __tests__/unit/monitoring/ and __tests__/integration/logging/.
+    </standards>
+
+    <locations>
+      __tests__/unit/monitoring/logger.test.ts (NEW - unit tests for logger configuration)
+      __tests__/integration/logging/api-logging.test.ts (NEW - verify API endpoints log correctly)
+      __tests__/integration/logging/db-logging.test.ts (NEW - verify database operations log correctly)
+    </locations>
+
+    <ideas>
+      <test-idea ac="AC1">
+        Verify Pino installation: Check package.json contains pino@10.1.0 and pino-pretty as devDependency. Import logger from lib/monitoring/logger.ts and verify it's a Pino instance. Check logger.level is set based on NODE_ENV.
+      </test-idea>
+      <test-idea ac="AC2">
+        API endpoint logging: Mock POST to /api/contact, capture log output, verify log contains: conversation_id, action: 'contact_form_submitted', user_email (hashed in prod), request method/path, response status, duration. Test success and error scenarios.
+      </test-idea>
+      <test-idea ac="AC3">
+        Database logging: Call createConversation(), capture log output, verify log contains: conversation_id, action: 'db_query_executed', query: 'createConversation', duration in ms, success/error status. Test with all 14 database functions.
+      </test-idea>
+      <test-idea ac="AC4">
+        Log level configuration: Test logger responds to LOG_LEVEL env var. Set LOG_LEVEL=error, verify debug/info logs don't output. Set LOG_LEVEL=debug, verify all levels output. Test default level is 'info' in production, 'debug' in development.
+      </test-idea>
+      <test-idea ac="AC5">
+        JSON formatting: Set NODE_ENV=production, log a message, verify output is valid JSON. Parse output, verify contains: level, time, msg, conversation_id fields. Set NODE_ENV=development, verify pino-pretty transport is used (colorized output).
+      </test-idea>
+      <test-idea ac="AC6">
+        Documentation validation: Verify README.md contains logging section. Check documentation includes: log levels and usage, retention policy, how to query logs, example log statements. Verify examples show conversation_id context pattern.
+      </test-idea>
+      <test-idea ac="ALL">
+        End-to-end logging flow: Submit contact form via E2E test, extract logs from test output, verify complete trace: contact form submission → database insert → Slack notification, all with same conversation_id for correlation.
+      </test-idea>
+    </ideas>
+  </tests>
+
+  <implementation>
+    <approach>
+      Create lib/monitoring/logger.ts with Pino configuration: JSON output for production (NODE_ENV=production), pino-pretty transport for development with colorization. Configure log level based on LOG_LEVEL environment variable (default: 'info' in prod, 'debug' in dev). Install pino@10.1.0 and pino-pretty as devDependency. Replace all console.log/console.error calls in API routes with structured logger calls (logger.info/logger.error). Add logging middleware pattern for API routes to automatically log request/response with conversation_id extraction. Instrument all 14 database functions in lib/db/conversations.ts with query logging (function name, duration, errors). Implement email hashing helper for privacy-safe logging. Create comprehensive tests for logger configuration and usage. Document logging patterns, standards, and retention policy in README.md.
+    </approach>
+
+    <technical-notes>
+      - Pino is designed for async logging with minimal overhead - don't use sync methods in production
+      - Use child loggers to add context: const childLogger = logger.child({ conversation_id: 123 })
+      - For database logging, wrap queries with performance.now() to capture duration
+      - Sanitize sensitive data before logging: hash emails, redact tokens, remove passwords
+      - Vercel automatically captures stdout/stderr from Next.js - no need for log aggregation setup
+      - Pino-pretty is for development only - don't include in production bundle
+      - Use formatters.level to customize log level output format
+      - Consider using pino.destination() for file output in local development if needed
+      - Test log output by capturing process.stdout.write in Jest tests
+      - Edge runtime has limitations - test logger compatibility with edge functions
+      - Create a standardized log context interface: { conversation_id, action, user_email?, error? }
+    </technical-notes>
+
+    <critical-flows>
+      <flow id="F1" priority="critical">
+        Contact Form Submission Logging: User submits form → API route logs request (sanitized user data, conversation_id) → Database operation logged (query name, duration) → Slack API call logged (success/failure) → Response logged (status code, duration) - All logs include same conversation_id for correlation
+      </flow>
+      <flow id="F2" priority="high">
+        Message Exchange Logging: User sends chat message → API logs request (conversation_id, message length) → Database insert logged → Slack API logged → Response logged - Duration tracking for performance monitoring
+      </flow>
+      <flow id="F3" priority="high">
+        Error Handling Logging: Any error occurs → logger.error() captures full error object with stack trace → conversation_id included if available → Error context includes: endpoint, user_email (hashed), action that failed → Structured for easy querying in Vercel logs
+      </flow>
+      <flow id="F4" priority="medium">
+        Database Operation Tracing: All 14 database functions wrapped with logging → Pre-query log (function name, params sanitized) → Post-query log (duration, rows affected) → Error log (if query fails with full error) - Performance monitoring and debugging
+      </flow>
+    </critical-flows>
+
+    <logging-standards>
+      <standard id="LS1">
+        Every API endpoint must log: request received (method, path, conversation_id if available), processing steps (database calls, external API calls), response sent (status code, duration in ms), errors (full error object with stack trace)
+      </standard>
+      <standard id="LS2">
+        Every database operation must log: function name, conversation_id (if applicable), query duration, success/failure status, row count (for SELECT/UPDATE/DELETE), error details (never log full SQL with user data)
+      </standard>
+      <standard id="LS3">
+        Log context object structure: { conversation_id?: number, action: string, user_email?: string (hashed in prod), duration_ms?: number, error?: Error, [additional context] }
+      </standard>
+      <standard id="LS4">
+        Privacy-safe logging: Hash user_email using crypto.createHash('sha256'), redact phone numbers to last 4 digits, never log passwords or API tokens, sanitize message content (log length, not full text if > 100 chars)
+      </standard>
+      <standard id="LS5">
+        Performance tracking: Log duration for all API requests, database queries, external API calls. Use performance.now() for high-resolution timing. Include duration_ms in log context.
+      </standard>
+    </logging-standards>
+
+    <file-changes>
+      <new-files>
+        <file>lib/monitoring/logger.ts - Pino logger configuration and initialization</file>
+        <file>lib/monitoring/log-utils.ts - Helper functions (email hashing, context builders)</file>
+        <file>__tests__/unit/monitoring/logger.test.ts - Logger configuration tests</file>
+        <file>__tests__/integration/logging/api-logging.test.ts - API logging validation</file>
+        <file>__tests__/integration/logging/db-logging.test.ts - Database logging validation</file>
+      </new-files>
+      <modified-files>
+        <file>package.json - Add pino@10.1.0 and pino-pretty dependencies</file>
+        <file>app/api/contact/route.ts - Replace console.log/error with logger calls</file>
+        <file>app/api/conversations/[id]/messages/route.ts - Add structured logging</file>
+        <file>app/api/slack/events/route.ts - Add structured logging</file>
+        <file>app/api/calendly/*/route.ts - Add structured logging (4 files)</file>
+        <file>app/api/calcom/*/route.ts - Add structured logging (3 files)</file>
+        <file>lib/db/conversations.ts - Add logging to all 14 database functions</file>
+        <file>README.md - Add logging documentation section</file>
+        <file>.env.example - Add LOG_LEVEL variable documentation</file>
+      </modified-files>
+    </file-changes>
+
+    <implementation-sequence>
+      <phase n="1" title="Logger Setup">
+        Install pino and pino-pretty. Create lib/monitoring/logger.ts with environment-specific configuration. Create lib/monitoring/log-utils.ts with helper functions. Write unit tests for logger configuration. Verify logger works in both development and production modes.
+      </phase>
+      <phase n="2" title="API Instrumentation">
+        Start with app/api/contact/route.ts as reference implementation. Replace console.log/console.error with logger.info/logger.error. Add conversation_id context extraction. Add duration tracking. Test logging with integration tests. Apply same pattern to all other API routes (9 remaining).
+      </phase>
+      <phase n="3" title="Database Instrumentation">
+        Add logging wrapper to lib/db/conversations.ts. Implement duration tracking using performance.now(). Log all 14 functions: createConversation, getConversation, updateConversation, getConversationBySlackThread, getAllConversations, getActiveConversations, closeConversation, addMessage, getMessages, getUnreadMessages, markMessagesAsRead, getMessageCount, deleteConversation, deleteOldConversations. Write integration tests to verify database logging.
+      </phase>
+      <phase n="4" title="Testing &amp; Documentation">
+        Run full test suite to verify all logging works correctly. Generate sample logs and verify JSON format, conversation_id correlation. Document logging patterns in README.md. Document log retention policy. Add examples of querying logs in Vercel dashboard. Create troubleshooting guide for common logging issues.
+      </phase>
+    </implementation-sequence>
+  </implementation>
+
+  <completion-notes>
+    <note>This story context provides comprehensive guidance for implementing structured logging with Pino. The implementation focuses on privacy-safe logging, performance tracking, and debugging support through conversation_id correlation.</note>
+    <note>Pay special attention to privacy constraints (C8) - user emails must be hashed in production. Test this behavior explicitly.</note>
+    <note>The logger must work seamlessly with Next.js 16 App Router and be compatible with both Node.js and edge runtime where applicable (C9).</note>
+    <note>Vercel's built-in logging captures stdout, so no third-party aggregation is needed (C10). Focus on structured output quality.</note>
+  </completion-notes>
+</story-context>

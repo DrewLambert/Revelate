@@ -1,0 +1,91 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content":
+    - /url: "#differentiators"
+  - navigation "Primary navigation" [ref=e2]:
+    - generic [ref=e4]:
+      - link "Revelate RevOps" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Revelate" [ref=e7]
+        - generic [ref=e8]: RevOps
+      - button "Toggle navigation menu" [ref=e9]:
+        - img [ref=e10]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e19]:
+        - heading "Book a 15-Minute Call" [level=1] [ref=e20]
+        - paragraph [ref=e21]: Share what's breaking. Get actionable next steps—whether we work together or not.
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - img [ref=e29]
+              - generic [ref=e31]:
+                - paragraph [ref=e32]: No sales pitch
+                - paragraph [ref=e33]: Honest assessment of whether we're a fit
+            - generic [ref=e34]:
+              - img [ref=e36]
+              - generic [ref=e38]:
+                - paragraph [ref=e39]: Walk away with value
+                - paragraph [ref=e40]: Tactical next steps you can use immediately
+            - generic [ref=e41]:
+              - img [ref=e43]
+              - generic [ref=e45]:
+                - paragraph [ref=e46]: Clear pricing upfront
+                - paragraph [ref=e47]: Know exactly what it costs if we move forward
+          - paragraph [ref=e49]: I work with 2-3 clients at a time. If my calendar is full, I'll point you to other qualified consultants.
+        - generic [ref=e50]:
+          - generic [ref=e53]:
+            - paragraph [ref=e57]: Loading calendar...
+            - iframe [ref=e58]:
+              
+          - paragraph [ref=e59]: All times shown in your local timezone
+      - generic [ref=e61]:
+        - img [ref=e63]
+        - heading "Prefer Email?" [level=3] [ref=e65]
+        - paragraph [ref=e66]: Not ready to schedule a call yet? Have questions first? Send me an email and I'll get back to you within 24 hours.
+        - link "drew@revelateops.com" [ref=e67] [cursor=pointer]:
+          - /url: mailto:drew@revelateops.com
+          - img [ref=e68]
+          - text: drew@revelateops.com
+  - contentinfo [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - img "Revelate logo" [ref=e76]
+            - generic [ref=e77]: Revelate Operations
+          - paragraph [ref=e78]: Legacy Salesforce modernization for GTM teams who need trustworthy pipeline data—without pausing the business.
+        - generic [ref=e79]:
+          - heading "Navigate" [level=4] [ref=e80]
+          - list [ref=e81]:
+            - listitem [ref=e82]:
+              - link "Services & pricing" [ref=e83] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e84]:
+              - link "About Drew" [ref=e85] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e86]:
+              - link "Book a working session" [ref=e87] [cursor=pointer]:
+                - /url: /book
+        - generic [ref=e88]:
+          - heading "Stay in touch" [level=4] [ref=e89]
+          - paragraph [ref=e90]:
+            - text: drew@revelateops.com
+            - text: Boston, MA · Remote-first
+          - link "Schedule discovery call" [ref=e91] [cursor=pointer]:
+            - /url: /book
+      - paragraph [ref=e93]: © 2025 Revelate Operations LLC. All rights reserved.
+  - button "Open menu" [ref=e95]:
+    - img "Book a call" [ref=e96]
+  - button "Open Next.js Dev Tools" [ref=e103] [cursor=pointer]:
+    - generic [ref=e106]:
+      - text: Compiling
+      - generic [ref=e107]:
+        - generic [ref=e108]: .
+        - generic [ref=e109]: .
+        - generic [ref=e110]: .
+  - alert [ref=e111]
+```

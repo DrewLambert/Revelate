@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/*
+ * REVELATE OPERATIONS BRAND DESIGN SYSTEM
+ *
+ * This file defines the core brand colors, typography, and spacing system
+ * for the Revelate Operations website. All colors, fonts, and spacing should
+ * use these design tokens to maintain brand consistency.
+ *
+ * USAGE GUIDELINES:
+ * - Use semantic color names (text-navy, bg-cyan, etc.) instead of hex values
+ * - Never use arbitrary values like bg-[#1a1f3a] - use bg-navy instead
+ * - Refer to REVELATE-Brand-Guidelines-MASTER.md for color ratios and usage
+ *
+ * COLOR PALETTE:
+ * Primary: Navy (#1a1f3a) - Main dark background, 60-70% of UI
+ * Accent: Cyan (#00d9ff) - Highlights, links, key interactions, 15-20%
+ * Secondary: Blue (#0084ff) - Supporting elements, hover states
+ * CTA: Magenta (#d946ef) - Critical actions only, 5-10%
+ * Neutrals: Charcoal, Slate, Light Gray - Text and subtle elements
+ */
+
+:root {
+  /* === PRIMARY COLORS === */
+  --navy: #1a1f3a;           /* Main dark background - use for sections, cards */
+  --navy-ink: #131735;       /* Deeper navy for contrast - use for footers, overlays */
+
+  /* === ACCENT COLORS === */
+  --cyan: #00d9ff;           /* Primary accent - use for highlights, links, icons */
+  --blue: #0084ff;           /* Secondary accent - use for hover states, gradients */
+  --magenta: #d946ef;        /* CTA accent - use ONLY for primary buttons, critical actions */
+
+  /* === NEUTRAL COLORS === */
+  --white: #ffffff;          /* Pure white - use for text on dark backgrounds */
+  --surface: #f8fafc;        /* Very light gray - use for light section backgrounds */
+  --light-gray: #f1f5f9;     /* Light gray - use for cards on light backgrounds */
+  --border: #dbe3f0;         /* Border gray - use for subtle dividers */
+  --slate: #64748b;          /* Medium gray - use for secondary text */
+  --charcoal: #334155;       /* Dark gray - use for body text on light backgrounds */
+
+  /* === SEMANTIC ALIASES === */
+  --background: var(--white);
+  --foreground: var(--navy);
+}
+
+@theme inline {
+  /* === COLOR UTILITIES === */
+  --color-navy: var(--navy);
+  --color-navy-ink: var(--navy-ink);
+  --color-cyan: var(--cyan);
+  --color-blue: var(--blue);
+  --color-magenta: var(--magenta);
+  --color-white: var(--white);
+  --color-surface: var(--surface);
+  --color-light-gray: var(--light-gray);
+  --color-border: var(--border);
+  --color-slate: var(--slate);
+  --color-charcoal: var(--charcoal);
+
+  /* Semantic aliases */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--charcoal);
+  --color-muted-light: var(--slate);
+
+  /* === TYPOGRAPHY === */
+  --font-sans: var(--font-body, "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif);
+  --font-heading: var(--font-heading, "Space Grotesk", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif);
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", "Menlo", monospace;
+}
+
+body {
+  background: var(--background);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Removed global section background rule - using explicit Tailwind bg-* classes instead */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Removed global element selectors - using explicit Tailwind utility classes instead */
+/* Removed 'a { color: inherit }' - it was overriding all Link utility classes */
+
+/* Font utility classes for explicit usage */
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: var(--font-sans);
+}
+
+/* Fluid typography utilities for smooth responsive scaling */
+.text-fluid-5xl {
+  font-size: clamp(2rem, 4vw + 1rem, 3rem);
+  /* Mobile: 32px, scales to Desktop: 48px */
+}
+
+.text-fluid-4xl {
+  font-size: clamp(1.75rem, 3.5vw + 0.75rem, 2.5rem);
+  /* Mobile: 28px, scales to Desktop: 40px */
+}
+
+.text-fluid-3xl {
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2rem);
+  /* Mobile: 24px, scales to Desktop: 32px */
+}
+
+.text-fluid-2xl {
+  font-size: clamp(1.25rem, 2.5vw + 0.5rem, 1.75rem);
+  /* Mobile: 20px, scales to Desktop: 28px */
+}
+
+.text-fluid-xl {
+  font-size: clamp(1.125rem, 2vw + 0.5rem, 1.5rem);
+  /* Mobile: 18px, scales to Desktop: 24px */
+}
+
+.text-fluid-lg {
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+  /* Mobile: 16px, scales to Desktop: 20px */
+}
+
+.text-fluid-base {
+  font-size: clamp(0.875rem, 1vw + 0.5rem, 1.125rem);
+  /* Mobile: 14px, scales to Desktop: 18px */
+}
+
+/* Responsive spacing utilities */
+.spacing-fluid-xl {
+  padding: clamp(1.5rem, 4vw, 4rem);
+  /* Mobile: 24px, scales to Desktop: 64px */
+}
+
+.spacing-fluid-lg {
+  padding: clamp(1rem, 3vw, 3rem);
+  /* Mobile: 16px, scales to Desktop: 48px */
+}
+
+.spacing-fluid-md {
+  padding: clamp(0.75rem, 2vw, 2rem);
+  /* Mobile: 12px, scales to Desktop: 32px */
+}
+
+.skip-link {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.skip-link:focus {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}

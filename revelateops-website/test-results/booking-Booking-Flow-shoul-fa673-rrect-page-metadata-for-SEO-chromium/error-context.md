@@ -1,0 +1,203 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content":
+    - /url: "#differentiators"
+  - navigation "Primary navigation" [ref=e2]:
+    - generic [ref=e4]:
+      - link "Revelate Revelate Operations" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Revelate" [ref=e7]
+        - generic [ref=e8]: Revelate Operations
+      - generic [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: /services
+        - link "About" [ref=e12] [cursor=pointer]:
+          - /url: /about
+        - link "Get Started" [ref=e13] [cursor=pointer]:
+          - /url: /book
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e21]:
+        - heading "Book a 15-Minute Call" [level=1] [ref=e22]
+        - paragraph [ref=e23]: Share what's breaking. Get actionable next steps—whether we work together or not.
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e29]:
+              - img [ref=e31]
+              - generic [ref=e33]:
+                - paragraph [ref=e34]: No sales pitch
+                - paragraph [ref=e35]: Honest assessment of whether we're a fit
+            - generic [ref=e36]:
+              - img [ref=e38]
+              - generic [ref=e40]:
+                - paragraph [ref=e41]: Walk away with value
+                - paragraph [ref=e42]: Tactical next steps you can use immediately
+            - generic [ref=e43]:
+              - img [ref=e45]
+              - generic [ref=e47]:
+                - paragraph [ref=e48]: Clear pricing upfront
+                - paragraph [ref=e49]: Know exactly what it costs if we move forward
+          - paragraph [ref=e51]: I work with 2-3 clients at a time. If my calendar is full, I'll point you to other qualified consultants.
+        - generic [ref=e52]:
+          - generic [ref=e55]:
+            - paragraph [ref=e59]: Loading calendar...
+            - iframe [ref=e60]:
+              - generic [ref=f1e6]:
+                - heading "15 Minute Consultation" [level=1] [ref=f1e8]
+                - generic [ref=f1e12]:
+                  - heading "Select a Day" [level=2] [ref=f1e13]
+                  - generic [ref=f1e14]:
+                    - generic [ref=f1e15]:
+                      - generic [ref=f1e16]:
+                        - generic [ref=f1e17]:
+                          - button "Go to previous month" [disabled]:
+                            - generic:
+                              - img
+                        - generic [ref=f1e18]: October 2025
+                        - button "Go to next month" [ref=f1e20] [cursor=pointer]:
+                          - img [ref=f1e22]
+                        - status [ref=f1e24]: October is now displayed
+                      - generic [ref=f1e25]:
+                        - table "Select a Day" [ref=f1e26]:
+                          - rowgroup [ref=f1e27]:
+                            - row "Sun Mon Tue Wed Thu Fri Sat" [ref=f1e28]:
+                              - cell "Sun" [ref=f1e29]
+                              - cell "Mon" [ref=f1e30]
+                              - cell "Tue" [ref=f1e31]
+                              - cell "Wed" [ref=f1e32]
+                              - cell "Thu" [ref=f1e33]
+                              - cell "Fri" [ref=f1e34]
+                              - cell "Sat" [ref=f1e35]
+                          - rowgroup [ref=f1e36]:
+                            - row "Wednesday, October 1 - No times available Thursday, October 2 - No times available Friday, October 3 - No times available Saturday, October 4 - No times available" [ref=f1e37]:
+                              - gridcell [ref=f1e38]
+                              - gridcell [ref=f1e39]
+                              - gridcell [ref=f1e40]
+                              - gridcell "Wednesday, October 1 - No times available" [ref=f1e41]:
+                                - button "Wednesday, October 1 - No times available" [disabled]: "1"
+                              - gridcell "Thursday, October 2 - No times available" [ref=f1e42]:
+                                - button "Thursday, October 2 - No times available" [disabled]: "2"
+                              - gridcell "Friday, October 3 - No times available" [ref=f1e43]:
+                                - button "Friday, October 3 - No times available" [disabled]: "3"
+                              - gridcell "Saturday, October 4 - No times available" [ref=f1e44]:
+                                - button "Saturday, October 4 - No times available" [disabled]: "4"
+                            - row "Sunday, October 5 - No times available Monday, October 6 - No times available Tuesday, October 7 - No times available Wednesday, October 8 - No times available Thursday, October 9 - No times available Friday, October 10 - No times available Saturday, October 11 - No times available" [ref=f1e45]:
+                              - gridcell "Sunday, October 5 - No times available" [ref=f1e46]:
+                                - button "Sunday, October 5 - No times available" [disabled]: "5"
+                              - gridcell "Monday, October 6 - No times available" [ref=f1e47]:
+                                - button "Monday, October 6 - No times available" [disabled]: "6"
+                              - gridcell "Tuesday, October 7 - No times available" [ref=f1e48]:
+                                - button "Tuesday, October 7 - No times available" [disabled]: "7"
+                              - gridcell "Wednesday, October 8 - No times available" [ref=f1e49]:
+                                - button "Wednesday, October 8 - No times available" [disabled]: "8"
+                              - gridcell "Thursday, October 9 - No times available" [ref=f1e50]:
+                                - button "Thursday, October 9 - No times available" [disabled]: "9"
+                              - gridcell "Friday, October 10 - No times available" [ref=f1e51]:
+                                - button "Friday, October 10 - No times available" [disabled]: "10"
+                              - gridcell "Saturday, October 11 - No times available" [ref=f1e52]:
+                                - button "Saturday, October 11 - No times available" [disabled]: "11"
+                            - row "Sunday, October 12 - No times available Monday, October 13 - No times available Tuesday, October 14 - No times available Wednesday, October 15 - No times available Thursday, October 16 - No times available Friday, October 17 - No times available Saturday, October 18 - No times available" [ref=f1e53]:
+                              - gridcell "Sunday, October 12 - No times available" [ref=f1e54]:
+                                - button "Sunday, October 12 - No times available" [disabled]: "12"
+                              - gridcell "Monday, October 13 - No times available" [ref=f1e55]:
+                                - button "Monday, October 13 - No times available" [disabled]: "13"
+                              - gridcell "Tuesday, October 14 - No times available" [ref=f1e56]:
+                                - button "Tuesday, October 14 - No times available" [disabled]: "14"
+                              - gridcell "Wednesday, October 15 - No times available" [ref=f1e57]:
+                                - button "Wednesday, October 15 - No times available" [disabled]: "15"
+                              - gridcell "Thursday, October 16 - No times available" [ref=f1e58]:
+                                - button "Thursday, October 16 - No times available" [disabled]: "16"
+                              - gridcell "Friday, October 17 - No times available" [ref=f1e59]:
+                                - button "Friday, October 17 - No times available" [disabled]: "17"
+                              - gridcell "Saturday, October 18 - No times available" [ref=f1e60]:
+                                - button "Saturday, October 18 - No times available" [disabled]: "18"
+                            - row "Sunday, October 19 - No times available Monday, October 20 - No times available Tuesday, October 21 - No times available Wednesday, October 22 - No times available Thursday, October 23 - No times available Friday, October 24 - No times available Saturday, October 25 - No times available" [ref=f1e61]:
+                              - gridcell "Sunday, October 19 - No times available" [ref=f1e62]:
+                                - button "Sunday, October 19 - No times available" [disabled]: "19"
+                              - gridcell "Monday, October 20 - No times available" [ref=f1e63]:
+                                - button "Monday, October 20 - No times available" [disabled]: "20"
+                              - gridcell "Tuesday, October 21 - No times available" [ref=f1e64]:
+                                - button "Tuesday, October 21 - No times available" [disabled]: "21"
+                              - gridcell "Wednesday, October 22 - No times available" [ref=f1e65]:
+                                - button "Wednesday, October 22 - No times available" [disabled]: "22"
+                              - gridcell "Thursday, October 23 - No times available" [ref=f1e66]:
+                                - button "Thursday, October 23 - No times available" [disabled]: "23"
+                              - gridcell "Friday, October 24 - No times available" [ref=f1e67]:
+                                - button "Friday, October 24 - No times available" [disabled]: "24"
+                              - gridcell "Saturday, October 25 - No times available" [ref=f1e68]:
+                                - button "Saturday, October 25 - No times available" [disabled]: "25"
+                            - row "Sunday, October 26 - No times available Monday, October 27 - No times available Tuesday, October 28 - No times available Wednesday, October 29 - No times available Thursday, October 30 - No times available Friday, October 31 - Times available" [ref=f1e69]:
+                              - gridcell "Sunday, October 26 - No times available" [ref=f1e70]:
+                                - button "Sunday, October 26 - No times available" [disabled]: "26"
+                              - gridcell "Monday, October 27 - No times available" [ref=f1e71]:
+                                - button "Monday, October 27 - No times available" [disabled]: "27"
+                              - gridcell "Tuesday, October 28 - No times available" [ref=f1e72]:
+                                - button "Tuesday, October 28 - No times available" [disabled]: "28"
+                              - gridcell "Wednesday, October 29 - No times available" [ref=f1e73]:
+                                - button "Wednesday, October 29 - No times available" [disabled]: "29"
+                              - gridcell "Thursday, October 30 - No times available" [ref=f1e74]:
+                                - button "Thursday, October 30 - No times available" [disabled]: "30"
+                              - gridcell "Friday, October 31 - Times available" [ref=f1e75]:
+                                - button "Friday, October 31 - Times available" [ref=f1e76] [cursor=pointer]: "31"
+                              - gridcell [ref=f1e77]
+                        - status [ref=f1e78]
+                    - generic [ref=f1e80]:
+                      - paragraph [ref=f1e81]: Time zone
+                      - button "Time zone  Eastern Time - US & Canada (5:45pm) " [ref=f1e83] [cursor=pointer]:
+                        - generic [ref=f1e84]: 
+                        - generic [ref=f1e85]: Eastern Time - US & Canada
+                        - generic [ref=f1e86]: (5:45pm)
+                        - generic [ref=f1e87]: 
+          - paragraph [ref=e61]: All times shown in your local timezone
+      - generic [ref=e63]:
+        - img [ref=e65]
+        - heading "Prefer Email?" [level=3] [ref=e67]
+        - paragraph [ref=e68]: Not ready to schedule a call yet? Have questions first? Send me an email and I'll get back to you within 24 hours.
+        - link "drew@revelateops.com" [ref=e69] [cursor=pointer]:
+          - /url: mailto:drew@revelateops.com
+          - img [ref=e70]
+          - text: drew@revelateops.com
+  - contentinfo [ref=e72]:
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - img "Revelate logo" [ref=e78]
+            - generic [ref=e79]: Revelate Operations
+          - paragraph [ref=e80]: Legacy Salesforce modernization for GTM teams who need trustworthy pipeline data—without pausing the business.
+        - generic [ref=e81]:
+          - heading "Navigate" [level=4] [ref=e82]
+          - list [ref=e83]:
+            - listitem [ref=e84]:
+              - link "Services & pricing" [ref=e85] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e86]:
+              - link "About Drew" [ref=e87] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e88]:
+              - link "Book a working session" [ref=e89] [cursor=pointer]:
+                - /url: /book
+        - generic [ref=e90]:
+          - heading "Stay in touch" [level=4] [ref=e91]
+          - paragraph [ref=e92]:
+            - text: drew@revelateops.com
+            - text: Boston, MA · Remote-first
+          - link "Schedule discovery call" [ref=e93] [cursor=pointer]:
+            - /url: /book
+      - paragraph [ref=e95]: © 2025 Revelate Operations LLC. All rights reserved.
+  - generic [ref=e96]:
+    - button "Open menu":
+      - img "Book a call"
+  - button "Open Next.js Dev Tools" [ref=e102] [cursor=pointer]:
+    - generic [ref=e105]:
+      - text: Compiling
+      - generic [ref=e106]:
+        - generic [ref=e107]: .
+        - generic [ref=e108]: .
+        - generic [ref=e109]: .
+```

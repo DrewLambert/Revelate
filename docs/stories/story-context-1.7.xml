@@ -1,0 +1,689 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/1-7" v="2.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.7</storyId>
+    <title>Error Monitoring Integration</title>
+    <status>Drafted</status>
+    <generatedAt>2025-10-30</generatedAt>
+    <updatedAt>2025-10-30</updatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-1.7.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>operations engineer</asA>
+    <iWant>integrated error monitoring with Sentry</iWant>
+    <soThat>production errors are captured and alerted in real-time</soThat>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="AC1">Sentry SDK installed and configured for Next.js</criterion>
+    <criterion id="AC2">Error tracking active for both client and server code</criterion>
+    <criterion id="AC3">Source maps uploaded for readable stack traces</criterion>
+    <criterion id="AC4">Slack alerts configured for critical errors</criterion>
+    <criterion id="AC5">Error dashboard accessible to team</criterion>
+    <criterion id="AC6">Sample error tested and verified in Sentry</criterion>
+  </acceptanceCriteria>
+
+  <constraints>
+    <constraint id="C1">Must use @sentry/nextjs 10.22.0 or later</constraint>
+    <constraint id="C2">Configure client, server, and edge configs</constraint>
+    <constraint id="C3">Source maps must be uploaded securely (auth token required)</constraint>
+    <constraint id="C4">Environment variables must be documented in .env.example</constraint>
+    <constraint id="C5">Must not break existing error handling patterns</constraint>
+  </constraints>
+
+  <artifacts>
+    <artifact id="A1" type="config" file="sentry.client.config.ts">
+      <description>Client-side Sentry initialization</description>
+      <purpose>Initialize Sentry SDK for browser/client-side code</purpose>
+      <implementation>
+        <![CDATA[
+import * as Sentry from '@sentry/nextjs';
+
+Sentry.init({
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+
+  // Adjust this value in production, or use tracesSampler for finer control
+  tracesSampleRate: 1.0,
+
+  // Setting this option to true will print useful information to the console while you're setting up Sentry
+  debug: false,
+
+  environment: process.env.NODE_ENV,
+
+  // You can remove this option if you're not planning to use the Sentry Session Replay feature
+  replaysOnErrorSampleRate: 1.0,
+
+  // This sets the sample rate to be 10%. You may want this to be 100% while in development
+  replaysSessionSampleRate: 0.1,
+
+  integrations: [
+    Sentry.replayIntegration({
+      maskAllText: true,
+      blockAllMedia: true,
+    }),
+  ],
+});
+        ]]>
+      </implementation>
+      <notes>
+        - NEXT_PUBLIC_SENTRY_DSN must be in .env.local (client-accessible)
+        - debug: false in production to reduce console noise
+        - Session replay helps debug user-reported issues
+      </notes>
+    </artifact>
+
+    <artifact id="A2" type="config" file="sentry.server.config.ts">
+      <description>Server-side Sentry initialization</description>
+      <purpose>Initialize Sentry SDK for Node.js server-side code and API routes</purpose>
+      <implementation>
+        <![CDATA[
+import * as Sentry from '@sentry/nextjs';
+
+Sentry.init({
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+
+  // Adjust this value in production, or use tracesSampler for finer control
+  tracesSampleRate: 1.0,
+
+  // Setting this option to true will print useful information to the console while you're setting up Sentry
+  debug: false,
+
+  environment: process.env.NODE_ENV,
+});
+        ]]>
+      </implementation>
+      <notes>
+        - Server config is simpler (no replay features)
+        - Same DSN can be used for both client and server
+        - Will capture unhandled exceptions in API routes
+      </notes>
+    </artifact>
+
+    <artifact id="A3" type="config" file="sentry.edge.config.ts">
+      <description>Edge runtime Sentry initialization</description>
+      <purpose>Initialize Sentry SDK for Edge runtime functions</purpose>
+      <implementation>
+        <![CDATA[
+import * as Sentry from '@sentry/nextjs';
+
+Sentry.init({
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+
+  // Adjust this value in production, or use tracesSampler for finer control
+  tracesSampleRate: 1.0,
+
+  // Setting this option to true will print useful information to the console while you're setting up Sentry
+  debug: false,
+
+  environment: process.env.NODE_ENV,
+});
+        ]]>
+      </implementation>
+      <notes>
+        - Edge config has limited features compared to Node.js runtime
+        - Current project uses 'nodejs' runtime for most API routes
+        - May not be heavily used but required for complete coverage
+      </notes>
+    </artifact>
+
+    <artifact id="A4" type="config" file="next.config.ts">
+      <description>Updated Next.js configuration with Sentry plugin</description>
+      <purpose>Enable Sentry build-time instrumentation and source map upload</purpose>
+      <implementation>
+        <![CDATA[
+import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
+
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.scdn.co',
+        pathname: '/image/**',
+      },
+    ],
+  },
+};
+
+// Sentry configuration options
+const sentryWebpackPluginOptions = {
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options
+
+  // Suppresses source map uploading logs during build
+  silent: true,
+
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+
+  // Auth token for uploading source maps
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+};
+
+// Make sure adding Sentry options is the last code to run before exporting
+export default withSentryConfig(
+  nextConfig,
+  sentryWebpackPluginOptions
+);
+        ]]>
+      </implementation>
+      <notes>
+        - withSentryConfig wraps the Next.js config
+        - Source maps are automatically uploaded during production builds
+        - SENTRY_AUTH_TOKEN should be in .env.local (not committed to git)
+        - SENTRY_ORG and SENTRY_PROJECT identify your Sentry account/project
+      </notes>
+    </artifact>
+
+    <artifact id="A5" type="config" file=".env.example">
+      <description>Environment variable documentation</description>
+      <purpose>Document all required Sentry environment variables</purpose>
+      <implementation>
+        <![CDATA[
+# Existing variables...
+
+# Sentry Error Monitoring
+# Get these from: https://sentry.io/settings/[org]/projects/[project]/keys/
+NEXT_PUBLIC_SENTRY_DSN=https://[key]@[org].ingest.sentry.io/[project]
+
+# Sentry organization and project (for source map upload)
+# Found in Sentry project settings URL
+SENTRY_ORG=your-org-slug
+SENTRY_PROJECT=your-project-slug
+
+# Sentry Auth Token (for uploading source maps during build)
+# Create at: https://sentry.io/settings/account/api/auth-tokens/
+# Needs 'project:releases' and 'org:read' scopes
+SENTRY_AUTH_TOKEN=your_auth_token_here
+        ]]>
+      </implementation>
+      <notes>
+        - NEXT_PUBLIC_SENTRY_DSN is public (embedded in client bundle)
+        - SENTRY_AUTH_TOKEN is secret (only used during build)
+        - Add detailed comments to help future developers
+      </notes>
+    </artifact>
+
+    <artifact id="A6" type="enhancement" file="app/api/contact/route.ts">
+      <description>Example of enhanced error handling with Sentry</description>
+      <purpose>Show pattern for adding Sentry to existing API routes</purpose>
+      <implementation>
+        <![CDATA[
+import * as Sentry from '@sentry/nextjs';
+
+// In the catch block:
+catch (error) {
+  // Capture the exception with context
+  Sentry.captureException(error, {
+    tags: {
+      route: '/api/contact',
+      action: 'contact_form_submission'
+    },
+    extra: {
+      email: data.email,
+      hasName: !!data.name,
+      hasMessage: !!data.message,
+      slackConfigured: !!(slackToken && slackUserId)
+    }
+  });
+
+  console.error('Contact form error:', error);
+  return NextResponse.json(
+    { error: error instanceof Error ? error.message : 'Failed to process contact form' },
+    { status: 500 }
+  );
+}
+        ]]>
+      </implementation>
+      <notes>
+        - Don't remove existing console.error (helps with local debugging)
+        - Add Sentry.captureException before or after console.error
+        - Include relevant context (tags, extra data) to aid debugging
+        - Don't log sensitive data (passwords, tokens, etc.)
+        - This pattern applies to all 9+ API routes in the application
+      </notes>
+    </artifact>
+
+    <artifact id="A7" type="test" file="__tests__/integration/sentry.test.ts">
+      <description>Integration test for Sentry error capture</description>
+      <purpose>Verify Sentry captures and reports errors correctly</purpose>
+      <implementation>
+        <![CDATA[
+import * as Sentry from '@sentry/nextjs';
+
+describe('Sentry Integration', () => {
+  it('should capture test errors', async () => {
+    const testError = new Error('Test error for Sentry');
+
+    // Capture the error
+    const eventId = Sentry.captureException(testError, {
+      tags: { test: 'integration_test' },
+      extra: { timestamp: new Date().toISOString() }
+    });
+
+    // Verify event ID was generated
+    expect(eventId).toBeDefined();
+    expect(typeof eventId).toBe('string');
+
+    // Flush to ensure event is sent
+    await Sentry.flush(2000);
+  });
+
+  it('should include environment context', () => {
+    expect(process.env.NEXT_PUBLIC_SENTRY_DSN).toBeDefined();
+  });
+});
+        ]]>
+      </implementation>
+      <notes>
+        - Run this test to verify Sentry configuration is working
+        - Check Sentry dashboard after running to confirm event appears
+        - Use test environment to avoid polluting production data
+      </notes>
+    </artifact>
+  </artifacts>
+
+  <interfaces>
+    <interface id="I1" name="Sentry SDK">
+      <description>JavaScript/TypeScript API for error tracking</description>
+      <keyMethods>
+        <method name="Sentry.init">Initialize SDK with DSN and options</method>
+        <method name="Sentry.captureException">Manually capture an exception</method>
+        <method name="Sentry.captureMessage">Capture a text message</method>
+        <method name="Sentry.setUser">Associate errors with user identity</method>
+        <method name="Sentry.setTag">Add searchable tags to events</method>
+        <method name="Sentry.setContext">Add additional context data</method>
+        <method name="Sentry.flush">Ensure events are sent before shutdown</method>
+      </keyMethods>
+      <usage>
+        - Import from '@sentry/nextjs' (not '@sentry/browser' or '@sentry/node')
+        - Automatically captures unhandled errors and promise rejections
+        - Use captureException for manual error reporting in catch blocks
+        - Add context to help debug issues (user info, request details, etc.)
+      </usage>
+    </interface>
+
+    <interface id="I2" name="Sentry Webpack Plugin">
+      <description>Build-time plugin for source map upload</description>
+      <purpose>Upload source maps to Sentry during production builds</purpose>
+      <integration>
+        - Integrated via withSentryConfig wrapper in next.config.ts
+        - Runs automatically during 'npm run build'
+        - Requires SENTRY_AUTH_TOKEN in environment
+        - Source maps are stripped from production bundle
+      </integration>
+    </interface>
+
+    <interface id="I3" name="Sentry Dashboard">
+      <description>Web UI for viewing and managing errors</description>
+      <access>https://sentry.io/organizations/[org]/issues/</access>
+      <features>
+        - View error frequency and trends
+        - See stack traces with source-mapped code
+        - Assign errors to team members
+        - Mark errors as resolved
+        - Set up alert rules
+        - Configure Slack/email notifications
+      </features>
+    </interface>
+
+    <interface id="I4" name="Slack Integration">
+      <description>Sentry-to-Slack alerts for critical errors</description>
+      <setup>
+        1. Install Sentry app in Slack workspace
+        2. Configure in Sentry: Settings → Integrations → Slack
+        3. Set up alert rules in Project Settings → Alerts
+        4. Define conditions (e.g., new issue, regression, frequency threshold)
+      </setup>
+      <notes>
+        - Separate from existing Slack bot integration (contact form)
+        - Can send to specific channels or DMs
+        - Alerts are real-time (< 1 minute delay)
+      </notes>
+    </interface>
+  </interfaces>
+
+  <dependencies>
+    <dependency id="D1" type="npm-package">
+      <name>@sentry/nextjs</name>
+      <version>10.22.0+</version>
+      <purpose>Sentry SDK for Next.js applications</purpose>
+      <installation>npm install @sentry/nextjs@latest</installation>
+      <notes>Use latest 10.x version for best Next.js 16 compatibility</notes>
+    </dependency>
+
+    <dependency id="D2" type="external-service">
+      <name>Sentry SaaS</name>
+      <purpose>Cloud-based error tracking and monitoring service</purpose>
+      <setup>
+        1. Create account at https://sentry.io
+        2. Create new project (select "Next.js" platform)
+        3. Copy DSN from project settings
+        4. Generate auth token for source map uploads
+      </setup>
+      <notes>Free tier available (5k errors/month), sufficient for initial deployment</notes>
+    </dependency>
+
+    <dependency id="D3" type="story">
+      <name>Story 1.1 - Testing Infrastructure</name>
+      <reason>Testing infrastructure helps verify Sentry integration works correctly</reason>
+      <impact>Can use existing Jest/Playwright setup to test error capture</impact>
+    </dependency>
+
+    <dependency id="D4" type="environment">
+      <name>Environment Variables</name>
+      <required>
+        - NEXT_PUBLIC_SENTRY_DSN (client-side)
+        - SENTRY_AUTH_TOKEN (build-time)
+        - SENTRY_ORG (build-time)
+        - SENTRY_PROJECT (build-time)
+      </required>
+      <notes>Must be configured in both local .env.local and production deployment (Vercel)</notes>
+    </dependency>
+
+    <dependency id="D5" type="existing-code">
+      <name>API Routes Error Handling</name>
+      <files>
+        - app/api/contact/route.ts
+        - app/api/calendly/*/route.ts (4 files)
+        - app/api/calcom/*/route.ts (3 files)
+        - app/api/slack/events/route.ts
+        - app/api/conversations/[id]/messages/route.ts
+      </files>
+      <pattern>All use try-catch with console.error logging</pattern>
+      <enhancement>Add Sentry.captureException calls in existing catch blocks</enhancement>
+    </dependency>
+  </dependencies>
+
+  <technicalNotes>
+    <note id="TN1" category="architecture">
+      <title>Next.js Configuration Update</title>
+      <content>
+        The current next.config.ts uses TypeScript format. The Sentry wizard will create
+        JavaScript config files, but we should convert to TypeScript for consistency.
+        The withSentryConfig wrapper must be the outermost wrapper in the config chain.
+      </content>
+    </note>
+
+    <note id="TN2" category="implementation">
+      <title>Wizard vs Manual Configuration</title>
+      <content>
+        The Sentry wizard (npx @sentry/wizard@latest -i nextjs) automates most setup:
+        - Installs @sentry/nextjs
+        - Creates sentry.*.config.ts files
+        - Modifies next.config.ts
+        - Creates .sentryclirc file
+
+        However, it may need manual adjustments:
+        - Convert generated JS files to TS if needed
+        - Review and customize sampling rates
+        - Add project-specific tags and context
+      </content>
+    </note>
+
+    <note id="TN3" category="security">
+      <title>Auth Token Security</title>
+      <content>
+        SENTRY_AUTH_TOKEN grants access to upload source maps. Best practices:
+        - Never commit to git (.env.local is in .gitignore)
+        - Use environment variables in CI/CD (Vercel env vars)
+        - Limit token scope to 'project:releases' and 'org:read' only
+        - Rotate token if exposed
+        - Document in .env.example with placeholder
+      </content>
+    </note>
+
+    <note id="TN4" category="performance">
+      <title>Sample Rates and Performance Impact</title>
+      <content>
+        Sentry can impact performance if not configured properly:
+        - tracesSampleRate: 1.0 in dev, 0.1-0.5 in production
+        - replaysSessionSampleRate: 0.1 (10% of sessions)
+        - replaysOnErrorSampleRate: 1.0 (always capture when error occurs)
+
+        Adjust based on traffic volume and Sentry plan limits.
+      </content>
+    </note>
+
+    <note id="TN5" category="existing-patterns">
+      <title>Current Error Handling Pattern</title>
+      <content>
+        All API routes follow this pattern:
+        ```typescript
+        try {
+          // Route logic
+          console.error('specific context:', details);
+          return NextResponse.json({ error }, { status: 500 });
+        } catch (error) {
+          console.error('Route name error:', error);
+          return NextResponse.json({ error: message }, { status: 500 });
+        }
+        ```
+
+        Enhancement pattern:
+        ```typescript
+        catch (error) {
+          Sentry.captureException(error, { tags, extra });
+          console.error('Route name error:', error);  // Keep existing
+          return NextResponse.json({ error: message }, { status: 500 });
+        }
+        ```
+
+        This preserves existing behavior while adding Sentry tracking.
+      </content>
+    </note>
+
+    <note id="TN6" category="deployment">
+      <title>Vercel Deployment Configuration</title>
+      <content>
+        For Vercel deployment:
+        1. Add environment variables in Vercel dashboard:
+           - NEXT_PUBLIC_SENTRY_DSN (Production + Preview)
+           - SENTRY_AUTH_TOKEN (Production only, or use Vercel secret)
+           - SENTRY_ORG (Production + Preview)
+           - SENTRY_PROJECT (Production + Preview)
+
+        2. Source maps will upload during build automatically
+        3. Verify in Sentry dashboard after deployment
+        4. Test error tracking by triggering test error in production
+      </content>
+    </note>
+
+    <note id="TN7" category="testing">
+      <title>Testing Strategy</title>
+      <content>
+        Multi-level testing approach:
+        1. Local development test: Throw test error, check Sentry dashboard
+        2. Integration test: Use Jest to verify Sentry.captureException works
+        3. API route test: Trigger error in API endpoint, verify capture
+        4. E2E test: Use Playwright to trigger client-side error
+        5. Production verification: Deploy, trigger error, check Slack alert
+
+        All tests should verify:
+        - Error appears in Sentry dashboard
+        - Stack trace is readable (source maps working)
+        - Slack alert is sent (for critical errors)
+      </content>
+    </note>
+  </technicalNotes>
+
+  <testingApproach>
+    <testLevel name="Unit Tests">
+      <description>Test Sentry SDK integration and configuration</description>
+      <coverage>
+        - Verify Sentry.init is called with correct DSN
+        - Test Sentry.captureException with various error types
+        - Verify tags and context are properly set
+        - Test flush functionality
+      </coverage>
+      <location>__tests__/integration/sentry.test.ts</location>
+    </testLevel>
+
+    <testLevel name="Integration Tests">
+      <description>Test error capture in API routes</description>
+      <coverage>
+        - Mock API route errors and verify Sentry capture
+        - Test error context includes request details
+        - Verify errors with different severity levels
+        - Test source map loading in Sentry
+      </coverage>
+      <location>__tests__/integration/api-error-tracking.test.ts</location>
+    </testLevel>
+
+    <testLevel name="End-to-End Tests">
+      <description>Test complete error flow from trigger to dashboard</description>
+      <coverage>
+        - Trigger client-side error in browser
+        - Trigger server-side error in API route
+        - Verify error appears in Sentry dashboard
+        - Verify Slack alert is sent
+        - Verify stack trace is readable
+      </coverage>
+      <location>e2e/error-monitoring.spec.ts</location>
+      <notes>
+        May need to use Sentry API to verify events were created
+        or manually check dashboard after test run
+      </notes>
+    </testLevel>
+
+    <testLevel name="Manual Testing">
+      <description>Manual verification checklist</description>
+      <steps>
+        1. Deploy to production/preview environment
+        2. Trigger test error via /api/test-error endpoint
+        3. Check Sentry dashboard for error event
+        4. Verify stack trace shows source-mapped code (not minified)
+        5. Verify Slack channel receives alert
+        6. Test error assignment and resolution workflow
+        7. Verify team members can access dashboard
+      </steps>
+    </testLevel>
+  </testingApproach>
+
+  <completionNotes>
+    <definitionOfDone>
+      <item>✓ @sentry/nextjs installed at version 10.22.0+</item>
+      <item>✓ Three config files created (client, server, edge)</item>
+      <item>✓ next.config.ts updated with Sentry plugin</item>
+      <item>✓ Environment variables documented in .env.example</item>
+      <item>✓ Environment variables configured in .env.local</item>
+      <item>✓ All 9+ API routes enhanced with Sentry error capture</item>
+      <item>✓ Source maps uploading successfully during build</item>
+      <item>✓ Sentry account created and project configured</item>
+      <item>✓ Slack integration connected and tested</item>
+      <item>✓ Alert rules configured for critical errors</item>
+      <item>✓ Team members granted access to Sentry dashboard</item>
+      <item>✓ Test error verified in Sentry dashboard</item>
+      <item>✓ Stack traces are readable (source maps working)</item>
+      <item>✓ Slack alerts working for critical errors</item>
+      <item>✓ Integration tests passing</item>
+      <item>✓ E2E tests passing</item>
+      <item>✓ Documentation updated with Sentry access instructions</item>
+    </definitionOfDone>
+
+    <acceptanceCriteriaMapping>
+      <mapping>
+        <ac>AC1: Sentry SDK installed and configured for Next.js</ac>
+        <verification>
+          - package.json shows @sentry/nextjs dependency
+          - Three config files exist with valid configuration
+          - next.config.ts includes withSentryConfig wrapper
+        </verification>
+      </mapping>
+      <mapping>
+        <ac>AC2: Error tracking active for both client and server code</ac>
+        <verification>
+          - Client-side errors captured (test with React error boundary)
+          - Server-side errors captured (test with API route error)
+          - All API routes enhanced with Sentry.captureException
+        </verification>
+      </mapping>
+      <mapping>
+        <ac>AC3: Source maps uploaded for readable stack traces</ac>
+        <verification>
+          - Build logs show source map upload success
+          - Sentry dashboard shows readable TypeScript code (not minified JS)
+          - Stack traces include file names and line numbers
+        </verification>
+      </mapping>
+      <mapping>
+        <ac>AC4: Slack alerts configured for critical errors</ac>
+        <verification>
+          - Sentry Slack app installed in workspace
+          - Alert rules configured in Sentry
+          - Test alert received in designated Slack channel
+        </verification>
+      </mapping>
+      <mapping>
+        <ac>AC5: Error dashboard accessible to team</ac>
+        <verification>
+          - Team members invited to Sentry project
+          - Access permissions verified
+          - Dashboard URL documented
+        </verification>
+      </mapping>
+      <mapping>
+        <ac>AC6: Sample error tested and verified in Sentry</ac>
+        <verification>
+          - Test error created and captured
+          - Error visible in Sentry dashboard within 1 minute
+          - Stack trace, tags, and context all present
+          - Slack alert sent successfully
+        </verification>
+      </mapping>
+    </acceptanceCriteriaMapping>
+
+    <knownIssues>
+      <issue id="I1" severity="low">
+        <description>Sentry wizard may create JavaScript files instead of TypeScript</description>
+        <workaround>Manually convert .js files to .ts and add proper type imports</workaround>
+      </issue>
+      <issue id="I2" severity="medium">
+        <description>Source map upload can slow down production builds</description>
+        <workaround>Set silent: true in sentryWebpackPluginOptions to reduce log noise</workaround>
+      </issue>
+      <issue id="I3" severity="low">
+        <description>Local development errors may clutter Sentry dashboard</description>
+        <workaround>Set environment: process.env.NODE_ENV to filter by environment in dashboard</workaround>
+      </issue>
+    </knownIssues>
+
+    <followUpStories>
+      <followUp>Consider adding performance monitoring (Sentry Performance)</followUp>
+      <followUp>Set up custom error boundaries for better client-side error UX</followUp>
+      <followUp>Configure error grouping rules to reduce noise</followUp>
+      <followUp>Add user feedback widget for error reports</followUp>
+      <followUp>Set up release tracking to correlate errors with deployments</followUp>
+    </followUpStories>
+  </completionNotes>
+
+  <references>
+    <reference id="R1">
+      <title>Sentry Next.js Documentation</title>
+      <url>https://docs.sentry.io/platforms/javascript/guides/nextjs/</url>
+    </reference>
+    <reference id="R2">
+      <title>Sentry Webpack Plugin</title>
+      <url>https://github.com/getsentry/sentry-webpack-plugin</url>
+    </reference>
+    <reference id="R3">
+      <title>Sentry Slack Integration</title>
+      <url>https://docs.sentry.io/product/integrations/notification-incidents/slack/</url>
+    </reference>
+    <reference id="R4">
+      <title>Next.js Error Handling</title>
+      <url>https://nextjs.org/docs/app/building-your-application/routing/error-handling</url>
+    </reference>
+    <reference id="R5">
+      <title>Story Source</title>
+      <url>docs/epics.md#Story 1.7</url>
+    </reference>
+    <reference id="R6">
+      <title>Architecture Reference</title>
+      <url>docs/architecture.md#Error Monitoring</url>
+    </reference>
+  </references>
+</story-context>

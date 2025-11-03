@@ -1,0 +1,342 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/1-6" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.6</storyId>
+    <title>CI/CD Testing Integration</title>
+    <status>Drafted</status>
+    <generatedAt>2025-10-30</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-1.6.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>DevOps engineer</asA>
+    <iWant>automated tests running in CI/CD pipeline</iWant>
+    <soThat>code quality is verified before deployment</soThat>
+    <tasks>
+      <task id="T1">Create GitHub Actions workflow (AC: 1)</task>
+      <task id="T2">Configure test triggers (AC: 2, 3)</task>
+      <task id="T3">Set up deployment gates (AC: 4)</task>
+      <task id="T4">Configure test reporting (AC: 5)</task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="AC1">GitHub Actions (or Vercel CI) configured for automated testing</criterion>
+    <criterion id="AC2">Tests run on every pull request</criterion>
+    <criterion id="AC3">Tests run on every push to main branch</criterion>
+    <criterion id="AC4">Deployment blocked if tests fail</criterion>
+    <criterion id="AC5">Test results visible in PR checks</criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <artifact>
+        <path>docs/architecture.md</path>
+        <title>Architecture Document</title>
+        <section>CI/CD Pipeline</section>
+        <snippet>GitHub Actions triggers on PR and push events. Runs all tests (unit, integration, E2E), ESLint, TypeScript checks, and generates coverage reports. If tests pass, deploys to Vercel preview. Manual approval required for merge to main, triggering automatic production deployment.</snippet>
+      </artifact>
+      <artifact>
+        <path>docs/architecture.md</path>
+        <title>Architecture Document</title>
+        <section>Deployment Architecture</section>
+        <snippet>Vercel platform with three environments: Production (main branch), Preview (feature branches, automatic), and Development (local). CI/CD pipeline ensures code quality before deployment with automated testing gates.</snippet>
+      </artifact>
+      <artifact>
+        <path>docs/architecture.md</path>
+        <title>Architecture Document</title>
+        <section>Test Coverage Workflow Example</section>
+        <snippet>GitHub Actions workflow configured with actions/checkout@v4, actions/setup-node@v4 (Node 20), npm ci for dependency installation, test execution, and codecov integration for coverage reporting.</snippet>
+      </artifact>
+      <artifact>
+        <path>docs/epics.md</path>
+        <title>Product Epics</title>
+        <section>Story 1.6 Definition</section>
+        <snippet>CI/CD Testing Integration requires automated tests in pipeline, running on every PR and push to main. Deployment must be blocked if tests fail. Test results must be visible in PR checks. Prerequisites: Stories 1.2, 1.3, 1.4 complete.</snippet>
+      </artifact>
+    </docs>
+
+    <code>
+      <artifact>
+        <path>.github/workflows/test-coverage.yml</path>
+        <kind>github-actions-workflow</kind>
+        <symbol>Test Coverage workflow</symbol>
+        <lines>1-37</lines>
+        <reason>Existing CI/CD workflow that runs Jest tests with coverage on PR and push events. Serves as foundation for comprehensive testing pipeline.</reason>
+      </artifact>
+      <artifact>
+        <path>package.json</path>
+        <kind>config</kind>
+        <symbol>Test scripts</symbol>
+        <lines>5-17</lines>
+        <reason>Defines all available test commands: test (Jest), test:watch, test:coverage, test:e2e (Playwright), test:e2e:headed, test:e2e:debug, test:e2e:ui, test:e2e:report</reason>
+      </artifact>
+      <artifact>
+        <path>jest.config.js</path>
+        <kind>config</kind>
+        <symbol>Jest configuration</symbol>
+        <lines>40-55</lines>
+        <reason>Coverage thresholds configured at 80% (global) and 90% (database layer). Jest will fail if coverage drops below thresholds, providing deployment gate functionality.</reason>
+      </artifact>
+      <artifact>
+        <path>playwright.config.ts</path>
+        <kind>config</kind>
+        <symbol>Playwright configuration</symbol>
+        <lines>1-end</lines>
+        <reason>E2E test configuration including headless mode for CI, webServer settings, and artifact capture. Critical for E2E testing in CI/CD pipeline.</reason>
+      </artifact>
+      <artifact>
+        <path>__tests__/e2e/</path>
+        <kind>test-directory</kind>
+        <symbol>E2E tests</symbol>
+        <lines>all</lines>
+        <reason>14 E2E tests across contact, booking, and chat flows. Must run in CI/CD to validate critical user journeys before deployment.</reason>
+      </artifact>
+      <artifact>
+        <path>__tests__/integration/</path>
+        <kind>test-directory</kind>
+        <symbol>Integration tests</symbol>
+        <lines>all</lines>
+        <reason>API endpoint integration tests for contact, conversations, Slack, Cal.com, and Calendly. Validate API contracts and external integrations.</reason>
+      </artifact>
+      <artifact>
+        <path>__tests__/unit/</path>
+        <kind>test-directory</kind>
+        <symbol>Unit tests</symbol>
+        <lines>all</lines>
+        <reason>Database operations unit tests with 90% coverage requirement. Core business logic validation.</reason>
+      </artifact>
+    </code>
+
+    <dependencies>
+      <ecosystem name="npm">
+        <existing>
+          <package name="jest" version="^30.2.0" />
+          <package name="@playwright/test" version="1.56.1" />
+          <package name="@testing-library/react" version="^16.3.0" />
+          <package name="next" version="16.0.0" />
+        </existing>
+        <required>
+          <note>No new packages required - all test infrastructure already installed</note>
+        </required>
+      </ecosystem>
+      <ecosystem name="github-actions">
+        <existing>
+          <action name="actions/checkout" version="v4" />
+          <action name="actions/setup-node" version="v4" />
+          <action name="actions/upload-artifact" version="v4" />
+        </existing>
+        <optional>
+          <action name="codecov/codecov-action" version="v3" purpose="Coverage reporting to Codecov" />
+          <action name="microsoft/playwright-github-action" version="v1" purpose="Playwright browser caching" />
+        </optional>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint id="C1">Must use GitHub Actions (native to GitHub repository)</constraint>
+    <constraint id="C2">Node.js 20+ required (matches production Vercel environment)</constraint>
+    <constraint id="C3">Must run all three test suites: unit (Jest), integration (Jest), E2E (Playwright)</constraint>
+    <constraint id="C4">Workflow file location: .github/workflows/ directory</constraint>
+    <constraint id="C5">Must run on pull_request and push events (main and Prerelease branches)</constraint>
+    <constraint id="C6">Jest must enforce 80% coverage threshold (auto-fail on drop)</constraint>
+    <constraint id="C7">Playwright tests must run in headless mode in CI</constraint>
+    <constraint id="C8">Must not break existing test-coverage.yml workflow</constraint>
+    <constraint id="C9">Vercel deployment should automatically deploy on passing tests</constraint>
+    <constraint id="C10">Branch protection rules should require passing checks before merge</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface>
+      <name>GitHub Actions Workflow</name>
+      <kind>CI/CD Pipeline</kind>
+      <signature>on: [pull_request, push] → checkout → setup → install → test → report</signature>
+      <path>.github/workflows/</path>
+      <notes>Standard GitHub Actions workflow pattern with checkout, Node setup, dependency installation, test execution, and artifact upload</notes>
+    </interface>
+    <interface>
+      <name>npm test</name>
+      <kind>Test command</kind>
+      <signature>npm test - Runs Jest unit and integration tests</signature>
+      <path>package.json scripts.test</path>
+      <notes>Executes Jest test suite without coverage reporting</notes>
+    </interface>
+    <interface>
+      <name>npm run test:coverage</name>
+      <kind>Test command</kind>
+      <signature>npm run test:coverage - Runs Jest with coverage reporting and threshold enforcement</signature>
+      <path>package.json scripts.test:coverage</path>
+      <notes>Generates coverage reports, fails if below 80% threshold</notes>
+    </interface>
+    <interface>
+      <name>npm run test:e2e</name>
+      <kind>Test command</kind>
+      <signature>npm run test:e2e - Runs Playwright E2E tests in headless mode</signature>
+      <path>package.json scripts.test:e2e</path>
+      <notes>Executes 14 E2E tests, auto-starts dev server, captures screenshots/videos on failure</notes>
+    </interface>
+    <interface>
+      <name>Vercel Deployment API</name>
+      <kind>External integration</kind>
+      <signature>GitHub → Vercel automatic deployment on push to main/Prerelease</signature>
+      <path>Vercel platform</path>
+      <notes>Vercel automatically deploys when GitHub Actions pass. Can configure required checks in Vercel dashboard.</notes>
+    </interface>
+    <interface>
+      <name>GitHub Branch Protection</name>
+      <kind>Repository settings</kind>
+      <signature>Repository Settings → Branches → Branch protection rules</signature>
+      <path>GitHub repository settings</path>
+      <notes>Configure required status checks, require PR reviews, and other protection rules</notes>
+    </interface>
+  </interfaces>
+
+  <dependencies>
+    <story>
+      <id>1.1</id>
+      <title>Set Up Testing Infrastructure</title>
+      <status>Done</status>
+      <relationship>Prerequisite - Jest and test infrastructure must be configured</relationship>
+    </story>
+    <story>
+      <id>1.2</id>
+      <title>Unit Tests for Database Operations</title>
+      <status>Done</status>
+      <relationship>Prerequisite - Unit tests must exist to run in CI/CD</relationship>
+    </story>
+    <story>
+      <id>1.3</id>
+      <title>Integration Tests for API Endpoints</title>
+      <status>Done</status>
+      <relationship>Prerequisite - Integration tests must exist to run in CI/CD</relationship>
+    </story>
+    <story>
+      <id>1.4</id>
+      <title>End-to-End Tests for Critical Flows</title>
+      <status>Done</status>
+      <relationship>Prerequisite - E2E tests must exist to run in CI/CD</relationship>
+    </story>
+    <story>
+      <id>1.5</id>
+      <title>Test Coverage Reporting</title>
+      <status>Done</status>
+      <relationship>Prerequisite - Coverage configuration must be complete</relationship>
+    </story>
+  </dependencies>
+
+  <tests>
+    <standards>
+      GitHub Actions workflows for CI/CD testing. All test suites (unit, integration, E2E) must pass before deployment. Coverage threshold enforcement at 80% global, 90% for database layer. Playwright E2E tests run in headless mode. Test artifacts (coverage reports, screenshots, videos) uploaded for review. Workflows triggered on pull_request and push to main/Prerelease branches. Node.js 20+ environment matching production. npm ci for deterministic dependency installation.
+    </standards>
+
+    <locations>
+      .github/workflows/test.yml (NEW - comprehensive test workflow)
+      .github/workflows/test-coverage.yml (EXISTING - may be consolidated)
+      package.json scripts (test, test:coverage, test:e2e)
+      jest.config.js (coverage thresholds)
+      playwright.config.ts (E2E configuration)
+    </locations>
+
+    <ideas>
+      <test-idea ac="AC1">
+        Create comprehensive GitHub Actions workflow that runs all test suites. Use actions/checkout@v4 for code checkout, actions/setup-node@v4 with Node 20 and npm caching, npm ci for installation. Execute npm test, npm run test:coverage, and npm run test:e2e in sequence or as separate jobs.
+      </test-idea>
+      <test-idea ac="AC2">
+        Configure workflow with 'on: pull_request' trigger. Test that workflow executes when PR is created or updated. Verify all test suites run and results are reported in PR checks section.
+      </test-idea>
+      <test-idea ac="AC3">
+        Configure workflow with 'on: push: branches: [main, Prerelease]' trigger. Test that workflow executes on direct push to main or Prerelease. Verify deployment proceeds only after tests pass.
+      </test-idea>
+      <test-idea ac="AC4">
+        Enable branch protection rules for main branch requiring status checks. Set workflow as required check. Test that PR cannot be merged if tests fail. Verify Vercel deployment is blocked until checks pass.
+      </test-idea>
+      <test-idea ac="AC5">
+        Verify GitHub Actions run results appear in PR Checks tab. Test that passing tests show green checkmark. Test that failing tests show red X with error details. Verify coverage reports are accessible via artifacts or inline comments.
+      </test-idea>
+      <test-idea ac="INTEGRATION">
+        Test complete flow: Create PR → GitHub Actions triggers → Unit tests run → Integration tests run → E2E tests run → Coverage report generated → All pass → PR shows passing checks → Merge allowed → Vercel deploys to production.
+      </test-idea>
+    </ideas>
+  </tests>
+
+  <implementation>
+    <approach>
+      Extend or consolidate existing test-coverage.yml workflow to create comprehensive CI/CD testing pipeline. Add separate jobs for unit/integration tests (Jest) and E2E tests (Playwright) to enable parallel execution. Configure triggers for both PR and push events to main/Prerelease branches. Enable branch protection rules in GitHub repository settings requiring passing checks before merge. Integrate with Vercel deployment by ensuring Vercel waits for required checks. Upload test artifacts (coverage reports, Playwright reports) for visibility. Consider separate workflows for different test types to enable independent execution and clearer reporting. Add status badges to README for build/test status visibility.
+    </approach>
+
+    <technical-notes>
+      - Existing test-coverage.yml already runs Jest with coverage on PR and push
+      - Decision needed: Extend existing workflow OR create new comprehensive workflow
+      - Playwright E2E tests require longer timeout (up to 10 minutes with browser installation)
+      - Consider caching Playwright browsers using microsoft/playwright-github-action for faster CI
+      - Jest tests are faster (~1-2 minutes) and should run first to fail fast
+      - E2E tests can run in parallel with unit/integration if using separate jobs
+      - Coverage threshold enforcement in jest.config.js (80%/90%) will cause workflow to fail automatically
+      - Vercel integration: GitHub Actions status checks can gate Vercel deployments
+      - Branch protection: Configure in GitHub Settings → Branches → Add rule for main
+      - Required checks: Select workflow name(s) that must pass before merge
+      - npm ci is preferred over npm install for deterministic installations in CI
+      - Use actions/cache for node_modules to speed up workflow (optional)
+      - Consider adding linting (npm run lint) and TypeScript checks (tsc --noEmit)
+      - Upload artifacts with retention policy (e.g., 30 days for coverage reports)
+    </technical-notes>
+
+    <critical-flows>
+      <flow id="F1" priority="critical">
+        Pull Request CI/CD: Developer creates PR → GitHub Actions triggered → All tests run (unit, integration, E2E) → Coverage checked → Lint checked → Results visible in PR → Tests pass → Ready for review → Approve and merge → Production deployment
+      </flow>
+      <flow id="F2" priority="critical">
+        Direct Push CI/CD: Push to main/Prerelease → GitHub Actions triggered → All tests run → Tests pass → Vercel auto-deploys → Production/Preview updated
+      </flow>
+      <flow id="F3" priority="high">
+        Failed Tests Gate: PR created → Tests run → Tests fail → Red X in PR checks → Merge blocked → Developer fixes → Push update → Tests re-run → Tests pass → Merge allowed
+      </flow>
+      <flow id="F4" priority="high">
+        Coverage Drop Prevention: PR reduces coverage → Jest threshold check fails → Workflow fails → Deployment blocked → Developer adds tests → Coverage restored → Workflow passes
+      </flow>
+    </critical-flows>
+
+    <workflow-options>
+      <option id="OPT1" recommended="true">
+        <name>Comprehensive Single Workflow</name>
+        <description>Create .github/workflows/test.yml that runs all test suites in one workflow with multiple jobs</description>
+        <pros>Single workflow name for branch protection, unified view of test status, easier maintenance</pros>
+        <cons>Longer total runtime if jobs run sequentially, all-or-nothing failure reporting</cons>
+      </option>
+      <option id="OPT2">
+        <name>Separate Workflows</name>
+        <description>Keep test-coverage.yml, add test-e2e.yml, add lint.yml as separate workflows</description>
+        <pros>Independent execution, parallel runs, clearer separation of concerns, granular failure reporting</pros>
+        <cons>Multiple required checks to configure, more workflow files to maintain</cons>
+      </option>
+      <option id="OPT3">
+        <name>Consolidate and Extend</name>
+        <description>Rename test-coverage.yml to test.yml and add E2E job alongside existing coverage job</description>
+        <pros>Builds on existing infrastructure, minimal changes, maintains existing functionality</pros>
+        <cons>May need to update existing branch protection rules if workflow name changes</cons>
+      </option>
+    </workflow-options>
+
+    <branch-protection-setup>
+      <step n="1">Navigate to GitHub repository Settings → Branches</step>
+      <step n="2">Click "Add rule" or edit existing rule for main branch</step>
+      <step n="3">Enable "Require status checks to pass before merging"</step>
+      <step n="4">Search for and select required workflow(s): "Test Coverage" or "Tests"</step>
+      <step n="5">Enable "Require branches to be up to date before merging" (recommended)</step>
+      <step n="6">Enable "Require approvals" for PR reviews (recommended, e.g., 1 reviewer)</step>
+      <step n="7">Save protection rule</step>
+      <step n="8">Test by creating PR and verifying merge is blocked until checks pass</step>
+    </branch-protection-setup>
+
+    <vercel-integration>
+      <step n="1">Vercel automatically detects GitHub repository and deploys on push</step>
+      <step n="2">In Vercel Dashboard → Project Settings → Git, configure deployment branches</step>
+      <step n="3">Vercel respects GitHub branch protection - if checks required, Vercel waits</step>
+      <step n="4">Optional: Configure "Ignored Build Step" in Vercel to skip builds on specific conditions</step>
+      <step n="5">Vercel deployments visible in PR as deployment preview</step>
+      <step n="6">Production deployments happen automatically on merge to main (if checks pass)</step>
+    </vercel-integration>
+  </implementation>
+</story-context>
