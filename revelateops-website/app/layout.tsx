@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import FloatingBookingButton from "@/components/FloatingBookingButton";
 import KeyboardScrollProvider from "@/components/KeyboardScrollProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { homepageSchemas } from "@/lib/seo/schemas";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -100,26 +101,8 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Revelate Operations",
-  url: siteUrl,
-  logo: `${siteUrl}/revelate-logo.png`,
-  image: `${siteUrl}/og/revelate-hero.png`,
-  description: siteDescription,
-  areaServed: "United States",
-  founder: {
-    "@type": "Person",
-    name: "Drew Lambert",
-  },
-  sameAs: ["https://www.linkedin.com/in/drew-lambert/"],
-  serviceType: [
-    "Salesforce RevOps Modernization",
-    "Technical Debt Remediation",
-    "Integration Governance",
-  ],
-};
+// Enhanced structured data imported from lib/seo/schemas.ts
+// Includes Organization, Website, LocalBusiness, and Person schemas
 
 export default function RootLayout({
   children,
@@ -146,7 +129,8 @@ export default function RootLayout({
         <Script
           id="structured-data"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchemas) }}
         />
       </body>
     </html>
