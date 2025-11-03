@@ -133,23 +133,13 @@ export default function UserInfoModal({
 
           {/* Limited Time Offer Banner */}
           <div className="rounded-lg border border-cyan/30 bg-cyan/5 p-5">
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-cyan flex-shrink-0">
-                <svg className="h-6 w-6 text-navy" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <p className="text-sm font-bold text-navy uppercase tracking-wide">Limited Time Offer</p>
-                  <span className="w-1 h-1 rounded-full bg-magenta"></span>
-                </div>
-                <p className="text-base text-navy/90 font-medium">
-                  Book within <span className="font-bold text-blue-700">10 days</span> and get <span className="font-bold text-blue-700 text-lg">10% off</span> your first contract
-                </p>
-              </div>
+            <div className="flex items-center gap-2 mb-2">
+              <p className="text-sm font-bold text-navy uppercase tracking-wide">Limited Time Offer</p>
+              <span className="w-1 h-1 rounded-full bg-magenta"></span>
             </div>
+            <p className="text-base text-navy/90 font-medium">
+              Book within <span className="font-bold text-blue-700">10 days</span> and get <span className="font-bold text-blue-700 text-lg">10% off</span> your first contract
+            </p>
           </div>
         </div>
 
