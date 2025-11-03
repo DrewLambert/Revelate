@@ -178,7 +178,7 @@ export default function Hero() {
                   <p className="text-sm text-white leading-relaxed">
                     <strong className="text-white">66% sales acceleration</strong> · Lead routing: 2+ hours → 3 minutes · $200K+ operational savings
                   </p>
-                  <p className="text-xs text-white/60 mt-1">Former Senior Revenue Systems Engineer at $100M+ Series C (Bevi)</p>
+                  <p className="text-xs text-white/60 mt-1">Former Senior Revenue Systems Engineer at $100M+ Series C</p>
                 </div>
               </div>
             </div>
