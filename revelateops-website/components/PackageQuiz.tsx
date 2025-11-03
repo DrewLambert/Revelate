@@ -228,7 +228,7 @@ export default function PackageQuiz({ onComplete, onClose }: PackageQuizProps) {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-gradient-to-b from-[#0A0F1E] to-[#1a1f3a] border border-gray-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+        className="bg-gradient-to-b from-navy-ink to-navy border border-gray-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
       >
         {/* Header */}
         <div className="p-6 border-b border-gray-700">
@@ -258,7 +258,7 @@ export default function PackageQuiz({ onComplete, onClose }: PackageQuizProps) {
           {/* Progress Bar */}
           <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
             <motion.div
-              className="bg-[#00d9ff] h-full"
+              className="bg-cyan h-full"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}
@@ -297,21 +297,21 @@ export default function PackageQuiz({ onComplete, onClose }: PackageQuizProps) {
                         onClick={() => handleAnswer(currentQuestion.id, option.value)}
                         className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                           isSelected
-                            ? 'border-[#00d9ff] bg-[#00d9ff]/10'
-                            : 'border-gray-700 hover:border-gray-600 bg-[#1a1f3a]/50'
+                            ? 'border-cyan bg-cyan/10'
+                            : 'border-gray-700 hover:border-gray-600 bg-navy/50'
                         }`}
                       >
                         <div className="flex items-start gap-3">
                           <div
                             className={`flex-shrink-0 w-5 h-5 rounded mt-0.5 border-2 flex items-center justify-center ${
                               isSelected
-                                ? 'border-[#00d9ff] bg-[#00d9ff]'
+                                ? 'border-cyan bg-cyan'
                                 : 'border-gray-600'
                             }`}
                           >
                             {isSelected && (
                               <svg
-                                className="w-3 h-3 text-[#0A0F1E]"
+                                className="w-3 h-3 text-navy-ink"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                               >
@@ -376,7 +376,7 @@ export default function PackageQuiz({ onComplete, onClose }: PackageQuizProps) {
             <button
               onClick={handleNext}
               disabled={!isAnswered()}
-              className="px-6 py-3 bg-[#00d9ff] text-[#0A0F1E] font-semibold rounded-lg hover:bg-[#00b8db] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 bg-cyan text-navy-ink font-semibold rounded-lg hover:bg-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {currentStep === questions.length - 1 ? 'See Recommendation' : 'Next'}
             </button>

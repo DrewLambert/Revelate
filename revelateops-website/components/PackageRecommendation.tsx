@@ -64,7 +64,7 @@ export default function PackageRecommendation({
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-gradient-to-b from-[#0A0F1E] to-[#1a1f3a] border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+        className="bg-gradient-to-b from-navy-ink to-navy border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
       >
         {/* Header */}
         <div className={`p-8 border-b border-gray-700 ${colors.bg}`}>
@@ -86,7 +86,7 @@ export default function PackageRecommendation({
           <div className="mb-8">
             <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
               <svg
-                className="w-6 h-6 text-[#00d9ff]"
+                className="w-6 h-6 text-cyan"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -102,9 +102,9 @@ export default function PackageRecommendation({
               {recommendation.recommendedServices.map((service) => (
                 <div
                   key={service}
-                  className="flex items-center gap-3 p-3 bg-[#1a1f3a]/50 border border-gray-700 rounded-lg"
+                  className="flex items-center gap-3 p-3 bg-navy/50 border border-gray-700 rounded-lg"
                 >
-                  <div className="w-2 h-2 rounded-full bg-[#00d9ff]" />
+                  <div className="w-2 h-2 rounded-full bg-cyan" />
                   <span className="text-gray-300">{serviceLabels[service] || service}</span>
                 </div>
               ))}
@@ -112,10 +112,10 @@ export default function PackageRecommendation({
           </div>
 
           {/* What's Next */}
-          <div className="bg-[#1a1f3a]/30 border border-gray-700 rounded-lg p-6">
+          <div className="bg-navy/30 border border-gray-700 rounded-lg p-6">
             <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
               <svg
-                className="w-5 h-5 text-[#00d9ff]"
+                className="w-5 h-5 text-cyan"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -129,7 +129,7 @@ export default function PackageRecommendation({
             </h3>
             <ol className="space-y-3 text-gray-300">
               <li className="flex gap-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#00d9ff]/20 text-[#00d9ff] flex items-center justify-center text-sm font-semibold">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-cyan/20 text-cyan flex items-center justify-center text-sm font-semibold">
                   1
                 </span>
                 <span>
@@ -137,13 +137,13 @@ export default function PackageRecommendation({
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#00d9ff]/20 text-[#00d9ff] flex items-center justify-center text-sm font-semibold">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-cyan/20 text-cyan flex items-center justify-center text-sm font-semibold">
                   2
                 </span>
                 <span>Submit your requirements and we'll prepare a detailed proposal</span>
               </li>
               <li className="flex gap-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#00d9ff]/20 text-[#00d9ff] flex items-center justify-center text-sm font-semibold">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-cyan/20 text-cyan flex items-center justify-center text-sm font-semibold">
                   3
                 </span>
                 <span>Schedule a consultation to discuss your specific needs and timeline</span>
@@ -172,14 +172,14 @@ export default function PackageRecommendation({
             {onProceed ? (
               <button
                 onClick={onProceed}
-                className="px-6 py-3 bg-[#00d9ff] text-[#0A0F1E] font-semibold rounded-lg hover:bg-[#00b8db] transition-colors"
+                className="px-6 py-3 bg-cyan text-navy-ink font-semibold rounded-lg hover:bg-blue transition-colors"
               >
                 Customize Selection
               </button>
             ) : (
               <Link
                 href="/services"
-                className="px-6 py-3 bg-[#00d9ff] text-[#0A0F1E] font-semibold rounded-lg hover:bg-[#00b8db] transition-colors"
+                className="px-6 py-3 bg-cyan text-navy-ink font-semibold rounded-lg hover:bg-blue transition-colors"
               >
                 Customize Selection
               </Link>

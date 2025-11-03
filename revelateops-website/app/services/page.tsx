@@ -60,9 +60,9 @@ const categories = [
   { id: 'revenue', label: 'Revenue Growth', color: 'cyan', iconColor: 'text-cyan', bgColor: 'bg-cyan' },
   { id: 'data', label: 'Data & Analytics', color: 'blue', iconColor: 'text-blue', bgColor: 'bg-blue' },
   { id: 'system', label: 'System Health', color: 'magenta', iconColor: 'text-magenta', bgColor: 'bg-magenta' },
-  { id: 'automation', label: 'Automation', color: 'cyan', iconColor: 'text-[#00d9ff]', bgColor: 'bg-[#00d9ff]' },
-  { id: 'architecture', label: 'Architecture', color: 'blue', iconColor: 'text-[#0084ff]', bgColor: 'bg-[#0084ff]' },
-  { id: 'experience', label: 'User Experience', color: 'magenta', iconColor: 'text-[#d946ef]', bgColor: 'bg-[#d946ef]' },
+  { id: 'automation', label: 'Automation', color: 'cyan', iconColor: 'text-cyan', bgColor: 'bg-cyan' },
+  { id: 'architecture', label: 'Architecture', color: 'blue', iconColor: 'text-blue', bgColor: 'bg-blue' },
+  { id: 'experience', label: 'User Experience', color: 'magenta', iconColor: 'text-magenta', bgColor: 'bg-magenta' },
 ];
 
 export default function ServicesPage() {
@@ -306,7 +306,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-[#00d9ff]">
+            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
               Salesforce Expertise for Series B SaaS
             </span>
             <h1 className="font-heading mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.2] tracking-[-0.02em] text-white">
@@ -320,7 +320,7 @@ export default function ServicesPage() {
             <div className="mt-10">
               <Link
                 href="/book"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00d9ff] px-10 py-4 text-base font-semibold text-[#0A0F1E] shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-all duration-200 hover:bg-[#00c4e6] hover:shadow-[0_8px_16px_rgba(0,217,255,0.35)]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan px-10 py-4 text-base font-semibold text-navy-ink shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-all duration-200 hover:bg-blue hover:shadow-[0_8px_16px_rgba(0,217,255,0.35)]"
               >
                 Audit my revenue leaks
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24">
@@ -338,19 +338,19 @@ export default function ServicesPage() {
               className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-white/80"
             >
               <span className="flex items-center gap-2">
-                <svg className="h-4 w-4 text-[#00d9ff]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <svg className="h-4 w-4 text-cyan" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
                 Week 1 insights
               </span>
               <span className="flex items-center gap-2">
-                <svg className="h-4 w-4 text-[#00d9ff]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <svg className="h-4 w-4 text-cyan" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
                 46% backlog reduction
               </span>
               <span className="flex items-center gap-2">
-                <svg className="h-4 w-4 text-[#00d9ff]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <svg className="h-4 w-4 text-cyan" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
                 $35K-70K vs $150K+ agency rebuild
@@ -364,7 +364,7 @@ export default function ServicesPage() {
       <section className="relative z-10 py-28 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="max-w-3xl text-center mx-auto mb-16">
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-[#00d9ff]">
+            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
               Three breaking points
             </span>
             <h2 className="font-heading mt-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.2] text-white">
@@ -386,9 +386,9 @@ export default function ServicesPage() {
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14)_0%,rgba(26,31,58,0)_70%)]" />
               <div className="relative space-y-3">
-                <span className="inline-flex h-1 w-14 rounded-full bg-[#00d9ff]" />
+                <span className="inline-flex h-1 w-14 rounded-full bg-cyan" />
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
-                  <svg className="h-6 w-6 text-[#00d9ff]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <svg className="h-6 w-6 text-cyan" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     <path d="M3 3v18h18" />
                     <path d="M18 17V9" />
                     <path d="M13 17V5" />
@@ -413,9 +413,9 @@ export default function ServicesPage() {
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14)_0%,rgba(26,31,58,0)_70%)]" />
               <div className="relative space-y-3">
-                <span className="inline-flex h-1 w-14 rounded-full bg-[#00d9ff]" />
+                <span className="inline-flex h-1 w-14 rounded-full bg-cyan" />
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
-                  <svg className="h-6 w-6 text-[#0084ff]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <svg className="h-6 w-6 text-blue" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 6v6l4 2" />
                   </svg>
@@ -438,7 +438,7 @@ export default function ServicesPage() {
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14)_0%,rgba(26,31,58,0)_70%)]" />
               <div className="relative space-y-3">
-                <span className="inline-flex h-1 w-14 rounded-full bg-[#00d9ff]" />
+                <span className="inline-flex h-1 w-14 rounded-full bg-cyan" />
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
                   <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     <defs>
@@ -487,7 +487,7 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="#packages"
-                className="px-8 py-4 bg-[#00d9ff] text-[#0A0F1E] font-semibold rounded-lg hover:bg-[#00b8db] transition-colors shadow-lg"
+                className="px-8 py-4 bg-cyan text-navy-ink font-semibold rounded-lg hover:bg-blue transition-colors shadow-lg"
               >
                 Choose a Package
               </Link>
@@ -505,7 +505,7 @@ export default function ServicesPage() {
                     document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                   }, 100);
                 }}
-                className="px-8 py-4 bg-transparent border-2 border-gray-600 text-white font-semibold rounded-lg hover:border-[#00d9ff] hover:text-[#00d9ff] transition-colors"
+                className="px-8 py-4 bg-transparent border-2 border-gray-600 text-white font-semibold rounded-lg hover:border-cyan hover:text-cyan transition-colors"
               >
                 Design Custom Package
               </button>
@@ -538,13 +538,13 @@ export default function ServicesPage() {
                     transition={{ delay: 0.1 * index, duration: 0.5 }}
                     className={`rounded-xl p-6 transition-all cursor-pointer ${
                       isExpanded
-                        ? 'bg-[#0A0F1E] border-2 border-[#00d9ff] shadow-lg shadow-[#00d9ff]/20'
-                        : 'bg-[#0A0F1E] border border-gray-600 hover:border-[#00d9ff]'
+                        ? 'bg-navy-ink border-2 border-cyan shadow-lg shadow-[#00d9ff]/20'
+                        : 'bg-navy-ink border border-gray-600 hover:border-cyan'
                     }`}
                     onClick={() => togglePackageExpansion(pkg.id)}
                   >
                     {pkg.badge && (
-                      <span className="inline-block px-3 py-1 bg-[#00d9ff]/20 text-[#00d9ff] text-xs font-semibold rounded-full mb-3">
+                      <span className="inline-block px-3 py-1 bg-cyan/20 text-cyan text-xs font-semibold rounded-full mb-3">
                         {pkg.badge}
                       </span>
                     )}
@@ -564,7 +564,7 @@ export default function ServicesPage() {
                         <ul className="space-y-1">
                           {pkg.packageServices.slice(0, 3).map((ps) => (
                             <li key={ps.service.id} className="text-sm text-white flex items-start gap-2">
-                              <svg className="w-4 h-4 text-[#00d9ff] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                              <svg className="w-4 h-4 text-cyan mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                               </svg>
                               <span>{ps.service.name}</span>
@@ -598,7 +598,7 @@ export default function ServicesPage() {
                       if (!expandedPkg || !expandedPkg.packageServices) return null;
 
                       return (
-                        <div className="bg-gradient-to-b from-[#1a1f3a] to-[#0A0F1E] border-2 border-[#00d9ff]/30 rounded-2xl p-8">
+                        <div className="bg-gradient-to-b from-navy to-navy-ink border-2 border-cyan/30 rounded-2xl p-8">
                           {/* Header with Collapse Button */}
                           <div className="flex items-center justify-between mb-6">
                             <div>
@@ -611,7 +611,7 @@ export default function ServicesPage() {
                             </div>
                             <button
                               onClick={() => setExpandedPackageId(null)}
-                              className="flex items-center gap-2 px-4 py-2 bg-[#00d9ff]/10 hover:bg-[#00d9ff]/20 text-[#00d9ff] rounded-lg transition-colors"
+                              className="flex items-center gap-2 px-4 py-2 bg-cyan/10 hover:bg-cyan/20 text-cyan rounded-lg transition-colors"
                             >
                               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
@@ -628,11 +628,11 @@ export default function ServicesPage() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.05, duration: 0.3 }}
-                                className="bg-white/5 border border-white/10 rounded-xl p-5 hover:border-[#00d9ff]/50 transition-all"
+                                className="bg-white/5 border border-white/10 rounded-xl p-5 hover:border-cyan/50 transition-all"
                               >
                                 <div className="flex items-start gap-3">
-                                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#00d9ff]/20 flex items-center justify-center">
-                                    <svg className="w-5 h-5 text-[#00d9ff]" fill="currentColor" viewBox="0 0 20 20">
+                                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan/20 flex items-center justify-center">
+                                    <svg className="w-5 h-5 text-cyan" fill="currentColor" viewBox="0 0 20 20">
                                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                     </svg>
                                   </div>
@@ -663,7 +663,7 @@ export default function ServicesPage() {
       <section className="relative z-10 py-20 px-4 border-t border-gray-800">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-[#00d9ff]">
+            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
               Client Transformations
             </span>
             <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl font-semibold leading-[1.2] text-white">
@@ -684,7 +684,7 @@ export default function ServicesPage() {
               className="relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 p-8"
             >
               <div className="text-center mb-6">
-                <div className="text-6xl font-bold text-[#00d9ff] mb-2">46%</div>
+                <div className="text-6xl font-bold text-cyan mb-2">46%</div>
                 <div className="text-sm font-semibold text-white/90">backlog reduction</div>
               </div>
               <p className="text-sm leading-relaxed text-white/70 mb-6">
@@ -705,7 +705,7 @@ export default function ServicesPage() {
               className="relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 p-8"
             >
               <div className="text-center mb-6">
-                <div className="text-6xl font-bold text-[#0084ff] mb-2">3</div>
+                <div className="text-6xl font-bold text-blue mb-2">3</div>
                 <div className="text-sm font-semibold text-white/90">systems integrated</div>
               </div>
               <p className="text-sm leading-relaxed text-white/70 mb-6">
@@ -726,7 +726,7 @@ export default function ServicesPage() {
               className="relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 p-8"
             >
               <div className="text-center mb-6">
-                <div className="text-6xl font-bold text-[#d946ef] mb-2">100%</div>
+                <div className="text-6xl font-bold text-magenta mb-2">100%</div>
                 <div className="text-sm font-semibold text-white/90">lead automation</div>
               </div>
               <p className="text-sm leading-relaxed text-white/70 mb-6">
@@ -746,7 +746,7 @@ export default function ServicesPage() {
       <section className="relative z-10 py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-[#00d9ff]">
+            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
               Two paths forward
             </span>
             <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl font-semibold leading-[1.2] text-white">
@@ -803,8 +803,8 @@ export default function ServicesPage() {
                   </td>
                   <td className="py-4 px-4 text-sm text-white/70">Opportunity cost</td>
                 </tr>
-                <tr className="border-b-2 border-[#00d9ff]/30 hover:bg-white/5 transition-colors bg-[#00d9ff]/5">
-                  <td className="py-4 px-4 text-sm font-bold text-[#00d9ff]">Revelate (6-16 week engagement)</td>
+                <tr className="border-b-2 border-cyan/30 hover:bg-white/5 transition-colors bg-cyan/5">
+                  <td className="py-4 px-4 text-sm font-bold text-cyan">Revelate (6-16 week engagement)</td>
                   <td className="py-4 px-4 text-sm font-semibold text-white">$35K-70K</td>
                   <td className="py-4 px-4 text-sm font-semibold text-white">Week 1 insights</td>
                   <td className="py-4 px-4 text-sm">
@@ -896,8 +896,8 @@ export default function ServicesPage() {
             </div>
 
             {/* Card 4 - Revelate (Highlighted) */}
-            <div className="rounded-xl border-2 border-[#00d9ff]/50 bg-[#00d9ff]/5 p-6">
-              <h3 className="text-lg font-bold text-[#00d9ff] mb-4">Revelate (6-16 week engagement)</h3>
+            <div className="rounded-xl border-2 border-cyan/50 bg-cyan/5 p-6">
+              <h3 className="text-lg font-bold text-cyan mb-4">Revelate (6-16 week engagement)</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-sm text-white/60">Cost:</span>
@@ -935,7 +935,7 @@ export default function ServicesPage() {
       <section className="relative z-10 py-20 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-[#00d9ff]">
+            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
               Next step
             </span>
             <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.2] text-white">
@@ -947,7 +947,7 @@ export default function ServicesPage() {
             <div className="mt-10">
               <Link
                 href="/book"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00d9ff] px-10 py-4 text-base font-semibold text-[#0A0F1E] shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-all duration-200 hover:bg-[#00c4e6] hover:shadow-[0_8px_16px_rgba(0,217,255,0.35)]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan px-10 py-4 text-base font-semibold text-navy-ink shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-all duration-200 hover:bg-blue hover:shadow-[0_8px_16px_rgba(0,217,255,0.35)]"
               >
                 Diagnose my GTM systems
               </Link>
@@ -972,7 +972,7 @@ export default function ServicesPage() {
               </p>
               <button
                 onClick={() => setShowCustomBuilder(false)}
-                className="text-sm text-gray-400 hover:text-[#00d9ff] transition-colors"
+                className="text-sm text-gray-400 hover:text-cyan transition-colors"
               >
                 ← Back to Packages
               </button>
@@ -986,8 +986,8 @@ export default function ServicesPage() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   selectedCategory === cat.id
-                    ? 'bg-[#00d9ff] text-[#0A0F1E]'
-                    : 'bg-[#1a1f3a] text-gray-300 hover:bg-[#1a1f3a]/70'
+                    ? 'bg-cyan text-navy-ink'
+                    : 'bg-navy text-gray-300 hover:bg-navy/70'
                 }`}
               >
                 {cat.label}
@@ -1007,8 +1007,8 @@ export default function ServicesPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  className={`bg-[#1a1f3a] border-2 rounded-xl p-6 cursor-pointer transition-all ${
-                    isSelected ? 'border-[#00d9ff] shadow-lg shadow-[#00d9ff]/20' : 'border-gray-700 hover:border-gray-600'
+                  className={`bg-navy border-2 rounded-xl p-6 cursor-pointer transition-all ${
+                    isSelected ? 'border-cyan shadow-lg shadow-[#00d9ff]/20' : 'border-gray-700 hover:border-gray-600'
                   }`}
                   onClick={() => toggleService(service.id)}
                 >
@@ -1018,10 +1018,10 @@ export default function ServicesPage() {
                       <p className="text-sm text-gray-400 mb-3">{service.shortDescription}</p>
                     </div>
                     <div className={`w-6 h-6 rounded border-2 flex items-center justify-center flex-shrink-0 ml-3 ${
-                      isSelected ? 'bg-[#00d9ff] border-[#00d9ff]' : 'border-gray-600'
+                      isSelected ? 'bg-cyan border-cyan' : 'border-gray-600'
                     }`}>
                       {isSelected && (
-                        <svg className="w-4 h-4 text-[#0A0F1E]" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-navy-ink" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       )}
@@ -1034,7 +1034,7 @@ export default function ServicesPage() {
                         e.stopPropagation();
                         setDetailService(service);
                       }}
-                      className="text-sm text-[#00d9ff] hover:text-[#00b8db]"
+                      className="text-sm text-cyan hover:text-[#00b8db]"
                     >
                       View Details →
                     </button>
@@ -1082,7 +1082,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-b from-[#0A0F1E] to-[#1a1f3a] border border-gray-700 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8"
+            className="bg-gradient-to-b from-navy-ink to-navy border border-gray-700 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8"
           >
             <div className="flex justify-between items-start mb-6">
               <h2 className="text-2xl font-bold text-white">{detailService.name}</h2>
@@ -1104,7 +1104,7 @@ export default function ServicesPage() {
                 <ul className="space-y-2">
                   {detailService.deliverables.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-gray-300">
-                      <svg className="w-5 h-5 text-[#00d9ff] mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-cyan mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                       {item}
@@ -1123,7 +1123,7 @@ export default function ServicesPage() {
                 className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
                   selectedServices.has(detailService.id)
                     ? 'bg-red-600 hover:bg-red-700 text-white'
-                    : 'bg-[#00d9ff] hover:bg-[#00b8db] text-[#0A0F1E]'
+                    : 'bg-cyan hover:bg-blue text-navy-ink'
                 }`}
               >
                 {selectedServices.has(detailService.id) ? 'Remove' : 'Add to Quote'}

@@ -36,7 +36,7 @@ const journeyMoments = [
     title: 'Senior Revenue Systems Engineer',
     description: 'Owned Salesforce architecture for a $100M+ Series C team. Modernized CRM, stitched product and finance data, and returned 15+ hours to sellers every month.',
     lesson: 'Automation only matters if operators feel the difference.',
-    durationMonths: 39
+    durationMonths: 36
   },
   {
     year: '2025',
@@ -126,7 +126,7 @@ const capabilityStack = [
 const engagementNotes = [
   {
     label: 'Fixed-hour engagements',
-    detail: 'Series B SaaS rate: $80-110/hr (discounted from standard $180/hr). Project packages typically range from $12K-$70K. Transparent budgets, no surprise scope creep.'
+    detail: 'Series B SaaS rate: $75-110/hr (discounted from standard $180/hr). Project packages typically range from $12K-$70K. Transparent budgets, no surprise scope creep.'
   },
   {
     label: 'Deliberately limited load',
@@ -329,15 +329,36 @@ export default function AboutPage() {
               >
                 I build revenue architecture because I have been the operator who needed it most.
               </h1>
+
+              {/* Authority Snapshot - Credibility Stats */}
+              <div className="mt-10 mb-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+                <div className="rounded-xl border border-cyan/30 bg-cyan/5 p-4 sm:p-5 flex flex-col items-center justify-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-cyan">150+</div>
+                  <div className="text-xs uppercase tracking-normal text-white/60 mt-2">Implementations</div>
+                </div>
+                <div className="rounded-xl border border-cyan/30 bg-cyan/5 p-4 sm:p-5 flex flex-col items-center justify-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-cyan">$100M+</div>
+                  <div className="text-xs uppercase tracking-normal text-white/60 mt-2">Org Scale</div>
+                </div>
+                <div className="rounded-xl border border-cyan/30 bg-cyan/5 p-4 sm:p-5 flex flex-col items-center justify-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-cyan">6-16</div>
+                  <div className="text-xs uppercase tracking-normal text-white/60 mt-2">Week Sprints</div>
+                </div>
+                <div className="rounded-xl border border-cyan/30 bg-cyan/5 p-4 sm:p-5 flex flex-col items-center justify-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-cyan">2-3</div>
+                  <div className="text-xs uppercase tracking-normal text-white/60 mt-2">Client Max</div>
+                </div>
+              </div>
+
               <div className="space-y-6">
                 <p className="font-body text-xl leading-relaxed text-white/70 lg:text-2xl">
-                  Since 2018 I have lived inside revenue teams—from managed services providers supporting <span className="text-white">150+ companies</span> to emerging SaaS startups to a <span className="text-white">Boston-based Series C IT startup</span>—stitching GTM, finance, and product data together so operators could finally explain what happened last quarter.
+                  Since 2018 I've architected revenue systems for <span className="text-white">150+ organizations</span>—from managed services providers to a <span className="text-white">$100M+ Series C startup in Boston</span>—solving the problem every operator faces: making revenue data trustworthy before the board asks hard questions.
                 </p>
                 <p className="font-body text-xl leading-relaxed text-white/70 lg:text-2xl">
-                  <span className="font-semibold text-white">Revelate Operations</span> is the studio I built to give founders the partner I always wanted beside me: someone who <span className="font-semibold text-white">knows the work</span>, <span className="font-semibold text-white">tells the truth</span>, and <span className="font-semibold text-white">leaves the team stronger</span>.
+                  <span className="font-semibold text-white">Revelate Operations</span> exists to give founders the partner I needed when I was in the seat: someone who <span className="font-semibold text-white">knows the work, tells uncomfortable truths, and leaves documentation that survives the handoff</span>.
                 </p>
               </div>
-              <div className="font-body mt-10 grid gap-4 text-base text-white/60 sm:grid-cols-2">
+              <div className="font-body mt-10 grid gap-4 text-base text-white/60 sm:grid-cols-2 lg:grid-cols-3">
                 <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                   <span className="inline-flex h-2.5 w-2.5 rounded-full bg-cyan" />
                   US-based, working with distributed teams nationwide
@@ -345,6 +366,10 @@ export default function AboutPage() {
                 <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                   <span className="inline-flex h-2.5 w-2.5 rounded-full bg-magenta" />
                   Former RevOps, finance, and product analytics operator
+                </div>
+                <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  <span className="inline-flex h-2.5 w-2.5 rounded-full bg-cyan" />
+                  Fixed-scope sprints, no retainers
                 </div>
               </div>
             </div>
@@ -434,6 +459,46 @@ export default function AboutPage() {
             </div>
           </motion.section>
 
+          {/* Capability Breadth - Testimonial */}
+          <motion.section className="mb-24 lg:mb-32 border-t border-white/10 pt-16" {...getFadeProps(0.1)}>
+            <div className="mb-8">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/50">Capability breadth: From Series B SaaS to nonprofit foundations</p>
+              <h2 className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
+                Client testimonial
+              </h2>
+              <p className="font-body mt-4 max-w-3xl text-base text-white/70">
+                While my primary focus is Series B SaaS revenue operations, my technical capabilities span diverse implementation contexts—from complex multi-system integrations to community platform deployments.
+              </p>
+            </div>
+
+            <div className="max-w-4xl">
+              <div className="rounded-2xl border border-cyan/20 bg-cyan/5 p-8 lg:p-12">
+                <div className="mb-6">
+                  <svg className="h-8 w-8 text-cyan/40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+                <p className="text-lg text-white/90 italic leading-relaxed mb-6">
+                  &ldquo;Your expertise, creativity, and dedication have provided NHBEA with a modern and user-friendly online presence that enhances our ability to connect with educators, members, and the broader community.&rdquo;
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="relative h-16 w-16">
+                    <Image
+                      src="/nhbea-logo.png"
+                      alt="NHBEA Logo"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">NHBEA Executive Board</p>
+                    <p className="text-xs text-white/60">New Hampshire Business Education Association</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
           <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.08)}>
             <div className="mb-12">
               <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
@@ -474,11 +539,16 @@ export default function AboutPage() {
             </div>
           </motion.section>
 
-          <section className="mb-24 lg:mb-32">
+          {/* What I'm Working On Now - Moved up for trust velocity */}
+          <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.12)}>
             <div className="mb-8">
-              <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/50">Current Focus</p>
+              <h2 className="font-heading mt-5 text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
                 What I am working on now
               </h2>
+              <p className="font-body mt-4 max-w-3xl text-base text-white/70">
+                These are the active challenges I&apos;m helping Series B teams solve today—proof that the methodologies and systems I built are being deployed in real revenue operations right now.
+              </p>
             </div>
 
             {/* Simple list format */}
@@ -494,7 +564,7 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           <motion.section className="mb-24 lg:mb-32" {...getFadeProps(0.08)}>
             <div className="mb-8">
@@ -503,7 +573,7 @@ export default function AboutPage() {
                 Systems I live in every week.
               </h2>
               <p className="font-body mt-6 max-w-3xl text-xl text-white/70">
-                Seven-plus years in the Salesforce ecosystem with deep hands-on experience across 50+ implementations, and a career built on stitching finance, GTM, and product data into one understandable story.
+                Seven-plus years in the Salesforce ecosystem with deep hands-on experience across 150+ implementations, and a career built on stitching finance, GTM, and product data into one understandable story.
               </p>
             </div>
 
