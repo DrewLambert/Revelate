@@ -7,12 +7,12 @@ import { useRef, useState, useEffect } from 'react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 const executivePainPoints = [
-  "Your board deck doesn't match Salesforce. Again.",
-  "Revenue forecasts are guesswork dressed up as strategy.",
-  "Your RevOps team is drowning in Salesforce chaos.",
-  "Pipeline reports take 40 hours. Decisions take 40 seconds.",
-  "You're paying for Salesforce. But trusting spreadsheets.",
-  "Every quarter, same question: Where did the revenue go?"
+  "Modernize your Salesforce and revenue stack in 8-16 weeks.",
+  "Turn chaotic CRM data into trustworthy pipeline forecasts.",
+  "Embed a senior RevOps engineer without the full-time hire.",
+  "Fix routing, forecasting, and integrations—in production.",
+  "Accelerate sales by 66% with automated lead routing.",
+  "Save $200K+ by eliminating duplicate systems and manual work."
 ];
 
 const platforms = [
@@ -146,7 +146,7 @@ export default function Hero() {
             className="mx-auto mt-8 max-w-2xl text-left"
           >
             <p className="font-body text-base leading-relaxed text-white/95 sm:text-lg">
-              That&apos;s not a training problem. Your revenue stack is <strong className="text-white">misconfigured</strong>, your data pipelines are <strong className="text-white">broken</strong>, and your team routed around the system because it slowed them down. Agencies audit and leave. You need someone who stays and fixes it in production.
+              <strong className="text-white">Legacy Salesforce modernization for Series B SaaS teams.</strong> Fix routing, forecasting, and integrations without rebuilding your entire org. Principal-only delivery with proven results: <strong className="text-cyan">66% sales acceleration</strong>, $200K+ savings, and teams that trust their data again.
             </p>
           </motion.div>
 
@@ -162,7 +162,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          {/* NEW: Proof Banner with Testimonial */}
+          {/* Proof Banner with Real Credentials */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -176,9 +176,9 @@ export default function Hero() {
                 </svg>
                 <div className="flex-1">
                   <p className="text-sm text-white leading-relaxed">
-                    <strong className="text-white">94% forecast accuracy</strong> · 8 weeks · $47M Series B SaaS
+                    <strong className="text-white">66% sales acceleration</strong> · Lead routing: 2+ hours → 3 minutes · $200K+ operational savings
                   </p>
-                  <p className="text-xs text-white/60 mt-1">— VP Revenue Operations</p>
+                  <p className="text-xs text-white/60 mt-1">Former Senior Revenue Systems Engineer at $100M+ Series C (Bevi)</p>
                 </div>
               </div>
             </div>
