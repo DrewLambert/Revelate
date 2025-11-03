@@ -233,7 +233,7 @@ export default function Home() {
           aria-labelledby="differentiators-heading"
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="bg-[#f8fafc] rounded-2xl p-8 lg:p-12">
+          <div className="bg-surface rounded-2xl p-8 lg:p-12">
           {/* Two Column Layout: Text Left, 2-3 Card Right */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1fr_1fr] lg:gap-12 items-start mb-5">
             {/* Left Column: Text Content */}
@@ -249,7 +249,7 @@ export default function Home() {
               <h2 id="differentiators-heading" className="mt-3 text-xl font-semibold leading-[1.15] sm:text-2xl md:text-3xl lg:text-4xl text-navy">
                 Four things that make this different
               </h2>
-              <p className="mt-3 text-sm leading-6 text-[#334155] md:text-base">
+              <p className="mt-3 text-sm leading-6 text-charcoal md:text-base">
                 No offshore teams. No junior devs. No surprises. Just principal-level expertise embedded with your team.
               </p>
             </motion.div>
@@ -270,7 +270,7 @@ export default function Home() {
                 <p className="mt-3 text-sm leading-snug text-navy font-medium">
                   By design, not by accident.
                 </p>
-                <p className="mt-2 text-xs leading-relaxed text-[#334155]">
+                <p className="mt-2 text-xs leading-relaxed text-charcoal">
                   I deliberately cap my roster to maintain deep partnership, context retention, and quality that produces real results—not just billable hours.
                 </p>
                 <div className="mt-4 flex flex-wrap justify-center gap-2">
@@ -306,7 +306,7 @@ export default function Home() {
                 }}
                 className="group relative"
               >
-                <div className="relative overflow-hidden rounded-xl border border-[#dbe3f0] bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-cyan/40 hover:-translate-y-1 h-full">
+                <div className="relative overflow-hidden rounded-xl border border-border bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-cyan/40 hover:-translate-y-1 h-full">
                   {/* Number Badge */}
                   <div className="absolute -left-1.5 -top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-cyan to-blue text-xs font-bold text-white shadow-lg">
                     {index + 1}
@@ -317,7 +317,7 @@ export default function Home() {
                     <h3 className="text-sm font-semibold text-navy group-hover:text-cyan transition-colors leading-tight">
                       {item.title}
                     </h3>
-                    <p className="mt-1.5 text-xs leading-relaxed text-[#64748b]">
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">
                       {item.detail}
                     </p>
                   </div>
@@ -359,7 +359,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Concrete Client Outcome Example */}
+          {/* Real Track Record */}
           <motion.div
             style={{ y: prefersReducedMotion ? 0 : outcomesContentY }}
             className="mt-10 mx-auto max-w-2xl"
@@ -370,7 +370,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p className="text-sm text-white/90 leading-relaxed">
-                  <strong className="text-white">Recent outcome:</strong> Series B Media-Tech company—stabilized forecast accuracy from 63% to 94%, eliminated $200K in duplicate platform spend, reduced RevOps team reporting time by 120 hours/month.
+                  <strong className="text-white">Documented outcomes:</strong> Reduced lead routing from 2+ hours to 3 minutes at $100M+ Series C. Achieved 66% sales acceleration through CRM modernization. Generated $200K+ in annual operational savings. 100% project completion rate across 50+ implementations.
                 </p>
               </div>
             </div>
@@ -380,52 +380,52 @@ export default function Home() {
             style={{ y: prefersReducedMotion ? 0 : outcomesCardsY }}
             className="mt-12 grid gap-6 md:grid-cols-3"
           >
-            <div className="relative flex h-full flex-col justify-between rounded-xl border border-[#dbe3f0] bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.06)_0%,rgba(255,255,255,0)_70%)]" />
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
                 <div className="space-y-1.5">
                   <p className="text-[1.5rem] font-semibold leading-tight text-navy sm:text-[1.75rem] md:text-[1.85rem] lg:text-[2.1rem]">6-16 weeks</p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#64748b]">to production</p>
-                  <p className="text-xs leading-5 text-[#64748b]">typical timeline for meaningful improvements to revenue architecture.</p>
-                  <div className="mt-3 pt-3 border-t border-[#dbe3f0]">
-                    <p className="text-xs text-[#64748b]">Industry benchmark:</p>
-                    <p className="mt-1 text-xs leading-5 text-[#334155]">
-                      Only <a href={signalsWithStats[0].sourceUrl} className="font-semibold underline decoration-magenta/40 underline-offset-2 hover:text-magenta hover:decoration-magenta transition" target="_blank" rel="noopener noreferrer">20%</a> of orgs forecast within 5% accuracy <span className="text-[#64748b]">(Xactly 2024)</span>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate">to production</p>
+                  <p className="text-xs leading-5 text-slate">typical timeline for meaningful improvements to revenue architecture.</p>
+                  <div className="mt-3 pt-3 border-t border-border">
+                    <p className="text-xs text-slate">Industry benchmark:</p>
+                    <p className="mt-1 text-xs leading-5 text-charcoal">
+                      Only <a href={signalsWithStats[0].sourceUrl} className="font-semibold underline decoration-magenta/40 underline-offset-2 hover:text-magenta hover:decoration-magenta transition" target="_blank" rel="noopener noreferrer">20%</a> of orgs forecast within 5% accuracy <span className="text-slate">(Xactly 2024)</span>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="relative flex h-full flex-col justify-between rounded-xl border border-[#dbe3f0] bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.06)_0%,rgba(255,255,255,0)_70%)]" />
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
                 <div className="space-y-1.5">
                   <p className="text-[1.5rem] font-semibold leading-tight text-navy sm:text-[1.75rem] md:text-[1.85rem] lg:text-[2.1rem]">Weekly</p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#64748b]">production cadence</p>
-                  <p className="text-xs leading-5 text-[#64748b]">regular deployment of improvements while maintaining system stability.</p>
-                  <div className="mt-3 pt-3 border-t border-[#dbe3f0]">
-                    <p className="text-xs text-[#64748b]">Industry benchmark:</p>
-                    <p className="mt-1 text-xs leading-5 text-[#334155]">
-                      <a href={signalsWithStats[1].sourceUrl} className="font-semibold underline decoration-magenta/40 underline-offset-2 hover:text-magenta hover:decoration-magenta transition" target="_blank" rel="noopener noreferrer">20%</a> of IT budget consumed by tech debt maintenance <span className="text-[#64748b]">(Forrester 2024)</span>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate">production cadence</p>
+                  <p className="text-xs leading-5 text-slate">regular deployment of improvements while maintaining system stability.</p>
+                  <div className="mt-3 pt-3 border-t border-border">
+                    <p className="text-xs text-slate">Industry benchmark:</p>
+                    <p className="mt-1 text-xs leading-5 text-charcoal">
+                      <a href={signalsWithStats[1].sourceUrl} className="font-semibold underline decoration-magenta/40 underline-offset-2 hover:text-magenta hover:decoration-magenta transition" target="_blank" rel="noopener noreferrer">20%</a> of IT budget consumed by tech debt maintenance <span className="text-slate">(Forrester 2024)</span>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="relative flex h-full flex-col justify-between rounded-xl border border-[#dbe3f0] bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.06)_0%,rgba(255,255,255,0)_70%)]" />
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
                 <div className="space-y-1.5">
                   <p className="text-[1.5rem] font-semibold leading-tight text-navy sm:text-[1.75rem] md:text-[1.85rem] lg:text-[2.1rem]">Incremental</p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#64748b]">approach</p>
-                  <p className="text-xs leading-5 text-[#64748b]">targeted fixes instead of expensive 9-month agency rebuilds.</p>
-                  <div className="mt-3 pt-3 border-t border-[#dbe3f0]">
-                    <p className="text-xs text-[#64748b]">Industry benchmark:</p>
-                    <p className="mt-1 text-xs leading-5 text-[#334155]">
-                      Complex implementations cost <a href={rebuildCostStat.url} className="font-semibold underline decoration-magenta/40 underline-offset-2 hover:text-magenta hover:decoration-magenta transition" target="_blank" rel="noopener noreferrer">{rebuildCostStat.range}</a> over 9 months <span className="text-[#64748b]">({rebuildCostStat.source} {rebuildCostStat.year})</span>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate">approach</p>
+                  <p className="text-xs leading-5 text-slate">targeted fixes instead of expensive 9-month agency rebuilds.</p>
+                  <div className="mt-3 pt-3 border-t border-border">
+                    <p className="text-xs text-slate">Industry benchmark:</p>
+                    <p className="mt-1 text-xs leading-5 text-charcoal">
+                      Complex implementations cost <a href={rebuildCostStat.url} className="font-semibold underline decoration-magenta/40 underline-offset-2 hover:text-magenta hover:decoration-magenta transition" target="_blank" rel="noopener noreferrer">{rebuildCostStat.range}</a> over 9 months <span className="text-slate">({rebuildCostStat.source} {rebuildCostStat.year})</span>
                     </p>
                   </div>
                 </div>
@@ -439,7 +439,7 @@ export default function Home() {
         <section
           ref={resultsRef}
           id="approach"
-          className="relative overflow-hidden py-24 bg-[#f8fafc]"
+          className="relative overflow-hidden py-24 bg-surface"
           aria-labelledby="approach-heading"
         >
         <motion.div
@@ -466,23 +466,23 @@ export default function Home() {
             <h2 id="approach-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl text-navy">
               Hire a conglomerate that bills you. Or an embedded principal who joins your team.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-[#334155]">
+            <p className="mt-6 text-lg leading-8 text-charcoal">
               Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what&apos;s broken in 6-16 weeks—with incremental production improvements throughout.
             </p>
           </div>
 
           {/* Visual: 1 Principal vs 8-12 Team */}
           <div className="mt-12 mx-auto max-w-4xl">
-            <div className="relative overflow-hidden rounded-xl border border-[#dbe3f0] bg-white p-8 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative overflow-hidden rounded-xl border border-border bg-white p-8 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
               <div className="grid gap-8 md:grid-cols-2 items-center">
                 {/* Left: Traditional Agency */}
                 <div className="text-center">
-                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#64748b] mb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate mb-4">
                     Typical Agency
                   </p>
                   <div className="flex flex-wrap justify-center gap-2 mb-4">
                     {Array.from({ length: 12 }).map((_, i) => (
-                      <div key={i} className="h-8 w-8 rounded-full bg-[#f1f5f9] flex items-center justify-center">
+                      <div key={i} className="h-8 w-8 rounded-full bg-light-gray flex items-center justify-center">
                         <svg className="h-4 w-4 text-[#94a3b8]" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                         </svg>
@@ -490,14 +490,14 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-sm font-semibold text-navy">8-12 team members</p>
-                  <p className="text-xs text-[#64748b] mt-1">Multiple handoffs, time zones, skill levels</p>
+                  <p className="text-xs text-slate mt-1">Multiple handoffs, time zones, skill levels</p>
                 </div>
 
                 {/* Divider */}
                 <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="h-24 w-px bg-[#dbe3f0]" />
+                  <div className="h-24 w-px bg-border" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2">
-                    <span className="text-xs font-semibold text-[#64748b]">VS</span>
+                    <span className="text-xs font-semibold text-slate">VS</span>
                   </div>
                 </div>
 
@@ -514,7 +514,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-sm font-semibold text-navy">1 principal</p>
-                  <p className="text-xs text-[#64748b] mt-1">Who knows your entire system</p>
+                  <p className="text-xs text-slate mt-1">Who knows your entire system</p>
                 </div>
               </div>
             </div>
@@ -523,9 +523,9 @@ export default function Home() {
           {/* Split Comparison */}
           <div className="mt-16 grid gap-8 lg:grid-cols-2">
             {/* Left: Big Consultancy (What to Avoid) */}
-            <div className="relative overflow-hidden rounded-xl border border-[#dbe3f0] bg-[#f8fafc] p-8 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative overflow-hidden rounded-xl border border-border bg-surface p-8 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
               <div className="absolute top-4 right-4">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f5f9] px-3 py-1 text-xs font-semibold text-[#64748b]">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-light-gray px-3 py-1 text-xs font-semibold text-slate">
                   <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 8 8">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
@@ -533,84 +533,84 @@ export default function Home() {
                 </span>
               </div>
               <h3 className="pt-10 sm:pt-0 text-xl font-semibold text-navy">The Conglomerate Model</h3>
-              <p className="mt-3 text-sm text-[#64748b]">What most consultancies offer</p>
+              <p className="mt-3 text-sm text-slate">What most consultancies offer</p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#f1f5f9]">
-                    <svg className="h-3 w-3 text-[#64748b]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-light-gray">
+                    <svg className="h-3 w-3 text-slate" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Offshore teams, junior developers</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Your system gets passed between time zones and skill levels</p>
+                    <p className="mt-1 text-xs text-slate">Your system gets passed between time zones and skill levels</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#f1f5f9]">
-                    <svg className="h-3 w-3 text-[#64748b]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-light-gray">
+                    <svg className="h-3 w-3 text-slate" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Opaque billing, hidden costs</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Vague invoices. Surprise overages. No detailed time tracking.</p>
+                    <p className="mt-1 text-xs text-slate">Vague invoices. Surprise overages. No detailed time tracking.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#f1f5f9]">
-                    <svg className="h-3 w-3 text-[#64748b]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-light-gray">
+                    <svg className="h-3 w-3 text-slate" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Nine-month rebuilds, revenue at risk</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Rip-and-replace strategy freezes your GTM while they rebuild</p>
+                    <p className="mt-1 text-xs text-slate">Rip-and-replace strategy freezes your GTM while they rebuild</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#f1f5f9]">
-                    <svg className="h-3 w-3 text-[#64748b]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-light-gray">
+                    <svg className="h-3 w-3 text-slate" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Generic playbooks, no context</p>
-                    <p className="mt-1 text-xs text-[#64748b]">They&apos;ve never seen your tech stack combination before</p>
+                    <p className="mt-1 text-xs text-slate">They&apos;ve never seen your tech stack combination before</p>
                   </div>
                 </li>
               </ul>
 
-              <div className="mt-8 rounded-xl border border-[#dbe3f0] bg-[#f8fafc] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.05em] text-[#64748b]">Industry Reality Check</p>
+              <div className="mt-8 rounded-xl border border-border bg-surface p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.05em] text-slate">Industry Reality Check</p>
                 <ul className="mt-3 space-y-2">
                   <li className="flex items-baseline gap-2 text-sm">
-                    <span className="shrink-0 text-[#64748b]">•</span>
-                    <span className="text-[#334155]">
-                      <a href={industryStats[0].url} className="font-semibold underline decoration-[#94a3b8] underline-offset-2 hover:text-[#64748b] hover:decoration-[#64748b] transition" title={industryStats[0].tooltip} target="_blank" rel="noopener noreferrer">{industryStats[0].number}</a> of CRM data is incomplete or missing critical fields
-                      <span className="ml-1 text-xs text-[#64748b]">({industryStats[0].source} {industryStats[0].year})</span>
+                    <span className="shrink-0 text-slate">•</span>
+                    <span className="text-charcoal">
+                      <a href={industryStats[0].url} className="font-semibold underline decoration-[#94a3b8] underline-offset-2 hover:text-slate hover:decoration-[#64748b] transition" title={industryStats[0].tooltip} target="_blank" rel="noopener noreferrer">{industryStats[0].number}</a> of CRM data is incomplete or missing critical fields
+                      <span className="ml-1 text-xs text-slate">({industryStats[0].source} {industryStats[0].year})</span>
                     </span>
                   </li>
                   <li className="flex items-baseline gap-2 text-sm">
-                    <span className="shrink-0 text-[#64748b]">•</span>
-                    <span className="text-[#334155]">
-                      <a href={industryStats[3].url} className="font-semibold underline decoration-[#94a3b8] underline-offset-2 hover:text-[#64748b] hover:decoration-[#64748b] transition" title={industryStats[3].tooltip} target="_blank" rel="noopener noreferrer">{industryStats[3].number}</a> average wasted annually on unused SaaS licenses
-                      <span className="ml-1 text-xs text-[#64748b]">({industryStats[3].source} {industryStats[3].year})</span>
+                    <span className="shrink-0 text-slate">•</span>
+                    <span className="text-charcoal">
+                      <a href={industryStats[3].url} className="font-semibold underline decoration-[#94a3b8] underline-offset-2 hover:text-slate hover:decoration-[#64748b] transition" title={industryStats[3].tooltip} target="_blank" rel="noopener noreferrer">{industryStats[3].number}</a> average wasted annually on unused SaaS licenses
+                      <span className="ml-1 text-xs text-slate">({industryStats[3].source} {industryStats[3].year})</span>
                     </span>
                   </li>
                   <li className="flex items-baseline gap-2 text-sm">
-                    <span className="shrink-0 text-[#64748b]">•</span>
-                    <span className="text-[#334155]">
-                      <a href={industryStats[2].url} className="font-semibold underline decoration-[#94a3b8] underline-offset-2 hover:text-[#64748b] hover:decoration-[#64748b] transition" title={industryStats[2].tooltip} target="_blank" rel="noopener noreferrer">{industryStats[2].number}</a> of sales rep time spent on non-selling activities
-                      <span className="ml-1 text-xs text-[#64748b]">({industryStats[2].source} {industryStats[2].year})</span>
+                    <span className="shrink-0 text-slate">•</span>
+                    <span className="text-charcoal">
+                      <a href={industryStats[2].url} className="font-semibold underline decoration-[#94a3b8] underline-offset-2 hover:text-slate hover:decoration-[#64748b] transition" title={industryStats[2].tooltip} target="_blank" rel="noopener noreferrer">{industryStats[2].number}</a> of sales rep time spent on non-selling activities
+                      <span className="ml-1 text-xs text-slate">({industryStats[2].source} {industryStats[2].year})</span>
                     </span>
                   </li>
                   <li className="flex items-baseline gap-2 text-sm">
-                    <span className="shrink-0 text-[#64748b]">•</span>
-                    <span className="text-[#334155]">
-                      <a href={industryStats[1].url} className="font-semibold underline decoration-[#94a3b8] underline-offset-2 hover:text-[#64748b] hover:decoration-[#64748b] transition" title={industryStats[1].tooltip} target="_blank" rel="noopener noreferrer">{industryStats[1].number}</a> average annual cost of poor data quality
-                      <span className="ml-1 text-xs text-[#64748b]">({industryStats[1].source} {industryStats[1].year})</span>
+                    <span className="shrink-0 text-slate">•</span>
+                    <span className="text-charcoal">
+                      <a href={industryStats[1].url} className="font-semibold underline decoration-[#94a3b8] underline-offset-2 hover:text-slate hover:decoration-[#64748b] transition" title={industryStats[1].tooltip} target="_blank" rel="noopener noreferrer">{industryStats[1].number}</a> average annual cost of poor data quality
+                      <span className="ml-1 text-xs text-slate">({industryStats[1].source} {industryStats[1].year})</span>
                     </span>
                   </li>
                 </ul>
@@ -628,7 +628,7 @@ export default function Home() {
                 </span>
               </div>
               <h3 className="pt-10 sm:pt-0 text-xl font-semibold text-navy">The Embedded Partner Model</h3>
-              <p className="mt-3 text-sm text-[#64748b]">What you get working with me</p>
+              <p className="mt-3 text-sm text-slate">What you get working with me</p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
@@ -639,7 +639,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">100% US-based principal who embeds with your team</p>
-                    <p className="mt-1 text-xs text-[#64748b]">I join standups, pair on tickets, and ship fixes alongside your admins</p>
+                    <p className="mt-1 text-xs text-slate">I join standups, pair on tickets, and ship fixes alongside your admins</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -650,7 +650,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Transparent billing, detailed time tracking</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Incredibly detailed logs on demand. You know exactly what you&apos;re paying for.</p>
+                    <p className="mt-1 text-xs text-slate">Incredibly detailed logs on demand. You know exactly what you&apos;re paying for.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -661,7 +661,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">6-16 week engagements, incremental production improvements</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Stabilize what&apos;s broken without freezing revenue for months</p>
+                    <p className="mt-1 text-xs text-slate">Stabilize what&apos;s broken without freezing revenue for months</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -672,7 +672,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Deep expertise across your specific tech stack</p>
-                    <p className="mt-1 text-xs text-[#64748b]">Salesforce, NetSuite, Workato, Apollo—I&apos;ve solved your integration challenge twice already</p>
+                    <p className="mt-1 text-xs text-slate">Salesforce, NetSuite, Workato, Apollo—I&apos;ve solved your integration challenge twice already</p>
                   </div>
                 </li>
               </ul>
@@ -722,18 +722,18 @@ export default function Home() {
               return (
                 <div
                   key={step.phase}
-                  className={`relative overflow-hidden rounded-xl border border-[#dbe3f0] bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)] ${offsetClass}`}
+                  className={`relative overflow-hidden rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)] ${offsetClass}`}
                 >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.06)_0%,rgba(255,255,255,0)_70%)]" />
                 <div className="relative">
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cyan/10 text-sm font-semibold text-navy shadow-[0_4px_8px_rgba(0,217,255,0.2)]">
                     {index + 1}
                   </span>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.05em] text-[#64748b]">{step.phase}</p>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.05em] text-slate">{step.phase}</p>
                   <h3 className="mt-2 text-lg font-semibold text-navy">{step.focus}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[#334155]">{step.summary}</p>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.05em] text-[#64748b]">Delivered</p>
-                  <ul className="mt-3 space-y-2 text-sm text-[#334155]">
+                  <p className="mt-3 text-sm leading-6 text-charcoal">{step.summary}</p>
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.05em] text-slate">Delivered</p>
+                  <ul className="mt-3 space-y-2 text-sm text-charcoal">
                     {step.deliverables.map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan" />
@@ -752,7 +752,7 @@ export default function Home() {
         {/* FAQ Section - LIGHT BACKGROUND */}
         <section
           id="faq"
-          className="relative overflow-hidden pt-20 pb-24 bg-[#f8fafc]"
+          className="relative overflow-hidden pt-20 pb-24 bg-surface"
           aria-labelledby="faq-heading"
         >
         <div className="pointer-events-none absolute inset-0">
@@ -767,7 +767,7 @@ export default function Home() {
             <h2 id="faq-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl text-navy">
               Fast answers before we hop on a call.
             </h2>
-            <p className="mt-4 text-base leading-7 text-[#334155] md:text-lg">
+            <p className="mt-4 text-base leading-7 text-charcoal md:text-lg">
               Need something else? Email{' '}
               <a href="mailto:drew@revelateops.com" className="text-blue underline decoration-blue/40 underline-offset-4">
                 drew@revelateops.com

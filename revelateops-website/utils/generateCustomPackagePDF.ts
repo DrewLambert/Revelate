@@ -4,13 +4,14 @@ interface UserInfo {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
-  companyName: string;
-  title: string;
-  comments: string;
+  phone?: string;
+  company?: string;
+  companyName?: string;
+  title?: string;
+  comments?: string;
 }
 
-interface Service {
+interface OldService {
   id: string;
   title: string;
   description: string;
@@ -18,10 +19,73 @@ interface Service {
   deliverables: string[];
 }
 
+interface NewService {
+  id: string;
+  name: string;
+  shortDescription: string;
+  fullDescription?: string;
+  deliverables?: string[];
+}
+
+type Service = OldService | NewService;
+
+interface PDFParams {
+  services: Service[];
+  userInfo: UserInfo;
+}
+
+// Normalize service to old format
+function normalizeService(service: Service): OldService {
+  if ('title' in service) {
+    return service as OldService;
+  }
+
+  const newService = service as NewService;
+  return {
+    id: newService.id,
+    title: newService.name,
+    description: newService.shortDescription,
+    detailedDescription: newService.fullDescription || newService.shortDescription,
+    deliverables: newService.deliverables || [],
+  };
+}
+
+// Overloaded function signature for backward compatibility
+export function generateCustomPackagePDF(params: PDFParams): void;
 export function generateCustomPackagePDF(
   userInfo: UserInfo,
   selectedServices: Service[]
+): void;
+export function generateCustomPackagePDF(
+  paramsOrUserInfo: PDFParams | UserInfo,
+  selectedServices?: Service[]
 ): void {
+  // Determine which signature was used
+  let userInfo: UserInfo;
+  let services: Service[];
+
+  if (selectedServices !== undefined) {
+    // Old signature: (userInfo, selectedServices)
+    userInfo = paramsOrUserInfo as UserInfo;
+    services = selectedServices;
+  } else {
+    // New signature: ({ services, userInfo })
+    const params = paramsOrUserInfo as PDFParams;
+    userInfo = params.userInfo;
+    services = params.services;
+  }
+
+  // Normalize all services to old format
+  const normalizedServices = services.map(normalizeService);
+
+  // Normalize userInfo fields
+  const normalizedUserInfo = {
+    ...userInfo,
+    companyName: userInfo.companyName || userInfo.company || '',
+    phone: userInfo.phone || '',
+    title: userInfo.title || '',
+    comments: userInfo.comments || '',
+  };
   // Create new PDF document
   const doc = new jsPDF({
     orientation: 'portrait',
@@ -130,7 +194,7 @@ export function generateCustomPackagePDF(
 
   // Client Information Section
   doc.setFillColor(lightGray.r, lightGray.g, lightGray.b);
-  const clientBoxHeight = userInfo.comments ? 48 : 36;
+  const clientBoxHeight = normalizedUserInfo.comments ? 48 : 36;
   doc.roundedRect(margin, yPosition, contentWidth, clientBoxHeight, 1, 1, 'F');
 
   // Left accent line
@@ -149,7 +213,7 @@ export function generateCustomPackagePDF(
 
   // Client name
   doc.setFontSize(13);
-  doc.text(`${userInfo.firstName} ${userInfo.lastName}`, margin + 6, yPosition);
+  doc.text(`${normalizedUserInfo.firstName} ${normalizedUserInfo.lastName}`, margin + 6, yPosition);
 
   yPosition += 6;
 
@@ -157,19 +221,19 @@ export function generateCustomPackagePDF(
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(textGray.r, textGray.g, textGray.b);
-  doc.text(`${userInfo.title} | ${userInfo.companyName}`, margin + 6, yPosition);
+  doc.text(`${normalizedUserInfo.title} | ${normalizedUserInfo.companyName}`, margin + 6, yPosition);
 
   yPosition += 6;
 
   // Contact info
   doc.setFontSize(8);
-  doc.text(`Email: ${userInfo.email}`, margin + 6, yPosition);
-  doc.text(`Phone: ${userInfo.phone}`, margin + 95, yPosition);
+  doc.text(`Email: ${normalizedUserInfo.email}`, margin + 6, yPosition);
+  doc.text(`Phone: ${normalizedUserInfo.phone}`, margin + 95, yPosition);
 
   yPosition += 6;
 
   // Comments if present
-  if (userInfo.comments) {
+  if (normalizedUserInfo.comments) {
     doc.setDrawColor(200, 200, 200);
     doc.setLineWidth(0.2);
     doc.line(margin + 6, yPosition, margin + contentWidth - 6, yPosition);
@@ -183,7 +247,7 @@ export function generateCustomPackagePDF(
 
     doc.setFont('helvetica', 'italic');
     doc.setTextColor(textGray.r, textGray.g, textGray.b);
-    const splitComments = doc.splitTextToSize(userInfo.comments, contentWidth - 16);
+    const splitComments = doc.splitTextToSize(normalizedUserInfo.comments, contentWidth - 16);
     doc.text(splitComments, margin + 6, yPosition);
     yPosition += splitComments.length * 3.5 + 2;
   } else {
@@ -205,12 +269,12 @@ export function generateCustomPackagePDF(
 
   doc.setFontSize(8);
   doc.setFont('helvetica', 'normal');
-  doc.text(`${selectedServices.length} service${selectedServices.length !== 1 ? 's' : ''} included`, pageWidth - margin - 4, yPosition + 6.5, { align: 'right' });
+  doc.text(`${normalizedServices.length} service${normalizedServices.length !== 1 ? 's' : ''} included`, pageWidth - margin - 4, yPosition + 6.5, { align: 'right' });
 
   yPosition += 16;
 
   // List each service
-  selectedServices.forEach((service, index) => {
+  normalizedServices.forEach((service, index) => {
     checkNewPage(35);
 
     // Service number
@@ -263,7 +327,7 @@ export function generateCustomPackagePDF(
     yPosition += 8;
 
     // Separator line between services
-    if (index < selectedServices.length - 1) {
+    if (index < normalizedServices.length - 1) {
       doc.setDrawColor(220, 220, 220);
       doc.setLineWidth(0.3);
       doc.line(margin, yPosition - 4, pageWidth - margin, yPosition - 4);
@@ -425,7 +489,7 @@ export function generateCustomPackagePDF(
 
   // Generate filename
   const timestamp = new Date().toISOString().split('T')[0];
-  const filename = `Revelate_Custom_Package_${userInfo.companyName.replace(/[^a-zA-Z0-9]/g, '_')}_${timestamp}.pdf`;
+  const filename = `Revelate_Custom_Package_${normalizedUserInfo.companyName.replace(/[^a-zA-Z0-9]/g, '_')}_${timestamp}.pdf`;
 
   // Save the PDF
   doc.save(filename);

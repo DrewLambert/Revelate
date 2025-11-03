@@ -1,33 +1,69 @@
 @import "tailwindcss";
 
+/*
+ * REVELATE OPERATIONS BRAND DESIGN SYSTEM
+ *
+ * This file defines the core brand colors, typography, and spacing system
+ * for the Revelate Operations website. All colors, fonts, and spacing should
+ * use these design tokens to maintain brand consistency.
+ *
+ * USAGE GUIDELINES:
+ * - Use semantic color names (text-navy, bg-cyan, etc.) instead of hex values
+ * - Never use arbitrary values like bg-[#1a1f3a] - use bg-navy instead
+ * - Refer to REVELATE-Brand-Guidelines-MASTER.md for color ratios and usage
+ *
+ * COLOR PALETTE:
+ * Primary: Navy (#1a1f3a) - Main dark background, 60-70% of UI
+ * Accent: Cyan (#00d9ff) - Highlights, links, key interactions, 15-20%
+ * Secondary: Blue (#0084ff) - Supporting elements, hover states
+ * CTA: Magenta (#d946ef) - Critical actions only, 5-10%
+ * Neutrals: Charcoal, Slate, Light Gray - Text and subtle elements
+ */
+
 :root {
-  --navy: #1a1f3a;
-  --navy-ink: #131735;
-  --background: #ffffff;
-  --surface: #f8fafc;
-  --foreground: #1a1f3a;
-  --cyan: #00d9ff;
-  --blue: #0084ff;
-  --magenta: #d946ef;
-  --charcoal: #334155;
-  --slate: #64748b;
-  --light-gray: #f1f5f9;
-  --border: #dbe3f0;
+  /* === PRIMARY COLORS === */
+  --navy: #1a1f3a;           /* Main dark background - use for sections, cards */
+  --navy-ink: #131735;       /* Deeper navy for contrast - use for footers, overlays */
+
+  /* === ACCENT COLORS === */
+  --cyan: #00d9ff;           /* Primary accent - use for highlights, links, icons */
+  --blue: #0084ff;           /* Secondary accent - use for hover states, gradients */
+  --magenta: #d946ef;        /* CTA accent - use ONLY for primary buttons, critical actions */
+
+  /* === NEUTRAL COLORS === */
+  --white: #ffffff;          /* Pure white - use for text on dark backgrounds */
+  --surface: #f8fafc;        /* Very light gray - use for light section backgrounds */
+  --light-gray: #f1f5f9;     /* Light gray - use for cards on light backgrounds */
+  --border: #dbe3f0;         /* Border gray - use for subtle dividers */
+  --slate: #64748b;          /* Medium gray - use for secondary text */
+  --charcoal: #334155;       /* Dark gray - use for body text on light backgrounds */
+
+  /* === SEMANTIC ALIASES === */
+  --background: var(--white);
+  --foreground: var(--navy);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-border: var(--border);
+  /* === COLOR UTILITIES === */
   --color-navy: var(--navy);
   --color-navy-ink: var(--navy-ink);
-  --color-surface: var(--surface);
   --color-cyan: var(--cyan);
   --color-blue: var(--blue);
   --color-magenta: var(--magenta);
+  --color-white: var(--white);
+  --color-surface: var(--surface);
+  --color-light-gray: var(--light-gray);
+  --color-border: var(--border);
+  --color-slate: var(--slate);
+  --color-charcoal: var(--charcoal);
+
+  /* Semantic aliases */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
   --color-muted: var(--charcoal);
   --color-muted-light: var(--slate);
-  --color-light-gray: var(--light-gray);
+
+  /* === TYPOGRAPHY === */
   --font-sans: var(--font-body, "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif);
   --font-heading: var(--font-heading, "Space Grotesk", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif);
   --font-mono: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", "Menlo", monospace;

@@ -1,0 +1,45 @@
+<svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nhGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5B7FD8;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#8FAAED;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#B8CFFB;stop-opacity:0.4" />
+    </linearGradient>
+  </defs>
+
+  <!-- New Hampshire state outline -->
+  <path
+    d="M 50,10
+       C 52,8 54,6 56,5
+       L 58,8 L 60,12 L 62,16
+       L 64,20 L 65,25 L 66,30
+       L 67,35 L 68,40 L 69,45
+       L 69,50 L 68,55 L 67,60
+       L 66,65 L 65,70 L 64,75
+       L 62,80 L 60,85 L 58,88
+       L 56,90 L 54,92 L 52,93
+       L 50,94 L 48,93 L 46,92
+       L 44,90 L 42,88 L 40,85
+       L 38,80 L 36,75 L 35,70
+       L 34,65 L 33,60 L 32,55
+       L 31,50 L 31,45 L 32,40
+       L 33,35 L 34,30 L 35,25
+       L 36,20 L 38,16 L 40,12
+       L 42,8 L 44,5
+       C 46,6 48,8 50,10 Z"
+    fill="url(#nhGradient)"
+    stroke="#4A6BC9"
+    stroke-width="1"
+  />
+
+  <!-- NHBEA text -->
+  <text
+    x="50"
+    y="110"
+    font-family="Arial, sans-serif"
+    font-size="16"
+    font-weight="bold"
+    fill="#2E4A8A"
+    text-anchor="middle"
+  >NHBEA</text>
+</svg>
