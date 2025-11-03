@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
     ],
   },
   serverExternalPackages: ['@prisma/client', '@prisma/engines'],
+  outputFileTracingIncludes: {
+    '/api/**': ['./node_modules/.prisma/client/**/*', './node_modules/@prisma/client/**/*'],
+  },
 };
 
 // Conditionally apply Sentry configuration only if credentials are available
