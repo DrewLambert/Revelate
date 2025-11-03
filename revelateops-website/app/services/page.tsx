@@ -272,7 +272,7 @@ export default function ServicesPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#080B16] via-[#09102A] to-[#070915] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[#0A0F1E] via-[#1a1f3a] to-[#0A0F1E] flex items-center justify-center">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#00d9ff] mb-4"></div>
           <p className="text-gray-400">Loading services...</p>
@@ -283,7 +283,7 @@ export default function ServicesPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#080B16] via-[#09102A] to-[#070915] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[#0A0F1E] via-[#1a1f3a] to-[#0A0F1E] flex items-center justify-center">
         <div className="bg-red-900/20 border border-red-500 rounded-lg p-6 max-w-md">
           <h2 className="text-xl font-bold text-red-400 mb-2">Error Loading Services</h2>
           <p className="text-gray-300">{error}</p>
@@ -293,7 +293,7 @@ export default function ServicesPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#080B16] via-[#09102A] to-[#070915]">
+    <div className="relative min-h-screen bg-gradient-to-b from-[#0A0F1E] via-[#1a1f3a] to-[#0A0F1E]">
       {/* Subtle Constellation Background */}
       <Constellations density="medium" />
 
