@@ -192,18 +192,178 @@ export default function HowIWorkPage() {
               </p>
             </div>
 
-            {/* PLACEHOLDER: Drew to provide case studies */}
-            <div className="relative overflow-hidden rounded-2xl border-2 border-dashed border-cyan/30 bg-white/[0.05] p-12 text-center backdrop-blur-xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan/5 via-transparent to-transparent" />
-              <div className="relative">
-                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-cyan/10">
-                  <svg className="h-8 w-8 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
+            <div className="grid gap-8 lg:gap-12">
+              {/* Case Study #1: Bevi (Featured) */}
+              <div className="relative overflow-hidden rounded-2xl border-2 border-cyan/20 bg-white/[0.08] shadow-lg backdrop-blur-xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan/5 via-transparent to-transparent" />
+                <div className="relative p-8 lg:p-12">
+                  {/* Header */}
+                  <div className="mb-8">
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div>
+                        <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-cyan mb-2">
+                          Featured Case Study
+                        </span>
+                        <h3 className="font-heading text-2xl font-semibold text-white sm:text-3xl">
+                          $100M+ Series C SaaS Company
+                        </h3>
+                        <p className="font-body text-base text-white/60 mt-2">
+                          Smart water cooler manufacturer · Former employer
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Challenge */}
+                  <div className="mb-8">
+                    <h4 className="font-heading text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <svg className="h-5 w-5 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                      The Challenge
+                    </h4>
+                    <ul className="space-y-3 font-body text-base text-white/80">
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white/10">
+                          <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
+                        </span>
+                        <span>Lead routing took <strong className="text-white">2+ hours manually</strong> through spreadsheets and Slack messages</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white/10">
+                          <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
+                        </span>
+                        <span>Sales team bypassed Salesforce for Google Sheets due to data trust issues</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white/10">
+                          <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
+                        </span>
+                        <span>Duplicate systems across departments costing <strong className="text-white">$200K+ annually</strong></span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white/10">
+                          <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
+                        </span>
+                        <span>Forecast accuracy unreliable—board deck numbers didn't match CRM</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Solution */}
+                  <div className="mb-8">
+                    <h4 className="font-heading text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <svg className="h-5 w-5 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      The Solution
+                    </h4>
+                    <ul className="space-y-3 font-body text-base text-white/80">
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-cyan/20">
+                          <svg className="h-3 w-3 text-cyan" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span>Rebuilt lead routing with intelligent territory assignment and automated SLA tracking</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-cyan/20">
+                          <svg className="h-3 w-3 text-cyan" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span>Unified data pipelines across Salesforce, HubSpot, and analytics platforms</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-cyan/20">
+                          <svg className="h-3 w-3 text-cyan" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span>Implemented real-time pipeline reporting with automated data quality checks</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-cyan/20">
+                          <svg className="h-3 w-3 text-cyan" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span>Consolidated 50+ integration workflows eliminating duplicate data entry</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Results */}
+                  <div className="rounded-xl bg-white/5 border border-cyan/20 p-6">
+                    <h4 className="font-heading text-lg font-semibold text-white mb-6 flex items-center gap-2">
+                      <svg className="h-5 w-5 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                      Quantified Results
+                    </h4>
+                    <div className="grid gap-6 sm:grid-cols-3">
+                      <div>
+                        <div className="text-3xl font-bold text-cyan mb-2">66%</div>
+                        <div className="text-sm text-white/70">Sales cycle acceleration</div>
+                      </div>
+                      <div>
+                        <div className="text-3xl font-bold text-cyan mb-2">3 min</div>
+                        <div className="text-sm text-white/70">Lead routing time (from 2+ hours)</div>
+                      </div>
+                      <div>
+                        <div className="text-3xl font-bold text-cyan mb-2">$200K+</div>
+                        <div className="text-sm text-white/70">Annual operational savings</div>
+                      </div>
+                    </div>
+                    <div className="mt-6 pt-6 border-t border-white/10">
+                      <p className="text-sm text-white/60">
+                        <strong className="text-white/80">Timeline:</strong> 12-week embedded engagement ·
+                        <strong className="text-white/80 ml-2">Team:</strong> Principal-only delivery ·
+                        <strong className="text-white/80 ml-2">Scope:</strong> 150+ workflow implementations
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-heading text-xl font-semibold text-white mb-3">Case Studies Coming Soon</h3>
-                <p className="font-body text-base text-white/70 max-w-2xl mx-auto">
-                  Drew will provide 3 detailed case studies with client context, problems solved, and quantified results.
+              </div>
+
+              {/* Additional Case Studies Placeholder */}
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="relative overflow-hidden rounded-2xl border border-dashed border-white/20 bg-white/[0.05] p-8 text-center backdrop-blur-xl">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
+                      <svg className="h-6 w-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-heading text-lg font-semibold text-white mb-2">Series B Case Study #2</h4>
+                      <p className="font-body text-sm text-white/60">Additional client story coming soon</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden rounded-2xl border border-dashed border-white/20 bg-white/[0.05] p-8 text-center backdrop-blur-xl">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
+                      <svg className="h-6 w-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-heading text-lg font-semibold text-white mb-2">Nonprofit Case Study</h4>
+                      <p className="font-body text-sm text-white/60">Capability breadth example coming soon</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Client Logos Note */}
+              <div className="text-center">
+                <p className="font-body text-sm text-white/50">
+                  <svg className="inline-block h-4 w-4 mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Client logos and additional anonymized case studies available upon request
                 </p>
               </div>
             </div>
