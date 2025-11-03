@@ -5,13 +5,12 @@ import Script from 'next/script';
 export default function GoogleAnalytics() {
   const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
+  // Debug logging
+  console.log('[GoogleAnalytics] GA_MEASUREMENT_ID:', GA_MEASUREMENT_ID);
+  console.log('[GoogleAnalytics] All NEXT_PUBLIC env vars:', Object.keys(process.env).filter(k => k.startsWith('NEXT_PUBLIC_')));
+
   if (!GA_MEASUREMENT_ID) {
-    // Only show warning in development
-    if (process.env.NODE_ENV === 'development') {
-      console.warn(
-        '[Analytics] Google Analytics Measurement ID not found. Add NEXT_PUBLIC_GA_MEASUREMENT_ID to your .env file.'
-      );
-    }
+    console.warn('[Analytics] Google Analytics Measurement ID not found. Expected NEXT_PUBLIC_GA_MEASUREMENT_ID');
     return null;
   }
 
