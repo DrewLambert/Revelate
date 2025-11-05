@@ -19,8 +19,12 @@
     "test:e2e:report": "playwright show-report",
     "postinstall": "prisma generate",
     "db:seed": "tsx prisma/seed.ts",
+    "db:seed:crm": "tsx prisma/seed-crm.ts",
     "db:generate": "prisma generate",
-    "db:push": "prisma db push"
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate deploy",
+    "db:studio": "prisma studio",
+    "crm:setup": "bash scripts/setup-crm-local.sh"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
