@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revelate Admin</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #1a1f3a;
+      --navy-dark: #141829;
+      --cyan: #00d9ff;
+      --magenta: #d946ef;
+      --white: #ffffff;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      font-size: 14px;
+    }
+
+    .admin-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar - Compact */
+    .sidebar {
+      width: 220px;
+      background: var(--navy-dark);
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar-logo {
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .logo-icon {
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .logo-text h1 {
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .logo-text p {
+      font-size: 0.625rem;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      margin-top: 1px;
+    }
+
+    .nav-items {
+      flex: 1;
+      padding: 0.75rem 0.625rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.5rem 0.625rem;
+      border-radius: 0.3125rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .nav-item:hover {
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-item.active {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-item svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2px;
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: 8px;
+      background: rgba(217, 70, 239, 0.12);
+      color: rgba(217, 70, 239, 0.95);
+      font-size: 0.625rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Main Content - Dense */
+    .main-content {
+      margin-left: 220px;
+      flex: 1;
+      padding: 1.5rem;
+      max-width: 100%;
+    }
+
+    .page-header {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-heading);
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.8125rem;
+      margin-top: 2px;
+    }
+
+    .page-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Status Grid - Compact, single row */
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-monitor {
+      padding: 0.875rem 1rem;
+      border-radius: 0.375rem;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: border-color 0.15s ease;
+    }
+
+    .status-monitor:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .monitor-header {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .monitor-icon {
+      width: 14px;
+      height: 14px;
+      color: rgba(255, 255, 255, 0.35);
+      stroke-width: 2px;
+    }
+
+    .monitor-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 500;
+    }
+
+    .status-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      margin-left: auto;
+    }
+
+    .status-dot.critical {
+      background: var(--magenta);
+    }
+
+    .status-dot.healthy {
+      background: #10b981;
+    }
+
+    .monitor-value {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .monitor-trend {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Sections - Compact */
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.625rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section-icon {
+      width: 16px;
+      height: 16px;
+      color: rgba(255, 255, 255, 0.4);
+      stroke-width: 2px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.35);
+      margin-left: 0.25rem;
+      font-weight: 400;
+    }
+
+    .section-count {
+      margin-left: auto;
+      font-family: var(--font-heading);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Task List - Tight spacing */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .task-card {
+      padding: 0.75rem 0.875rem;
+      border-radius: 0.375rem;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .task-card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Priority dot - tiny */
+    .task-card::before {
+      content: '';
+      position: absolute;
+      left: 0.375rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .task-card.overdue::before {
+      background: var(--magenta);
+    }
+
+    .task-card.today::before {
+      background: var(--cyan);
+    }
+
+    .task-content {
+      display: flex;
+      gap: 0.625rem;
+      padding-left: 0.5rem;
+    }
+
+    .task-checkbox {
+      margin-top: 0.0625rem;
+      width: 15px;
+      height: 15px;
+      color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: color 0.15s ease;
+      flex-shrink: 0;
+      stroke-width: 2px;
+    }
+
+    .task-checkbox:hover {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .task-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .task-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 0.3125rem;
+      line-height: 1.3;
+    }
+
+    .task-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 0.375rem;
+    }
+
+    .task-meta-separator {
+      color: rgba(255, 255, 255, 0.15);
+    }
+
+    .task-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      flex-wrap: wrap;
+    }
+
+    /* Badges - Compact */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.1875rem 0.4375rem;
+      border-radius: 0.25rem;
+      font-size: 0.625rem;
+      font-weight: 500;
+      border: 1px solid;
+      line-height: 1;
+    }
+
+    .badge-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* Status badges */
+    .badge.status-todo {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.4);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .badge.status-in-progress {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.65);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .badge.status-blocked {
+      background: rgba(245, 158, 11, 0.06);
+      color: rgba(245, 158, 11, 0.9);
+      border-color: rgba(245, 158, 11, 0.2);
+    }
+
+    .badge.status-completed {
+      background: rgba(16, 185, 129, 0.06);
+      color: rgba(16, 185, 129, 0.85);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    /* Priority badges */
+    .badge.priority-urgent {
+      background: rgba(217, 70, 239, 0.06);
+      color: rgba(217, 70, 239, 0.9);
+      border-color: rgba(217, 70, 239, 0.2);
+    }
+
+    .badge.priority-high {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .badge.priority-medium {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.45);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .badge.priority-low {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.35);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Due date - inline */
+    .due-date {
+      font-size: 0.6875rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .due-date.overdue {
+      color: rgba(217, 70, 239, 0.85);
+    }
+
+    /* Two-column layout for task sections */
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .section-grid .section {
+      margin-bottom: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 60px;
+      }
+
+      .sidebar-logo .logo-text,
+      .nav-item span {
+        display: none;
+      }
+
+      .main-content {
+        margin-left: 60px;
+        padding: 1rem;
+      }
+
+      .status-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar - Compact -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <i data-lucide="zap" class="logo-icon"></i>
+        <div class="logo-text">
+          <h1>Revelate</h1>
+          <p>Admin</p>
+        </div>
+      </div>
+
+      <nav class="nav-items">
+        <a href="#" class="nav-item active">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+          <span class="nav-badge">3</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="users"></i>
+          <span>Clients</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="check-square"></i>
+          <span>Tasks</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="calendar"></i>
+          <span>Meetings</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="lightbulb"></i>
+          <span>Ideas</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="folder-kanban"></i>
+          <span>Projects</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content - Dense -->
+    <main class="main-content">
+
+      <!-- Page Header - Compact -->
+      <header class="page-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Task and client overview</p>
+        </div>
+      </header>
+
+      <!-- Status Grid - Compact single row -->
+      <div class="status-grid">
+
+        <div class="status-monitor">
+          <div class="monitor-header">
+            <i data-lucide="users" class="monitor-icon"></i>
+            <span class="monitor-label">Clients</span>
+            <div class="status-dot healthy"></div>
+          </div>
+          <div class="monitor-value">24</div>
+          <div class="monitor-trend">+3 this month</div>
+        </div>
+
+        <div class="status-monitor">
+          <div class="monitor-header">
+            <i data-lucide="alert-circle" class="monitor-icon"></i>
+            <span class="monitor-label">Overdue</span>
+            <div class="status-dot critical"></div>
+          </div>
+          <div class="monitor-value">3</div>
+          <div class="monitor-trend">Action needed</div>
+        </div>
+
+        <div class="status-monitor">
+          <div class="monitor-header">
+            <i data-lucide="clock" class="monitor-icon"></i>
+            <span class="monitor-label">Today</span>
+            <div class="status-dot healthy"></div>
+          </div>
+          <div class="monitor-value">5</div>
+          <div class="monitor-trend">In progress</div>
+        </div>
+
+        <div class="status-monitor">
+          <div class="monitor-header">
+            <i data-lucide="check-circle-2" class="monitor-icon"></i>
+            <span class="monitor-label">Done</span>
+            <div class="status-dot healthy"></div>
+          </div>
+          <div class="monitor-value">12</div>
+          <div class="monitor-trend">This week</div>
+        </div>
+
+      </div>
+
+      <!-- Two-column layout for Overdue and Today -->
+      <div class="section-grid">
+
+        <!-- Overdue Section -->
+        <section class="section">
+          <div class="section-header">
+            <i data-lucide="alert-circle" class="section-icon"></i>
+            <h2 class="section-title">Overdue</h2>
+            <span class="section-count">3</span>
+          </div>
+
+          <div class="task-list">
+
+            <div class="task-card overdue">
+              <div class="task-content">
+                <i data-lucide="square" class="task-checkbox"></i>
+                <div class="task-details">
+                  <h3 class="task-title">Complete Q4 revenue analysis for Acme Corp</h3>
+                  <div class="task-meta">
+                    <span>Acme Corporation</span>
+                    <span class="task-meta-separator">•</span>
+                    <span>Revenue Optimization</span>
+                  </div>
+                  <div class="task-badges">
+                    <span class="badge priority-urgent">
+                      <span class="badge-dot"></span>
+                      Urgent
+                    </span>
+                    <span class="badge status-in-progress">
+                      <span class="badge-dot"></span>
+                      In Progress
+                    </span>
+                    <span class="due-date overdue">Oct 25</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="task-card overdue">
+              <div class="task-content">
+                <i data-lucide="square" class="task-checkbox"></i>
+                <div class="task-details">
+                  <h3 class="task-title">Review CRM integration for TechStart</h3>
+                  <div class="task-meta">
+                    <span>TechStart Solutions</span>
+                    <span class="task-meta-separator">•</span>
+                    <span>Systems Integration</span>
+                  </div>
+                  <div class="task-badges">
+                    <span class="badge priority-high">
+                      <span class="badge-dot"></span>
+                      High
+                    </span>
+                    <span class="badge status-blocked">
+                      <span class="badge-dot"></span>
+                      Blocked
+                    </span>
+                    <span class="due-date overdue">Oct 26</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="task-card overdue">
+              <div class="task-content">
+                <i data-lucide="square" class="task-checkbox"></i>
+                <div class="task-details">
+                  <h3 class="task-title">Submit proposal for GrowthCo engagement</h3>
+                  <div class="task-meta">
+                    <span>GrowthCo</span>
+                  </div>
+                  <div class="task-badges">
+                    <span class="badge priority-urgent">
+                      <span class="badge-dot"></span>
+                      Urgent
+                    </span>
+                    <span class="badge status-todo">
+                      <span class="badge-dot"></span>
+                      To Do
+                    </span>
+                    <span class="due-date overdue">Oct 27</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Today Section -->
+        <section class="section">
+          <div class="section-header">
+            <i data-lucide="clock" class="section-icon"></i>
+            <h2 class="section-title">Due Today</h2>
+            <span class="section-count">5</span>
+          </div>
+
+          <div class="task-list">
+
+            <div class="task-card today">
+              <div class="task-content">
+                <i data-lucide="square" class="task-checkbox"></i>
+                <div class="task-details">
+                  <h3 class="task-title">Prepare dashboard demo for DataFlow meeting</h3>
+                  <div class="task-meta">
+                    <span>DataFlow Inc</span>
+                    <span class="task-meta-separator">•</span>
+                    <span>Analytics Dashboard</span>
+                  </div>
+                  <div class="task-badges">
+                    <span class="badge priority-high">
+                      <span class="badge-dot"></span>
+                      High
+                    </span>
+                    <span class="badge status-in-progress">
+                      <span class="badge-dot"></span>
+                      In Progress
+                    </span>
+                    <span class="due-date">2:00 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="task-card today">
+              <div class="task-content">
+                <i data-lucide="square" class="task-checkbox"></i>
+                <div class="task-details">
+                  <h3 class="task-title">Follow up on pipeline report feedback</h3>
+                  <div class="task-meta">
+                    <span>Acme Corporation</span>
+                  </div>
+                  <div class="task-badges">
+                    <span class="badge priority-medium">
+                      <span class="badge-dot"></span>
+                      Medium
+                    </span>
+                    <span class="badge status-todo">
+                      <span class="badge-dot"></span>
+                      To Do
+                    </span>
+                    <span class="due-date">4:00 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="task-card today">
+              <div class="task-content">
+                <i data-lucide="square" class="task-checkbox"></i>
+                <div class="task-details">
+                  <h3 class="task-title">Send weekly metrics summary to ScaleUp team</h3>
+                  <div class="task-meta">
+                    <span>ScaleUp Ventures</span>
+                  </div>
+                  <div class="task-badges">
+                    <span class="badge priority-low">
+                      <span class="badge-dot"></span>
+                      Low
+                    </span>
+                    <span class="badge status-todo">
+                      <span class="badge-dot"></span>
+                      To Do
+                    </span>
+                    <span class="due-date">EOD</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="task-card today">
+              <div class="task-content">
+                <i data-lucide="square" class="task-checkbox"></i>
+                <div class="task-details">
+                  <h3 class="task-title">Update revenue dashboard for Q4 kickoff</h3>
+                  <div class="task-meta">
+                    <span>Internal</span>
+                  </div>
+                  <div class="task-badges">
+                    <span class="badge priority-medium">
+                      <span class="badge-dot"></span>
+                      Medium
+                    </span>
+                    <span class="badge status-todo">
+                      <span class="badge-dot"></span>
+                      To Do
+                    </span>
+                    <span class="due-date">5:00 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="task-card today">
+              <div class="task-content">
+                <i data-lucide="square" class="task-checkbox"></i>
+                <div class="task-details">
+                  <h3 class="task-title">Review proposal draft for Series B client</h3>
+                  <div class="task-meta">
+                    <span>Prospect</span>
+                  </div>
+                  <div class="task-badges">
+                    <span class="badge priority-high">
+                      <span class="badge-dot"></span>
+                      High
+                    </span>
+                    <span class="badge status-in-progress">
+                      <span class="badge-dot"></span>
+                      In Progress
+                    </span>
+                    <span class="due-date">6:00 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

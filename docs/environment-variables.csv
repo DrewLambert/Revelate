@@ -1,0 +1,25 @@
+Category,Variable Name,Service,Required,Example Value,Where to Get It,Current Status
+Database,POSTGRES_PRISMA_URL,Neon,Yes,postgresql://user:password@host/database,"Neon dashboard → Connection Details. NOTE: Add UptimeRobot IPs to allowlist (see uptimerobot-ips.txt)",Set
+Authentication,AUTH_SECRET,NextAuth,Yes,random_32_char_string,Generate: openssl rand -base64 32,Set
+Authentication,GOOGLE_CLIENT_ID,Google Cloud,Yes,1234567890-abc.apps.googleusercontent.com,Google Cloud Console → APIs & Credentials,Set
+Authentication,GOOGLE_CLIENT_SECRET,Google Cloud,Yes,GOCSPX-xxxxxxxxxxxxx,Google Cloud Console → APIs & Credentials,Set
+Authentication,ADMIN_EMAIL,NextAuth,Yes,your_email@example.com,Your admin email address,Set
+Google Ads,GOOGLE_ADS_CLIENT_ID,Google Cloud,Yes,1234567890-xyz.apps.googleusercontent.com,Google Cloud Console → APIs & Credentials,Set
+Google Ads,GOOGLE_ADS_CLIENT_SECRET,Google Cloud,Yes,GOCSPX-yyyyyyyyyyyyy,Google Cloud Console → APIs & Credentials,Set
+Google Ads,GOOGLE_ADS_DEVELOPER_TOKEN,Google Ads,Yes,abcdefghijklmnop,Google Ads → API Center (approval required),Set
+Google Ads,GOOGLE_ADS_REFRESH_TOKEN,Google Ads,Yes,1//xxxxxxxxxxxxx,Generated during OAuth flow,Set
+Google Ads,GOOGLE_ADS_LOGIN_CUSTOMER_ID,Google Ads,Yes,1234567890,Google Ads → Manager Account ID,Set
+Slack,SLACK_BOT_TOKEN,Slack,Yes,xoxb-1234567890-abcdefghij,Slack App → OAuth & Permissions,Set
+Slack,SLACK_USER_ID,Slack,Yes,U1234567890,Slack → View Profile → More → Copy Member ID,Set
+Calendly,NEXT_PUBLIC_CALENDLY_CLIENT_ID,Calendly,Yes,abc123def456,Calendly → Integrations → API & Webhooks,Set
+Calendly,CALENDLY_CLIENT_SECRET,Calendly,Yes,secret_xyz789,Calendly → Integrations → API & Webhooks,Set
+Calendly,CALENDLY_API_TOKEN,Calendly,Yes,eyJhbGciOiJIUzI1NiJ9...,Calendly → Integrations → Personal Access Token,Set
+Calendly,CALENDLY_SIGNING_KEY,Calendly,Yes,signing_key_abc123,Calendly → Webhooks → Signing Key,Set
+Calendly,CALENDLY_USERNAME,Calendly,Yes,your-calendly-username,Your Calendly profile URL,Set
+Calendly,CALENDLY_EVENT_SLUG,Calendly,Yes,30min-consultation,Your default event type slug,Set
+Monitoring,NEXT_PUBLIC_SENTRY_DSN,Sentry,Yes,https://abc123@o123.ingest.sentry.io/456,Sentry → Project Settings → Client Keys,Set
+Monitoring,SENTRY_AUTH_TOKEN,Sentry,Yes,sntrys_abc123def456,Sentry → Settings → Auth Tokens,Set
+Monitoring,SENTRY_ORG,Sentry,Yes,your-org-slug,Sentry → Organization Settings → General,Set
+Monitoring,SENTRY_PROJECT,Sentry,Yes,your-project-slug,Sentry → Project Settings → General,Set
+Analytics,NEXT_PUBLIC_GA_MEASUREMENT_ID,Google Analytics,Yes,G-XXXXXXXXXX,Google Analytics → Admin → Data Streams,Set
+Configuration,LOG_LEVEL,Application,No,info,"Options: error, warn, info, debug",Set

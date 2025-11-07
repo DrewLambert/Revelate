@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revelate Admin Command Center - Refined Design</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Revelate Brand Colors */
+      --navy: #1a1f3a;
+      --navy-dark: #141829;
+      --cyan: #00d9ff;
+      --magenta: #d946ef;
+      --white: #ffffff;
+
+      /* Fonts */
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Cosmic Background - SUBTLE, not neon */
+    .cosmic-background {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .radar-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.02; /* Much more subtle */
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 100px 100px;
+    }
+
+    /* Constellation Dots - Very subtle */
+    .constellation-dot {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+    }
+
+    /* Layout */
+    .admin-layout {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 256px;
+      background: rgba(20, 24, 41, 0.95);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar-logo {
+      padding: 2rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--cyan);
+    }
+
+    .logo-text h1 {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .logo-text p {
+      font-size: 0.625rem;
+      color: rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    .nav-items {
+      flex: 1;
+      padding: 1.5rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.625rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      position: relative;
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .nav-item.active {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 217, 255, 0.15);
+    }
+
+    .nav-item.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--cyan);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .nav-item svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      border-radius: 9px;
+      background: rgba(217, 70, 239, 0.15);
+      color: var(--magenta);
+      font-size: 0.625rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 256px;
+      flex: 1;
+      padding: 2.5rem 3rem;
+      max-width: 1600px;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.875rem;
+    }
+
+    /* Status Monitor Cards - Navy dominant, subtle accents */
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .status-monitor {
+      position: relative;
+      padding: 1.75rem;
+      border-radius: 0.75rem;
+      background: rgba(255, 255, 255, 0.02); /* Very subtle */
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.2s ease;
+    }
+
+    .status-monitor:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .status-monitor:hover .monitor-icon {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Very subtle status indicator - no pulsing */
+    .status-indicator {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .status-indicator.healthy {
+      background: rgba(16, 185, 129, 0.6);
+    }
+
+    .status-indicator.warning {
+      background: rgba(245, 158, 11, 0.6);
+    }
+
+    .status-indicator.critical {
+      background: rgba(217, 70, 239, 0.6);
+    }
+
+    .monitor-header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      margin-bottom: 1rem;
+    }
+
+    .monitor-icon {
+      width: 18px;
+      height: 18px;
+      color: rgba(255, 255, 255, 0.4);
+      transition: color 0.2s ease;
+    }
+
+    .monitor-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 500;
+    }
+
+    .monitor-value {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .monitor-trend {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .monitor-trend svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .monitor-trend.positive {
+      color: rgba(16, 185, 129, 0.8);
+    }
+
+    .monitor-trend.negative {
+      color: rgba(217, 70, 239, 0.8);
+    }
+
+    /* Section Headers */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section-icon {
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .section-icon.critical {
+      color: var(--magenta);
+    }
+
+    .section-icon.active {
+      color: var(--cyan);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .section-count {
+      margin-left: auto;
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .section-count.critical {
+      color: var(--magenta);
+    }
+
+    .section-count.active {
+      color: var(--cyan);
+    }
+
+    /* Task Cards - Subtle differentiation */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .task-card {
+      position: relative;
+      padding: 1.25rem;
+      border-radius: 0.625rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.2s ease;
+    }
+
+    .task-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* Overdue - SUBTLE magenta accent, not neon */
+    .task-card.overdue {
+      border-left: 2px solid rgba(217, 70, 239, 0.4);
+      border-top-color: rgba(217, 70, 239, 0.12);
+      border-right-color: rgba(217, 70, 239, 0.12);
+      border-bottom-color: rgba(217, 70, 239, 0.12);
+    }
+
+    .task-card.overdue:hover {
+      border-left-color: rgba(217, 70, 239, 0.6);
+      border-top-color: rgba(217, 70, 239, 0.15);
+      border-right-color: rgba(217, 70, 239, 0.15);
+      border-bottom-color: rgba(217, 70, 239, 0.15);
+    }
+
+    /* Today - SUBTLE cyan accent */
+    .task-card.today {
+      border-left: 2px solid rgba(0, 217, 255, 0.3);
+      border-top-color: rgba(0, 217, 255, 0.1);
+      border-right-color: rgba(0, 217, 255, 0.1);
+      border-bottom-color: rgba(0, 217, 255, 0.1);
+    }
+
+    .task-card.today:hover {
+      border-left-color: rgba(0, 217, 255, 0.5);
+      border-top-color: rgba(0, 217, 255, 0.12);
+      border-right-color: rgba(0, 217, 255, 0.12);
+      border-bottom-color: rgba(0, 217, 255, 0.12);
+    }
+
+    .task-content {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .task-checkbox {
+      margin-top: 0.125rem;
+      width: 18px;
+      height: 18px;
+      color: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .task-checkbox:hover {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .task-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .task-title {
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .task-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 0.75rem;
+    }
+
+    .task-meta span {
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .task-meta span:hover {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .task-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Badge Component - Subtle, not neon */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.3125rem 0.625rem;
+      border-radius: 0.3125rem;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .badge-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .badge.status-todo {
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .badge.status-in-progress {
+      background: rgba(0, 217, 255, 0.08);
+      color: rgba(0, 217, 255, 0.9);
+      border: 1px solid rgba(0, 217, 255, 0.15);
+    }
+
+    .badge.status-blocked {
+      background: rgba(245, 158, 11, 0.08);
+      color: rgba(245, 158, 11, 0.9);
+      border: 1px solid rgba(245, 158, 11, 0.15);
+    }
+
+    .badge.status-completed {
+      background: rgba(16, 185, 129, 0.08);
+      color: rgba(16, 185, 129, 0.9);
+      border: 1px solid rgba(16, 185, 129, 0.15);
+    }
+
+    .badge.priority-urgent {
+      background: rgba(217, 70, 239, 0.08);
+      color: rgba(217, 70, 239, 0.9);
+      border: 1px solid rgba(217, 70, 239, 0.15);
+    }
+
+    .badge.priority-high {
+      background: rgba(245, 158, 11, 0.08);
+      color: rgba(245, 158, 11, 0.9);
+      border: 1px solid rgba(245, 158, 11, 0.15);
+    }
+
+    .badge.priority-medium {
+      background: rgba(0, 217, 255, 0.08);
+      color: rgba(0, 217, 255, 0.9);
+      border: 1px solid rgba(0, 217, 255, 0.15);
+    }
+
+    .badge.priority-low {
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .badge.due-overdue {
+      color: rgba(217, 70, 239, 0.9);
+    }
+
+    .badge.due-today {
+      color: rgba(0, 217, 255, 0.9);
+    }
+
+    .badge.due-upcoming {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 64px;
+      }
+
+      .sidebar-logo .logo-text,
+      .nav-item span {
+        display: none;
+      }
+
+      .main-content {
+        margin-left: 64px;
+        padding: 1.5rem;
+      }
+
+      .status-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cosmic Background - Very subtle -->
+  <div class="cosmic-background">
+    <div class="radar-grid"></div>
+    <div id="constellation"></div>
+  </div>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <i data-lucide="zap" class="logo-icon"></i>
+        <div class="logo-text">
+          <h1>Revelate</h1>
+          <p>Command Center</p>
+        </div>
+      </div>
+
+      <nav class="nav-items">
+        <a href="#" class="nav-item active">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+          <span class="nav-badge">3</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="users"></i>
+          <span>Clients</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="check-square"></i>
+          <span>Tasks</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="calendar"></i>
+          <span>Meetings</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="lightbulb"></i>
+          <span>Ideas</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i data-lucide="folder-kanban"></i>
+          <span>Projects</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Page Header -->
+      <header class="page-header">
+        <h1>Command Center</h1>
+        <p>System status and priority actions</p>
+      </header>
+
+      <!-- Status Monitors - Navy dominant -->
+      <div class="status-grid">
+
+        <div class="status-monitor">
+          <div class="status-indicator healthy"></div>
+          <div class="monitor-header">
+            <i data-lucide="users" class="monitor-icon"></i>
+            <span class="monitor-label">Active Clients</span>
+          </div>
+          <div class="monitor-value">24</div>
+          <div class="monitor-trend positive">
+            <i data-lucide="trending-up"></i>
+            <span>+3 this month</span>
+          </div>
+        </div>
+
+        <div class="status-monitor">
+          <div class="status-indicator critical"></div>
+          <div class="monitor-header">
+            <i data-lucide="alert-circle" class="monitor-icon"></i>
+            <span class="monitor-label">Overdue Tasks</span>
+          </div>
+          <div class="monitor-value">3</div>
+          <div class="monitor-trend negative">
+            <i data-lucide="alert-triangle"></i>
+            <span>Requires attention</span>
+          </div>
+        </div>
+
+        <div class="status-monitor">
+          <div class="status-indicator healthy"></div>
+          <div class="monitor-header">
+            <i data-lucide="clock" class="monitor-icon"></i>
+            <span class="monitor-label">Due Today</span>
+          </div>
+          <div class="monitor-value">5</div>
+          <div class="monitor-trend positive">
+            <i data-lucide="arrow-right"></i>
+            <span>In progress</span>
+          </div>
+        </div>
+
+        <div class="status-monitor">
+          <div class="status-indicator healthy"></div>
+          <div class="monitor-header">
+            <i data-lucide="check-circle-2" class="monitor-icon"></i>
+            <span class="monitor-label">Completed This Week</span>
+          </div>
+          <div class="monitor-value">12</div>
+          <div class="monitor-trend positive">
+            <i data-lucide="trending-up"></i>
+            <span>On track</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Overdue Section - Subtle, not neon -->
+      <section class="section">
+        <div class="section-header">
+          <i data-lucide="alert-circle" class="section-icon critical"></i>
+          <h2 class="section-title">Overdue</h2>
+          <span class="section-count critical">3</span>
+        </div>
+
+        <div class="task-list">
+
+          <div class="task-card overdue">
+            <div class="task-content">
+              <i data-lucide="square" class="task-checkbox"></i>
+              <div class="task-details">
+                <h3 class="task-title">Complete Q4 revenue analysis for Acme Corp</h3>
+                <div class="task-meta">
+                  <span>Acme Corporation</span>
+                  <span style="color: rgba(255,255,255,0.2);">•</span>
+                  <span>Revenue Optimization Project</span>
+                </div>
+                <div class="task-badges">
+                  <span class="badge priority-urgent">
+                    <span class="badge-dot"></span>
+                    Urgent
+                  </span>
+                  <span class="badge status-in-progress">
+                    <span class="badge-dot"></span>
+                    In Progress
+                  </span>
+                  <span class="badge due-overdue">
+                    Due: Oct 25
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card overdue">
+            <div class="task-content">
+              <i data-lucide="square" class="task-checkbox"></i>
+              <div class="task-details">
+                <h3 class="task-title">Review CRM integration for TechStart</h3>
+                <div class="task-meta">
+                  <span>TechStart Solutions</span>
+                  <span style="color: rgba(255,255,255,0.2);">•</span>
+                  <span>Systems Integration</span>
+                </div>
+                <div class="task-badges">
+                  <span class="badge priority-high">
+                    <span class="badge-dot"></span>
+                    High
+                  </span>
+                  <span class="badge status-blocked">
+                    <span class="badge-dot"></span>
+                    Blocked
+                  </span>
+                  <span class="badge due-overdue">
+                    Due: Oct 26
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card overdue">
+            <div class="task-content">
+              <i data-lucide="square" class="task-checkbox"></i>
+              <div class="task-details">
+                <h3 class="task-title">Submit proposal for GrowthCo engagement</h3>
+                <div class="task-meta">
+                  <span>GrowthCo</span>
+                </div>
+                <div class="task-badges">
+                  <span class="badge priority-urgent">
+                    <span class="badge-dot"></span>
+                    Urgent
+                  </span>
+                  <span class="badge status-todo">
+                    <span class="badge-dot"></span>
+                    To Do
+                  </span>
+                  <span class="badge due-overdue">
+                    Due: Oct 27
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Today Section - Subtle -->
+      <section class="section">
+        <div class="section-header">
+          <i data-lucide="clock" class="section-icon active"></i>
+          <h2 class="section-title">Due Today</h2>
+          <span class="section-count active">5</span>
+        </div>
+
+        <div class="task-list">
+
+          <div class="task-card today">
+            <div class="task-content">
+              <i data-lucide="square" class="task-checkbox"></i>
+              <div class="task-details">
+                <h3 class="task-title">Prepare dashboard demo for DataFlow meeting</h3>
+                <div class="task-meta">
+                  <span>DataFlow Inc</span>
+                  <span style="color: rgba(255,255,255,0.2);">•</span>
+                  <span>Analytics Dashboard</span>
+                </div>
+                <div class="task-badges">
+                  <span class="badge priority-high">
+                    <span class="badge-dot"></span>
+                    High
+                  </span>
+                  <span class="badge status-in-progress">
+                    <span class="badge-dot"></span>
+                    In Progress
+                  </span>
+                  <span class="badge due-today">
+                    Due: Today, 2:00 PM
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card today">
+            <div class="task-content">
+              <i data-lucide="square" class="task-checkbox"></i>
+              <div class="task-details">
+                <h3 class="task-title">Follow up on pipeline report feedback</h3>
+                <div class="task-meta">
+                  <span>Acme Corporation</span>
+                </div>
+                <div class="task-badges">
+                  <span class="badge priority-medium">
+                    <span class="badge-dot"></span>
+                    Medium
+                  </span>
+                  <span class="badge status-todo">
+                    <span class="badge-dot"></span>
+                    To Do
+                  </span>
+                  <span class="badge due-today">
+                    Due: Today, 4:00 PM
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card today">
+            <div class="task-content">
+              <i data-lucide="square" class="task-checkbox"></i>
+              <div class="task-details">
+                <h3 class="task-title">Send weekly metrics summary to ScaleUp team</h3>
+                <div class="task-meta">
+                  <span>ScaleUp Ventures</span>
+                  <span style="color: rgba(255,255,255,0.2);">•</span>
+                  <span>Weekly Reporting</span>
+                </div>
+                <div class="task-badges">
+                  <span class="badge priority-low">
+                    <span class="badge-dot"></span>
+                    Low
+                  </span>
+                  <span class="badge status-todo">
+                    <span class="badge-dot"></span>
+                    To Do
+                  </span>
+                  <span class="badge due-today">
+                    Due: End of day
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Generate very subtle constellation dots
+    const constellation = document.getElementById('constellation');
+    const dotCount = 25; // Fewer dots
+
+    for (let i = 0; i < dotCount; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'constellation-dot';
+      dot.style.left = Math.random() * 100 + '%';
+      dot.style.top = Math.random() * 100 + '%';
+      constellation.appendChild(dot);
+    }
+  </script>
+
+</body>
+</html>
