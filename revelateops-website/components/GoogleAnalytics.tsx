@@ -1,29 +1,49 @@
-'use client';
+'use client'
 
-import Script from 'next/script';
+import Script from 'next/script'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
-export default function GoogleAnalytics() {
-  // Hardcode for now to test if component renders
-  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-M24D05ZWGN';
+export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
-  console.log('[GoogleAnalytics] Using GA_MEASUREMENT_ID:', GA_MEASUREMENT_ID);
+  // Track pageviews on route change
+  useEffect(() => {
+    if (!measurementId) return
+
+    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
+
+    // Send pageview with custom URL
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('config', measurementId, {
+        page_path: url,
+      })
+    }
+  }, [pathname, searchParams, measurementId])
+
+  if (!measurementId) return null
 
   return (
     <>
+      {/* Google Analytics gtag.js - Optimized loading */}
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
         strategy="afterInteractive"
+        onLoad={() => {
+          // Initialize gtag
+          (window as any).dataLayer = (window as any).dataLayer || []
+          function gtag(...args: any[]) {
+            ;(window as any).dataLayer.push(args)
+          }
+          (window as any).gtag = gtag
+
+          gtag('js', new Date())
+          gtag('config', measurementId, {
+            send_page_view: false, // We handle pageviews manually for better SPA tracking
+          })
+        }}
       />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}', {
-            page_path: window.location.pathname,
-          });
-        `}
-      </Script>
     </>
-  );
+  )
 }
