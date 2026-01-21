@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
         hostname: 'i.scdn.co',
         pathname: '/image/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'oecbrp40z4wonuql.public.blob.vercel-storage.com',
+        pathname: '/**',
+      },
     ],
   },
   serverExternalPackages: ['@prisma/client', '@prisma/engines'],

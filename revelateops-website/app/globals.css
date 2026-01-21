@@ -1,116 +1,185 @@
 @import "tailwindcss";
 
 /*
- * REVELATE OPERATIONS BRAND DESIGN SYSTEM
+ * REVELATE OPERATIONS BRAND DESIGN SYSTEM v2.0
+ * Updated: January 2026
  *
- * This file defines the core brand colors, typography, and spacing system
- * for the Revelate Operations website. All colors, fonts, and spacing should
- * use these design tokens to maintain brand consistency.
+ * Design Direction: "The Sophisticated System"
+ * Editorial Authority + System Visualized
  *
  * USAGE GUIDELINES:
- * - Use semantic color names (text-navy, bg-cyan, etc.) instead of hex values
- * - Never use arbitrary values like bg-[#1a1f3a] - use bg-navy instead
- * - Refer to REVELATE-Brand-Guidelines-MASTER.md for color ratios and usage
+ * - Use semantic color names (bg-deepest, text-primary, etc.)
+ * - Dark backgrounds with warm off-white text
+ * - Cyan as punctuation, not decoration
+ * - Fraunces serif for headlines, Inter for body
  *
- * COLOR PALETTE:
- * Primary: Navy (#1a1f3a) - Main dark background, 60-70% of UI
- * Accent: Cyan (#00d9ff) - Highlights, links, key interactions, 15-20%
- * Secondary: Blue (#0084ff) - Supporting elements, hover states
- * CTA: Magenta (#d946ef) - Critical actions only, 5-10%
- * Neutrals: Charcoal, Slate, Light Gray - Text and subtle elements
+ * COLOR PHILOSOPHY:
+ * - Deep blacks create gravitas and sophistication
+ * - Warm off-whites reduce harshness on dark backgrounds
+ * - Cyan (#22d3ee) is the primary accent—use sparingly
+ * - Violet (#a78bfa) for decorative accents only
  */
 
 :root {
-  /* === PRIMARY COLORS === */
-  --navy: #1a1f3a;           /* Main dark background - use for sections, cards */
-  --navy-ink: #131735;       /* Deeper navy for contrast - use for footers, overlays */
+  /* === BACKGROUND SCALE (Near-Black to Dark Gray) === */
+  --bg-deepest: #09090b;     /* Page background, maximum depth */
+  --bg-deep: #0f0f11;        /* Card backgrounds, raised surfaces */
+  --bg-surface: #18181b;     /* Interactive surfaces, hover states */
+  --bg-elevated: #27272a;    /* Modals, popovers, tooltips */
+  --bg-muted: #3f3f46;       /* Disabled states, subtle borders */
 
-  /* === ACCENT COLORS === */
-  --cyan: #00d9ff;           /* Primary accent - use for highlights, links, icons */
-  --blue: #0084ff;           /* Secondary accent - use for hover states, gradients */
-  --magenta: #d946ef;        /* CTA accent - use ONLY for primary buttons, critical actions */
+  /* === TEXT SCALE (Warm Off-Whites) === */
+  --text-primary: #fafaf9;   /* Headlines, primary content (warm white) */
+  --text-secondary: #d4d4d4; /* Body copy, descriptions */
+  --text-tertiary: #a1a1aa;  /* Captions, meta info, placeholders */
+  --text-muted: #71717a;     /* Disabled, subtle labels */
 
-  /* === NEUTRAL COLORS === */
-  --white: #ffffff;          /* Pure white - use for text on dark backgrounds */
-  --surface: #f8fafc;        /* Very light gray - use for light section backgrounds */
-  --light-gray: #f1f5f9;     /* Light gray - use for cards on light backgrounds */
-  --border: #dbe3f0;         /* Border gray - use for subtle dividers */
-  --slate: #64748b;          /* Medium gray - use for secondary text */
-  --charcoal: #334155;       /* Dark gray - use for body text on light backgrounds */
+  /* === ACCENT COLORS (Used as Punctuation) === */
+  --accent-primary: #22d3ee;       /* Primary CTAs, links, focus rings (cyan-400) */
+  --accent-primary-muted: #0e7490; /* Hover states, secondary emphasis (cyan-700) */
+  --accent-secondary: #a78bfa;     /* Decorative accents, tags (violet-400) */
+  --accent-glow: rgba(34, 211, 238, 0.15); /* Subtle glow effects */
+
+  /* === SEMANTIC COLORS === */
+  --success: #4ade80;        /* Positive states, checkmarks (green-400) */
+  --warning: #fbbf24;        /* Caution, attention (amber-400) */
+  --error: #f87171;          /* Error states, destructive (red-400) */
+  --info: #60a5fa;           /* Informational (blue-400) */
+
+  /* === BORDER COLORS === */
+  --border-subtle: rgba(255, 255, 255, 0.06);  /* Card edges, dividers */
+  --border-default: rgba(255, 255, 255, 0.1);  /* Input borders, separators */
+  --border-emphasis: rgba(255, 255, 255, 0.2); /* Hover states, focus */
+
+  /* === LEGACY ALIASES (preserve original values for backward compatibility) === */
+  /* These maintain the ORIGINAL hex values to prevent breaking existing components */
+  /* Components using these should migrate to new tokens over time */
+  --navy: var(--bg-deepest);         /* Dark backgrounds - OK to use new value */
+  --navy-ink: var(--bg-deep);        /* Dark backgrounds - OK to use new value */
+  --cyan: var(--accent-primary);     /* Accent - OK to use new value */
+  --blue: #0084ff;                   /* Keep original blue for secondary elements */
+  --magenta: #d946ef;                /* Keep original magenta for existing CTAs */
+  --white: #ffffff;                  /* Keep pure white for light-on-dark text */
+  --surface: #f8fafc;                /* LIGHT background - keep original */
+  --light-gray: #f1f5f9;             /* LIGHT background - keep original */
+  --border: #dbe3f0;                 /* Light border - keep original */
+  --slate: #64748b;                  /* Medium gray text - keep original */
+  --charcoal: #334155;               /* Dark gray text for light backgrounds - keep original */
 
   /* === SEMANTIC ALIASES === */
-  --background: var(--white);
-  --foreground: var(--navy);
+  --background: var(--bg-deepest);
+  --foreground: var(--text-primary);
 }
 
 @theme inline {
-  /* === COLOR UTILITIES === */
-  --color-navy: var(--navy);
-  --color-navy-ink: var(--navy-ink);
-  --color-cyan: var(--cyan);
-  --color-blue: var(--blue);
-  --color-magenta: var(--magenta);
-  --color-white: var(--white);
-  --color-surface: var(--surface);
-  --color-light-gray: var(--light-gray);
-  --color-border: var(--border);
-  --color-slate: var(--slate);
-  --color-charcoal: var(--charcoal);
+  /* === NEW BRAND SYSTEM COLORS === */
+  /* Background scale */
+  --color-bg-deepest: var(--bg-deepest);
+  --color-bg-deep: var(--bg-deep);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-muted: var(--bg-muted);
+
+  /* Text scale */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
+
+  /* Accent colors */
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-muted: var(--accent-primary-muted);
+  --color-accent-secondary: var(--accent-secondary);
+
+  /* Semantic colors */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+
+  /* === LEGACY COLOR UTILITIES (preserve original values) === */
+  --color-navy: var(--bg-deepest);
+  --color-navy-ink: var(--bg-deep);
+  --color-cyan: var(--accent-primary);
+  --color-blue: #0084ff;             /* Original blue */
+  --color-magenta: #d946ef;          /* Original magenta */
+  --color-white: #ffffff;            /* Pure white */
+  --color-surface: #f8fafc;          /* Light background */
+  --color-light-gray: #f1f5f9;       /* Light background */
+  --color-border: #dbe3f0;           /* Light border */
+  --color-slate: #64748b;            /* Medium gray text */
+  --color-charcoal: #334155;         /* Dark text for light backgrounds */
+  --color-verylightgray: #f8fafc;    /* Very light background */
+  --color-lightgray: #f1f5f9;        /* Light background */
 
   /* Semantic aliases */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-muted: var(--charcoal);
-  --color-muted-light: var(--slate);
-
-  /* TaskFlow-specific backgrounds */
-  --color-verylightgray: #f8fafc;
-  --color-lightgray: #f1f5f9;
+  --color-muted: var(--text-secondary);
+  --color-muted-light: var(--text-tertiary);
 
   /* === SHADCN/UI DESIGN TOKENS === */
   /* Maps shadcn's design system to Revelate brand colors */
 
-  /* Primary (Cyan - main accent for TaskFlow) */
-  --color-primary: var(--cyan);
-  --color-primary-foreground: var(--navy);
+  /* Primary (Cyan - main accent) */
+  --color-primary: var(--accent-primary);
+  --color-primary-foreground: var(--bg-deepest);
 
-  /* Secondary (Navy - supporting) */
-  --color-secondary: var(--navy);
-  --color-secondary-foreground: var(--white);
+  /* Secondary (Dark surface) */
+  --color-secondary: var(--bg-deep);
+  --color-secondary-foreground: var(--text-primary);
 
-  /* Accent (Light backgrounds for hover states) */
-  --color-accent: var(--light-gray);
-  --color-accent-foreground: var(--navy);
+  /* Accent (Elevated surfaces for hover states) */
+  --color-accent: var(--bg-elevated);
+  --color-accent-foreground: var(--text-primary);
 
   /* Destructive (Red for delete/error) */
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: var(--white);
+  --color-destructive: var(--error);
+  --color-destructive-foreground: var(--text-primary);
 
-  /* Card styling */
-  --color-card: var(--white);
-  --color-card-foreground: var(--navy);
+  /* Card styling (dark cards) */
+  --color-card: var(--bg-deep);
+  --color-card-foreground: var(--text-primary);
 
   /* Popover styling (dropdowns, modals) */
-  --color-popover: var(--white);
-  --color-popover-foreground: var(--navy);
+  --color-popover: var(--bg-elevated);
+  --color-popover-foreground: var(--text-primary);
 
   /* Muted states */
-  --color-muted-foreground: var(--slate);
+  --color-muted-foreground: var(--text-tertiary);
 
   /* Input/Form styling */
-  --color-input: var(--border);
-  --color-ring: var(--cyan);
+  --color-input: var(--border-default);
+  --color-ring: var(--accent-primary);
 
-  /* Radius */
-  --radius: 0.75rem;
+  /* Border radius - brand system uses smaller radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius: 8px;
 
-  /* Shadow utilities */
-  --shadow-cyan-sm: 0 2px 8px -2px rgba(0, 217, 255, 0.15);
+  /* Shadow utilities - updated for dark theme */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 24px rgba(34, 211, 238, 0.15);
 
   /* === TYPOGRAPHY === */
-  --font-sans: var(--font-body, "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif);
-  --font-heading: var(--font-heading, "Space Grotesk", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif);
+  /* Fraunces for headlines (soft serifs, editorial authority) */
+  --font-sans: var(--font-body, "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  --font-heading: var(--font-heading, "Fraunces", Georgia, serif);
   --font-mono: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", "Menlo", monospace;
+
+  /* === TYPE SCALE (Brand System) === */
+  --text-display: 4rem;      /* 64px - Hero headlines */
+  --text-h1: 3rem;           /* 48px - Page titles */
+  --text-h2: 2.25rem;        /* 36px - Section headers */
+  --text-h3: 1.75rem;        /* 28px - Subsection headers */
+  --text-h4: 1.375rem;       /* 22px - Card titles */
+  --text-body-lg: 1.125rem;  /* 18px - Lead paragraphs */
+  --text-body: 1rem;         /* 16px - Body copy */
+  --text-body-sm: 0.875rem;  /* 14px - Secondary text */
+  --text-caption: 0.75rem;   /* 12px - Labels, meta */
 }
 
 body {
@@ -226,7 +295,7 @@ p {
   transform: translateY(0);
 }
 
-/* === TASKFLOW CUSTOM UTILITIES === */
+/* === REVOPS CUSTOM UTILITIES === */
 
 /* Cyan glow shadow for cards and interactive elements */
 .shadow-cyan-sm {
