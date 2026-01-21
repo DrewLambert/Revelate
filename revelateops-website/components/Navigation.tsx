@@ -2,12 +2,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 
 const links = [
-  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
+  { href: '/how-i-work', label: 'How I Work' },
   { href: '/about', label: 'About' },
 ];
 
@@ -16,6 +16,25 @@ export default function Navigation() {
   const isHomepage = pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
   const [showCompact, setShowCompact] = useState(!isHomepage);
+  const [isOverLightBg, setIsOverLightBg] = useState(false);
+
+  // Detect background color behind navbar using scroll position
+  const detectBackgroundColor = useCallback(() => {
+    const navHeight = 100; // Approximate nav position from top
+    const sections = document.querySelectorAll('[data-nav-theme]');
+
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      // Check if nav overlaps with this section
+      if (rect.top <= navHeight && rect.bottom >= navHeight) {
+        const theme = section.getAttribute('data-nav-theme');
+        setIsOverLightBg(theme === 'light');
+        return;
+      }
+    }
+    // Default to dark theme (white text) if no section found
+    setIsOverLightBg(false);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,12 +51,15 @@ export default function Navigation() {
       } else {
         setShowCompact(true);
       }
+
+      // Detect background on scroll
+      detectBackgroundColor();
     };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHomepage]);
+  }, [isHomepage, detectBackgroundColor]);
 
   useEffect(() => {
     if (!showCompact) {
@@ -55,24 +77,12 @@ export default function Navigation() {
       {isHomepage && (
         <Link
           href="/"
-          className={`group fixed left-1/2 z-40 hidden xl:flex -translate-x-1/2 flex-col items-center gap-2 sm:gap-3 lg:gap-4 transition-all duration-500 ease-out top-12 sm:top-14 md:top-16 lg:top-20 xl:top-24 2xl:top-28 ${
-            showCompact ? 'pointer-events-none -translate-y-12 scale-75 opacity-0' : 'scale-100 opacity-100'
+          className={`group fixed left-1/2 z-40 hidden xl:flex -translate-x-1/2 flex-col items-center transition-all duration-500 ease-out top-16 sm:top-18 md:top-20 lg:top-24 xl:top-28 2xl:top-32 ${
+            showCompact ? 'pointer-events-none -translate-y-8 opacity-0' : 'opacity-100'
           }`}
           aria-label="Revelate home"
         >
-        <span className="relative flex items-center justify-center overflow-hidden rounded-full border-[3px] border-white/60 bg-gradient-to-br from-white/5 via-transparent to-transparent shadow-[0_0_80px_rgba(0,217,255,0.4),0_0_40px_rgba(255,255,255,0.15),inset_0_1px_2px_rgba(255,255,255,0.4)] ring-1 ring-white/20 backdrop-blur-sm transition-all duration-500 group-hover:border-white/80 group-hover:shadow-[0_0_120px_rgba(0,217,255,0.6),0_0_60px_rgba(255,255,255,0.25),inset_0_1px_3px_rgba(255,255,255,0.5)] h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-36 xl:w-36 2xl:h-40 2xl:w-40">
-          <Image
-            src="/revelate-logo.png"
-            alt="Revelate"
-            width={160}
-            height={160}
-            className="h-full w-full object-contain relative z-10"
-            priority
-          />
-          <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-tl from-cyan/10 via-transparent to-transparent" />
-        </span>
-        <span className="text-center font-semibold uppercase tracking-[0.5em] text-white/90 drop-shadow transition-colors duration-500 group-hover:text-cyan text-xs sm:text-sm">
+        <span className="text-center font-semibold uppercase tracking-[0.4em] text-white drop-shadow-lg transition-colors duration-500 group-hover:text-cyan text-lg sm:text-xl md:text-2xl lg:text-3xl">
           Revelate Operations
         </span>
       </Link>
@@ -82,7 +92,9 @@ export default function Navigation() {
         <div
           className={`mx-auto max-w-[1280px] rounded-2xl border px-6 py-3 transition-all duration-500 lg:px-8 ${
             showCompactLogo
-              ? 'border-white/30 bg-gradient-to-b from-navy/95 via-navy/90 to-navy/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.1)] ring-1 ring-white/10'
+              ? isOverLightBg
+                ? 'border-navy/20 bg-gradient-to-b from-navy/90 via-navy/85 to-navy/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.2),0_0_0_1px_rgba(17,27,58,0.1)] ring-1 ring-navy/10'
+                : 'border-white/40 bg-gradient-to-b from-white/15 via-white/10 to-white/5 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.2)] ring-1 ring-white/20'
               : 'border-transparent bg-transparent shadow-none backdrop-blur-0 ring-0'
           }`}
         >
@@ -90,24 +102,14 @@ export default function Navigation() {
             <Link href="/" className={`group flex items-center gap-3.5 transition-opacity duration-500 ${
               showCompactLogo ? 'opacity-100' : 'xl:opacity-0 xl:pointer-events-none'
             }`}>
-              <span
-                className={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full transition-all ${
-                  showCompactLogo
-                    ? 'border-[2px] border-white/60 bg-gradient-to-br from-white/5 via-transparent to-transparent shadow-[0_0_32px_rgba(0,217,255,0.4),0_0_16px_rgba(255,255,255,0.15),inset_0_1px_1px_rgba(255,255,255,0.4)] ring-1 ring-white/20 backdrop-blur-sm group-hover:border-white/80 group-hover:shadow-[0_0_48px_rgba(0,217,255,0.6),0_0_24px_rgba(255,255,255,0.25),inset_0_1px_2px_rgba(255,255,255,0.5)]'
-                    : 'border-[2px] border-white/60 bg-gradient-to-br from-white/5 via-transparent to-transparent shadow-[0_0_32px_rgba(0,217,255,0.4),0_0_16px_rgba(255,255,255,0.15),inset_0_1px_1px_rgba(255,255,255,0.4)] ring-1 ring-white/20 backdrop-blur-sm group-hover:border-white/80 group-hover:shadow-[0_0_48px_rgba(0,217,255,0.6),0_0_24px_rgba(255,255,255,0.25),inset_0_1px_2px_rgba(255,255,255,0.5)]'
-                }`}
-              >
-                <Image
-                  src="/revelate-logo.png"
-                  alt="Revelate"
-                  width={52}
-                  height={52}
-                  className="h-full w-full object-contain relative z-10"
-                  priority
-                />
-                <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-tl from-cyan/10 via-transparent to-transparent" />
-              </span>
+              <Image
+                src="https://oecbrp40z4wonuql.public.blob.vercel-storage.com/Logo_no_words.png"
+                alt="Revelate"
+                width={44}
+                height={44}
+                className="h-11 w-11 object-contain transition-transform duration-300 group-hover:scale-105"
+                priority
+              />
               {showCompactLogo ? (
                 <>
                   <span className="hidden md:inline text-lg font-semibold uppercase tracking-[0.24em] text-white transition group-hover:text-cyan">
@@ -134,14 +136,18 @@ export default function Navigation() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="rounded-lg px-4 py-2 text-sm font-medium text-white transition-all hover:bg-cyan/10 hover:text-cyan"
+                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+                    pathname === link.href
+                      ? 'bg-cyan/15 text-cyan font-semibold'
+                      : 'text-white hover:bg-cyan/10 hover:text-cyan'
+                  }`}
                 >
                   {link.label}
                 </Link>
               ))}
               <Link
                 href="/book"
-                className="ml-2 rounded-lg bg-cyan px-4 py-2 text-sm font-semibold text-navy shadow-[0_4px_12px_rgba(0,217,255,0.2)] transition hover:bg-blue hover:shadow-[0_6px_12px_rgba(0,217,255,0.4)]"
+                className="ml-2 rounded-lg bg-magenta px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(217,70,239,0.3)] transition hover:bg-magenta/90 hover:shadow-[0_6px_12px_rgba(217,70,239,0.4)]"
               >
                 Get Started
               </Link>
@@ -174,7 +180,11 @@ export default function Navigation() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="block rounded-lg px-4 py-3 text-base font-medium text-white transition hover:bg-cyan/10 hover:text-cyan"
+                  className={`block rounded-lg px-4 py-3 text-base font-medium transition ${
+                    pathname === link.href
+                      ? 'bg-cyan/15 text-cyan font-semibold'
+                      : 'text-white hover:bg-cyan/10 hover:text-cyan'
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
@@ -182,7 +192,7 @@ export default function Navigation() {
               ))}
               <Link
                 href="/book"
-                className="block rounded-lg bg-cyan px-4 py-4 text-center text-base font-semibold text-navy shadow-[0_6px_12px_rgba(0,217,255,0.3)] transition hover:bg-blue"
+                className="block rounded-lg bg-magenta px-4 py-4 text-center text-base font-semibold text-white shadow-[0_6px_12px_rgba(217,70,239,0.3)] transition hover:bg-magenta/90"
                 onClick={() => setIsOpen(false)}
               >
                 Get Started

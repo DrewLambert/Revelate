@@ -6,6 +6,7 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
 import Hero from '@/components/Hero';
 import FAQAccordion from '@/components/FAQAccordion';
 import StickyNav from '@/components/StickyNav';
+import Testimonials from '@/components/Testimonials';
 import Link from 'next/link';
 import { industryStats, signalsWithStats, rebuildCostStat } from '@/lib/data/stats';
 
@@ -35,11 +36,11 @@ const differentiators = [
   },
   {
     title: 'Transparent, Accountable Billing',
-    detail: "Incredibly detailed time logs available on demand for any project. You know exactly what you&apos;re paying for—down to the hour, the task, and the deliverable. No black boxes, no surprises.",
+    detail: "Incredibly detailed time logs available on demand for any project. You know exactly what you're paying for—down to the hour, the task, and the deliverable. No black boxes, no surprises.",
   },
   {
     title: 'Deep Expertise Across the Revenue Stack',
-    detail: "From Salesforce and NetSuite to Apollo, Workato, and 30+ integration platforms—I&apos;ve architected revenue operations across the modern enterprise stack. Your specific integration challenge? I&apos;ve likely solved it twice already.",
+    detail: "From Salesforce and NetSuite to Apollo, Workato, and 30+ integration platforms—I've architected revenue operations across the modern enterprise stack. Your specific integration challenge? I've likely solved it twice already.",
   },
   {
     title: 'AI-Augmented Excellence',
@@ -243,7 +244,7 @@ export default function Home() {
                 opacity: prefersReducedMotion ? 1 : differentiatorHeaderOpacity
               }}
             >
-              <span className="text-xs font-semibold uppercase tracking-[0.05em] text-blue">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-cyan">
                 Why choose Drew
               </span>
               <h2 id="differentiators-heading" className="mt-3 text-xl font-semibold leading-[1.15] sm:text-2xl md:text-3xl lg:text-4xl text-navy">
@@ -307,17 +308,12 @@ export default function Home() {
                 className="group relative"
               >
                 <div className="relative overflow-hidden rounded-xl border border-border bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-cyan/40 hover:-translate-y-1 h-full">
-                  {/* Number Badge */}
-                  <div className="absolute -left-1.5 -top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-cyan to-blue text-xs font-bold text-white shadow-lg">
-                    {index + 1}
-                  </div>
-
                   {/* Content */}
-                  <div className="pl-3">
+                  <div>
                     <h3 className="text-sm font-semibold text-navy group-hover:text-cyan transition-colors leading-tight">
                       {item.title}
                     </h3>
-                    <p className="mt-1.5 text-xs leading-relaxed text-slate">
+                    <p className="mt-3 text-xs leading-relaxed text-slate">
                       {item.detail}
                     </p>
                   </div>
@@ -348,7 +344,7 @@ export default function Home() {
             style={{ y: prefersReducedMotion ? 0 : outcomesContentY }}
             className="max-w-3xl text-center mx-auto"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-magenta">
+            <span className="text-xs font-bold uppercase tracking-[0.08em] text-magenta">
               Documented outcomes
             </span>
             <h2 id="outcomes-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl">
@@ -380,7 +376,7 @@ export default function Home() {
             style={{ y: prefersReducedMotion ? 0 : outcomesCardsY }}
             className="mt-12 grid gap-6 md:grid-cols-3"
           >
-            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-cyan/30">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.06)_0%,rgba(255,255,255,0)_70%)]" />
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
@@ -397,7 +393,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-cyan/30">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.06)_0%,rgba(255,255,255,0)_70%)]" />
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
@@ -414,7 +410,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-cyan/30">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.06)_0%,rgba(255,255,255,0)_70%)]" />
               <div className="relative space-y-3">
                 <span className="inline-flex h-1 w-14 rounded-full bg-magenta" />
@@ -435,11 +431,14 @@ export default function Home() {
         </div>
       </section>
 
+        {/* Testimonials Section */}
+        <Testimonials />
+
         {/* Approach Section - LIGHT BACKGROUND */}
         <section
           ref={resultsRef}
           id="approach"
-          className="relative overflow-hidden py-24 bg-surface"
+          className="relative overflow-hidden py-24 bg-navy"
           aria-labelledby="approach-heading"
         >
         <motion.div
@@ -447,33 +446,34 @@ export default function Home() {
           className="pointer-events-none absolute inset-0"
           aria-hidden="true"
         >
-          {/* Signature Cyan Gradient - Homepage */}
-          <div className="absolute right-[12%] top-[-30%] h-[420px] w-[420px] rounded-full bg-cyan/12 blur-[70px]" />
+          {/* Ambient glow for visual depth */}
+          <div className="absolute right-[12%] top-[-30%] h-[420px] w-[420px] rounded-full bg-cyan/8 blur-[100px]" />
+          <div className="absolute left-[5%] bottom-[-20%] h-[300px] w-[300px] rounded-full bg-magenta/5 blur-[80px]" />
           <motion.div
             style={{ y: resultsPatternY, opacity: resultsPatternOpacity }}
             className="absolute inset-0"
           >
-            <div className="h-full w-full bg-[radial-gradient(circle,rgba(0,132,255,0.22)_1px,transparent_1px)] opacity-70 mix-blend-soft-light [background-size:46px_46px]" />
+            <div className="h-full w-full bg-[radial-gradient(circle,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:46px_46px]" />
           </motion.div>
         </motion.div>
 
         <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
           {/* Header */}
           <div className="max-w-4xl mx-auto text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-blue">
+            <span className="text-xs font-bold uppercase tracking-[0.08em] text-cyan">
               Two paths forward
             </span>
-            <h2 id="approach-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl text-navy">
+            <h2 id="approach-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl lg:text-5xl text-white">
               Hire a conglomerate that bills you. Or an embedded principal who joins your team.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-charcoal">
+            <p className="mt-6 text-lg leading-8 text-white/80">
               Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what&apos;s broken in 6-16 weeks—with incremental production improvements throughout.
             </p>
           </div>
 
           {/* Visual: 1 Principal vs 8-12 Team */}
           <div className="mt-12 mx-auto max-w-4xl">
-            <div className="relative overflow-hidden rounded-xl border border-border bg-white p-8 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]">
               <div className="grid gap-8 md:grid-cols-2 items-center">
                 {/* Left: Traditional Agency */}
                 <div className="text-center">
@@ -523,7 +523,7 @@ export default function Home() {
           {/* Split Comparison */}
           <div className="mt-16 grid gap-8 lg:grid-cols-2">
             {/* Left: Big Consultancy (What to Avoid) */}
-            <div className="relative overflow-hidden rounded-xl border border-border bg-surface p-8 shadow-[0_6px_12px_rgba(17,27,58,0.12)]">
+            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-surface p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]">
               <div className="absolute top-4 right-4">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-light-gray px-3 py-1 text-xs font-semibold text-slate">
                   <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 8 8">
@@ -535,7 +535,7 @@ export default function Home() {
               <h3 className="pt-10 sm:pt-0 text-xl font-semibold text-navy">The Conglomerate Model</h3>
               <p className="mt-3 text-sm text-slate">What most consultancies offer</p>
 
-              <ul className="mt-8 space-y-4">
+              <ul className="mt-8 space-y-5">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-light-gray">
                     <svg className="h-3 w-3 text-slate" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -544,7 +544,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Offshore teams, junior developers</p>
-                    <p className="mt-1 text-xs text-slate">Your system gets passed between time zones and skill levels</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">Your system gets passed between time zones and skill levels</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -555,7 +555,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Opaque billing, hidden costs</p>
-                    <p className="mt-1 text-xs text-slate">Vague invoices. Surprise overages. No detailed time tracking.</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">Vague invoices. Surprise overages. No detailed time tracking.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -566,7 +566,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Nine-month rebuilds, revenue at risk</p>
-                    <p className="mt-1 text-xs text-slate">Rip-and-replace strategy freezes your GTM while they rebuild</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">Rip-and-replace strategy freezes your GTM while they rebuild</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -577,7 +577,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Generic playbooks, no context</p>
-                    <p className="mt-1 text-xs text-slate">They&apos;ve never seen your tech stack combination before</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">They&apos;ve never seen your tech stack combination before</p>
                   </div>
                 </li>
               </ul>
@@ -618,7 +618,7 @@ export default function Home() {
             </div>
 
             {/* Right: Principal-Led Partner (Your Approach) */}
-            <div className="relative overflow-hidden rounded-xl border-2 border-cyan bg-white p-8 shadow-[0_6px_12px_rgba(0,217,255,0.2)] hover:shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-shadow duration-200">
+            <div className="relative overflow-hidden rounded-xl border-2 border-cyan bg-white p-8 shadow-[0_8px_32px_rgba(34,211,238,0.25)] hover:shadow-[0_12px_40px_rgba(34,211,238,0.35)] transition-shadow duration-200">
               <div className="absolute top-4 right-4">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-cyan/10 px-3 py-1 text-xs font-semibold text-cyan">
                   <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 8 8">
@@ -630,7 +630,7 @@ export default function Home() {
               <h3 className="pt-10 sm:pt-0 text-xl font-semibold text-navy">The Embedded Partner Model</h3>
               <p className="mt-3 text-sm text-slate">What you get working with me</p>
 
-              <ul className="mt-8 space-y-4">
+              <ul className="mt-8 space-y-5">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan/10">
                     <svg className="h-3 w-3 text-cyan" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -639,7 +639,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">100% US-based principal who embeds with your team</p>
-                    <p className="mt-1 text-xs text-slate">I join standups, pair on tickets, and ship fixes alongside your admins</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">I join standups, pair on tickets, and ship fixes alongside your admins</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -650,7 +650,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Transparent billing, detailed time tracking</p>
-                    <p className="mt-1 text-xs text-slate">Incredibly detailed logs on demand. You know exactly what you&apos;re paying for.</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">Incredibly detailed logs on demand. You know exactly what you&apos;re paying for.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -661,7 +661,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">6-16 week engagements, incremental production improvements</p>
-                    <p className="mt-1 text-xs text-slate">Stabilize what&apos;s broken without freezing revenue for months</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">Stabilize what&apos;s broken without freezing revenue for months</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -672,7 +672,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Deep expertise across your specific tech stack</p>
-                    <p className="mt-1 text-xs text-slate">Salesforce, NetSuite, Workato, Apollo—I&apos;ve solved your integration challenge twice already</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">Salesforce, NetSuite, Workato, Apollo—I&apos;ve solved your integration challenge twice already</p>
                   </div>
                 </li>
               </ul>
@@ -703,7 +703,7 @@ export default function Home() {
         <section id="process" className="py-20 bg-navy text-white" aria-labelledby="process-heading">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
+            <span className="text-xs font-bold uppercase tracking-[0.08em] text-cyan">
               How the sprint runs
             </span>
             <h2 id="process-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl text-white">
@@ -722,14 +722,11 @@ export default function Home() {
               return (
                 <div
                   key={step.phase}
-                  className={`relative overflow-hidden rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)] ${offsetClass}`}
+                  className={`relative overflow-hidden rounded-xl border border-border bg-white p-6 shadow-[0_6px_12px_rgba(17,27,58,0.12)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-cyan/30 ${offsetClass}`}
                 >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,217,255,0.06)_0%,rgba(255,255,255,0)_70%)]" />
                 <div className="relative">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cyan/10 text-sm font-semibold text-navy shadow-[0_4px_8px_rgba(0,217,255,0.2)]">
-                    {index + 1}
-                  </span>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.05em] text-slate">{step.phase}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.05em] text-slate">{step.phase}</p>
                   <h3 className="mt-2 text-lg font-semibold text-navy">{step.focus}</h3>
                   <p className="mt-3 text-sm leading-6 text-charcoal">{step.summary}</p>
                   <p className="mt-5 text-xs font-semibold uppercase tracking-[0.05em] text-slate">Delivered</p>
@@ -752,24 +749,26 @@ export default function Home() {
         {/* FAQ Section - LIGHT BACKGROUND */}
         <section
           id="faq"
-          className="relative overflow-hidden pt-20 pb-24 bg-surface"
+          className="relative overflow-hidden pt-20 pb-24 bg-navy"
           aria-labelledby="faq-heading"
         >
         <div className="pointer-events-none absolute inset-0">
-          {/* Removed gradients for cleaner aesthetic */}
+          {/* Ambient glow for visual depth */}
+          <div className="absolute left-[10%] top-[10%] h-[350px] w-[350px] rounded-full bg-cyan/6 blur-[100px]" />
+          <div className="absolute right-[15%] bottom-[5%] h-[250px] w-[250px] rounded-full bg-magenta/4 blur-[80px]" />
         </div>
 
         <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.05em] text-blue">
+            <span className="text-xs font-bold uppercase tracking-[0.08em] text-cyan">
               Still deciding?
             </span>
-            <h2 id="faq-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl text-navy">
+            <h2 id="faq-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl text-white">
               Fast answers before we hop on a call.
             </h2>
-            <p className="mt-4 text-base leading-7 text-charcoal md:text-lg">
+            <p className="mt-4 text-base leading-7 text-white/80 md:text-lg">
               Need something else? Email{' '}
-              <a href="mailto:drew@revelateops.com" className="text-blue underline decoration-blue/40 underline-offset-4">
+              <a href="mailto:drew@revelateops.com" className="text-cyan underline decoration-cyan/40 underline-offset-4">
                 drew@revelateops.com
               </a>{' '}
               and I&apos;ll reply within a day.
@@ -781,7 +780,7 @@ export default function Home() {
           <div className="mt-8 text-center">
             <Link
               href="/faq"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-blue transition-colors duration-200 hover:text-navy"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-cyan transition-colors duration-200 hover:text-white"
             >
               See all FAQs
               <svg
@@ -801,22 +800,23 @@ export default function Home() {
         </div>
         </section>
 
-        {/* CTA Section - Navy background breaks through the light gray */}
+        {/* CTA Section - Gradient background with visual depth */}
         <section
           ref={ctaRef}
           id="cta"
-          className="relative overflow-hidden bg-navy-ink py-28 text-white"
+          className="relative overflow-hidden bg-gradient-to-b from-navy via-navy-ink to-navy py-28 text-white"
           aria-labelledby="cta-heading"
         >
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          {/* Removed gradients for cleaner aesthetic */}
-          <div className="absolute inset-0 mix-blend-screen opacity-30">
-            <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:160px_160px,160px_160px]" />
+          {/* Subtle ambient glow for visual interest */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-cyan/[0.06] blur-[100px]" />
+          <div className="absolute inset-0 mix-blend-screen opacity-20">
+            <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:120px_120px,120px_120px]" />
           </div>
         </div>
 
         <motion.div style={{ y: prefersReducedMotion ? '0%' : ctaContentY }} className="relative mx-auto max-w-4xl px-6 text-center">
-          <div className="overflow-hidden rounded-xl border border-white/30 bg-white/[0.08] px-6 py-10 shadow-[0_8px_12px_rgba(8,13,40,0.6)] sm:px-8 sm:py-12">
+          <div className="overflow-hidden rounded-xl border border-cyan/20 bg-white/[0.04] px-6 py-10 shadow-[0_0_40px_rgba(34,211,238,0.08)] backdrop-blur-sm sm:px-8 sm:py-12">
             <span className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">Next step</span>
             <h2 id="cta-heading" className="mt-6 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl">
               Bring the messy org to a working session. We&apos;ll map the fixes together.

@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import FloatingBookingButton from "@/components/FloatingBookingButton";
+import { ConditionalLayout } from "@/components/ConditionalLayout";
 import KeyboardScrollProvider from "@/components/KeyboardScrollProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { homepageSchemas } from "@/lib/seo/schemas";
@@ -15,9 +13,11 @@ const inter = Inter({
   variable: "--font-body",
 });
 
-const spaceGrotesk = Space_Grotesk({
+// Fraunces: Variable serif with soft serifs for editorial authority
+// Brand system specifies semibold (600) for headlines
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600"],
   display: "swap",
   variable: "--font-heading",
 });
@@ -108,8 +108,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Structured data is safe - it's static schema content from lib/seo/schemas.ts
+  const structuredData = JSON.stringify(homepageSchemas);
+
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-sans antialiased">
         <KeyboardScrollProvider />
         <a
@@ -118,17 +121,15 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Navigation />
-        <main role="main">
+        <ConditionalLayout>
           {children}
-        </main>
-        <Footer />
-        <FloatingBookingButton />
+        </ConditionalLayout>
         <GoogleAnalytics />
         <script
           id="structured-data"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchemas) }}
+          // Safe: homepageSchemas is static SEO data, not user input
+          dangerouslySetInnerHTML={{ __html: structuredData }}
         />
       </body>
     </html>

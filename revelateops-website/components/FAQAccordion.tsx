@@ -91,7 +91,7 @@ export default function FAQAccordion({ items, className = '', showSearch = true 
       {filteredItems.map((item, index) => (
         <div
           key={index}
-          className="rounded-xl border border-[#dbe3f0] bg-[#f8fafc] shadow-[0_6px_12px_rgba(17,27,58,0.12)] overflow-hidden transition-shadow duration-200 hover:shadow-[0_8px_16px_rgba(17,27,58,0.16)]"
+          className="rounded-xl border border-[#dbe3f0] bg-[#f8fafc] shadow-[0_6px_12px_rgba(17,27,58,0.12)] overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-cyan/40"
         >
           <dt>
             <button
@@ -125,7 +125,7 @@ export default function FAQAccordion({ items, className = '', showSearch = true 
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                 className="overflow-hidden"
               >
-                <div className="px-6 pb-6 pt-0 text-sm leading-7 text-[#334155]">
+                <div className="px-8 pb-8 pt-2 text-sm leading-7 text-[#334155]">
                   {item.answer}
                 </div>
               </motion.dd>
