@@ -7,12 +7,14 @@ import { useRef, useState, useEffect } from 'react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 const executivePainPoints = [
-  "Modernize your Salesforce and revenue stack in 8-16 weeks.",
+  "Build your revenue stack right the first time.",
   "Turn chaotic CRM data into trustworthy pipeline forecasts.",
   "Embed a senior RevOps engineer without the full-time hire.",
   "Fix routing, forecasting, and integrations—in production.",
-  "Accelerate sales by 66% with automated lead routing.",
-  "Save $200K+ by eliminating duplicate systems and manual work."
+  "Launch your first CRM with board-ready reporting from day one.",
+  "Save $200K+ by eliminating duplicate systems and manual work.",
+  "Modernize your Salesforce in 6-16 weeks—without pausing the business.",
+  "Get Salesforce right before you hire your first AE.",
 ];
 
 const platforms = [
@@ -146,7 +148,7 @@ export default function Hero() {
             className="mx-auto mt-8 max-w-2xl text-left"
           >
             <p className="font-body text-base leading-relaxed text-white/95 sm:text-lg">
-              <strong className="text-white">Legacy Salesforce modernization for Series B SaaS teams.</strong> Fix routing, forecasting, and integrations without rebuilding your entire org. Principal-only delivery with proven results: <strong className="text-cyan">66% sales acceleration</strong>, $200K+ savings, and teams that trust their data again.
+              <strong className="text-white">Revenue architecture for SaaS teams—whether you&apos;re building from scratch or rebuilding from chaos.</strong> I&apos;ve built and fixed revenue stacks across 150+ implementations. Principal-only delivery with proven results: <strong className="text-cyan">66% sales acceleration</strong>, $200K+ savings, and teams that trust their data.
             </p>
           </motion.div>
 
@@ -158,7 +160,7 @@ export default function Hero() {
             className="mx-auto mt-6 max-w-2xl text-left"
           >
             <p className="font-body text-base leading-relaxed text-white/90 sm:text-lg">
-              I embed in your team for <strong className="text-cyan">8-16 weeks</strong>, diagnose what&apos;s actually broken, rebuild your revenue architecture, and stay until your team trusts the system again. Two clients max. Principal-only delivery.
+              Building your first CRM? I&apos;ll design it to scale from day one. Inheriting a mess? I&apos;ll untangle it in <strong className="text-cyan">6-16 weeks</strong> without pausing the business. Two clients max. Principal-only delivery.
             </p>
           </motion.div>
 

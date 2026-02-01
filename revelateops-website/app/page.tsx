@@ -10,10 +10,29 @@ import Testimonials from '@/components/Testimonials';
 import Link from 'next/link';
 import { industryStats, signalsWithStats, rebuildCostStat } from '@/lib/data/stats';
 
-const signals = [
+const greenfieldSignals = [
+  {
+    title: 'Just closed a round',
+    detail: 'You have funding, a growing team, and zero revenue infrastructure. Every week without a CRM is a week of lost pipeline data.',
+  },
+  {
+    title: 'Hiring your first AE',
+    detail: 'Your sales hire needs a system on day one-lead routing, pipeline stages, and dashboards that actually work.',
+  },
+  {
+    title: 'Board wants pipeline visibility',
+    detail: 'Investors are asking for metrics you can\'t produce yet. You need board-ready reporting before the next quarterly.',
+  },
+  {
+    title: 'Choosing your revenue stack',
+    detail: 'Salesforce? HubSpot? The wrong choice now costs $200K to fix later. Get the architecture right from the start.',
+  },
+];
+
+const brownfieldSignals = [
   {
     title: 'Forecast drift every Monday',
-    detail: 'Board deck and Salesforce drift by double digits. Leadership exports to spreadsheets to get “real” numbers.',
+    detail: 'Board deck and Salesforce drift by double digits. Leadership exports to spreadsheets to get "real" numbers.',
   },
   {
     title: 'Automations cascade unpredictably',
@@ -32,50 +51,50 @@ const signals = [
 const differentiators = [
   {
     title: '100% US-Based, Principal-Led',
-    detail: 'No offshore teams, no junior hires, no hand-offs. You work directly with a principal consultant who maps your metadata, builds your automations, and ships production fixes. Fully on-shore, United States consulting.',
+    detail: 'No offshore teams, no junior hires, no hand-offs. Whether I\'m building your first CRM or modernizing your tenth-you work directly with me. Every time.',
   },
   {
     title: 'Transparent, Accountable Billing',
-    detail: "Incredibly detailed time logs available on demand for any project. You know exactly what you're paying for—down to the hour, the task, and the deliverable. No black boxes, no surprises.",
+    detail: "Incredibly detailed time logs available on demand for any project. You know exactly what you're paying for-down to the hour, the task, and the deliverable. No black boxes, no surprises.",
   },
   {
-    title: 'Deep Expertise Across the Revenue Stack',
-    detail: "From Salesforce and NetSuite to Apollo, Workato, and 30+ integration platforms—I've architected revenue operations across the modern enterprise stack. Your specific integration challenge? I've likely solved it twice already.",
+    title: '150+ Implementations, Both Sides',
+    detail: "I've built revenue stacks from scratch and I've fixed what other people built wrong. That dual perspective means your greenfield build avoids the pitfalls, and your brownfield fix actually sticks.",
   },
   {
     title: 'AI-Augmented Excellence',
-    detail: 'I use advanced AI to accelerate diagnostics, automate documentation, and deliver insights faster—without sacrificing the human judgment that makes complex systems work. AI-augmented workflow that combines efficiency with expertise.',
+    detail: 'I use advanced AI to accelerate diagnostics, automate documentation, and deliver insights faster-whether designing a new system or untangling an existing one.',
   },
 ];
 
 const process = [
   {
-    phase: 'Discovery & Audit',
-    focus: 'Working session & audit',
+    phase: 'Discover',
+    focus: 'Map the landscape',
     summary:
-      'We pull the automation map apart live, align on business goals, and scope a modernization sprint the board will understand.',
+      'Whether you have a blank slate or a tangled system, we start the same way: understand your business, your goals, and what needs to happen.',
     deliverables: [
       '15-minute intro call with executive recap',
-      'Prioritized modernization backlog ranked by revenue risk',
-      'Aligned budget, owners, and success metrics',
+      'Full system audit (existing) or architecture blueprint (new)',
+      'Prioritized roadmap with budget, owners, and success metrics',
     ],
   },
   {
-    phase: 'Stabilize Production',
-    focus: 'Stabilize production',
+    phase: 'Build',
+    focus: 'Ship what matters',
     summary:
-      'Ship regular improvements to routing, forecasting, attribution, and integrations with regression tests and rollback plans.',
+      'For new builds: design and deploy your revenue stack with best practices baked in from day one. For existing systems: ship incremental fixes to production on a weekly cadence.',
     deliverables: [
-      'Version-controlled automations with reviewers',
-      'Live health dashboards for SLA, pipeline, and ARR',
-      'Change log committed to your repo with Loom walkthroughs',
+      'Version-controlled automations and configurations',
+      'Live dashboards for pipeline, ARR, and team performance',
+      'Change logs and Loom walkthroughs for every deployment',
     ],
   },
   {
-    phase: 'Instrument & Hand Off',
-    focus: 'Instrument & hand off',
+    phase: 'Enable',
+    focus: 'Your team owns it',
     summary:
-      'Wire observability, documentation, and enablement so the internal team owns the system without vendor hand-holding.',
+      'Wire observability, documentation, and enablement so the internal team owns the system confidently-no vendor dependency.',
     deliverables: [
       'Leadership scorecards wired to trusted data',
       'Runbooks and enablement sessions for admins and GTM',
@@ -107,7 +126,12 @@ const faqs = [
   {
     question: 'What happens before we commit?',
     answer:
-      'We start with a 15-minute intro call. You bring the symptoms, I map the breaking points live, and you leave with a modernization backlog, budget, and timeline—even if we choose not to move forward together.',
+      'We start with a 15-minute intro call. Whether you\'re building fresh or fixing what exists, you leave with a clear roadmap, budget, and timeline-even if we choose not to move forward together.',
+  },
+  {
+    question: 'We don\'t have Salesforce yet-is it too early?',
+    answer:
+      'It\'s actually the best time. I\'ve seen what goes wrong 150+ times when CRMs are set up without architecture planning. Getting it right from the start costs a fraction of fixing it later. I design systems that scale with your growth.',
   },
   {
     question: 'Can you partner with our internal admin or MSP?',
@@ -115,14 +139,19 @@ const faqs = [
       'Yes. I ship inside your tooling, pair on reviews, and leave Loom explainers plus written runbooks so your admin or MSP inherits a stable system.',
   },
   {
+    question: 'What\'s included in a new revenue stack build?',
+    answer:
+      'CRM architecture design, Salesforce configuration, lead routing, pipeline stages, reporting dashboards, automation workflows, integrations with your existing tools, team enablement sessions, and full documentation. Everything your team needs to run independently.',
+  },
+  {
     question: 'How quickly do production changes land?',
     answer:
-      'Sandbox fixes ship in week one. Production updates land on a regular cadence—typically weekly to bi-weekly—with regression tests, change logs, and rollback plans committed to your repo.',
+      'For new builds: your first working environment ships in week one. For existing systems: sandbox fixes ship in week one, production updates land weekly to bi-weekly with regression tests and rollback plans.',
   },
   {
     question: 'Do you work outside of SaaS revenue teams?',
     answer:
-      'My focus is B2B SaaS with 30–150 sellers using Salesforce as the source of truth across marketing, sales, customer success, and finance. I can recommend partners if you sit outside that band.',
+      'My focus is B2B SaaS with 30-150 sellers using Salesforce as the source of truth across marketing, sales, customer success, and finance. I can recommend partners if you sit outside that band.',
   },
 ];
 
@@ -134,6 +163,7 @@ export default function Home() {
   const prefersReducedMotion = useReducedMotion();
   const withMotion = (value: string) => (prefersReducedMotion ? '0%' : value);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const [activeSignalTab, setActiveSignalTab] = useState<'greenfield' | 'brownfield'>('greenfield');
 
   // Parallax for Differentiators section
   const { scrollYProgress: differentiatorScrollProgress } = useScroll({
@@ -226,6 +256,83 @@ export default function Home() {
 
       {/* Alternating Backgrounds - Light and Dark sections for visual rhythm */}
       <main className="relative">
+        {/* TWO-PATH SIGNALS SECTION - Greenfield vs Brownfield */}
+        <section id="signals" className="py-20 bg-navy" aria-labelledby="signals-heading">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-cyan">
+                Where are you?
+              </span>
+              <h2 id="signals-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl text-white">
+                Two roads. One operator who&apos;s walked both.
+              </h2>
+              <p className="mt-4 text-base leading-7 text-white/80 md:text-lg">
+                Whether you&apos;re starting from zero or untangling years of tech debt, the engagement starts the same way: understand your business, then build what actually works.
+              </p>
+            </div>
+
+            {/* Tab Toggle */}
+            <div className="mt-10 flex justify-center">
+              <div className="inline-flex rounded-xl border border-white/20 bg-white/5 p-1">
+                <button
+                  onClick={() => setActiveSignalTab('greenfield')}
+                  className={`rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 ${
+                    activeSignalTab === 'greenfield'
+                      ? 'bg-cyan text-navy shadow-lg'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  🌱 Building from scratch
+                </button>
+                <button
+                  onClick={() => setActiveSignalTab('brownfield')}
+                  className={`rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 ${
+                    activeSignalTab === 'brownfield'
+                      ? 'bg-cyan text-navy shadow-lg'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  🔧 Fixing what exists
+                </button>
+              </div>
+            </div>
+
+            {/* Signal Cards */}
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {(activeSignalTab === 'greenfield' ? greenfieldSignals : brownfieldSignals).map((signal, index) => (
+                <motion.div
+                  key={`${activeSignalTab}-${signal.title}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.1,
+                    ease: 'easeOut',
+                  }}
+                  className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-5 transition-all duration-300 hover:border-cyan/40 hover:bg-white/10 hover:-translate-y-1"
+                >
+                  <h3 className="text-sm font-semibold text-white">
+                    {signal.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-white/70">
+                    {signal.detail}
+                  </p>
+                  <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-cyan to-magenta transition-all duration-300 group-hover:w-full" />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom message */}
+            <div className="mt-8 text-center">
+              <p className="text-sm text-white/60">
+                {activeSignalTab === 'greenfield'
+                  ? 'Sound familiar? I\'ve built 150+ revenue stacks from the ground up-designed to scale, not to be rebuilt.'
+                  : 'Sound familiar? I\'ve modernized 150+ legacy systems-without pausing the business.'}
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* NEW: Differentiators Section - NAVY WITH INSET LIGHT AREA */}
         <section
           ref={differentiatorsSectionRef}
@@ -272,7 +379,7 @@ export default function Home() {
                   By design, not by accident.
                 </p>
                 <p className="mt-2 text-xs leading-relaxed text-charcoal">
-                  I deliberately cap my roster to maintain deep partnership, context retention, and quality that produces real results—not just billable hours.
+                  I deliberately cap my roster to maintain deep partnership, context retention, and quality that produces real results-not just billable hours.
                 </p>
                 <div className="mt-4 flex flex-wrap justify-center gap-2">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-cyan/20 px-2.5 py-1 text-xs font-medium text-navy">
@@ -467,7 +574,7 @@ export default function Home() {
               Hire a conglomerate that bills you. Or an embedded principal who joins your team.
             </h2>
             <p className="mt-6 text-lg leading-8 text-white/80">
-              Every RevOps leader faces this choice. One burns $200K on a nine-month rebuild with offshore developers. The other stabilizes what&apos;s broken in 6-16 weeks—with incremental production improvements throughout.
+              Whether you&apos;re building your first revenue stack or modernizing the one you inherited—you can hire a team of strangers or an embedded principal who learns your business. One ships documentation. The other ships mystery.
             </p>
           </div>
 
@@ -672,7 +779,7 @@ export default function Home() {
                   </span>
                   <div>
                     <p className="text-sm font-medium text-navy">Deep expertise across your specific tech stack</p>
-                    <p className="mt-1.5 text-xs leading-relaxed text-slate">Salesforce, NetSuite, Workato, Apollo—I&apos;ve solved your integration challenge twice already</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate">Salesforce, NetSuite, Workato, Apollo-I&apos;ve solved your integration challenge twice already</p>
                   </div>
                 </li>
               </ul>
@@ -704,13 +811,13 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-xs font-bold uppercase tracking-[0.08em] text-cyan">
-              How the sprint runs
+              How every engagement runs
             </span>
             <h2 id="process-heading" className="mt-5 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl text-white">
-              Sprints that protect revenue while we modernize.
+              Three phases. Same rigor whether we&apos;re building or rebuilding.
             </h2>
             <p className="mt-4 text-base leading-7 text-white/80 md:text-lg">
-              We run an immersion audit, then ship incremental improvements on a regular cadence with the same rigor your engineers expect.
+              New stack or legacy modernization—every engagement follows the same disciplined approach: discover what matters, build what works, and enable your team to own it.
             </p>
           </div>
 
@@ -819,17 +926,17 @@ export default function Home() {
           <div className="overflow-hidden rounded-xl border border-cyan/20 bg-white/[0.04] px-6 py-10 shadow-[0_0_40px_rgba(34,211,238,0.08)] backdrop-blur-sm sm:px-8 sm:py-12">
             <span className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">Next step</span>
             <h2 id="cta-heading" className="mt-6 text-2xl font-semibold leading-[1.2] sm:text-3xl md:text-4xl">
-              Bring the messy org to a working session. We&apos;ll map the fixes together.
+              Whether you&apos;re starting clean or cleaning up-let&apos;s map it together.
             </h2>
             <p className="mt-6 text-base leading-7 text-white/90 md:text-lg md:leading-8">
-              15-minute diagnostic call. We&apos;ll expose what&apos;s breaking, quantify revenue impact, and outline the modernization sprint. Worst case—you leave with a prioritized backlog to tackle internally.
+              15-minute call. Building new? We&apos;ll design the architecture together. Fixing existing? We&apos;ll expose what&apos;s breaking and outline the sprint. Either way, you leave with a clear plan-even if we don&apos;t move forward.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/book"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-magenta px-10 py-4 text-base font-semibold text-white shadow-[0_8px_12px_rgba(217,70,239,0.4)] transition-all duration-200 hover:bg-[#c235d9] hover:shadow-[0_8px_12px_rgba(217,70,239,0.5)]"
               >
-                Start revenue recovery
+                Book a strategy call
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} className="h-5 w-5">
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
