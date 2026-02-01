@@ -306,13 +306,13 @@ export default function ServicesPage() {
             className="text-center"
           >
             <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
-              Salesforce Expertise for Series B SaaS
+              Revenue Architecture for Every Stage
             </span>
             <h1 className="font-heading mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.2] tracking-[-0.02em] text-white">
-              Fix Your Salesforce, Close More Deals
+              Build It Right or Fix What's Broken
             </h1>
             <p className="font-body mt-6 mx-auto max-w-2xl text-lg md:text-xl leading-[1.6] text-white/80">
-              Stop losing revenue to broken forecasting, manual data entry, and disconnected systems. Get your revenue operations fixed in 6-16 weeks—no full rebuild required.
+              Whether you're launching your first CRM or untangling years of tech debt, get revenue operations that scale — from your first 10 reps to 100.
             </p>
 
             {/* Primary CTA */}
@@ -321,7 +321,7 @@ export default function ServicesPage() {
                 href="/book"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan px-10 py-4 text-base font-semibold text-navy-ink shadow-[0_8px_16px_rgba(0,217,255,0.25)] transition-all duration-200 hover:bg-blue hover:shadow-[0_8px_16px_rgba(0,217,255,0.35)]"
               >
-                Audit my revenue leaks
+                Map my revenue architecture
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24">
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
@@ -364,13 +364,13 @@ export default function ServicesPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="max-w-3xl text-center mx-auto mb-16">
             <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
-              Three breaking points
+              Three inflection points
             </span>
             <h2 className="font-heading mt-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.2] text-white">
-              Your Salesforce instance is the bottleneck preventing $50M ARR
+              The moments that define your revenue trajectory
             </h2>
             <p className="font-body mt-4 text-lg leading-8 text-white/80">
-              These are the symptoms that signal it's time for intervention
+              Whether you're building from scratch or rebuilding from chaos, these are the signals it's time to act
             </p>
           </div>
 
@@ -398,7 +398,7 @@ export default function ServicesPage() {
                   Problem 01
                 </div>
                 <h3 className="font-heading text-lg font-semibold leading-snug text-white">
-                  Your board wants forecast accuracy. Your CRM gives you guesses.
+                  You're hiring your first AEs — or your board wants forecast accuracy your CRM can't deliver.
                 </h3>
               </div>
             </motion.div>
@@ -423,7 +423,7 @@ export default function ServicesPage() {
                   Problem 02
                 </div>
                 <h3 className="font-heading text-lg font-semibold leading-snug text-white">
-                  Your sales team spends 4 hours/day on manual data entry.
+                  You need a CRM that works on day one — or your team spends 4 hours/day fighting the one you have.
                 </h3>
               </div>
             </motion.div>
@@ -455,7 +455,7 @@ export default function ServicesPage() {
                   Problem 03
                 </div>
                 <h3 className="font-heading text-lg font-semibold leading-snug text-white">
-                  Your revenue stack doesn't talk to itself.
+                  Your revenue stack doesn't exist yet — or it doesn't talk to itself.
                 </h3>
               </div>
             </motion.div>
@@ -746,13 +746,13 @@ export default function ServicesPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold uppercase tracking-[0.05em] text-cyan">
-              Two paths forward
+              Compare your options
             </span>
             <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl font-semibold leading-[1.2] text-white">
-              The real cost of your Salesforce decision
+              The real cost of getting revenue ops right
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/80">
-              Compare your options for fixing revenue operations architecture
+              Whether you're building your first stack or rebuilding an inherited one
             </p>
           </div>
 
@@ -938,10 +938,10 @@ export default function ServicesPage() {
               Next step
             </span>
             <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.2] text-white">
-              Stop losing revenue to broken systems
+              Stop guessing. Start building.
             </h2>
             <p className="mt-6 text-lg md:text-xl leading-relaxed text-white/80 max-w-2xl mx-auto">
-              Free 15-minute diagnostic call for Series B SaaS leaders. We'll expose revenue leaks, map your GTM breaking points, and prioritize fixes by business impact.
+              Free 15-minute diagnostic call for founders and revenue leaders. Whether you're setting up your first CRM or fixing a legacy mess, we'll map the path forward and prioritize by business impact.
             </p>
             <div className="mt-10">
               <Link
