@@ -23,9 +23,9 @@ const fraunces = Fraunces({
 });
 
 const siteUrl = "https://www.revelateops.com";
-const siteTitle = "Revelate Operations | RevOps Consulting for Series B Startups";
+const siteTitle = "Revelate Operations | RevOps for Seed-Stage to Series B Startups";
 const siteDescription =
-  "Legacy Salesforce modernization for Series B SaaS teams. Fix routing, forecasting, and integrations without rebuilding the entire org.";
+  "Revenue operations for startups at every stage. Build your first CRM right or modernize the one that's holding you back. Salesforce architecture from day one through $50M ARR.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -44,7 +44,14 @@ export const metadata: Metadata = {
     'Boston RevOps',
     'remote RevOps consultant',
     'CRM modernization',
-    'sales operations'
+    'sales operations',
+    'startup CRM setup',
+    'seed stage RevOps',
+    'first CRM implementation',
+    'greenfield Salesforce',
+    'startup revenue architecture',
+    'early-stage RevOps',
+    'fractional RevOps'
   ],
   viewport: {
     width: "device-width",
@@ -66,7 +73,7 @@ export const metadata: Metadata = {
         url: "/og/revelate-hero.png",
         width: 1200,
         height: 630,
-        alt: "Revelate Operations Salesforce Modernization",
+        alt: "Revelate Operations — Revenue Architecture for Startups",
       },
     ],
   },

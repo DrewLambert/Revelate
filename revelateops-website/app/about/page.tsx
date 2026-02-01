@@ -42,7 +42,7 @@ const journeyMoments = [
     year: '2025',
     company: 'Revelate Operations',
     title: 'Founder & Principal Consultant',
-    description: 'Opened an operator-led consultancy for Series B teams—documentation-first and focused on revenue architecture resets instead of rebuilds.',
+    description: 'Opened an operator-led consultancy for seed-stage through Series B teams—helping founders build revenue architecture right from day one or reset what\'s already broken.',
     lesson: 'Operators deserve an operator-led partner.',
     durationMonths: 4,
     highlight: true
@@ -67,7 +67,7 @@ const personalReasons = [
 const practiceFocus = [
   {
     title: 'Revenue architecture resets',
-    description: 'Brownfield redesigns for Series B SaaS teams with $10-50M ARR. We repair the stack you already rely on instead of pitching a re-platform.'
+    description: 'Greenfield builds for seed-stage startups getting their first CRM right. Brownfield redesigns for Series B teams with $10-50M ARR. We build what you need or repair the stack you already rely on.'
   },
   {
     title: 'Systematic discovery',
@@ -85,8 +85,8 @@ const practiceFocus = [
 
 const currentFocus = [
   {
-    label: 'Series B brownfield interventions',
-    detail: 'Unwinding ARR definition drift, stabilizing reconciliation, and restoring executive trust in visibility without halting day-to-day operations.'
+    label: 'Seed through Series B interventions',
+    detail: 'For early-stage: architecting revenue systems that scale before bad habits set in. For growth-stage: unwinding ARR definition drift, stabilizing reconciliation, and restoring executive trust without halting operations.'
   },
   {
     label: 'Readiness for diligence & audits',
@@ -126,7 +126,7 @@ const capabilityStack = [
 const engagementNotes = [
   {
     label: 'Fixed-hour engagements',
-    detail: 'Series B SaaS rate: $75-110/hr (discounted from standard $180/hr). Project packages typically range from $12K-$70K. Transparent budgets, no surprise scope creep.'
+    detail: 'Startup rate: $75-110/hr (discounted from standard $180/hr). Seed-stage builds and Series B modernizations typically range from $12K-$70K. Transparent budgets, no surprise scope creep.'
   },
   {
     label: 'Deliberately limited load',
@@ -355,7 +355,7 @@ export default function AboutPage() {
                   Since 2018 I've architected revenue systems for <span className="text-white">150+ organizations</span>—from managed services providers to a <span className="text-white">$100M+ Series C startup in Boston</span>—solving the problem every operator faces: making revenue data trustworthy before the board asks hard questions.
                 </p>
                 <p className="font-body text-xl leading-relaxed text-white/70 lg:text-2xl">
-                  <span className="font-semibold text-white">Revelate Operations</span> exists to give founders the partner I needed when I was in the seat: someone who <span className="font-semibold text-white">knows the work, tells uncomfortable truths, and leaves documentation that survives the handoff</span>.
+                  <span className="font-semibold text-white">Revelate Operations</span> exists to give founders the partner I needed when I was in the seat: someone who <span className="font-semibold text-white">knows the work, tells uncomfortable truths, and leaves documentation that survives the handoff</span> — whether you&apos;re building your first revenue stack or rebuilding one that grew faster than your team could maintain.
                 </p>
               </div>
               <div className="font-body mt-10 grid gap-4 text-base text-white/60 sm:grid-cols-2 lg:grid-cols-3">
@@ -462,12 +462,12 @@ export default function AboutPage() {
           {/* Capability Breadth - Testimonial */}
           <motion.section className="mb-24 lg:mb-32 border-t border-white/10 pt-16" {...getFadeProps(0.1)}>
             <div className="mb-8">
-              <p className="text-xs uppercase tracking-[0.4em] text-white/50">Capability breadth: From Series B SaaS to nonprofit foundations</p>
+              <p className="text-xs uppercase tracking-[0.4em] text-white/50">Capability breadth: From seed-stage startups to nonprofit foundations</p>
               <h2 className="font-heading mt-5 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
                 Client testimonial
               </h2>
               <p className="font-body mt-4 max-w-3xl text-base text-white/70">
-                While my primary focus is Series B SaaS revenue operations, my technical capabilities span diverse implementation contexts—from complex multi-system integrations to community platform deployments.
+                From first CRM implementations for seed-stage founders to complex multi-system integrations for Series B teams, my technical capabilities span the full startup lifecycle—plus diverse contexts like nonprofit platform deployments.
               </p>
             </div>
 
@@ -547,7 +547,7 @@ export default function AboutPage() {
                 What I am working on now
               </h2>
               <p className="font-body mt-4 max-w-3xl text-base text-white/70">
-                These are the active challenges I&apos;m helping Series B teams solve today—proof that the methodologies and systems I built are being deployed in real revenue operations right now.
+                These are the active challenges I&apos;m helping seed-stage and Series B teams solve today—proof that the methodologies and systems I built are being deployed in real revenue operations right now.
               </p>
             </div>
 
