@@ -101,7 +101,7 @@ export default function ResultsPage({ result, lead, onStartOver }: ResultsPagePr
             Score by Dimension
           </h3>
           <div className="space-y-5">
-            {result.dimensionScores
+            {[...result.dimensionScores]
               .sort((a, b) => b.score - a.score)
               .map((ds, i) => {
                 const barColor =
