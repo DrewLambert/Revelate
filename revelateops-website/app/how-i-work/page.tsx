@@ -76,7 +76,7 @@ export default function HowIWorkPage() {
                 How I Work With Clients
               </h1>
               <p className="mx-auto mt-6 max-w-2xl font-body text-xl leading-relaxed text-white/80 md:text-2xl">
-                Embedded partnership that stabilizes your revenue stack in 8-16 weeks—without freezing revenue for months.
+                Embedded partnership that builds or stabilizes your revenue stack in 8-16 weeks—whether you're starting from zero or untangling years of tech debt.
               </p>
             </div>
           </motion.section>
@@ -103,7 +103,7 @@ export default function HowIWorkPage() {
                   </span>
                   <h3 className="mt-6 font-heading text-xl font-semibold text-white">Diagnose</h3>
                   <p className="mt-3 font-body text-base text-white/70 leading-relaxed">
-                    Deep-dive audit of your revenue stack. I map automations, integrations, data flows, and surface what's broken.
+                    For greenfield: map your revenue model, sales motion, and growth targets to design the right architecture from day one. For brownfield: deep-dive audit of your existing stack to surface what's broken and what's blocking scale.
                   </p>
                   <ul className="mt-6 space-y-3 text-sm text-white/80">
                     <li className="flex items-start gap-3">
@@ -112,7 +112,7 @@ export default function HowIWorkPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cyan shadow-[0_0_8px_rgba(0,217,255,0.6)]" />
-                      <span>Prioritized modernization backlog ranked by revenue risk</span>
+                      <span>Architecture blueprint or prioritized modernization backlog</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cyan shadow-[0_0_8px_rgba(0,217,255,0.6)]" />
@@ -129,9 +129,9 @@ export default function HowIWorkPage() {
                   <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-cyan/30 text-xl font-semibold text-cyan shadow-[0_0_25px_rgba(0,217,255,0.5)]">
                     2
                   </span>
-                  <h3 className="mt-6 font-heading text-xl font-semibold text-white">Rebuild</h3>
+                  <h3 className="mt-6 font-heading text-xl font-semibold text-white">Build / Rebuild</h3>
                   <p className="mt-3 font-body text-base text-white/70 leading-relaxed">
-                    Ship regular improvements to routing, forecasting, attribution, and integrations with regression tests and rollback plans.
+                    For greenfield: stand up your CRM, routing, forecasting, and integrations — architected to scale from 10 reps to 100. For brownfield: ship regular improvements with regression tests and rollback plans.
                   </p>
                   <ul className="mt-6 space-y-3 text-sm text-white/80">
                     <li className="flex items-start gap-3">
@@ -157,9 +157,9 @@ export default function HowIWorkPage() {
                   <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-cyan/20 text-xl font-semibold text-cyan shadow-[0_0_20px_rgba(0,217,255,0.3)]">
                     3
                   </span>
-                  <h3 className="mt-6 font-heading text-xl font-semibold text-white">Stabilize</h3>
+                  <h3 className="mt-6 font-heading text-xl font-semibold text-white">Stabilize & Scale</h3>
                   <p className="mt-3 font-body text-base text-white/70 leading-relaxed">
-                    Wire observability, documentation, and enablement so the internal team owns the system without vendor hand-holding.
+                    Wire observability, documentation, and enablement so your team owns the system — whether that's your first ops hire or an existing admin team stepping into a clean architecture.
                   </p>
                   <ul className="mt-6 space-y-3 text-sm text-white/80">
                     <li className="flex items-start gap-3">
@@ -388,7 +388,7 @@ export default function HowIWorkPage() {
                       Ready to discuss your situation?
                     </h2>
                     <p className="mx-auto max-w-2xl font-body text-lg text-white/80 leading-relaxed md:text-xl">
-                      Let's map what's broken and outline the fix together.
+                      Whether you're building from scratch or rebuilding from chaos — let's map the path forward together.
                     </p>
                   </div>
 
