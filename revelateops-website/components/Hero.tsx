@@ -1,18 +1,20 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
-const executivePainPoints = [
-  "Modernize your Salesforce and revenue stack in 8-16 weeks.",
+const rotatingHeadlines = [
+  // Greenfield signals
+  "Build your revenue stack right — from day one.",
+  "Your first Salesforce implementation should be your last.",
+  "Scaling past Series A? Your CRM foundation matters now.",
+  // Brownfield signals
+  "Modernize your Salesforce in 8-16 weeks — not 9 months.",
   "Turn chaotic CRM data into trustworthy pipeline forecasts.",
-  "Embed a senior RevOps engineer without the full-time hire.",
-  "Fix routing, forecasting, and integrations—in production.",
-  "Accelerate sales by 66% with automated lead routing.",
-  "Save $200K+ by eliminating duplicate systems and manual work."
+  "Fix routing, forecasting, and integrations — in production.",
 ];
 
 const platforms = [
@@ -33,23 +35,22 @@ export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
   const withMotion = (value: string) => (prefersReducedMotion ? '0%' : value);
 
-  // Rotating pain points
-  const [currentPainIndex, setCurrentPainIndex] = useState(0);
+  // Rotating headlines
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentPainIndex((prev) => (prev + 1) % executivePainPoints.length);
-    }, 3000);
+      setCurrentIndex((prev) => (prev + 1) % rotatingHeadlines.length);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
-  // Parallax scroll effects - disabled if user prefers reduced motion
+  // Parallax scroll effects
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
   });
 
-  // Parallax layers
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', withMotion('35%')]);
   const gridY = useTransform(scrollYProgress, [0, 1], ['0%', withMotion('22%')]);
   const svgY = useTransform(scrollYProgress, [0, 1], ['0%', withMotion('28%')]);
@@ -61,7 +62,6 @@ export default function Hero() {
     >
       {/* Deep parallax backdrop */}
       <motion.div style={{ y: backgroundY }} className="pointer-events-none absolute inset-0" aria-hidden="true">
-        {/* Signature Cyan Gradient - Top Right */}
         <div className="absolute right-[6%] top-[-14%] h-[40vh] w-[40vh] md:h-[50vh] md:w-[50vh] lg:h-[700px] lg:w-[700px] rounded-full bg-cyan/12 blur-[70px] animate-[pulse-glow_8s_ease-in-out_infinite]" />
       </motion.div>
 
@@ -78,59 +78,28 @@ export default function Hero() {
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        <motion.line
-          x1="65%"
-          y1="34%"
-          x2="80%"
-          y2="34%"
-          stroke="#00d9ff"
-          strokeWidth="1.5"
-          strokeOpacity="0.45"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.45 }}
-          transition={{ duration: 1.4, delay: 0.8 }}
-        />
-        <motion.line
-          x1="80%"
-          y1="34%"
-          x2="80%"
-          y2="58%"
-          stroke="#00d9ff"
-          strokeWidth="1.5"
-          strokeOpacity="0.45"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.45 }}
-          transition={{ duration: 1.4, delay: 1 }}
-        />
-        <motion.line
-          x1="80%"
-          y1="58%"
-          x2="65%"
-          y2="60%"
-          stroke="#00d9ff"
-          strokeWidth="1.5"
-          strokeOpacity="0.45"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.45 }}
-          transition={{ duration: 1.4, delay: 1.2 }}
-        />
+        <motion.line x1="65%" y1="34%" x2="80%" y2="34%" stroke="#00d9ff" strokeWidth="1.5" strokeOpacity="0.45"
+          initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.45 }} transition={{ duration: 1.4, delay: 0.8 }} />
+        <motion.line x1="80%" y1="34%" x2="80%" y2="58%" stroke="#00d9ff" strokeWidth="1.5" strokeOpacity="0.45"
+          initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.45 }} transition={{ duration: 1.4, delay: 1 }} />
+        <motion.line x1="80%" y1="58%" x2="65%" y2="60%" stroke="#00d9ff" strokeWidth="1.5" strokeOpacity="0.45"
+          initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.45 }} transition={{ duration: 1.4, delay: 1.2 }} />
       </motion.svg>
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center">
         <article>
-          {/* Rotating pain points as main headline */}
-          <motion.h1
-            key={currentPainIndex}
+          {/* Unified headline */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="font-heading text-2xl font-bold leading-[1.2] tracking-[-0.02em] text-white sm:text-3xl md:text-4xl lg:text-5xl"
+            transition={{ duration: 0.6 }}
           >
-            {executivePainPoints[currentPainIndex]}
-          </motion.h1>
+            <h1 className="font-heading text-3xl font-bold leading-[1.15] tracking-[-0.02em] text-white sm:text-4xl md:text-5xl lg:text-[3.5rem]">
+              Revenue architecture that scales — whether you&apos;re building from scratch or rebuilding from chaos.
+            </h1>
+          </motion.div>
 
-          {/* Subtle accent line - centered */}
+          {/* Accent line */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
@@ -138,7 +107,23 @@ export default function Hero() {
             className="mx-auto mt-6 h-1 w-24 rounded-full bg-cyan"
           />
 
-          {/* NEW: Cause Diagnosis - Why the pain exists */}
+          {/* Rotating sub-headlines */}
+          <div className="mt-8 h-8 sm:h-10 relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={currentIndex}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0 font-body text-base text-cyan font-medium sm:text-lg"
+              >
+                {rotatingHeadlines[currentIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+
+          {/* Dual-positioning description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -146,45 +131,34 @@ export default function Hero() {
             className="mx-auto mt-8 max-w-2xl text-left"
           >
             <p className="font-body text-base leading-relaxed text-white/95 sm:text-lg">
-              <strong className="text-white">Legacy Salesforce modernization for Series B SaaS teams.</strong> Fix routing, forecasting, and integrations without rebuilding your entire org. Principal-only delivery with proven results: <strong className="text-cyan">66% sales acceleration</strong>, $200K+ savings, and teams that trust their data again.
+              <strong className="text-white">150+ implementations across greenfield builds and brownfield modernizations.</strong> Whether you&apos;re choosing your first CRM or untangling years of tech debt, I embed with your team and deliver revenue architecture your board can trust.
             </p>
           </motion.div>
 
-          {/* Solution Statement - Outcome focused */}
+          {/* Key proof points */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mx-auto mt-6 max-w-2xl text-left"
+            className="mx-auto mt-6 max-w-2xl"
           >
-            <p className="font-body text-base leading-relaxed text-white/90 sm:text-lg">
-              I embed in your team for <strong className="text-cyan">8-16 weeks</strong>, diagnose what&apos;s actually broken, rebuild your revenue architecture, and stay until your team trusts the system again. Two clients max. Principal-only delivery.
-            </p>
-          </motion.div>
-
-          {/* Proof Banner with Real Credentials */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mx-auto mt-10 max-w-2xl"
-          >
-            <div className="relative overflow-hidden rounded-xl border border-white/20 bg-white/5 p-5">
-              <div className="flex items-start gap-3">
-                <svg className="h-5 w-5 text-white/70 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div className="flex-1">
-                  <p className="text-sm text-white leading-relaxed">
-                    <strong className="text-white">66% sales acceleration</strong> · Lead routing: 2+ hours → 3 minutes · $200K+ operational savings
-                  </p>
-                  <p className="text-xs text-white/60 mt-1">Former Senior Revenue Systems Engineer at $100M+ Series C</p>
-                </div>
-              </div>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/80">
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
+                66% sales acceleration
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
+                $200K+ savings documented
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
+                Principal-only delivery
+              </span>
             </div>
           </motion.div>
 
-          {/* NEW: Segmented CTAs - Three paths for different buyers */}
+          {/* Segmented CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -192,16 +166,9 @@ export default function Hero() {
             className="mt-12"
           >
             <div className="mx-auto max-w-4xl grid gap-4 md:grid-cols-3">
-              {/* Path A: See How I Work - For VP RevOps */}
+              {/* Path A: See How I Work */}
               <Link
                 href="/how-i-work"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && (window as any).plausible) {
-                    (window as any).plausible('CTA Click', {
-                      props: { path: 'how-i-work', persona: 'vp-revops' }
-                    });
-                  }
-                }}
                 className="group relative overflow-hidden rounded-xl border-2 border-white/20 bg-white/5 p-6 text-left transition-all hover:border-white/40 hover:bg-white/10"
               >
                 <div className="flex items-start gap-3">
@@ -215,16 +182,9 @@ export default function Hero() {
                 </div>
               </Link>
 
-              {/* Path B: Book A Diagnostic - For Founders/CROs (Primary CTA) */}
+              {/* Path B: Book A Diagnostic (Primary CTA) */}
               <Link
                 href="/book"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && (window as any).plausible) {
-                    (window as any).plausible('CTA Click', {
-                      props: { path: 'book-diagnostic', persona: 'founder-cro' }
-                    });
-                  }
-                }}
                 className="group relative overflow-hidden rounded-xl border-2 border-magenta bg-magenta p-6 text-left transition-all hover:bg-[#c235d9]"
               >
                 <div className="flex items-start gap-3">
@@ -238,16 +198,9 @@ export default function Hero() {
                 </div>
               </Link>
 
-              {/* Path C: Check If We're A Fit - For CFOs/Cautious buyers */}
+              {/* Path C: Check If We're A Fit */}
               <Link
                 href="/fit-assessment"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && (window as any).plausible) {
-                    (window as any).plausible('CTA Click', {
-                      props: { path: 'fit-assessment', persona: 'cfo-cautious' }
-                    });
-                  }
-                }}
                 className="group relative overflow-hidden rounded-xl border-2 border-white/20 bg-white/5 p-6 text-left transition-all hover:border-white/40 hover:bg-white/10"
               >
                 <div className="flex items-start gap-3">
@@ -263,7 +216,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Platform Logo Showcase - Infinite Scroll Marquee */}
+          {/* Platform Logo Showcase */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -274,51 +227,27 @@ export default function Hero() {
               Trusted expertise across 30+ enterprise platforms
             </p>
 
-            {/* Marquee Container */}
             <div className="relative overflow-hidden">
-              {/* Gradient Overlays for fade effect */}
               <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-navy to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-navy to-transparent z-10 pointer-events-none" />
 
-              {/* Scrolling Track - Pauses on hover */}
               <div className="group relative">
                 <div className="flex animate-marquee hover:pause-animation group-hover:[animation-play-state:paused]">
-                  {/* First set of logos */}
                   {platforms.map((platform) => (
-                    <div
-                      key={`${platform.name}-1`}
-                      className="flex-shrink-0 mx-6"
-                      title={platform.name}
-                    >
+                    <div key={`${platform.name}-1`} className="flex-shrink-0 mx-6" title={platform.name}>
                       <div className="relative h-12 w-32 flex items-center justify-center transition-all duration-300 hover:scale-110">
                         <div className="absolute inset-0 bg-white rounded-lg shadow-lg" />
-                        <Image
-                          src={platform.logo}
-                          alt={`${platform.name} logo`}
-                          width={128}
-                          height={48}
-                          className="relative object-contain max-h-10 w-auto transition-all duration-300 px-2"
-                        />
+                        <Image src={platform.logo} alt={`${platform.name} logo`} width={128} height={48}
+                          className="relative object-contain max-h-10 w-auto transition-all duration-300 px-2" />
                       </div>
                     </div>
                   ))}
-
-                  {/* Duplicate set for seamless loop */}
                   {platforms.map((platform) => (
-                    <div
-                      key={`${platform.name}-2`}
-                      className="flex-shrink-0 mx-6"
-                      title={platform.name}
-                    >
+                    <div key={`${platform.name}-2`} className="flex-shrink-0 mx-6" title={platform.name}>
                       <div className="relative h-12 w-32 flex items-center justify-center transition-all duration-300 hover:scale-110">
                         <div className="absolute inset-0 bg-white rounded-lg shadow-lg" />
-                        <Image
-                          src={platform.logo}
-                          alt={`${platform.name} logo`}
-                          width={128}
-                          height={48}
-                          className="relative object-contain max-h-10 w-auto transition-all duration-300 px-2"
-                        />
+                        <Image src={platform.logo} alt={`${platform.name} logo`} width={128} height={48}
+                          className="relative object-contain max-h-10 w-auto transition-all duration-300 px-2" />
                       </div>
                     </div>
                   ))}
@@ -326,7 +255,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Additional platforms indicator */}
             <div className="mt-6 text-center">
               <span className="inline-flex items-center gap-2 text-xs font-medium text-white/50">
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -339,41 +267,19 @@ export default function Hero() {
         </article>
       </div>
 
-      {/* Keyframes for animations */}
       <style jsx>{`
         @keyframes pulse-glow {
-          0%,
-          100% {
-            transform: scale(1) translate(0, 0);
-            opacity: 0.15;
-          }
-          50% {
-            transform: scale(1.15) translate(-15px, 15px);
-            opacity: 0.25;
-          }
+          0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.15; }
+          50% { transform: scale(1.15) translate(-15px, 15px); opacity: 0.25; }
         }
-
         @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
-        }
-
-        .pause-animation {
-          animation-play-state: paused;
-        }
-
+        .animate-marquee { animation: marquee 30s linear infinite; }
+        .pause-animation { animation-play-state: paused; }
         @media (prefers-reduced-motion: reduce) {
-          .animate-marquee {
-            animation: none;
-          }
+          .animate-marquee { animation: none; }
         }
       `}</style>
     </section>
